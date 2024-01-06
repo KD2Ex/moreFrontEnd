@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Grid, Popover, TextField, Typography} from "@mui/material";
-import PaintItem from "../../components/PaintItem/PaintItem";
 import {imgHeight, sizes} from "../../consts";
 import art1 from '../../assets/art1.jpg'
 import {useImageSize} from "react-image-size";
-import ModalView from "../../components/ModalView/ModalView";
-import {IPaint} from "../../models/interfaces/IPaint";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
-import loginPage from "../LoginPage/LoginPage";
 import Gallery from "../../components/Gallery/Gallery";
-import axios from "axios";
 import PaintingService from "../../../api/services/PaintingService";
+import ModalAddPainting from "../../components/ModalAddPainting/ModalAddPainting";
 
 const GalleryPage = observer(() => {
+
+
 	const [dimensions, {loading, error}] = useImageSize(art1)
+	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 	useEffect(() => {
 
@@ -45,7 +44,16 @@ const GalleryPage = observer(() => {
 
 	}
 
+	const handleAdd = () => {
 
+		setIsAddModalOpen(true)
+	}
+
+	const handleSave = async () => {
+
+		await paint.saveSizes();
+
+	}
 
 	return (
 		<Box
@@ -62,7 +70,33 @@ const GalleryPage = observer(() => {
 			<Gallery
 			/>
 
+			<ModalAddPainting
+				open={isAddModalOpen}
+				setOpen={setIsAddModalOpen}
+			/>
 
+
+			<Box
+				sx={{
+					position: 'fixed',
+					bottom: 10,
+					right: 10,
+				}}
+			>
+				<Button
+
+					onClick={handleAdd}
+				>
+
+					add
+				</Button>
+
+				<Button
+					onClick={handleSave}
+				>
+					save
+				</Button>
+			</Box>
 
 		</Box>
 	);

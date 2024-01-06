@@ -18,34 +18,9 @@ interface ModalViewProps {
 	handleClose: React.Dispatch<boolean>,
 }
 
-const ModalView = observer(({open, setOpen, item, setItem}) => {
-
-	const [newItem, setNewItem] = useState(paint.newItem)
-
-	// ?
-	const isAdmin = !item;
-
-	const handleClick = async () => {
-
-		console.log(newItem);
-
-		const isValid = paint.isValidPaint(newItem);
-
-		console.log()
-
-		if (!isValid) {
-
-			alert.openAlert('Заполните все поля', 'error')
-			return;
-		}
+const ModalView = observer(({open, setOpen, item}) => {
 
 
-		paint.addPainting(newItem).then(res => {
-			handleClose()
-			alert.openAlert('Картина успешно добавлена', 'success')
-		})
-
-	}
 
 	const handleClose = (event, reason) => {
 
@@ -54,26 +29,8 @@ const ModalView = observer(({open, setOpen, item, setItem}) => {
 		if (reason === 'backdropClick' && !item) return;
 
 		setOpen(false);
-		//setItem(null);
 	}
 
-	useEffect(() => {
-		console.log(!!item)
-	}, [])
-
-	useEffect(() => {
-
-		if (!open) {
-			//console.log(newItem)
-
-			paint.createNewItem(newItem)
-		} else {
-			console.log(paint.newItem)
-
-			setNewItem(paint.newItem)
-		}
-
-	}, [open])
 
 	return (
 		<Dialog
@@ -83,10 +40,9 @@ const ModalView = observer(({open, setOpen, item, setItem}) => {
 
 		>
 
-			<DialogTitle>
-				{
-					item ? item.title : "Создание"
-				}
+			<DialogTitle
+				variant={'h4'}
+			>
 			</DialogTitle>
 
 			<DialogContent
@@ -95,17 +51,9 @@ const ModalView = observer(({open, setOpen, item, setItem}) => {
 				}}
 			>
 
-				{
-					item
-						? <ModalViewContent
-							item={item}
-						/>
-						:
-							<ModalEditContent
-								item={newItem}
-								setItem={setNewItem}
-							/>
-				}
+				<ModalViewContent
+					item={item}
+				/>
 
 			</DialogContent>
 
@@ -115,17 +63,6 @@ const ModalView = observer(({open, setOpen, item, setItem}) => {
 				}}
 			>
 
-				<Button
-					onClick={handleClick}
-				>
-					Добавить картину
-				</Button>
-
-				<Button
-					onClick={handleClose}
-				>
-					Отмена
-				</Button>
 
 			</DialogActions>
 

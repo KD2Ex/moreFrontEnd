@@ -32,8 +32,7 @@ const ModalViewContent = ({item}) => {
 
 
 				<ModalInfo
-					price={item?.price}
-					desc={item?.desc}
+					item={item}
 				/>
 
 

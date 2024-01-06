@@ -23,17 +23,6 @@ const Gallery = observer(() => {
 		setOpenModal(true)
 	}
 
-	const handleAdd = () => {
-
-		setOpenModal(true)
-	}
-
-	const handleSave = async () => {
-
-		await paint.saveSizes();
-
-	}
-
 	const handleDelete = async (id: number) => {
 
 		//confirm dialog
@@ -73,17 +62,15 @@ const Gallery = observer(() => {
 				open={openModal}
 				setOpen={setOpenModal}
 				item={currentItem}
-				setItem={setCurrentItem}
 			/>
 			<Grid
 				container
 				spacing={2}
-
-
 			>
 
 				{paint.items.map((item, index) => (
 					<Grid
+						key={index}
 						item
 						xs={sizes.full}
 						md={item.relativeSize}
@@ -106,7 +93,6 @@ const Gallery = observer(() => {
 							x
 						</Button>
 						<PaintItem
-							key={index}
 							item={item}
 							onClick={handleClick}
 							height={500}
@@ -116,35 +102,8 @@ const Gallery = observer(() => {
 
 
 				))}
-
-				<Box
-					sx={{
-						position: 'fixed',
-						bottom: 10,
-						right: 10,
-					}}
-				>
-					<Button
-
-						onClick={handleAdd}
-					>
-
-						add
-					</Button>
-
-					<Button
-						onClick={handleSave}
-					>
-						save
-					</Button>
-				</Box>
-
-
-
 			</Grid>
-
 		</>
-
 	);
 });
 

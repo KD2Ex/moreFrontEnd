@@ -1,25 +1,49 @@
 import React from 'react';
-import {Typography} from "@mui/material";
+import {Divider, Typography} from "@mui/material";
 
-const ModalInfo = ({price, desc}) => {
+const ModalInfo = ({item}) => {
 
 	return (
 		<div>
+
+
+			<Typography
+				variant={'h3'}
+			>
+				{item?.title}
+			</Typography>
+
+			<Divider
+				sx={{
+					color: 'blue',
+					my: 2
+				}}
+			>
+
+			</Divider>
+
 			<Typography
 				variant={'h4'}
 			>
-				{price}
+				{item.price} ₽
 			</Typography>
 
 			<Typography
-				variant={'h5'}
+				variant={'h6'}
 				sx={{
 					flexWrap: 'wrap',
 					width: '100%',
 					wordWrap: 'break-word'
 				}}
 			>
-				{desc}
+				{item.desc}
+			</Typography>
+
+			<Typography
+				variant={'h5'}
+			>
+				Размеры: {item.width} x {item.height} см
+
 			</Typography>
 		</div>
 	);

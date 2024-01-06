@@ -18,7 +18,7 @@ const ModalEditContent = observer(({item, setItem}) => {
 
 	useEffect(() => {
 
-		//console.log(paint.newItem[Object.getOwnPropertySymbols(paint.newItem)[0]].values_.size)
+		console.log(paint.newItem[Object.getOwnPropertySymbols(paint.newItem)[0]].values_.size)
 
 		if (paint.newItem[Object.getOwnPropertySymbols(paint.newItem)[0]].values_.size != 0) {
 			setTitle(paint.newItem.title)
@@ -34,8 +34,18 @@ const ModalEditContent = observer(({item, setItem}) => {
 	useEffect(() => {
 
 
-
-		setItem({...item, title, price, desc, width, height, images: files})
+		if (
+			title ||
+			price ||
+			desc  ||
+			width ||
+			height ||
+			files.length !== 0
+		) {
+			paint.setNewItem({...paint.newItem, title, price, desc, width, height, images: files})
+		}
+		console.log(paint.newItem)
+		//setItem({...item, title, price, desc, width, height, images: files})
 
 	}, [title, price, desc, width, height, files])
 

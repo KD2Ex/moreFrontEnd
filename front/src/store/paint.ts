@@ -17,8 +17,10 @@ class Paint {
 
 	editedPaintingsSizes: ISizeEdit[] = [];
 
-	async addPainting(newItem: IPaint) {
+	async addPainting() {
 
+
+		const newItem = this.newItem;
 
 		const images = newItem.images.map(i => {
 			return i.file
@@ -39,10 +41,13 @@ class Paint {
 
 		this.items.push(response.data)
 		console.log(response.data)
+		this.newItem = {};
 		return response;
 	}
 
-	createNewItem(value: IPaint) {
+	setNewItem(value: IPaint) {
+
+
 
 		this.newItem = value;
 	}

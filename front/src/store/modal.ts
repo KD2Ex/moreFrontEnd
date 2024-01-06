@@ -19,10 +19,7 @@ class Modal {
 
 		console.log(this.isOpen)
 
-
 	}
-
-
 
 }
 

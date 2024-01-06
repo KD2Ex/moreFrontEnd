@@ -47,8 +47,6 @@ class Paint {
 
 	setNewItem(value: IPaint) {
 
-
-
 		this.newItem = value;
 	}
 
@@ -120,6 +118,24 @@ class Paint {
 
 		}
 
+	}
+
+	async deleteImage(name: string) {
+
+
+		try {
+			const response = await PaintingService.deleteImage(name);
+
+			const paint = this.items.find((item) => {
+				return item.images.includes(name);
+			})
+			console.log(paint)
+			paint.images = paint.images.filter((item) => item != name);
+
+			return response;
+		} catch (e) {
+			return e.message;
+		}
 	}
 }
 

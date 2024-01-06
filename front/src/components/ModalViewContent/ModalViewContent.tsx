@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ModalInfo from "../ModalInfo/ModalInfo";
 import {Grid} from "@mui/material";
 
 const ModalViewContent = ({item}) => {
+
+	const [images, setImages] = useState([])
+
+	useEffect(() => {
+
+		setImages(item.images)
+
+	}, [])
+
 	return (
 		<Grid
 			container
@@ -18,7 +27,8 @@ const ModalViewContent = ({item}) => {
 				md={8}
 			>
 				<ModalCarousel
-					items={item.images}
+					items={images}
+					setItems={setImages}
 				/>
 
 			</Grid>

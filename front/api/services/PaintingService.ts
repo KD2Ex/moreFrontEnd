@@ -41,10 +41,21 @@ export default class PaintingService {
 
 	}
 
-	static async deletePainting(id) {
+	static async deletePainting(id: number) {
 		console.log(id)
 
 		return $api.delete(`/paint/${id}`)
 	}
+
+	static async deleteImage(name: string) {
+
+		return $api.delete(`/image`, {
+			data: {
+				name: name
+			}
+		})
+
+	}
+
 }
 

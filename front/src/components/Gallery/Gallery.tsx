@@ -42,8 +42,6 @@ const Gallery = observer(() => {
 			setIsShiftPressed(false)
 		})
 
-
-
 	}, [])
 
 	useEffect(() => {

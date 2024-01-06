@@ -20,8 +20,6 @@ interface ModalViewProps {
 
 const ModalView = observer(({open, setOpen, item}) => {
 
-
-
 	const handleClose = (event, reason) => {
 
 		console.log(reason)

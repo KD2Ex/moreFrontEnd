@@ -65,8 +65,8 @@ const PaintItem: FC<PaintItemProps>
 					borderRadius: 2,
 				}}
 				onContextMenu={(e) => {
+					console.log(e)
 					e.preventDefault();
-					console.log('rightClick')
 					handleClick(e)
 				}}
 			>

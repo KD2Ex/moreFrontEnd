@@ -58,8 +58,8 @@ const SettingChangeFit = ({itemFit, changeFit}) => {
 				size={'small'}
 			>
 
-				{items.map(item => (
-					<MenuItem value={item.value}>
+				{items.map((item, index) => (
+					<MenuItem key={index} value={item.value}>
 						{item.title}
 					</MenuItem>
 				))}

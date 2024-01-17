@@ -26,7 +26,6 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 	const handleConfirm = async () => {
 
 		await paint.deletePainting(id);
-
 		handleClose();
 	}
 

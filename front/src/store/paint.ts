@@ -109,11 +109,11 @@ class Paint {
 	async deletePainting(id: number) {
 
 		try {
-			const response = await PaintingService.deletePainting(id);
+			//const response = await PaintingService.deletePainting(id);
 
-			console.log(response.data)
+			//console.log(response.data)
 			this.items.splice(this.items.findIndex(value => id === value.id), 1)
-
+			console.log(this.items)
 		} catch (e) {
 
 		}

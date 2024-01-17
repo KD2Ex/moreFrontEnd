@@ -7,12 +7,16 @@ import art1 from "../../assets/art1.jpg";
 import ModalView from "../ModalView/ModalView";
 import {observer} from "mobx-react-lite";
 import modal from "../../store/modal";
+import ActionDialog from "../ActionDialog/ActionDialog";
 
 const Gallery = observer(() => {
 
 	const [currentItem, setCurrentItem] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
+	const [actionDialogOpen, setActionDialogOpen] = useState(false);
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
+
+	const [deleteId, setDeleteId] = useState(0);
 
 	const handleClose = () => {
 		setOpenModal(false)
@@ -26,8 +30,13 @@ const Gallery = observer(() => {
 	const handleDelete = async (id: number) => {
 
 		//confirm dialog
-
-		await paint.deletePainting(id)
+		console.log(paint.deletePainting)
+		if (modal.isActionDialogVisible) {
+			setActionDialogOpen(true);
+			setDeleteId(id)
+		} else {
+			await paint.deletePainting(id)
+		}
 
 	}
 
@@ -42,25 +51,31 @@ const Gallery = observer(() => {
 			setIsShiftPressed(false)
 		})
 
+		console.log(actionDialogOpen)
+
 	}, [])
 
 	useEffect(() => {
 
 		console.log(isShiftPressed ? "Shift is down" : "Shift is up")
 
-
-
 	}, [isShiftPressed])
 
 	return (
 
 		<>
-
 			<ModalView
 				open={openModal}
 				setOpen={setOpenModal}
 				item={currentItem}
 			/>
+
+			<ActionDialog
+				open={actionDialogOpen}
+				setOpen={setActionDialogOpen}
+				id={deleteId}
+			/>
+
 			<Grid
 				container
 				spacing={2}

@@ -7,6 +7,10 @@ class Modal {
 	isOpen: boolean = false;
 	displayItem: IPaint | null;
 
+	isActionDialogVisible = true;
+
+	actionDialogOpen = false;
+
 	constructor() {
 		makeAutoObservable(this)
 	}
@@ -18,6 +22,16 @@ class Modal {
 		this.displayItem = item ? item : null
 
 		console.log(this.isOpen)
+
+	}
+
+	setActionDialogVisibility(value: boolean) {
+		this.isActionDialogVisible = value;
+	}
+
+	setActionDialogOpen(value: boolean) {
+		this.actionDialogOpen = value;
+
 
 	}
 

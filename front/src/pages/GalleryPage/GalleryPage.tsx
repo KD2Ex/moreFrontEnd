@@ -8,6 +8,8 @@ import paint from "../../store/paint";
 import Gallery from "../../components/Gallery/Gallery";
 import PaintingService from "../../../api/services/PaintingService";
 import ModalAddPainting from "../../components/ModalAddPainting/ModalAddPainting";
+import AdminComponent from "../../components/AdminComponent/AdminComponent";
+import ActionDialog from "../../components/ActionDialog/ActionDialog";
 
 const GalleryPage = observer(() => {
 
@@ -75,28 +77,30 @@ const GalleryPage = observer(() => {
 				setOpen={setIsAddModalOpen}
 			/>
 
-
-			<Box
-				sx={{
-					position: 'fixed',
-					bottom: 10,
-					right: 10,
-				}}
-			>
-				<Button
-
-					onClick={handleAdd}
+			<AdminComponent>
+				<Box
+					sx={{
+						position: 'fixed',
+						bottom: 10,
+						right: 10,
+					}}
 				>
+					<Button
+						onClick={handleAdd}
+					>
 
-					add
-				</Button>
+						add
+					</Button>
 
-				<Button
-					onClick={handleSave}
-				>
-					save
-				</Button>
-			</Box>
+					<Button
+						onClick={handleSave}
+					>
+						save
+					</Button>
+				</Box>
+			</AdminComponent>
+
+
 
 		</Box>
 	);

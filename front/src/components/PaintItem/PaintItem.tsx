@@ -8,6 +8,7 @@ import PaintPopover from "../PaintPopover/PaintPopover";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
+import AdminComponent from "../AdminComponent/AdminComponent";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -46,36 +47,42 @@ const PaintItem: FC<PaintItemProps>
 
 	return (
 		<>
-			<PaintPopover
-				anchor={anchor}
-				setAnchor={setAnchor}
-				item={item}
-			/>
+			<AdminComponent>
+				<PaintPopover
+					anchor={anchor}
+					setAnchor={setAnchor}
+					item={item}
+				/>
+			</AdminComponent>
+
+
+			<Box
+				//onClick={handleClick}
+				sx={{
+					height: `${height}px`,
+					backgroundColor: '#5986a2',
+					p: 0,
+					borderRadius: 2,
+				}}
+				onContextMenu={(e) => {
+					e.preventDefault();
+					console.log('rightClick')
+					handleClick(e)
+				}}
+			>
 
 				<Box
-					onClick={handleClick}
+					component={'img'}
+					src={'http://localhost:7000/' + img}
 					sx={{
-						height: `${height}px`,
-						backgroundColor: '#5986a2',
-						p: 0,
-						borderRadius: 2,
+						width: '100%',
+						height: '100%',
+						objectFit: item.objectFit
 					}}
 				>
 
-					<Box
-						component={'img'}
-						src={'http://localhost:7000/' + img}
-						sx={{
-							width: '100%',
-							height: '100%',
-							objectFit: item.objectFit
-						}}
-					>
-
-					</Box>
 				</Box>
-
-
+			</Box>
 
 		</>
 

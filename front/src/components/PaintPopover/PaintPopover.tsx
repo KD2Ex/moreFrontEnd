@@ -4,6 +4,8 @@ import SettingChangeSize from "../SettingChangeSize/SettingChangeSize";
 import {IPaint} from "../../models/interfaces/IPaint";
 import SettingChangeFit from "../SettingChangeFit/SettingChangeFit";
 import paint from "../../store/paint";
+import SettingDeletePainting from "../SettingDeletePainting/SettingDeletePainting";
+import SettingEditPainting from "../SettingEditPainting/SettingEditPainting";
 
 interface PaintPopoverProps {
 	anchor: HTMLAnchorElement,
@@ -12,7 +14,6 @@ interface PaintPopoverProps {
 }
 
 const PaintPopover = ({anchor, setAnchor, item}) => {
-
 
 	const openSettings = Boolean(anchor);
 
@@ -23,7 +24,6 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 	const changeFit = (value: string) => {
 		item.objectFit = value;
 	}
-
 
 	const handleClose = () => {
 		paint.addEdited(item)
@@ -57,6 +57,12 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 				<SettingChangeFit
 					itemFit={item.objectFit}
 					changeFit={changeFit}
+				/>
+				<SettingDeletePainting
+					id={item.id}
+				/>
+				<SettingEditPainting
+					item={item}
 				/>
 			</Box>
 

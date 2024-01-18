@@ -1,24 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Typography} from "@mui/material";
-import Carousel from "nuka-carousel";
-import Slider from 'react-slick';
-import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
-import loginPage from "../../pages/LoginPage/LoginPage";
-import ModalCarousel from "../ModalCarousel/ModalCarousel";
-import ModalInfo from "../ModalInfo/ModalInfo";
-import ModalEdit from "../ModalEdit/ModalEdit";
 import ModalViewContent from "../ModalViewContent/ModalViewContent";
+import modal from "../../store/modal";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import paint from "../../store/paint";
-import PaintingService from "../../../api/services/PaintingService";
-import alert from "../../store/alert";
 
 interface ModalViewProps {
 	handleClose: React.Dispatch<boolean>,
 }
 
-const ModalView = observer(({open, setOpen, item}) => {
+const ModalView = observer(() => {
+
+	const [open, setOpen] = useState(false);
+	const [item, setItem] = useState(null);
+
+	const [editMode, setEditMode] = useState(false);
+
+	useEffect(() => {
+		setItem(modal.paintingItem);
+		setEditMode(modal.editMode);
+
+		setOpen(modal.paintingViewOpen)
+
+		console.log(editMode)
+
+	}, [modal.paintingViewOpen])
 
 	const handleClose = (event, reason) => {
 
@@ -26,9 +33,23 @@ const ModalView = observer(({open, setOpen, item}) => {
 
 		if (reason === 'backdropClick' && !item) return;
 
-		setOpen(false);
+		//setOpen(false);
+		onClose();
 	}
 
+	const handleClick = async () => {
+
+		console.log(item)
+		await paint.updatePainting(item);
+
+		onClose();
+
+		item.files = undefined;
+	}
+
+	const onClose = () => {
+		modal.setPaintingViewOpen(false);
+	}
 
 	return (
 		<Dialog
@@ -48,21 +69,35 @@ const ModalView = observer(({open, setOpen, item}) => {
 					minWidth: '1200px'
 				}}
 			>
+				{!editMode
+					? <ModalViewContent
+						item={item}
+					/>
 
-				<ModalViewContent
-					item={item}
-				/>
+					: <ModalEditContent
+						item={item}
+						setItem={setItem}
+						editMode={editMode}
+					/>
+				}
 
 			</DialogContent>
 
-			<DialogActions
-				sx={{
-					display:  !item ? 'flex' : 'none'
-				}}
-			>
+			{editMode &&
+                <DialogActions>
 
 
-			</DialogActions>
+
+                    <Button
+						onClick={handleClick}
+
+					>
+                        Сохранить
+
+                    </Button>
+
+                </DialogActions>
+			}
 
 		</Dialog>
 	);

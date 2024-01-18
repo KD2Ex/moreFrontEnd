@@ -3,6 +3,7 @@ import Carousel from "nuka-carousel";
 import {Box, Button, Popover} from "@mui/material";
 import paint from "../../store/paint";
 import alert from "../../store/alert";
+import modal from "../../store/modal";
 
 const ModalCarousel = ({items, setItems}) => {
 
@@ -19,7 +20,13 @@ const ModalCarousel = ({items, setItems}) => {
 
 	useEffect(() => {
 		console.log(items)
-	}, [])
+	}, [items])
+
+	useEffect(() => {
+
+		//if (modal.editMode) setItems(modal.paintingItem.images)
+
+	}, [modal.editMode])
 
 	const deleteImg = async (imageIndex) => {
 

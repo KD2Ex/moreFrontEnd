@@ -17,12 +17,37 @@ class Paint {
 
 	editedPaintingsSizes: ISizeEdit[] = [];
 
+	appendFile(item: IPaint) {
+
+
+
+		const formData = new FormData();
+
+		formData.append("title", item.title);
+		formData.append("desc", item.desc);
+		formData.append("height", `${item.height}`);
+		formData.append("width", `${item.width}`);
+		formData.append("price", `${item.price}`);
+
+		if (item.files) {
+			const images = item.files.map(i => {
+				return i.file
+			})
+			for (let i = 0; i < images.length; i++) {
+				formData.append('images', images[i]);
+			}
+		}
+
+
+		return formData;
+	}
+
 	async addPainting() {
 
 
 		const newItem = this.newItem;
-
-		const images = newItem.images.map(i => {
+		console.log(newItem)
+		const images = newItem.files.map(i => {
 			return i.file
 		})
 		const formData = new FormData();
@@ -43,6 +68,31 @@ class Paint {
 		console.log(response.data)
 		this.newItem = {};
 		return response;
+	}
+
+	async updatePainting(item) {
+
+		try {
+			const formData = this.appendFile(item);
+			formData.append("id", item.id)
+
+			const response = await PaintingService.updatePainting(formData)
+
+			const index = this.items.findIndex(i => i.id == item.id);
+			this.items[index] = item;
+
+			for (const i of response.data) {
+				this.items[index].images.push(i);
+			}
+
+			console.log(response.data)
+
+			//
+			return response;
+		} catch (e) {
+			return e.message
+		}
+
 	}
 
 	setNewItem(value: IPaint) {

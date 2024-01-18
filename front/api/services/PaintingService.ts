@@ -1,4 +1,5 @@
 import $api from "../http";
+import loginPage from "../../src/pages/LoginPage/LoginPage";
 
 
 export default class PaintingService {
@@ -54,6 +55,18 @@ export default class PaintingService {
 				name: name
 			}
 		})
+
+	}
+
+	static async updatePainting(data) {
+
+		for (const pair of data.entries()) {
+			console.log(pair[0], pair[1])
+		}
+
+		const id = data.get('id');
+
+		return $api.post(`/paint/update/${id}`, data)
 
 	}
 

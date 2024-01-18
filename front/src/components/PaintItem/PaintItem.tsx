@@ -31,7 +31,10 @@ const PaintItem: FC<PaintItemProps>
 
 	const handleClick = (event) => {
 		if (event.shiftKey) {
-			onClick(event, item)
+			//onClick(event, item)
+
+			modal.openPaintingView(item);
+
 		} else {
 			setAnchor(event.currentTarget);
 		}

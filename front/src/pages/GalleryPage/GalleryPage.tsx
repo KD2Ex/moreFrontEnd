@@ -10,6 +10,7 @@ import PaintingService from "../../../api/services/PaintingService";
 import ModalAddPainting from "../../components/ModalAddPainting/ModalAddPainting";
 import AdminComponent from "../../components/AdminComponent/AdminComponent";
 import ActionDialog from "../../components/ActionDialog/ActionDialog";
+import ModalView from "../../components/ModalView/ModalView";
 
 const GalleryPage = observer(() => {
 
@@ -100,7 +101,9 @@ const GalleryPage = observer(() => {
 				</Box>
 			</AdminComponent>
 
+			<ModalView
 
+			/>
 
 		</Box>
 	);

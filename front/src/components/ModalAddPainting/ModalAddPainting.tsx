@@ -7,7 +7,7 @@ import alert from "../../store/alert";
 
 const ModalAddPainting = observer(({open, setOpen}) => {
 
-	//const [newItem, setNewItem] = useState(null)
+	const [newItem, setNewItem] = useState(null)
 
 	useEffect(() => {
 
@@ -19,13 +19,14 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 
 		if (reason === 'backdropClick') return;
 
-		//paint.setNewItem(newItem)
+		paint.setNewItem(newItem)
 		setOpen(false);
 		console.log(paint.newItem)
 	}
 
 	const handleAdd = () => {
 
+		paint.newItem = newItem;
 
 		const isValid = paint.isValidPaint(paint.newItem);
 
@@ -64,6 +65,8 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 			>
 
 				<ModalEditContent
+					item={newItem}
+					setItem={setNewItem}
 				/>
 
 			</DialogContent>

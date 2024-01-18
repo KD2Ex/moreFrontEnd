@@ -18,6 +18,7 @@ const Gallery = observer(() => {
 
 	const [deleteId, setDeleteId] = useState(0);
 
+
 	const handleClose = () => {
 		setOpenModal(false)
 	}
@@ -64,12 +65,11 @@ const Gallery = observer(() => {
 	return (
 
 		<>
-			<ModalView
+			{/*<ModalView
 				open={openModal}
 				setOpen={setOpenModal}
 				item={currentItem}
-			/>
-
+			/>*/}
 			<ActionDialog
 				open={actionDialogOpen}
 				setOpen={setActionDialogOpen}

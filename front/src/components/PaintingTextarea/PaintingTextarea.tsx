@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Box, TextField, Typography} from "@mui/material";
+import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
 import paint from "../../store/paint";
+import material from "../../store/material";
+import {IMaterial} from "../../models/interfaces/IMaterial";
+import {ITechnique} from "../../models/interfaces/ITechnique";
+import {observer} from "mobx-react-lite";
+import technique from "../../store/technique";
+import {Form} from "react-router-dom";
+import AddFilterParam from "../AddFilterParam/AddFilterParam";
 
-const PaintingTextarea = ({item, setItem}) => {
+const PaintingTextarea = observer(({item, setItem}) => {
 
 	const [title, setTitle] = useState('');
 	const [price, setPrice] = useState(0);
@@ -10,7 +17,15 @@ const PaintingTextarea = ({item, setItem}) => {
 	const [width, setWidth] = useState(0);
 	const [height, setHeight] = useState(0);
 
+	const [currentMaterial, setCurrentMaterial] = useState('');
+	const [currentTechnique, setCurrentTechnique] = useState('')
+
 	useEffect(() => {
+
+
+		setCurrentMaterial(item.material.id)
+		setCurrentTechnique(item.technique.id)
+		console.log(item.technique.name)
 
 		if (!item) return;
 
@@ -19,22 +34,12 @@ const PaintingTextarea = ({item, setItem}) => {
 		setDesc(item.desc)
 		setWidth(item.width)
 		setHeight(item.height)
+
+
 	}, [])
 
 	useEffect(() => {
 
-
-		/*if (
-			title ||
-			price ||
-			desc  ||
-			width ||
-			height ||
-			files.length !== 0
-		) {
-			paint.setNewItem({...paint.newItem, title, price, desc, width, height, images: files})
-		}
-		console.log(paint.newItem)*/
 		setItem(prev => {
 			return {
 				...prev,
@@ -43,10 +48,15 @@ const PaintingTextarea = ({item, setItem}) => {
 				desc,
 				width,
 				height,
-				/*images: paint.newItem?.images*/}
+				}
 		})
 
 	}, [title, price, desc, width, height])
+
+
+	const handleMaterialChange = (event) => {
+		setCurrentMaterial(event.target.value);
+	}
 
 	return (
 		<Box
@@ -92,7 +102,7 @@ const PaintingTextarea = ({item, setItem}) => {
 				sx={{
 					display: 'flex',
 					alignItems: 'center',
-					gap: 1
+					gap: 2
 				}}
 			>
 				<span>Фактические размеры: </span>
@@ -120,8 +130,55 @@ const PaintingTextarea = ({item, setItem}) => {
 				/>
 			</Box>
 
+
+
+
+			<Box>
+
+				<FormControl>
+					<InputLabel>Материал</InputLabel>
+					<Select
+						size={'small'}
+						value={currentMaterial}
+						label={'Материал'}
+						onChange={handleMaterialChange}
+					>
+						{material.items.map(item => (
+							<MenuItem
+								value={item.id}
+							>
+								{item.name}
+							</MenuItem>
+						))}
+					</Select>
+				</FormControl>
+
+				<AddFilterParam
+					asyncFunc={material.addItem}
+				/>
+
+			</Box>
+
+			<FormControl>
+				<InputLabel>Техника</InputLabel>
+				<Select
+					size={'small'}
+					value={currentTechnique}
+					label={'Техника'}
+				>
+					{technique.items.map(item => (
+						<MenuItem
+							value={item.id}
+						>
+							{item.name}
+						</MenuItem>
+					))}
+				</Select>
+			</FormControl>
+
+
 		</Box>
 	);
-};
+});
 
 export default PaintingTextarea;

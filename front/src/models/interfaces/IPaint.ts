@@ -1,5 +1,7 @@
 import {Fit} from "../types/Fit";
 import {IImage} from "./IImage";
+import {IMaterial} from "./IMaterial";
+import {ITechnique} from "./ITechnique";
 
 
 export interface IPaint {
@@ -7,10 +9,13 @@ export interface IPaint {
 	title: string,
 	desc: string,
 	images: string[],
+	files: File[],
 	price: number,
 	relativeSize: number,
 	objectFit: Fit,
 	previewIndex: number,
 	width: number,
-	height: number
+	height: number,
+	material: IMaterial,
+	technique: ITechnique,
 }

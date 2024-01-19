@@ -11,7 +11,11 @@ export default class TechniqueService {
 
 	}
 
-	static async addTechnique(data) {
+	static async addTechnique(name) {
+
+		return $api.post('/technique', {
+			name
+		});
 
 	}
 

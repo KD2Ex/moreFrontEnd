@@ -22,6 +22,8 @@ const AddFilterParam = ({asyncFunc}) => {
 
 	const handleAdd = async () => {
 
+		if (!value) return;
+
 		await asyncFunc(value);
 		onClose()
 	}
@@ -36,6 +38,8 @@ const AddFilterParam = ({asyncFunc}) => {
 			>
 				<Box>
 					<TextField
+						size={'small'}
+
 						value={value}
 						onChange={handleChange}
 					/>
@@ -49,7 +53,7 @@ const AddFilterParam = ({asyncFunc}) => {
 			<Button
 				onClick={handleOpen}
 			>
-				Добавить
+				Создать новый
 			</Button>
 		</>
 

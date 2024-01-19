@@ -22,6 +22,7 @@ const PaintingTextarea = observer(({item, setItem}) => {
 
 	useEffect(() => {
 
+		technique.addItem.bind(technique);
 
 		setCurrentMaterial(item.material.id)
 		setCurrentTechnique(item.technique.id)
@@ -133,9 +134,18 @@ const PaintingTextarea = observer(({item, setItem}) => {
 
 
 
-			<Box>
+			<Box
+				sx={{
+					display: 'flex',
+					gap: 1
+				}}
+			>
 
-				<FormControl>
+				<FormControl
+					sx={{
+						flex: 1
+					}}
+				>
 					<InputLabel>Материал</InputLabel>
 					<Select
 						size={'small'}
@@ -154,27 +164,44 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				</FormControl>
 
 				<AddFilterParam
-					asyncFunc={material.addItem}
+					asyncFunc={material.addItem.bind(material)}
 				/>
 
 			</Box>
 
-			<FormControl>
-				<InputLabel>Техника</InputLabel>
-				<Select
-					size={'small'}
-					value={currentTechnique}
-					label={'Техника'}
+			<Box
+				sx={{
+					display: 'flex',
+					gap: 1
+				}}
+			>
+				<FormControl
+					sx={{
+						flex: 1
+					}}
 				>
-					{technique.items.map(item => (
-						<MenuItem
-							value={item.id}
-						>
-							{item.name}
-						</MenuItem>
-					))}
-				</Select>
-			</FormControl>
+					<InputLabel>Техника</InputLabel>
+					<Select
+						size={'small'}
+						value={currentTechnique}
+						label={'Техника'}
+					>
+						{technique.items.map(item => (
+							<MenuItem
+								value={item.id}
+							>
+								{item.name}
+							</MenuItem>
+						))}
+					</Select>
+				</FormControl>
+
+				<AddFilterParam
+					asyncFunc={technique.addItem.bind(technique)}
+				/>
+			</Box>
+
+
 
 
 		</Box>

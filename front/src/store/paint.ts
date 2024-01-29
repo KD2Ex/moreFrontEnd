@@ -15,6 +15,8 @@ class Paint {
 	}
 
 	items: IPaint[] = [];
+	viewItems: IPaint[] = [];
+
 	newItem: IPaint = {};
 
 	loading = false;
@@ -32,8 +34,12 @@ class Paint {
 		this.loading = false;
 	}
 
-	setItems(newItems: IPaint[]) {
-		this.items = newItems;
+	setItems(value: IPaint[]) {
+		this.items = value;
+	}
+
+	setViewItems(value: IPaint[]) {
+		this.viewItems = value;
 	}
 
 	appendFile(item: IPaint) {

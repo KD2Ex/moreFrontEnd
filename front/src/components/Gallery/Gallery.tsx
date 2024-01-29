@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import paint from "../../store/paint";
 import PaintItem from "../PaintItem/PaintItem";
 import {sizes} from "../../consts";
-import {Box, Button, Grid} from "@mui/material";
+import {Box, Button, Grid, Typography} from "@mui/material";
 import art1 from "../../assets/art1.jpg";
 import ModalView from "../ModalView/ModalView";
 import {observer} from "mobx-react-lite";
@@ -52,7 +52,6 @@ const Gallery = observer(() => {
 			setIsShiftPressed(false)
 		})
 
-
 	}, [])
 
 	return (
@@ -74,7 +73,7 @@ const Gallery = observer(() => {
 				spacing={2}
 			>
 
-				{paint.items.map((item, index) => (
+				{paint.viewItems.map((item, index) => (
 					<Grid
 						key={index}
 						item
@@ -105,9 +104,17 @@ const Gallery = observer(() => {
 
 						/>
 					</Grid>
-
-
 				))}
+
+				{paint.viewItems.length === 0
+					&& !paint.loading
+					&& (
+						<Typography>
+							sadness
+						</Typography>
+					)
+
+				}
 			</Grid>
 		</>
 	);

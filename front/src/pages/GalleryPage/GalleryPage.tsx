@@ -14,6 +14,7 @@ import ModalView from "../../components/ModalView/ModalView";
 import loginPage from "../LoginPage/LoginPage";
 import {Simulate} from "react-dom/test-utils";
 import load = Simulate.load;
+import PaintingFilter from "../../components/PaintingFilter/PaintingFilter";
 
 const GalleryPage = observer(() => {
 
@@ -29,6 +30,8 @@ const GalleryPage = observer(() => {
 			if (paint.loading) return;
 
 			await paint.getItems();
+
+			paint.setViewItems(paint.items)
 		})()
 
 
@@ -54,6 +57,10 @@ const GalleryPage = observer(() => {
 				width: '100%'
 			}}
 		>
+
+			<PaintingFilter
+
+			/>
 
 			<Gallery
 			/>

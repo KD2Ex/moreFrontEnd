@@ -1,10 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import technique from "../../store/technique";
 import {Button, FormControl, InputLabel, MenuItem, Popover, Select} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
+import {IMaterial} from "../../models/interfaces/IMaterial";
+import AdminComponent from "../AdminComponent/AdminComponent";
 
-const ParamSelect = observer(({id, setId, items, label, deleteFunc}) => {
+interface ParamSelectProps {
+	id: number,
+	setId: React.Dispatch<number>,
+	items: any[],
+	label: string,
+	deleteFunc: () => void,
+}
+
+const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, deleteFunc}) => {
 
 	const [contextPts, setContextPts] = useState({x: 0, y: 0});
 	const [currentId, setCurrentId] = useState(0);
@@ -42,25 +52,27 @@ const ParamSelect = observer(({id, setId, items, label, deleteFunc}) => {
 
 	return (
 		<>
-			<Popover
-				open={open}
-				onClose={handleClose}
-				anchorReference={"anchorPosition"}
-				anchorPosition={{
-					top: contextPts.y,
-					left: contextPts.x
-				}}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left'
-				}}
-			>
-				<Button
-					onClick={handleClick}
+			<AdminComponent>
+				<Popover
+					open={open}
+					onClose={handleClose}
+					anchorReference={"anchorPosition"}
+					anchorPosition={{
+						top: contextPts.y,
+						left: contextPts.x
+					}}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'left'
+					}}
 				>
-					Удалить
-				</Button>
-			</Popover>
+					<Button
+						onClick={handleClick}
+					>
+						Удалить
+					</Button>
+				</Popover>
+			</AdminComponent>
 			<FormControl
 				sx={{
 					flex: 1

@@ -52,15 +52,8 @@ const Gallery = observer(() => {
 			setIsShiftPressed(false)
 		})
 
-		console.log(actionDialogOpen)
 
 	}, [])
-
-	useEffect(() => {
-
-		console.log(isShiftPressed ? "Shift is down" : "Shift is up")
-
-	}, [isShiftPressed])
 
 	return (
 

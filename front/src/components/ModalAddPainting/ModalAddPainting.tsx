@@ -30,7 +30,7 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 
 		const isValid = paint.isValidPaint(paint.newItem);
 
-		console.log()
+		console.log(isValid)
 
 		if (!isValid) {
 

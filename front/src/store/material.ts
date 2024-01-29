@@ -2,11 +2,15 @@ import {IMaterial} from "../models/interfaces/IMaterial";
 import MaterialService from "../../api/services/MaterialService";
 import {makeAutoObservable} from "mobx";
 import alert from "./alert";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 
 class Material {
 
 	items: IMaterial[] = [];
+
+	loading = false;
 
 	constructor() {
 		makeAutoObservable(this)
@@ -14,10 +18,14 @@ class Material {
 
 	async getItems() {
 
+
 		if (this.items.length === 0) {
+
+			this.loading = true;
 			this.items = await MaterialService.fetchMaterials();
 		}
 
+		this.loading = false;
 		return this.items;
 	}
 

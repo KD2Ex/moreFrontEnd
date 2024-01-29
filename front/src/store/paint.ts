@@ -5,6 +5,7 @@ import {makeAutoObservable} from "mobx";
 import {ISizeEdit} from "../models/interfaces/ISizeEdit";
 import PaintingService from "../../api/services/PaintingService";
 import alert from "./alert";
+import material from "./material";
 
 
 class Paint {
@@ -16,15 +17,23 @@ class Paint {
 	items: IPaint[] = [];
 	newItem: IPaint = {};
 
+	loading = false;
+
 	editedPaintingsSizes: ISizeEdit[] = [];
 
 	async getItems() {
 
+		this.loading = true;
+
 		const response = await PaintingService.fetchPaintings();
 
-		this.items = response;
+		this.setItems(response)
 
-		return this.items;
+		this.loading = false;
+	}
+
+	setItems(newItems: IPaint[]) {
+		this.items = newItems;
 	}
 
 	appendFile(item: IPaint) {
@@ -142,25 +151,22 @@ class Paint {
 
 	isValidPaint(item: IPaint) {
 
-		console.log(Object.entries(item));
+		const trueItem = Object.entries(item);
 
-		let isValid = false;
+		console.log(trueItem);
 
-		Object.entries(item).forEach(i => {
+		for (let i of trueItem) {
 
-			if (i[0] == 'images') {
-				isValid = i[1].length !== 0;
-				return;
-			}
+			if (!i[1]) return false;
+		}
 
-			isValid = !!i[1];
+		const files = trueItem.find(i => i[0] == 'files');
 
-		})
+		if (files[1].length <= 0) return false;
 
-		console.log(isValid)
+		if (!item.material.name || !item.technique.name) return false;
 
-		return isValid;
-
+		return true;
 	}
 
 

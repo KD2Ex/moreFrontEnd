@@ -11,8 +11,15 @@ const MainPage = () => {
 
 	useEffect(() => {
 		(async () => {
-			await technique.getItems()
-			await material.getItems()
+
+			if (!technique.loading) {
+				await technique.getItems()
+			}
+
+			if (!material.loading) {
+				await material.getItems()
+			}
+
 		})()
 	}, [])
 

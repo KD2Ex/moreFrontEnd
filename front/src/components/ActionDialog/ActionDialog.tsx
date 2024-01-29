@@ -44,7 +44,7 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 
 	useEffect(() => {
 		console.log('actionDialog efefect')
-		console.log(open)
+		//console.log(open)
 	}, [])
 
 /*

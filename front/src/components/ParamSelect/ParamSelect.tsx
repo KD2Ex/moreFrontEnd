@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import technique from "../../store/technique";
 import {Button, FormControl, InputLabel, MenuItem, Popover, Select} from "@mui/material";
 import {observer} from "mobx-react-lite";
@@ -25,10 +25,20 @@ const ParamSelect = observer(({id, setId, items, label, deleteFunc}) => {
 
 		if (currentId === id) {
 			//alert.openAlert("")
+
+			setId(items[0].id)
 		}
+
+
 		handleClose()
 		await deleteFunc(currentId);
 	}
+
+	useEffect(() => {
+
+		console.log(id)
+
+	}, [id])
 
 	return (
 		<>
@@ -65,6 +75,7 @@ const ParamSelect = observer(({id, setId, items, label, deleteFunc}) => {
 				>
 					{items.map(item => (
 						<MenuItem
+							key={item.id}
 							value={item.id}
 							onContextMenu={(e) => {
 								e.preventDefault();

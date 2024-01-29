@@ -11,15 +11,26 @@ import ModalAddPainting from "../../components/ModalAddPainting/ModalAddPainting
 import AdminComponent from "../../components/AdminComponent/AdminComponent";
 import ActionDialog from "../../components/ActionDialog/ActionDialog";
 import ModalView from "../../components/ModalView/ModalView";
+import loginPage from "../LoginPage/LoginPage";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 const GalleryPage = observer(() => {
 
 
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+
+
 	useEffect(() => {
 
-		paint.getItems();
+		(async () => {
+
+			if (paint.loading) return;
+
+			await paint.getItems();
+		})()
+
 
 	}, [])
 

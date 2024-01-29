@@ -21,7 +21,9 @@ export default class MaterialService {
 
 	}
 
-	static async removeMaterial() {
+	static async removeMaterial(id) {
+
+		return $api.delete(`/material/${id}`)
 
 	}
 

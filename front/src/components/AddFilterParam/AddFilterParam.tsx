@@ -24,8 +24,12 @@ const AddFilterParam = ({asyncFunc}) => {
 
 		if (!value) return;
 
-		await asyncFunc(value);
+		const close = await asyncFunc(value);
+
+		if (!close) return;
+
 		onClose()
+		setValue('');
 	}
 
 	return (

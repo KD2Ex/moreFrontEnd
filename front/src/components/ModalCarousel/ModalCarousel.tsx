@@ -4,6 +4,7 @@ import {Box, Button, Popover} from "@mui/material";
 import paint from "../../store/paint";
 import alert from "../../store/alert";
 import modal from "../../store/modal";
+import AdminComponent from "../AdminComponent/AdminComponent";
 
 const ModalCarousel = ({items, setItems}) => {
 
@@ -75,25 +76,28 @@ const ModalCarousel = ({items, setItems}) => {
 
 	return (
 		<>
-			<Popover
-				open={contextOpen}
-				onClose={handleContextClose}
-				anchorReference={"anchorPosition"}
-				anchorPosition={{
-					top: points.y,
-					left: points.x,
-				}}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left'
-				}}
-			>
-				<Button
-					onClick={(event) => handleClick(event, id)}
+			<AdminComponent>
+				<Popover
+					open={contextOpen}
+					onClose={handleContextClose}
+					anchorReference={"anchorPosition"}
+					anchorPosition={{
+						top: points.y,
+						left: points.x,
+					}}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'left'
+					}}
 				>
-					Удалить изображение
-				</Button>
-			</Popover>
+					<Button
+						onClick={(event) => handleClick(event, id)}
+					>
+						Удалить изображение
+					</Button>
+				</Popover>
+			</AdminComponent>
+
 			<Carousel
 				ref={sliderRef}
 				slideIndex={slideIndex}

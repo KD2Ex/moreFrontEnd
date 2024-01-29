@@ -6,8 +6,8 @@ import {IMaterial} from "../../models/interfaces/IMaterial";
 import {ITechnique} from "../../models/interfaces/ITechnique";
 import {observer} from "mobx-react-lite";
 import technique from "../../store/technique";
-import {Form} from "react-router-dom";
 import AddFilterParam from "../AddFilterParam/AddFilterParam";
+import ParamSelect from "../ParamSelect/ParamSelect";
 
 const PaintingTextarea = observer(({item, setItem}) => {
 
@@ -21,20 +21,18 @@ const PaintingTextarea = observer(({item, setItem}) => {
 	const [currentTechnique, setCurrentTechnique] = useState('')
 
 	useEffect(() => {
-
-		technique.addItem.bind(technique);
-
-		setCurrentMaterial(item.material.id)
-		setCurrentTechnique(item.technique.id)
-		console.log(item.technique.name)
-
+		
 		if (!item) return;
+
+		if (item.material) setCurrentMaterial(item.material.id)
+		if (item.technique) setCurrentTechnique(item.technique.id)
 
 		setTitle(item.title)
 		setPrice(item.price)
 		setDesc(item.desc)
 		setWidth(item.width)
 		setHeight(item.height)
+
 
 
 	}, [])
@@ -49,31 +47,39 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				desc,
 				width,
 				height,
+				material: {
+					id: currentMaterial,
+					name: material.items.find(i => i.id == currentMaterial)?.name
+				},
+				technique: {
+					id: currentTechnique,
+					name: technique.items.find(i => i.id == currentTechnique)?.name
 				}
+			}
 		})
 
-	}, [title, price, desc, width, height])
+	}, [title, price, desc, width, height, currentMaterial, currentTechnique])
 
 
 	const handleMaterialChange = (event) => {
 		setCurrentMaterial(event.target.value);
 	}
 
+/*	const handleTechniqueChange = (event) => {
+		setCurrentTechnique(event.target.value)
+	}*/
+
 	return (
 		<Box
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				gap: 2
+				gap: 2,
+				mt: 2
 			}}
 
 		>
-			<Typography
-				sx={{
-					width: '100%'
-				}}
-			>
-			</Typography>
+
 			<TextField
 				size={'small'}
 				label={'Название'}
@@ -141,27 +147,14 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				}}
 			>
 
-				<FormControl
-					sx={{
-						flex: 1
-					}}
-				>
-					<InputLabel>Материал</InputLabel>
-					<Select
-						size={'small'}
-						value={currentMaterial}
-						label={'Материал'}
-						onChange={handleMaterialChange}
-					>
-						{material.items.map(item => (
-							<MenuItem
-								value={item.id}
-							>
-								{item.name}
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
+
+				<ParamSelect
+					id={currentMaterial}
+					setId={setCurrentMaterial}
+					items={material.items}
+					deleteFunc={material.deleteItem.bind(material)}
+					label={'Материал'}
+				/>
 
 				<AddFilterParam
 					asyncFunc={material.addItem.bind(material)}
@@ -175,26 +168,13 @@ const PaintingTextarea = observer(({item, setItem}) => {
 					gap: 1
 				}}
 			>
-				<FormControl
-					sx={{
-						flex: 1
-					}}
-				>
-					<InputLabel>Техника</InputLabel>
-					<Select
-						size={'small'}
-						value={currentTechnique}
-						label={'Техника'}
-					>
-						{technique.items.map(item => (
-							<MenuItem
-								value={item.id}
-							>
-								{item.name}
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
+				<ParamSelect
+					id={currentTechnique}
+					setId={setCurrentTechnique}
+					items={technique.items}
+					deleteFunc={technique.deleteItem.bind(technique)}
+					label={'Техника'}
+				/>
 
 				<AddFilterParam
 					asyncFunc={technique.addItem.bind(technique)}

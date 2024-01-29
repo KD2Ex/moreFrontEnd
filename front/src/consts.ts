@@ -12,3 +12,11 @@ export const sizes = {
 }
 
 export const imgHeight = 350
+
+export const wappNumber = '79189547728'
+
+export const wappLink = `https://wa.me/${wappNumber}?text=`
+
+export const getWappLink = (text: string) => {
+	return `https://wa.me/${wappNumber}?text=${text}`
+}

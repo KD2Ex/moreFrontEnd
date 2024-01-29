@@ -29,7 +29,6 @@ const ImageUpload = ({files, setFiles}) => {
 	return (
 		<Box
 			sx={{
-
 			}}
 		>
 			<FilePond

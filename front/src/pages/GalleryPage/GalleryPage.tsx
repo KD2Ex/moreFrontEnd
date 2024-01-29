@@ -15,37 +15,16 @@ import ModalView from "../../components/ModalView/ModalView";
 const GalleryPage = observer(() => {
 
 
-	const [dimensions, {loading, error}] = useImageSize(art1)
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 	useEffect(() => {
 
-		paint.items.map((item, index) => {
-
-			//if (index > 2) return;
-			console.log(typeof (item.images))
-
-			if (dimensions && item.relativeSize == 0) {
-				item.relativeSize = ((dimensions.width * imgHeight / dimensions.height) * 12) / 1400
-
-			}
-		})
-
-
-
+		paint.getItems();
 
 	}, [])
 
 
-	const handleClick = async () => {
 
-		const response = await PaintingService.fetchPaintings();
-
-		console.log(response);
-
-		paint.items = response
-
-	}
 
 	const handleAdd = () => {
 
@@ -64,11 +43,6 @@ const GalleryPage = observer(() => {
 				width: '100%'
 			}}
 		>
-			<Button
-				onClick={handleClick}
-			>
-				asdf
-			</Button>
 
 			<Gallery
 			/>
@@ -84,12 +58,13 @@ const GalleryPage = observer(() => {
 						position: 'fixed',
 						bottom: 10,
 						right: 10,
+						zIndex: 2200
+
 					}}
 				>
 					<Button
 						onClick={handleAdd}
 					>
-
 						add
 					</Button>
 

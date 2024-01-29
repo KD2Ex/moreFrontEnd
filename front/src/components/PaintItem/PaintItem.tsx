@@ -31,15 +31,8 @@ const PaintItem: FC<PaintItemProps>
 	const [isHover, setIsHover] = useState(false);
 
 	const handleClick = (event) => {
-		if (event.shiftKey) {
-			//onClick(event, item)
-
-			modal.openPaintingView(item);
-
-		} else {
-			setAnchor(event.currentTarget);
-		}
-
+		if (event.button === 0) modal.openPaintingView(item);
+		else setAnchor(event.currentTarget)
 	}
 
 	const onMouseEnter = () => {
@@ -70,7 +63,7 @@ const PaintItem: FC<PaintItemProps>
 
 
 			<Box
-				//onClick={handleClick}
+				onClick={handleClick}
 				sx={{
 					height: `${height}px`,
 					backgroundColor: '#5986a2',
@@ -105,19 +98,22 @@ const PaintItem: FC<PaintItemProps>
 				>
 					<Typography
 						sx={{
-							textAlign: 'center',
-							transition: 'opacity 300ms',
-							m: 0,
-							p: 0,
 							fontSize: 33
 						}}
 					>
 						{item.title}
 					</Typography>
+
+					<Typography>
+						Материал: {item.material ? item.material.name : "Не указано"}
+					</Typography>
+
+					<Typography>
+						Техника: {item.technique ? item.technique.name : "Не указано"}
+					</Typography>
+
 					<Typography
 						sx={{
-							textAlign: 'center',
-							transition: 'opacity 300ms',
 							fontSize: 20
 						}}
 					>
@@ -134,12 +130,11 @@ const PaintItem: FC<PaintItemProps>
 						height: '100%',
 						objectFit: item.objectFit,
 						transition: 'filter 300ms',
-						filter: isHover && 'brightness(50%)',
+						filter: isHover && 'brightness(40%)',
 						'&:hover': {
 						}
 					}}
 				>
-
 				</Box>
 			</Box>
 

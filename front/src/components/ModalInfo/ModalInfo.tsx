@@ -1,10 +1,11 @@
 import React from 'react';
-import {Divider, Typography} from "@mui/material";
+import {Box, Divider, Typography} from "@mui/material";
+import material from "../../store/material";
 
 const ModalInfo = ({item}) => {
 
 	return (
-		<div>
+		<Box>
 
 
 			<Typography
@@ -15,8 +16,7 @@ const ModalInfo = ({item}) => {
 
 			<Divider
 				sx={{
-					color: 'blue',
-					my: 2
+					my: 1,
 				}}
 			>
 
@@ -25,7 +25,7 @@ const ModalInfo = ({item}) => {
 			<Typography
 				variant={'h4'}
 			>
-				{item.price} ₽
+				Цена: {item.price} ₽
 			</Typography>
 
 			<Typography
@@ -39,13 +39,33 @@ const ModalInfo = ({item}) => {
 				{item.desc}
 			</Typography>
 
+			<Divider
+				sx={{
+					my: 1
+				}}
+			/>
+
+			<Typography
+				fontSize={20}
+			>
+
+				Материал: {item.material?.name ? item.material.name : "Не указано"}
+
+			</Typography>
+
+			<Typography
+				fontSize={20}
+			>
+				Техника: {item.technique?.name ? item.technique.name : "Не указано"}
+			</Typography>
+
 			<Typography
 				variant={'h5'}
 			>
 				Размеры: {item.width} x {item.height} см
 
 			</Typography>
-		</div>
+		</Box>
 	);
 };
 

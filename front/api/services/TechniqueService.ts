@@ -21,6 +21,8 @@ export default class TechniqueService {
 
 	static async removeTechnique(id) {
 
+		return $api.delete(`/technique/${id}`);
+
 	}
 
 }

@@ -12,7 +12,6 @@ class User {
 	checkAuth() {
 
 		// is user auth + admin
-
 		this.isAdmin = true;
 
 	}

@@ -62,12 +62,19 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 			>
 
 
-				{
-					editMode
-						&& <ModalCarousel
-                        items={images}
-                        setItems={setImages}
-                    />
+				{editMode &&
+					(
+						<Box
+							sx={{
+								mb: 2
+							}}
+						>
+							<ModalCarousel
+								items={images}
+								setItems={setImages}
+							/>
+						</Box>
+					)
 				}
 				<ImageUpload
 					files={files}

@@ -26,6 +26,8 @@ export default class PaintingService {
 
 	static async addPainting(data) {
 
+		console.log(data.get("materialId"));
+
 		return $api.post('/paint', data, {
 			/*headers: {
 				'Content-Type': 'multipart/form-data'

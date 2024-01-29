@@ -4,6 +4,7 @@ import {sizes} from "../consts";
 import {makeAutoObservable} from "mobx";
 import {ISizeEdit} from "../models/interfaces/ISizeEdit";
 import PaintingService from "../../api/services/PaintingService";
+import alert from "./alert";
 
 
 class Paint {
@@ -17,9 +18,16 @@ class Paint {
 
 	editedPaintingsSizes: ISizeEdit[] = [];
 
+	async getItems() {
+
+		const response = await PaintingService.fetchPaintings();
+
+		this.items = response;
+
+		return this.items;
+	}
+
 	appendFile(item: IPaint) {
-
-
 
 		const formData = new FormData();
 
@@ -28,6 +36,8 @@ class Paint {
 		formData.append("height", `${item.height}`);
 		formData.append("width", `${item.width}`);
 		formData.append("price", `${item.price}`);
+		formData.append("materialId", `${item.material.id}`)
+		formData.append("techniqueId", `${item.technique.id}`)
 
 		if (item.files) {
 			const images = item.files.map(i => {
@@ -50,14 +60,10 @@ class Paint {
 		const images = newItem.files.map(i => {
 			return i.file
 		})
-		const formData = new FormData();
-		formData.append("title", newItem.title);
-		formData.append("desc", newItem.desc);
-		formData.append("objectFit", "cover");
-		formData.append("height", `${newItem.height}`);
-		formData.append("width", `${newItem.width}`);
-		formData.append("price", `${newItem.price}`);
+		const formData = this.appendFile(newItem)
+
 		formData.append("relativeSize", `4`);
+		formData.append("objectFit", "cover");
 
 		for (let i = 0; i < images.length; i++) {
 			formData.append('images', images[i]);
@@ -86,6 +92,8 @@ class Paint {
 			}
 
 			console.log(response.data)
+
+			alert.openAlert("Картина успешно обновлена", "success");
 
 			//
 			return response;

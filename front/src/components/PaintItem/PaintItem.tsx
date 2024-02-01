@@ -1,13 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
-import {useImageSize} from "react-image-size";
-import {imgHeight} from "../../consts";
 import {IPaint} from "../../models/interfaces/IPaint";
-import Carousel from "nuka-carousel";
 import PaintPopover from "../PaintPopover/PaintPopover";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
-import paint from "../../store/paint";
 import AdminComponent from "../AdminComponent/AdminComponent";
 
 interface PaintItemProps {
@@ -15,13 +11,12 @@ interface PaintItemProps {
 	onClick
 }
 
-const PaintItem: FC<PaintItemProps>
-	= observer(({
+const PaintItem: FC<PaintItemProps> = observer(({
 		item,
 		 onClick,
 	height,
 		 ...props
-	}) =>
+	}: PaintItemProps) =>
 {
 
 	const img = item?.images ? item.images[0] : null;
@@ -69,6 +64,9 @@ const PaintItem: FC<PaintItemProps>
 					backgroundColor: '#5986a2',
 					p: 0,
 					borderRadius: 2,
+					transition: 'filter 300ms',
+					//filter: 'brightness(40%)',
+					//opacity: .2,
 				}}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
@@ -130,7 +128,7 @@ const PaintItem: FC<PaintItemProps>
 						height: '100%',
 						objectFit: item.objectFit,
 						transition: 'filter 300ms',
-						filter: isHover && 'brightness(40%)',
+						filter: (isHover || !item.isFiltered) && 'brightness(40%)',
 						'&:hover': {
 						}
 					}}

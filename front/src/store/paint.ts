@@ -19,19 +19,21 @@ class Paint {
 
 	newItem: IPaint = {};
 
-	loading = false;
+	loading: boolean;
 
 	editedPaintingsSizes: ISizeEdit[] = [];
 
 	async getItems() {
 
-		this.loading = true;
+		this.setLoading(true);
 
 		const response = await PaintingService.fetchPaintings();
 
+		response.forEach(i => i.isFiltered = false)
+
 		this.setItems(response)
 
-		this.loading = false;
+		this.setLoading(false);
 	}
 
 	setItems(value: IPaint[]) {
@@ -206,6 +208,12 @@ class Paint {
 		} catch (e) {
 			return e.message;
 		}
+	}
+
+	setLoading(value: boolean) {
+
+		this.loading = value;
+
 	}
 }
 

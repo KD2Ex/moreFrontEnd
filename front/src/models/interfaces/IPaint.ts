@@ -1,5 +1,4 @@
 import {Fit} from "../types/Fit";
-import {IImage} from "./IImage";
 import {IMaterial} from "./IMaterial";
 import {ITechnique} from "./ITechnique";
 
@@ -18,4 +17,5 @@ export interface IPaint {
 	height: number,
 	material: IMaterial,
 	technique: ITechnique,
+	isFiltered: boolean,
 }

@@ -8,6 +8,7 @@ class User {
 	}
 
 	isAdmin = false;
+	adminView = false;
 
 	checkAuth() {
 

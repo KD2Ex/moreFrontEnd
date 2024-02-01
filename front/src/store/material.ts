@@ -2,9 +2,6 @@ import {IMaterial} from "../models/interfaces/IMaterial";
 import MaterialService from "../../api/services/MaterialService";
 import {makeAutoObservable} from "mobx";
 import alert from "./alert";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
-
 
 class Material {
 
@@ -22,7 +19,9 @@ class Material {
 		if (this.items.length === 0) {
 
 			this.loading = true;
-			this.items = await MaterialService.fetchMaterials();
+			const response = await MaterialService.fetchMaterials();
+
+			this.setItems(response)
 		}
 
 		this.loading = false;
@@ -64,6 +63,10 @@ class Material {
 		}
 
 
+	}
+
+	setItems(value: IMaterial[]) {
+		this.items = value;
 	}
 }
 

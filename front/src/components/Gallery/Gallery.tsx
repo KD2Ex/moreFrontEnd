@@ -8,6 +8,8 @@ import ModalView from "../ModalView/ModalView";
 import {observer} from "mobx-react-lite";
 import modal from "../../store/modal";
 import ActionDialog from "../ActionDialog/ActionDialog";
+import loginPage from "../../pages/LoginPage/LoginPage";
+import user from "../../store/user";
 
 const Gallery = observer(() => {
 
@@ -54,6 +56,8 @@ const Gallery = observer(() => {
 
 	}, [])
 
+	let gridSize = 0;
+
 	return (
 
 		<>
@@ -73,38 +77,100 @@ const Gallery = observer(() => {
 				spacing={2}
 			>
 
-				{paint.viewItems.map((item, index) => (
-					<Grid
-						key={index}
-						item
-						xs={sizes.full}
-						md={item.relativeSize}
-						sx={{
-							position: 'relative'
-						}}
-					>
-						<Button
-							variant={'contained'}
-							sx={{
-								visibility: isShiftPressed ? 'visible' : 'hidden',
-								opacity: isShiftPressed ? '1' : '0',
-								position: 'absolute',
-								right: '0',
-								bgcolor: 'red',
-								transition: 'visibility 200ms opacity 0.5s linear'
-							}}
-							onClick={() => handleDelete(item.id)}
-						>
-							x
-						</Button>
-						<PaintItem
-							item={item}
-							onClick={handleClick}
-							height={500}
+				{paint.viewItems.map((item, index, array) => {
 
-						/>
-					</Grid>
-				))}
+					const rowGridSpace = 12 - gridSize % 12;
+
+					let additiveComponent = null;
+
+					if (index != array.length - 1 && !user.adminView) {
+
+						if ( rowGridSpace - item.relativeSize < 0) {
+							gridSize += rowGridSpace;
+							additiveComponent = (
+								<Grid
+									key={item.title + index}
+									item
+									md={rowGridSpace}
+									sx={{
+										position: 'relative',
+										//border: '1px solid white',
+									}}
+								>
+									{/*{rowGridSpace}
+									{' '}
+									{array[index + 1].relativeSize}
+									{' '}
+									{gridSize % 12}*/}
+
+									<Box
+										sx={{
+											textAlign: 'center',
+											alignItems: 'center',
+											justifyContent: 'center',
+											width: '100%',
+											height: '100%',
+											display: 'flex',
+											bgcolor: '#1dacdc'
+
+										}}
+									>
+										<Typography
+											variant={'h3'}
+											color={'white'}
+										>
+											Жоская Ауф цитата
+										</Typography>
+									</Box>
+
+								</Grid>
+							)
+						}
+					}
+
+					gridSize += item.relativeSize;
+
+					console.log(`${item.title} ${rowGridSpace}`)
+
+					return (
+						<React.Fragment
+							key={index}
+						>
+							{additiveComponent}
+							<Grid
+								item
+								xs={sizes.full}
+								md={item.relativeSize}
+								sx={{
+									position: 'relative',
+								}}
+							>
+								<Button
+									variant={'contained'}
+									sx={{
+										visibility: isShiftPressed ? 'visible' : 'hidden',
+										opacity: isShiftPressed ? '1' : '0',
+										position: 'absolute',
+										right: '0',
+										bgcolor: 'red',
+										transition: 'visibility 200ms opacity 0.5s linear'
+									}}
+									onClick={() => handleDelete(item.id)}
+								>
+									x
+								</Button>
+								<PaintItem
+									item={item}
+									onClick={handleClick}
+									height={500}
+
+								/>
+							</Grid>
+						</React.Fragment>
+
+					)
+
+				})}
 
 				{paint.viewItems.length === 0
 					&& !paint.loading

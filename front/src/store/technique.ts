@@ -18,14 +18,18 @@ class Technique {
 
 	async getItems() {
 
+		try {
+			if (this.items.length === 0) {
+				this.loading = true;
+				this.items = await TechniqueService.fetchTechniques();
+			}
 
-		if (this.items.length === 0) {
-			this.loading = true;
-			this.items = await TechniqueService.fetchTechniques();
+			this.loading = false;
+			return this.items;
+
+		} catch (e) {
+			console.log(e.message)
 		}
-
-		this.loading = false;
-		return this.items;
 
 	}
 

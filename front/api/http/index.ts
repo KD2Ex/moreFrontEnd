@@ -13,12 +13,20 @@ $api.interceptors.response.use((response: AxiosResponse) => {
 
 	console.log(response)
 
+
 	return response;
 
 }, (err) => {
 
-	console.log(err.response)
-	alert.openAlert(err.response.data.message, "error")
+	console.log(err)
+
+	let message = '';
+
+	if (err.code === "ERR_NETWORK") message = "Ошибка сети, попробуйте перезагрузить страницу или зайти позже"
+	else message = err.response.data.message;
+
+
+	alert.openAlert(message, "error")
 	return Promise.reject(err.message)
 })
 

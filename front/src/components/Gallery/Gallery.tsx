@@ -94,14 +94,8 @@ const Gallery = observer(() => {
 									md={rowGridSpace}
 									sx={{
 										position: 'relative',
-										//border: '1px solid white',
 									}}
 								>
-									{/*{rowGridSpace}
-									{' '}
-									{array[index + 1].relativeSize}
-									{' '}
-									{gridSize % 12}*/}
 
 									<Box
 										sx={{
@@ -120,6 +114,10 @@ const Gallery = observer(() => {
 											color={'white'}
 										>
 											Жоская Ауф цитата
+
+											{/*{rowGridSpace}
+											{' '}
+											{"gridSize: " + gridSize}*/}
 										</Typography>
 									</Box>
 
@@ -128,7 +126,7 @@ const Gallery = observer(() => {
 						}
 					}
 
-					gridSize += item.relativeSize;
+					gridSize += +item.relativeSize;
 
 					//console.log(`${item.title} ${rowGridSpace}`)
 

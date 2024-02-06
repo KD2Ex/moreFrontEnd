@@ -16,6 +16,7 @@ class Paint {
 
 	items: IPaint[] = [];
 	viewItems: IPaint[] = [];
+	//filling: boolean = true;
 
 	newItem: IPaint = {};
 

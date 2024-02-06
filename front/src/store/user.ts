@@ -17,6 +17,10 @@ class User {
 
 	}
 
+	setAdminView(value: boolean) {
+		this.adminView = value;
+	}
+
 
 
 }

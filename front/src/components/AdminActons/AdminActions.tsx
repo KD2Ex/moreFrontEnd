@@ -1,17 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Button, SpeedDial, SpeedDialAction} from "@mui/material";
 import paint from "../../store/paint";
-import AddIcon from '@mui/icons-material/Add';
 import SaveIcon from '@mui/icons-material/Save';
 import SpeedDialIcon from '@mui/icons-material/Add';
 import CollectionsIcon from '@mui/icons-material/Collections';
-
-const actions = [
-	{icon: <CollectionsIcon/>, name: "Добавить картину"},
-	{icon: <SaveIcon/>, name: "Сохранить размеры"},
-]
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import user from "../../store/user";
 
 const AdminActions = ({modalAction}) => {
+
+	const [fill, setFill] = useState(true);
 
 	const handleAdd = () => {
 		modalAction(true)
@@ -20,6 +18,32 @@ const AdminActions = ({modalAction}) => {
 	const handleSave = async () => {
 		await paint.saveSizes();
 	}
+
+	const switchFill = () => {
+
+
+		setFill(prev => !prev);
+
+		user.setAdminView(fill)
+	}
+
+	const actions = [
+		{
+			icon: <AddPhotoAlternateIcon/>,
+			name: "Добавить картину",
+			onClick: handleAdd,
+		},
+		{
+			icon: <SaveIcon/>,
+			name: "Сохранить размеры",
+			onClick: handleSave
+		},
+		{
+			icon: <CollectionsIcon/>,
+			name: fill ? "Отключить заполнение" : "Включить заполнение",
+			onClick: switchFill
+		},
+	]
 
 	return (
 		<Box
@@ -49,8 +73,7 @@ const AdminActions = ({modalAction}) => {
 						tooltipTitle={action.name}
 						tooltipOpen
 						tooltipPlacement={'right'}
-						TooltipClasses={{
-						}}
+						onClick={action.onClick}
 						sx={{
 							'& span': {
 								width: 'fit-content',
@@ -59,6 +82,7 @@ const AdminActions = ({modalAction}) => {
 								bgcolor: 'primary.main'
 							}
 						}}
+
 					/>
 				))}
 			</SpeedDial>

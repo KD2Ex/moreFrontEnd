@@ -29,7 +29,7 @@ class Paint {
 
 		const response = await PaintingService.fetchPaintings();
 
-		response.forEach(i => i.isFiltered = false)
+		response.forEach(i => i.isFiltered = true)
 
 		this.setItems(response)
 
@@ -152,8 +152,9 @@ class Paint {
 	async saveSizes() {
 
 		const response = await PaintingService.editSizes(this.editedPaintingsSizes);
-		console.log(response)
-		//this.editedPaintingsSizes = [];
+		this.editedPaintingsSizes = [];
+
+		alert.openAlert("Размеры успешно обновлены", "success");
 
 	}
 

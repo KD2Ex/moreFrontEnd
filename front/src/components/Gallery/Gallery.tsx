@@ -130,7 +130,7 @@ const Gallery = observer(() => {
 
 					gridSize += item.relativeSize;
 
-					console.log(`${item.title} ${rowGridSpace}`)
+					//console.log(`${item.title} ${rowGridSpace}`)
 
 					return (
 						<React.Fragment

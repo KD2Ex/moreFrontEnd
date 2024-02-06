@@ -10,6 +10,7 @@ import modal from "../../store/modal";
 import ActionDialog from "../ActionDialog/ActionDialog";
 import loginPage from "../../pages/LoginPage/LoginPage";
 import user from "../../store/user";
+import Filling from "../Filling/Filling";
 
 const Gallery = observer(() => {
 
@@ -83,52 +84,22 @@ const Gallery = observer(() => {
 
 					let additiveComponent = null;
 
-					if (index != array.length - 1 && !user.adminView) {
+					if (index != array.length && !user.adminView) {
 
 						if ( rowGridSpace - item.relativeSize < 0) {
 							gridSize += rowGridSpace;
 							additiveComponent = (
-								<Grid
+								<Filling
 									key={item.title + index}
-									item
 									md={rowGridSpace}
-									sx={{
-										position: 'relative',
-									}}
-								>
-
-									<Box
-										sx={{
-											textAlign: 'center',
-											alignItems: 'center',
-											justifyContent: 'center',
-											width: '100%',
-											height: '100%',
-											display: 'flex',
-											bgcolor: '#1dacdc'
-
-										}}
-									>
-										<Typography
-											variant={'h3'}
-											color={'white'}
-										>
-											Жоская Ауф цитата
-
-											{/*{rowGridSpace}
-											{' '}
-											{"gridSize: " + gridSize}*/}
-										</Typography>
-									</Box>
-
-								</Grid>
+								/>
 							)
 						}
 					}
 
 					gridSize += +item.relativeSize;
 
-					//console.log(`${item.title} ${rowGridSpace}`)
+					console.log(`${item.title} ${rowGridSpace}`)
 
 					return (
 						<React.Fragment
@@ -169,6 +140,12 @@ const Gallery = observer(() => {
 					)
 
 				})}
+
+				{gridSize % 12 !== 0 && (
+					<Filling
+						md={12 - gridSize % 12}
+					/>
+				)}
 
 				{paint.viewItems.length === 0
 					&& !paint.loading

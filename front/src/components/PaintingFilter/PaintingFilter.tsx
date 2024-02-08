@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import ParamSelect from "../ParamSelect/ParamSelect";
 import material from "../../store/material";
 import technique from "../../store/technique";
@@ -72,8 +72,21 @@ const PaintingFilter = observer(() => {
 	if (!material.items.length || !technique.items.length) return null;
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				display: 'flex',
+				gap: 2,
+				alignItems: 'center'
+			}}
+		>
 
+			<Typography
+				sx={{
+					fontSize: 18
+				}}
+			>
+				Фильтрация:
+			</Typography>
 			<ParamSelect
 				id={materialId}
 				setId={setMaterialId}
@@ -89,6 +102,7 @@ const PaintingFilter = observer(() => {
 				items={[{id: 0, name: 'По умолчанию'}, ...technique.items]}
 				deleteFunc={() => false}
 			/>
+
 
 			<ParamSelect
 				id={sort}

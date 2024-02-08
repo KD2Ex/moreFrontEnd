@@ -10,6 +10,8 @@ class User {
 	isAdmin = false;
 	adminView = false;
 
+
+
 	checkAuth() {
 
 		// is user auth + admin
@@ -21,6 +23,12 @@ class User {
 		this.adminView = value;
 	}
 
+
+	async login(login: string, password: string) {
+
+
+
+	}
 
 
 }

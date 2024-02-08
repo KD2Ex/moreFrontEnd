@@ -36,9 +36,16 @@ const GalleryPage = observer(() => {
 			}}
 		>
 
-			<PaintingFilter
+			<Box
+				sx={{
+					mb: 2
+				}}
+			>
+				<PaintingFilter
 
-			/>
+				/>
+			</Box>
+
 
 			<Gallery
 			/>

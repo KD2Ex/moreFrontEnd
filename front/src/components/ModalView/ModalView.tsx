@@ -5,6 +5,9 @@ import ModalViewContent from "../ModalViewContent/ModalViewContent";
 import modal from "../../store/modal";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import paint from "../../store/paint";
+import alert from "../../store/alert";
+import loginPage from "../../pages/LoginPage/LoginPage";
+import {IPaint} from "../../models/interfaces/IPaint";
 
 interface ModalViewProps {
 	handleClose: React.Dispatch<boolean>,
@@ -13,7 +16,7 @@ interface ModalViewProps {
 const ModalView = observer(() => {
 
 	const [open, setOpen] = useState(false);
-	const [item, setItem] = useState(null);
+	const [item, setItem] = useState<IPaint | null>(null);
 
 	const [editMode, setEditMode] = useState(false);
 
@@ -40,15 +43,27 @@ const ModalView = observer(() => {
 	const handleClick = async () => {
 
 		console.log(item)
-		await paint.updatePainting(item);
+
+		const isValid = paint.isValidPaintData(item);
+
+		console.log(isValid)
+
+		if (!isValid) {
+			alert.openAlert('Заполните все поля', 'error')
+			return;
+		}
+
+		await paint.updatePainting(item)
+
 
 		onClose();
 
-		item.files = undefined;
 	}
 
 	const onClose = () => {
 		modal.setPaintingViewOpen(false);
+
+		console.log(item.files)
 	}
 
 	return (

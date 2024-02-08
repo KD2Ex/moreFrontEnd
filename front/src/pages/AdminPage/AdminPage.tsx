@@ -1,22 +1,37 @@
 import React from 'react';
-import {Box, Grid} from "@mui/material";
+import {Box, Grid, TextField, Typography} from "@mui/material";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 const AdminPage = () => {
+
+
+
 	return (
-		<Grid
-			container
+		<Box
+			sx={{
+				width: '100vw',
+				height: '100vh'
+			}}
 		>
-
-
-			<Grid
-				item
-
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: '100%',
+					height: '100%'
+				}}
 			>
-				asdfsad
-			</Grid>
+
+				<LoginForm
+
+				/>
+
+			</Box>
 
 
-		</Grid>
+
+		</Box>
 	);
 };
 

@@ -31,11 +31,11 @@ function App() {
 					path: '/login',
 					element: <LoginPage/>,
 				},
-				{
-					path: '/admin',
-					element: <AdminPage/>,
-				}
 			]
+		},
+		{
+			path: '/admin',
+			element: <AdminPage/>,
 		}
 	])
 

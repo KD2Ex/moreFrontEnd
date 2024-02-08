@@ -6,6 +6,7 @@ const SettingEditPainting = ({item}) => {
 
 	const handleClick = () => {
 
+		console.log(item)
 		modal.openPaintingView(item, true);
 
 	}

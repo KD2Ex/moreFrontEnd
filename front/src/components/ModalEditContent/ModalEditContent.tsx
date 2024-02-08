@@ -15,6 +15,9 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 
 	useEffect(() => {
 
+		console.log("Effect:")
+		console.log(item.files)
+
 		if (!item) return;
 		setFiles(item.files)
 

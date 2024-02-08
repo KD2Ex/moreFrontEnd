@@ -26,7 +26,10 @@ export default class PaintingService {
 
 	static async addPainting(data) {
 
-		console.log(data.get("materialId"));
+		for(let item of data) {
+			console.log(item);
+
+		}
 
 		return $api.post('/paint', data, {
 			/*headers: {

@@ -54,7 +54,8 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				technique: {
 					id: currentTechnique,
 					name: technique.items.find(i => i.id == currentTechnique)?.name
-				}
+				},
+
 			}
 		})
 

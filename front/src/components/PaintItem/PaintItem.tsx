@@ -122,7 +122,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				<Box
 
 					component={'img'}
-					src={'http://localhost:7000/' + img}
+					src={import.meta.env.VITE_BASE_URL + img}
 					sx={{
 						width: '100%',
 						height: '100%',

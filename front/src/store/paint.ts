@@ -6,6 +6,7 @@ import {ISizeEdit} from "../models/interfaces/ISizeEdit";
 import PaintingService from "../../api/services/PaintingService";
 import alert from "./alert";
 import material from "./material";
+import technique from "./technique";
 
 
 class Paint {
@@ -16,6 +17,7 @@ class Paint {
 
 	items: IPaint[] = [];
 	viewItems: IPaint[] = [];
+	rowHeight: number = 350;
 	//filling: boolean = true;
 
 	newItem: IPaint = {};
@@ -75,22 +77,37 @@ class Paint {
 
 		const newItem = this.newItem;
 		console.log(newItem)
-		const images = newItem.files.map(i => {
-			return i.file
-		})
+
 		const formData = this.appendFile(newItem)
 
 		formData.append("relativeSize", `4`);
 		formData.append("objectFit", "cover");
 
-		for (let i = 0; i < images.length; i++) {
-			formData.append('images', images[i]);
-		}
-		const response = await PaintingService.addPainting(formData)
+		const response = await PaintingService.addPainting(formData);
 
-		this.items.push(response.data)
-		console.log(response.data)
+		const data: IPaint = {...response.data};
+
+		data.material = {
+			id: +response.data.materialId,
+			name: material.items.find(item => item.id === response.data.materialId).name
+		}
+
+		data.technique = {
+			id: +response.data.techniqueId,
+			name: technique.items.find(item => item.id === response.data.techniqueId).name
+		}
+
+		data.isFiltered = true;
+
+		delete data.materialId;
+		delete data.techniqueId;
+
+		this.items.push(data)
+
+		console.log(data)
+
 		this.newItem = {};
+
 		return response;
 	}
 
@@ -103,6 +120,7 @@ class Paint {
 			const response = await PaintingService.updatePainting(formData)
 
 			const index = this.items.findIndex(i => i.id == item.id);
+			item.files = []
 			this.items[index] = item;
 
 			for (const i of response.data) {
@@ -159,25 +177,42 @@ class Paint {
 
 	}
 
-	isValidPaint(item: IPaint) {
+	isValidPaintData(item: IPaint) {
 
+		let index = 0;
 		const trueItem = Object.entries(item);
 
 		console.log(trueItem);
 
 		for (let i of trueItem) {
+			console.log(index++)
+
+			if (i[0] === 'files') continue;
 
 			if (!i[1]) return false;
 		}
 
-		const files = trueItem.find(i => i[0] == 'files');
+		/*const files = trueItem.find(i => i[0] == 'files');
 
-		if (files[1].length <= 0) return false;
+		if (files[1].length <= 0) return false;*/
 
 		if (!item.material.name || !item.technique.name) return false;
 
 		return true;
 	}
+
+	isValidPaintImages(item: IPaint) {
+		const trueItem = Object.entries(item);
+
+		const files = trueItem.find(i => i[0] == 'files');
+		const images = trueItem.find(i => i[0] == 'images')
+
+
+		if (files[1].length <= 0 && images[1].length <= 0) return false;
+
+		return true;
+	}
+
 
 
 	async deletePainting(id: number) {

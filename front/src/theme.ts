@@ -9,10 +9,13 @@ export let theme = createTheme({
 			main: '#225c64'
 		},
 		background: {
-			default: 'rgb(28,25,25)'
+			default: 'rgb(24,22,22)',
+			paper: 'rgb(26,26,26)'
+			//default: 'rgb(28,25,25)'
 		},
 		text: {
-			primary: '#57a1a4'
+			primary: '#84a9b2'
+			//primary: '#57a1a4'
 		},
 		mode: 'dark'
 	},
@@ -29,6 +32,20 @@ export let theme = createTheme({
 					fontSize: 18
 				}
 			}
-		}
+		},
+		MuiBackdrop: {
+			styleOverrides: {
+				root: {
+					//backgroundColor: '#000000'
+				}
+			}
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					backgroundImage: 'none',
+				}
+			}
+		},
 	}
 })

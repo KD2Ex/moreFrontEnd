@@ -21,7 +21,6 @@ const PaintItem: FC<PaintItemProps> = observer(({
 
 	const img = item?.images ? item.images[0] : null;
 
-	//const [dimensions, {loading, error}] = useImageSize(img)
 	const [anchor, setAnchor] = useState(null);
 	const [isHover, setIsHover] = useState(false);
 
@@ -39,12 +38,6 @@ const PaintItem: FC<PaintItemProps> = observer(({
 		console.log('leave')
 	}
 
-	useEffect(() => {
-
-		if (anchor == null) {
-		}
-
-	}, [anchor])
 
 	return (
 		<>

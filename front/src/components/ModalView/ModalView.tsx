@@ -73,15 +73,19 @@ const ModalView = observer(() => {
 			maxWidth={'xl'}
 
 		>
-
+{/*
 			<DialogTitle
 				variant={'h4'}
 			>
-			</DialogTitle>
+			</DialogTitle>*/}
 
 			<DialogContent
 				sx={{
-					minWidth: '1200px'
+					minWidth: '1200px',
+					borderColor: '#8bb9a2',
+					mb: 2,
+					mt: 1,
+					mx: 2
 				}}
 			>
 				{!editMode
@@ -100,8 +104,6 @@ const ModalView = observer(() => {
 
 			{editMode &&
                 <DialogActions>
-
-
 
                     <Button
 						onClick={handleClick}

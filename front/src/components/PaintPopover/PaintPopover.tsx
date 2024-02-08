@@ -58,12 +58,15 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 					itemFit={item.objectFit}
 					changeFit={changeFit}
 				/>
-				<SettingDeletePainting
-					id={item.id}
-				/>
+
 				<SettingEditPainting
 					item={item}
 				/>
+
+				<SettingDeletePainting
+					id={item.id}
+				/>
+
 			</Box>
 
 		</Popover>

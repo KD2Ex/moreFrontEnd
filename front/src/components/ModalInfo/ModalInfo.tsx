@@ -5,31 +5,31 @@ import material from "../../store/material";
 const ModalInfo = ({item}) => {
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				gap: 1
+			}}
+		>
 
 
 			<Typography
-				variant={'h3'}
+				fontSize={42}
 			>
 				{item?.title}
 			</Typography>
 
-			<Divider
-				sx={{
-					my: 1,
-				}}
-			>
-
-			</Divider>
-
 			<Typography
-				variant={'h4'}
+				variant={'h5'}
+				sx={{
+
+				}}
 			>
 				Цена: {item.price} ₽
 			</Typography>
 
 			<Typography
-				variant={'h6'}
 				sx={{
 					flexWrap: 'wrap',
 					width: '100%',
@@ -39,32 +39,32 @@ const ModalInfo = ({item}) => {
 				{item.desc}
 			</Typography>
 
-			<Divider
-				sx={{
-					my: 1
-				}}
-			/>
-
 			<Typography
-				fontSize={20}
-			>
-
-				Материал: {item.material?.name ? item.material.name : "Не указано"}
-
-			</Typography>
-
-			<Typography
-				fontSize={20}
-			>
-				Техника: {item.technique?.name ? item.technique.name : "Не указано"}
-			</Typography>
-
-			<Typography
-				variant={'h5'}
+				variant={'h6'}
 			>
 				Размеры: {item.width} x {item.height} см
 
 			</Typography>
+
+			<Box>
+				<Typography
+					fontSize={16}
+				>
+
+					Материал: {item.material?.name ? item.material.name : "Не указано"}
+
+				</Typography>
+
+				<Typography
+					fontSize={16}
+				>
+					Техника: {item.technique?.name ? item.technique.name : "Не указано"}
+				</Typography>
+
+			</Box>
+
+
+
 		</Box>
 	);
 };

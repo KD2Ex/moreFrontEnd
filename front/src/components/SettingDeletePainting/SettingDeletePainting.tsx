@@ -18,9 +18,14 @@ const SettingDeletePainting = ({id}) => {
 		>
 			<Button
 				onClick={handleClick}
+				variant={'contained'}
 				sx={{
 					fontSize: 16,
-					width: '100%'
+					width: '100%',
+					bgcolor: '#e34343',
+					'&:hover': {
+						bgcolor: '#bd7171'
+					}
 				}}
 			>
 				Удалить картину

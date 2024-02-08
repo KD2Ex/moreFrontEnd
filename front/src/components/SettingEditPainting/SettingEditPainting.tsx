@@ -19,6 +19,7 @@ const SettingEditPainting = ({item}) => {
 		>
 			<Button
 				onClick={handleClick}
+				variant={'contained'}
 				sx={{
 					width: '100%',
 					fontSize: 16

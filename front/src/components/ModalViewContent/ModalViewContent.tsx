@@ -28,7 +28,7 @@ const ModalViewContent = ({item}) => {
 	return (
 		<Grid
 			container
-			spacing={2}
+			spacing={4}
 			sx={{
 				width: '100%'
 			}}

@@ -9,6 +9,7 @@ class User {
 
 	isAdmin = false;
 	adminView = false;
+	changeOrderMode = false;
 
 	checkAuth() {
 
@@ -24,6 +25,10 @@ class User {
 
 	async login(login: string, password: string) {
 
+	}
+
+	setChangeOrderMode(value: boolean) {
+		this.changeOrderMode = value;
 	}
 
 

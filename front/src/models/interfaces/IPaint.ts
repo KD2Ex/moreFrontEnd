@@ -18,4 +18,5 @@ export interface IPaint {
 	material: IMaterial,
 	technique: ITechnique,
 	isFiltered: boolean,
+	order: number
 }

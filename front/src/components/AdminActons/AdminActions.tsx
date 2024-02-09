@@ -6,6 +6,8 @@ import SpeedDialIcon from '@mui/icons-material/Add';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import user from "../../store/user";
+import {Simulate} from "react-dom/test-utils";
+import change = Simulate.change;
 
 const AdminActions = ({modalAction}) => {
 
@@ -21,10 +23,13 @@ const AdminActions = ({modalAction}) => {
 
 	const switchFill = () => {
 
-
 		setFill(prev => !prev);
 
 		user.setAdminView(fill)
+	}
+
+	const changeOrder = () => {
+		user.setChangeOrderMode(!user.changeOrderMode)
 	}
 
 	const actions = [
@@ -42,6 +47,11 @@ const AdminActions = ({modalAction}) => {
 			icon: <CollectionsIcon/>,
 			name: fill ? "Отключить заполнение" : "Включить заполнение",
 			onClick: switchFill
+		},
+		{
+			icon: <CollectionsIcon/>,
+			name: user.changeOrderMode ? "Сохранить порядок" : "Изменить порядок",
+			onClick: changeOrder
 		},
 	]
 

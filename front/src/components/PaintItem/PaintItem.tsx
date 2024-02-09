@@ -5,6 +5,7 @@ import PaintPopover from "../PaintPopover/PaintPopover";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import AdminComponent from "../AdminComponent/AdminComponent";
+import user from "../../store/user";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -38,26 +39,9 @@ const PaintItem: FC<PaintItemProps> = observer(({
 		console.log('leave')
 	}
 
-	function dragStartHandler(e, item) {
-		console.log('drag', item)
-	}
+	useEffect(() => {
 
-	function dragLeaveHandler(e) {
-
-	}
-
-	function dragEndHandler(e) {
-
-	}
-
-	function dragOverHandler(e) {
-		e.preventDefault()
-	}
-
-	function dropHandler(e, item) {
-		e.preventDefault()
-		console.log('drop', item)
-	}
+	}, [])
 
 	return (
 		<>
@@ -69,14 +53,8 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				/>
 			</AdminComponent>
 
-
 			<Box
-				onDragStart={(e) => dragStartHandler(e, item)}
-				onDragLeave={(e) => dragLeaveHandler(e)}
-				onDragEnd={(e) => dragEndHandler(e)}
-				onDragOver={(e) => dragOverHandler(e)}
-				onDrop={(e) => dropHandler(e, item)}
-				draggable={true}
+
 				onClick={handleClick}
 				sx={{
 					height: `${height}px`,
@@ -106,7 +84,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						flexDirection: 'column',
 						flexWrap: 'wrap',
 						zIndex: 1100,
-						opacity: isHover ? 1 : 0,
+						opacity: isHover || user.changeOrderMode ? 1 : 0,
 						transition: 'opacity 300ms',
 						'&:hover': {
 							opacity: 1,

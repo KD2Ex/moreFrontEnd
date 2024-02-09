@@ -26,16 +26,42 @@ class Paint {
 
 	editedPaintingsSizes: ISizeEdit[] = [];
 
+	swapPaints(currentItem: IPaint, targetItem: IPaint) {
+
+		this.items = this.items.map(item => {
+
+			if (item.id === targetItem.id) {
+				return {...item, order: currentItem.order}
+			}
+			if (item.id === currentItem.id) {
+				return {...item, order: targetItem.order}
+			}
+
+			return item;
+		})
+
+		console.log(this.items)
+
+	}
+
+	sortPaints(a, b) {
+
+		if (a.order > b.order) {
+			return 1
+		}
+		return -1;
+	}
+
 	async getItems() {
 
 		this.setLoading(true);
 
 		const response = await PaintingService.fetchPaintings();
 
-		response.forEach(i => i.isFiltered = true)
+		response.sort(this.sortPaints).forEach(i => i.isFiltered = true)
 
 		this.setItems(response)
-
+		console.log(response)
 		this.setLoading(false);
 	}
 

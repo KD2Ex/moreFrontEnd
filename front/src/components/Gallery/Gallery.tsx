@@ -19,6 +19,7 @@ import AdminComponent from "../AdminComponent/AdminComponent";
 const Gallery = observer(() => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
+	const [currentDragItem, setCurrentDragItem] = useState(null);
 
 	const handleDelete = async (id: number) => {
 
@@ -37,6 +38,35 @@ const Gallery = observer(() => {
 
 	}, [])
 
+	function dragStartHandler(e, item) {
+		console.log('drag', item)
+		setCurrentDragItem(item);
+		console.log(e.target)
+	}
+
+	function dragLeaveHandler(e) {
+		//e.target.style.border = 'none'
+		e.target.style.background = 'none'
+	}
+
+	function dragEndHandler(e) {
+
+	}
+
+	function dragOverHandler(e) {
+		e.preventDefault()
+		e.target.style.background = 'lightgray'
+	}
+
+	function dropHandler(e, item) {
+		e.preventDefault()
+		e.target.style.background = 'none'
+		console.log('drop', item)
+		console.log(currentDragItem)
+
+		paint.swapPaints(currentDragItem, item);
+	}
+
 	let gridSize = 0;
 
 	return (
@@ -51,7 +81,7 @@ const Gallery = observer(() => {
 				spacing={2}
 			>
 
-				{paint.viewItems.map((item, index, array) => {
+				{paint.items.slice().sort(paint.sortPaints).map((item, index, array) => {
 
 					const rowGridSpace = 12 - gridSize % 12;
 
@@ -86,6 +116,12 @@ const Gallery = observer(() => {
 								sx={{
 									position: 'relative',
 								}}
+								onDragStart={(e) => dragStartHandler(e, item)}
+								onDragLeave={(e) => dragLeaveHandler(e)}
+								onDragEnd={(e) => dragEndHandler(e)}
+								onDragOver={(e) => dragOverHandler(e)}
+								onDrop={(e) => dropHandler(e, item)}
+								draggable={user.changeOrderMode}
 							>
 
 								<AdminComponent>

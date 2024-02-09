@@ -192,9 +192,6 @@ class Paint {
 			if (!i[1]) return false;
 		}
 
-		/*const files = trueItem.find(i => i[0] == 'files');
-
-		if (files[1].length <= 0) return false;*/
 
 		if (!item.material.name || !item.technique.name) return false;
 
@@ -205,10 +202,12 @@ class Paint {
 		const trueItem = Object.entries(item);
 
 		const files = trueItem.find(i => i[0] == 'files');
-		const images = trueItem.find(i => i[0] == 'images')
+		//const images = trueItem.find(i => i[0] == 'images')
 
 
-		if (files[1].length <= 0 && images[1].length <= 0) return false;
+		console.log(files)
+
+		if (files[1].length <= 0) return false;
 
 		return true;
 	}

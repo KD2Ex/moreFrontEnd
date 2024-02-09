@@ -18,29 +18,12 @@ import AdminComponent from "../AdminComponent/AdminComponent";
 
 const Gallery = observer(() => {
 
-	const [currentItem, setCurrentItem] = useState(null);
-	const [openModal, setOpenModal] = useState(false);
-	const [actionDialogOpen, setActionDialogOpen] = useState(false);
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
-
-	const [deleteId, setDeleteId] = useState(0);
-
-
-	const handleClose = () => {
-		setOpenModal(false)
-	}
-
-	const handleClick = (event, value) => {
-		setCurrentItem(value)
-		setOpenModal(true)
-	}
 
 	const handleDelete = async (id: number) => {
 
-		//confirm dialog
 		await paint.deletePainting(id)
 	}
-
 
 	useEffect(() => {
 
@@ -59,11 +42,7 @@ const Gallery = observer(() => {
 	return (
 
 		<>
-			{/*<ModalView
-				open={openModal}
-				setOpen={setOpenModal}
-				item={currentItem}
-			/>*/}
+
 			<ActionDialog
 			/>
 
@@ -118,7 +97,6 @@ const Gallery = observer(() => {
 
 								<PaintItem
 									item={item}
-									onClick={handleClick}
 									height={500}
 
 								/>

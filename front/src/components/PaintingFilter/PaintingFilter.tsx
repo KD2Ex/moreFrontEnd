@@ -4,8 +4,8 @@ import ParamSelect from "../ParamSelect/ParamSelect";
 import material from "../../store/material";
 import technique from "../../store/technique";
 import paint from "../../store/paint";
-import loginPage from "../../pages/LoginPage/LoginPage";
 import {observer} from "mobx-react-lite";
+import alert from "../../store/alert";
 
 const sortingMethods = [
 	{id: 0, name: 'По умолчанию'},
@@ -22,7 +22,7 @@ const PaintingFilter = observer(() => {
 
 	useEffect(() => {
 
-
+		if (paint.items.length === 0) return;
 		let filtered = paint.items;
 
 		let filter = paint.items;
@@ -38,7 +38,6 @@ const PaintingFilter = observer(() => {
 
 			filter = filter.filter(i => i.technique?.id === techniqueId);
 		}
-
 
 
 		if (sort) {
@@ -66,6 +65,10 @@ const PaintingFilter = observer(() => {
 		filtered.forEach(item => item.isFiltered = !!filter.find(j => j.id === item.id))
 
 		paint.setViewItems(filtered);
+
+		alert.openAlert(`Картин с выбранными фильтрами:
+		 ${filter.length}`
+			,"info")
 
 	}, [materialId, techniqueId, sort])
 

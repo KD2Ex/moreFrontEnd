@@ -24,8 +24,6 @@ class User {
 
 	async login(login: string, password: string) {
 
-
-
 	}
 
 

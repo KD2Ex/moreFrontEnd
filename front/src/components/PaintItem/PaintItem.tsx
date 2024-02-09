@@ -38,6 +38,26 @@ const PaintItem: FC<PaintItemProps> = observer(({
 		console.log('leave')
 	}
 
+	function dragStartHandler(e, item) {
+		console.log('drag', item)
+	}
+
+	function dragLeaveHandler(e) {
+
+	}
+
+	function dragEndHandler(e) {
+
+	}
+
+	function dragOverHandler(e) {
+		e.preventDefault()
+	}
+
+	function dropHandler(e, item) {
+		e.preventDefault()
+		console.log('drop', item)
+	}
 
 	return (
 		<>
@@ -51,6 +71,12 @@ const PaintItem: FC<PaintItemProps> = observer(({
 
 
 			<Box
+				onDragStart={(e) => dragStartHandler(e, item)}
+				onDragLeave={(e) => dragLeaveHandler(e)}
+				onDragEnd={(e) => dragEndHandler(e)}
+				onDragOver={(e) => dragOverHandler(e)}
+				onDrop={(e) => dropHandler(e, item)}
+				draggable={true}
 				onClick={handleClick}
 				sx={{
 					height: `${height}px`,

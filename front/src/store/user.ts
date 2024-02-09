@@ -10,8 +10,6 @@ class User {
 	isAdmin = false;
 	adminView = false;
 
-
-
 	checkAuth() {
 
 		// is user auth + admin

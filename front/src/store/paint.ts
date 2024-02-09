@@ -219,12 +219,14 @@ class Paint {
 
 		try {
 			const response = await PaintingService.deletePainting(id);
-
 			console.log(response.data)
-			this.items.splice(this.items.findIndex(value => id === value.id), 1)
-			console.log(this.items)
-		} catch (e) {
 
+			this.items.splice(this.items.findIndex(value => id === value.id), 1)
+
+
+			alert.openAlert("Картина успешно удалена", "success")
+		} catch (e) {
+			console.log(e.message)
 		}
 
 	}

@@ -4,6 +4,8 @@ export let theme = createTheme({
 	palette: {
 		primary: {
 			main: '#3aa2ad',
+			red: '#e34343',
+			hoverRed: '#bd7171'
 		},
 		secondary: {
 			main: '#225c64'

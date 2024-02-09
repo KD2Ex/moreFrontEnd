@@ -1,11 +1,15 @@
 import React from 'react';
 import {Box, Button} from "@mui/material";
 import paint from "../../store/paint";
+import modal from "../../store/modal";
 
 const SettingDeletePainting = ({id}) => {
 
 	const handleClick = async () => {
-		await paint.deletePainting(id)
+
+		modal.openActionDialog(paint.deletePainting.bind(paint), [id]);
+
+		//await paint.deletePainting(id)
 	}
 
 	return (
@@ -22,9 +26,9 @@ const SettingDeletePainting = ({id}) => {
 				sx={{
 					fontSize: 16,
 					width: '100%',
-					bgcolor: '#e34343',
+					bgcolor: 'primary.red',
 					'&:hover': {
-						bgcolor: '#bd7171'
+						bgcolor: 'primary.hoverRed'
 					}
 				}}
 			>

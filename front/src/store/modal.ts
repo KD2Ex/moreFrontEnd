@@ -14,6 +14,8 @@ class Modal {
 	isActionDialogVisible = true;
 
 	actionDialogOpen = false;
+	actionDialogFunc = (...args) => {};
+	actionDialogArgs = [];
 
 	constructor() {
 		makeAutoObservable(this)
@@ -35,6 +37,13 @@ class Modal {
 
 	setActionDialogOpen(value: boolean) {
 		this.actionDialogOpen = value;
+	}
+
+	openActionDialog(func, args: []) {
+		this.actionDialogFunc = func;
+		this.actionDialogArgs = args;
+
+		this.setActionDialogOpen(true);
 	}
 
 	openEditView() {

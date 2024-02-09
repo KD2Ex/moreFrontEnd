@@ -11,6 +11,10 @@ import ActionDialog from "../ActionDialog/ActionDialog";
 import loginPage from "../../pages/LoginPage/LoginPage";
 import user from "../../store/user";
 import Filling from "../Filling/Filling";
+import TelegramIcon from '@mui/icons-material/Telegram';
+import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
+import AdminComponent from "../AdminComponent/AdminComponent";
+
 
 const Gallery = observer(() => {
 
@@ -34,14 +38,7 @@ const Gallery = observer(() => {
 	const handleDelete = async (id: number) => {
 
 		//confirm dialog
-		console.log(paint.deletePainting)
-		if (modal.isActionDialogVisible) {
-			setActionDialogOpen(true);
-			setDeleteId(id)
-		} else {
-			await paint.deletePainting(id)
-		}
-
+		await paint.deletePainting(id)
 	}
 
 
@@ -68,9 +65,6 @@ const Gallery = observer(() => {
 				item={currentItem}
 			/>*/}
 			<ActionDialog
-				open={actionDialogOpen}
-				setOpen={setActionDialogOpen}
-				id={deleteId}
 			/>
 
 			<Grid
@@ -114,20 +108,14 @@ const Gallery = observer(() => {
 									position: 'relative',
 								}}
 							>
-								<Button
-									variant={'contained'}
-									sx={{
-										visibility: isShiftPressed ? 'visible' : 'hidden',
-										opacity: isShiftPressed ? '1' : '0',
-										position: 'absolute',
-										right: '0',
-										bgcolor: 'red',
-										transition: 'visibility 200ms opacity 0.5s linear'
-									}}
-									onClick={() => handleDelete(item.id)}
-								>
-									x
-								</Button>
+
+								<AdminComponent>
+									<DeleteShortcut
+										visibility={isShiftPressed}
+										onClick={() => handleDelete(item.id)}
+									/>
+								</AdminComponent>
+
 								<PaintItem
 									item={item}
 									onClick={handleClick}

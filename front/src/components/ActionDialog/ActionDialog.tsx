@@ -13,19 +13,17 @@ import {observer} from "mobx-react-lite";
 import modal from "../../store/modal";
 import paint from "../../store/paint";
 
-interface ActionDialogProps {
-	open: boolean,
-	setOpen: React.Dispatch<boolean>,
-	onClick: (id) => void,
-}
 
-const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
+
+const ActionDialog = observer(() => {
 
 	const [isChecked, setIsChecked] = useState(false);
 
 	const handleConfirm = async () => {
 
-		await paint.deletePainting(id);
+		//await paint.deletePainting(id);
+
+		await modal.actionDialogFunc(...modal.actionDialogArgs);
 		handleClose();
 	}
 
@@ -38,8 +36,11 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 	}
 
 	const handleClose = () => {
-		setOpen(false);
+		//setOpen(false);
+
+		modal.setActionDialogOpen(false);
 		modal.setActionDialogVisibility(!isChecked);
+
 	}
 
 	useEffect(() => {
@@ -57,7 +58,7 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 
 	return (
 		<Dialog
-			open={open}
+			open={modal.actionDialogOpen}
 			onClose={handleClose}
 			maxWidth={'lg'}
 		>
@@ -68,9 +69,9 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 
 
 			<DialogContent>
-				Вы уверены?
+				Удалить картину? 
 
-				<FormGroup>
+				{/*<FormGroup>
 					<FormControlLabel
 						control={
 							<Checkbox
@@ -80,7 +81,7 @@ const ActionDialog = observer(({open, setOpen, id} : ActionDialogProps) => {
 						onChange={handleCheck}
 						label={"Больше не показывать"}
 					/>
-				</FormGroup>
+				</FormGroup>*/}
 
 			</DialogContent>
 

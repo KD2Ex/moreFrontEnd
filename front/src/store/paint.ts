@@ -23,8 +23,13 @@ class Paint {
 	newItem: IPaint = {};
 
 	loading: boolean;
+	sort: (a, b) => number;
 
 	editedPaintingsSizes: ISizeEdit[] = [];
+
+	setSort(func: (a, b) => number) {
+		this.sort = func;
+	}
 
 	swapPaints(currentItem: IPaint, targetItem: IPaint) {
 
@@ -61,7 +66,7 @@ class Paint {
 		response.sort(this.sortPaints).forEach(i => i.isFiltered = true)
 
 		this.setItems(response)
-		console.log(response)
+		console.log([...response].map(i => i.order))
 		this.setLoading(false);
 	}
 
@@ -108,6 +113,7 @@ class Paint {
 
 		formData.append("relativeSize", `4`);
 		formData.append("objectFit", "cover");
+		//formData.append("order", this.items.find(i => ));
 
 		const response = await PaintingService.addPainting(formData);
 
@@ -272,6 +278,20 @@ class Paint {
 		} catch (e) {
 			return e.message;
 		}
+	}
+
+	async updateOrder() {
+
+		try {
+			console.log(this.items)
+
+			const response = await PaintingService.updateOrder(this.items);
+
+		} catch (e) {
+			alert.openAlert(e.message, "error")
+			console.log(e.message)
+		}
+
 	}
 
 	setLoading(value: boolean) {

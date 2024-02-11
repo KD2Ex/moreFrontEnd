@@ -8,6 +8,7 @@ import AdminComponent from "../../components/AdminComponent/AdminComponent";
 import ModalView from "../../components/ModalView/ModalView";
 import PaintingFilter from "../../components/PaintingFilter/PaintingFilter";
 import AdminActions from "../../components/AdminActons/AdminActions";
+import PaintItem from "../../components/PaintItem/PaintItem";
 
 const GalleryPage = observer(() => {
 
@@ -48,6 +49,8 @@ const GalleryPage = observer(() => {
 
 
 			<Gallery
+				items={paint.items.slice().sort(paint.sort)}
+				type={"gallery"}
 			/>
 
 			<ModalAddPainting

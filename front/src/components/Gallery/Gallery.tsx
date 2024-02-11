@@ -2,24 +2,31 @@ import React, {useEffect, useState} from 'react';
 import paint from "../../store/paint";
 import PaintItem from "../PaintItem/PaintItem";
 import {sizes} from "../../consts";
-import {Box, Button, Grid, Typography} from "@mui/material";
-import art1 from "../../assets/art1.jpg";
-import ModalView from "../ModalView/ModalView";
+import {Grid, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
-import modal from "../../store/modal";
 import ActionDialog from "../ActionDialog/ActionDialog";
-import loginPage from "../../pages/LoginPage/LoginPage";
 import user from "../../store/user";
 import Filling from "../Filling/Filling";
-import TelegramIcon from '@mui/icons-material/Telegram';
 import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
 import AdminComponent from "../AdminComponent/AdminComponent";
+import PortfolioItem from "../PortfolioItem/PortfolioItem";
 
+interface GalleryProps {
+	items: any[],
+	type: string
+}
 
-const Gallery = observer(() => {
+const components = {
+	gallery: PaintItem,
+	portfolio: PortfolioItem,
+}
+
+const Gallery = observer(({items, type}: GalleryProps) => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [currentDragItem, setCurrentDragItem] = useState(null);
+
+	const Component = components[type];
 
 	const handleDelete = async (id: number) => {
 
@@ -45,7 +52,6 @@ const Gallery = observer(() => {
 	}
 
 	function dragLeaveHandler(e) {
-		//e.target.style.border = 'none'
 		e.target.style.background = 'none'
 	}
 
@@ -81,7 +87,7 @@ const Gallery = observer(() => {
 				spacing={2}
 			>
 
-				{paint.items.slice().sort(paint.sortPaints).map((item, index, array) => {
+				{items.map((item, index, array) => {
 
 					const rowGridSpace = 12 - gridSize % 12;
 
@@ -131,11 +137,16 @@ const Gallery = observer(() => {
 									/>
 								</AdminComponent>
 
-								<PaintItem
+								<Component
 									item={item}
 									height={500}
-
 								/>
+								{/*<Grid
+									item
+									md={item.relativeSize}
+								>
+									{item.id}
+								</Grid>*/}
 							</Grid>
 						</React.Fragment>
 
@@ -149,7 +160,7 @@ const Gallery = observer(() => {
 					/>
 				)}
 
-				{paint.viewItems.length === 0
+				{items.length === 0
 					&& !paint.loading
 					&& (
 						<Typography>

@@ -8,8 +8,10 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import user from "../../store/user";
 import {Simulate} from "react-dom/test-utils";
 import change = Simulate.change;
+import {observer} from "mobx-react-lite";
+import alert from "../../store/alert";
 
-const AdminActions = ({modalAction}) => {
+const AdminActions = observer(({modalAction}) => {
 
 	const [fill, setFill] = useState(true);
 
@@ -28,8 +30,23 @@ const AdminActions = ({modalAction}) => {
 		user.setAdminView(fill)
 	}
 
-	const changeOrder = () => {
-		user.setChangeOrderMode(!user.changeOrderMode)
+	const changeOrder = async () => {
+		try {
+			user.setChangeOrderMode(!user.changeOrderMode)
+
+			console.log(user.changeOrderMode)
+
+			if (!user.changeOrderMode) {
+				alert.openAlert("Порядок успешно сохранен", "success")
+				await paint.updateOrder()
+			} else {
+				alert.openAlert("Убедитесь, что сортировка картин отключена", "warning")
+			}
+
+		} catch (e) {
+
+		}
+
 	}
 
 	const actions = [
@@ -110,6 +127,6 @@ const AdminActions = ({modalAction}) => {
 			</Button>*/}
 		</Box>
 	);
-};
+});
 
 export default AdminActions;

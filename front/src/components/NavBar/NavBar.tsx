@@ -13,6 +13,10 @@ const NavBar = () => {
 			title: 'Галерея',
 			url: '/gallery',
 		},
+		{
+			title: 'Портфолио',
+			url: '/portfolio',
+		},
 	]
 
 	return (

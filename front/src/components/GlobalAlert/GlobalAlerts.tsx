@@ -35,6 +35,7 @@ const GlobalAlerts = observer(() => {
 			<Alert
 				onClose={handleClose}
 				severity={alert.severity}
+				//variant={'filled'}
 			>
 				{alert.message}
 			</Alert>

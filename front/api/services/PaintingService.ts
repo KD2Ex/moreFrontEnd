@@ -28,7 +28,6 @@ export default class PaintingService {
 
 		for(let item of data) {
 			console.log(item);
-
 		}
 
 		return $api.post('/paint', data, {
@@ -73,6 +72,10 @@ export default class PaintingService {
 
 		return $api.post(`/paint/update/${id}`, data)
 
+	}
+
+	static async updateOrder(items) {
+		return $api.post('/paint/updateOrder', items)
 	}
 
 }

@@ -14,29 +14,17 @@ interface PaintItemProps {
 
 const PaintItem: FC<PaintItemProps> = observer(({
 		item,
-		 onClick,
 	height,
-		 ...props
 	}: PaintItemProps) =>
 {
 
 	const img = item?.images ? item.images[0] : null;
 
 	const [anchor, setAnchor] = useState(null);
-	const [isHover, setIsHover] = useState(false);
 
 	const handleClick = (event) => {
 		if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
-	}
-
-	const onMouseEnter = () => {
-		setIsHover(true)
-	}
-
-	const onMouseLeave = () => {
-		setIsHover(false)
-		console.log('leave')
 	}
 
 	useEffect(() => {
@@ -63,10 +51,13 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					borderRadius: 2,
 					transition: 'filter 300ms',
 					//filter: 'brightness(40%)',
-					//opacity: .2,
+					//opacity: .2,'
+					'&:hover': {
+						'& img': {
+							filter: 'brightness(45%)'
+						}
+					}
 				}}
-				onMouseEnter={onMouseEnter}
-				onMouseLeave={onMouseLeave}
 				onContextMenu={(e) => {
 					console.log(e)
 					e.preventDefault();
@@ -84,10 +75,14 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						flexDirection: 'column',
 						flexWrap: 'wrap',
 						zIndex: 1100,
-						opacity: isHover || user.changeOrderMode ? 1 : 0,
+						opacity: user.changeOrderMode ? 1 : 0,
+						//opacity: 0,
 						transition: 'opacity 300ms',
 						'&:hover': {
 							opacity: 1,
+							'&:img': {
+								filter: 'brightness(40%)'
+							}
 						}
 					}}
 				>
@@ -117,7 +112,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				</Box>
 
 				<Box
-
+					loading={'lazy'}
 					component={'img'}
 					src={import.meta.env.VITE_BASE_URL + img}
 					sx={{
@@ -125,8 +120,9 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						height: '100%',
 						objectFit: item.objectFit,
 						transition: 'filter 300ms',
-						filter: (isHover || !item.isFiltered) && 'brightness(40%)',
+						filter: (item.isFiltered) ? 'brightness(100%)' : 'brightness(40%)',
 						'&:hover': {
+							filter:'brightness(40%)'
 						}
 					}}
 				>

@@ -118,7 +118,12 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 							<Grid
 								item
 								xs={sizes.full}
-								md={item.relativeSize}
+								// Поведение при нуле может отличаться: при значении 'auto' будет приниматься
+								// размер изображения, а при 0 поведение аналогично поведению при 12
+								// true расчитывает значение для md относительно других элементов
+								// исходя из
+								// (12 - сумма явных md значений элементов) / кол-во элементов с значениями md = true
+								md={item.relativeSize === 0 ? true : item.relativeSize}
 								sx={{
 									position: 'relative',
 								}}

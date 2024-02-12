@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ModalInfo from "../ModalInfo/ModalInfo";
-import {Box, Button, Divider, Grid} from "@mui/material";
+import {Box, Button, Divider, Grid, IconButton, Typography} from "@mui/material";
 import {getWappLink} from "../../consts";
+import TelegramIcon from '@mui/icons-material/Telegram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const ModalViewContent = ({item}) => {
 
@@ -64,11 +66,22 @@ const ModalViewContent = ({item}) => {
 				/>
 				<Box
 					sx={{
+						width: '100%',
 						display: 'flex',
-						gap: 1,
+						alignItems: 'center',
+						gap: 1
 					}}
 				>
-					<Button
+					<Typography
+						fontSize={28}
+						sx={{
+							//fontStyle: 'italic'
+						}}
+					>
+						Купить картину ->
+					</Typography>
+
+					<IconButton
 						onClick={handleClick}
 						component={'a'}
 						href={wAppLink}
@@ -80,26 +93,29 @@ const ModalViewContent = ({item}) => {
 								bgcolor: "#1a6729"
 							}
 						}}
+						size={'large'}
 					>
-						WhatsApp
-					</Button>
+						<WhatsAppIcon fontSize={'inherit'}/>
+					</IconButton>
 
 
-					<Button
+					<IconButton
 						onClick={handleClick}
 						component={'a'}
 						href={tgLink}
 						target={"_blank"}
+						size={'large'}
 						sx={{
-							bgcolor: "#199eb9",
+							bgcolor: "#3997d5",
 							color: '#efefef',
 							'&:hover': {
 								bgcolor: "#106b81"
-							}
+							},
+							width: 'fit-content'
 						}}
 					>
-						Telegram
-					</Button>
+						<TelegramIcon fontSize={'inherit'}/>
+					</IconButton>
 				</Box>
 
 

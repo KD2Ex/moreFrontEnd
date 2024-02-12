@@ -18,7 +18,8 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 	const openSettings = Boolean(anchor);
 
 	const changeSize = (value: number) => {
-		item.relativeSize = value;
+
+		item.relativeSize = +value;
 	}
 
 	const changeFit = (value: string) => {

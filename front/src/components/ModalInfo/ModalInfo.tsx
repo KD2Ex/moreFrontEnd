@@ -15,7 +15,7 @@ const ModalInfo = ({item}) => {
 
 
 			<Typography
-				fontSize={42}
+				fontSize={36}
 			>
 				{item?.title}
 			</Typography>
@@ -39,14 +39,17 @@ const ModalInfo = ({item}) => {
 				{item.desc}
 			</Typography>
 
-			<Typography
-				variant={'h6'}
-			>
-				Размеры: {item.width} x {item.height} см
 
-			</Typography>
 
 			<Box>
+				<Typography
+					//variant={'h6'}
+					fontSize={18}
+				>
+					Размеры: {item.width} x {item.height} см
+
+				</Typography>
+
 				<Typography
 					fontSize={16}
 				>

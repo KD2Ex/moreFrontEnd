@@ -20,20 +20,9 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 		setFiles(item.files)
 
 		if (!editMode) return;
-		//console.log(item.images[0])
 		console.log(item)
 		setImages(item.images)
 
-		/*console.log(paint.newItem[Object.getOwnPropertySymbols(paint.newItem)[0]].values_.size)
-
-		if (paint.newItem[Object.getOwnPropertySymbols(paint.newItem)[0]].values_.size != 0) {
-			setTitle(paint.newItem.title)
-			setPrice(paint.newItem.price)
-			setDesc(paint.newItem.desc)
-			setWidth(paint.newItem.width)
-			setHeight(paint.newItem.height)
-			setFiles(paint.newItem.images)
-		}*/
 
 	}, [])
 

@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {Box, Button, SpeedDial, SpeedDialAction} from "@mui/material";
+import {Box, SpeedDial, SpeedDialAction} from "@mui/material";
 import paint from "../../store/paint";
 import SaveIcon from '@mui/icons-material/Save';
 import SpeedDialIcon from '@mui/icons-material/Add';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import user from "../../store/user";
-import {Simulate} from "react-dom/test-utils";
-import change = Simulate.change;
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
 
@@ -114,18 +112,6 @@ const AdminActions = observer(({modalAction}) => {
 					/>
 				))}
 			</SpeedDial>
-
-			{/*<Button
-				onClick={handleAdd}
-			>
-				add
-			</Button>
-
-			<Button
-				onClick={handleSave}
-			>
-				save
-			</Button>*/}
 		</Box>
 	);
 });

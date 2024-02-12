@@ -184,9 +184,6 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				/>
 			</Box>
 
-
-
-
 		</Box>
 	);
 });

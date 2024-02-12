@@ -11,15 +11,12 @@ import 'filepond/dist/filepond.min.css';
 // `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import axios from "axios";
-import {$api} from "../../../api/http";
-import PaintingService from "../../../api/services/PaintingService";
-import Paint from "../../store/paint";
 import {Box} from "@mui/material";
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileValidateType);
 
 
 
@@ -37,6 +34,7 @@ const ImageUpload = ({files, setFiles}) => {
 				allowMultiple={true}
 				allowRemove
 				allowReorder
+				acceptedFileTypes={['image/*']}
 				onreorderfiles={(newOrder, origin, index) => setFiles([...newOrder])}
 				server={{
 					process: (

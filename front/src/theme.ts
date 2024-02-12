@@ -31,7 +31,11 @@ export let theme = createTheme({
 			styleOverrides: {
 				root: {
 					textTransform: "none",
-					fontSize: 18
+					fontSize: 18,
+				},
+				text: {
+					color: '#84a9b2'
+
 				}
 			}
 		},

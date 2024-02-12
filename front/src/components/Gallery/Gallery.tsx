@@ -21,6 +21,24 @@ const components = {
 	portfolio: PortfolioItem,
 }
 
+const getRandomInt = (max: number) => {
+	return Math.floor(Math.random() * max);
+}
+
+const fillingTitles = [
+	'Жоская ауф цитата',
+	'Волк, это не тот кто волк, walk - это ходить',
+	'Тяжело это когда тяжело',
+	'Удары в спину наносят только те, кто сзади',
+	'Цитата 1',
+	'Цитата 2',
+	'Цитата 3',
+	'Цитата 4',
+	'Цитата 5',
+	'Цитата 6',
+	'Цитата 7',
+]
+
 const Gallery = observer(({items, type}: GalleryProps) => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
@@ -101,6 +119,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 								<Filling
 									key={item.title + index}
 									md={rowGridSpace}
+									title={fillingTitles[getRandomInt(fillingTitles.length)]}
 								/>
 							)
 						}
@@ -157,6 +176,8 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 				{gridSize % 12 !== 0 && (
 					<Filling
 						md={12 - gridSize % 12}
+						title={fillingTitles[getRandomInt(fillingTitles.length)]}
+						img={''}
 					/>
 				)}
 

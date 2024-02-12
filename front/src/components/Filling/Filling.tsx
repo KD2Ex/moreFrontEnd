@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 
-const Filling = ({md}) => {
+interface FillingProps {
+	md: number,
+	title: string,
+	img: string
+}
 
-
+const Filling: FC<FillingProps> = ({md, title, img}) => {
 
 	return (
 		<Grid
@@ -29,10 +33,7 @@ const Filling = ({md}) => {
 					variant={'h3'}
 					color={'white'}
 				>
-					Жоская Ауф цитата
-
-					{md}
-					{' '}
+					{title}
 				</Typography>
 			</Box>
 

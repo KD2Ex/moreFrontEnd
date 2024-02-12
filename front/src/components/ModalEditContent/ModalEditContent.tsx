@@ -76,6 +76,8 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 			<Grid
 				item
 				md={5}
+				sx={{
+				}}
 			>
 
 				<PaintingTextarea

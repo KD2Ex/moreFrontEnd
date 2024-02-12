@@ -46,16 +46,19 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				onClick={handleClick}
 				sx={{
 					height: `${height}px`,
-					backgroundColor: '#5986a2',
+					backgroundColor: '#243a48',
 					p: 0,
 					borderRadius: 2,
-					transition: 'filter 300ms',
+					transition: 'filter  300ms linear',
 					//filter: 'brightness(40%)',
 					//opacity: .2,'
 					'&:hover': {
+						//backdropFilter: 'brightness(60%)',
 						'& img': {
-							filter: 'brightness(45%)'
-						}
+							filter: 'brightness(45%)',
+
+						},
+
 					}
 				}}
 				onContextMenu={(e) => {

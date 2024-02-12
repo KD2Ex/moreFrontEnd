@@ -37,8 +37,9 @@ const AdminActions = observer(({modalAction}) => {
 			console.log(user.changeOrderMode)
 
 			if (!user.changeOrderMode) {
+				paint.updateOrder()
 				alert.openAlert("Порядок успешно сохранен", "success")
-				await paint.updateOrder()
+
 			} else {
 				alert.openAlert("Убедитесь, что сортировка картин отключена", "warning")
 			}

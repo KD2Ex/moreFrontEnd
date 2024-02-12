@@ -20,7 +20,7 @@ class Paint {
 	rowHeight: number = 350;
 	//filling: boolean = true;
 
-	newItem: IPaint = {};
+	newItem: IPaint | null = null;
 
 	loading: boolean;
 	sort: (a, b) => number;
@@ -138,7 +138,7 @@ class Paint {
 
 		console.log(data)
 
-		this.newItem = {};
+		this.newItem = null;
 
 		return response;
 	}
@@ -219,11 +219,13 @@ class Paint {
 		for (let i of trueItem) {
 			console.log(index++)
 
-			if (i[0] === 'files') continue;
+			if (i[0] === 'files'
+				|| i[0] === 'relativeSize'
+				|| i[0] === 'objectFit'
+			) continue;
 
 			if (!i[1]) return false;
 		}
-
 
 		if (!item.material.name || !item.technique.name) return false;
 

@@ -146,12 +146,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 									item={item}
 									height={500}
 								/>
-								{/*<Grid
-									item
-									md={item.relativeSize}
-								>
-									{item.id}
-								</Grid>*/}
+
 							</Grid>
 						</React.Fragment>
 

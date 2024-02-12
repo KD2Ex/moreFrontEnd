@@ -76,7 +76,9 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				display: 'flex',
 				flexDirection: 'column',
 				gap: 2,
-				mt: 2
+				mt: 2,
+				position: 'sticky',
+				top: 0
 			}}
 
 		>

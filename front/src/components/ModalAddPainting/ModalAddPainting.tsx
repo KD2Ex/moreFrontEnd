@@ -27,7 +27,6 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 	const handleAdd = () => {
 
 		paint.newItem = newItem;
-
 		const isValid = paint.isValidPaintData(paint.newItem) && paint.isValidPaintImages(paint.newItem);
 
 		console.log(isValid)
@@ -42,7 +41,7 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 		paint.addPainting().then(res => {
 			handleClose()
 			alert.openAlert('Картина успешно добавлена', 'success')
-
+			setNewItem(null)
 		})
 
 	}

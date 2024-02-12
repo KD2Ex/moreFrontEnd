@@ -176,7 +176,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 								<Component
 									item={item}
-									height={500}
+									height={paint.rowHeight}
 								/>
 
 							</Grid>

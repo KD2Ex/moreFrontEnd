@@ -17,7 +17,7 @@ class Paint {
 
 	items: IPaint[] = [];
 	viewItems: IPaint[] = [];
-	rowHeight: number = 350;
+	rowHeight: number = 500;
 	//filling: boolean = true;
 
 	newItem: IPaint | null = null;
@@ -26,6 +26,10 @@ class Paint {
 	sort: (a, b) => number;
 
 	editedPaintingsSizes: ISizeEdit[] = [];
+
+	setRowHeight(value: number) {
+		this.rowHeight = value;
+	}
 
 	setSort(func: (a, b) => number) {
 		this.sort = func;

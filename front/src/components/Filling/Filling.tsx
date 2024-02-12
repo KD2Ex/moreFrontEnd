@@ -1,5 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
+import loginPage from "../../pages/LoginPage/LoginPage";
+import {observer} from "mobx-react-lite";
+
 
 interface FillingProps {
 	md: number,
@@ -7,12 +10,21 @@ interface FillingProps {
 	img: string
 }
 
-const Filling: FC<FillingProps> = ({md, title, img}) => {
+const Filling: FC<FillingProps> = observer(({space, img, title}) => {
+
+
+
+	useEffect(() => {
+
+
+
+	}, [])
+
 
 	return (
 		<Grid
 			item
-			md={md}
+			md={space}
 			sx={{
 				position: 'relative',
 			}}
@@ -31,6 +43,7 @@ const Filling: FC<FillingProps> = ({md, title, img}) => {
 			>
 				<Typography
 					variant={'h3'}
+					fontSize={space <= 2 ? 40 : 50}
 					color={'white'}
 				>
 					{title}
@@ -39,6 +52,6 @@ const Filling: FC<FillingProps> = ({md, title, img}) => {
 
 		</Grid>
 	);
-};
+});
 
 export default Filling;

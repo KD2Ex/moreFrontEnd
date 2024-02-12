@@ -10,6 +10,7 @@ import Filling from "../Filling/Filling";
 import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import PortfolioItem from "../PortfolioItem/PortfolioItem";
+import loginPage from "../../pages/LoginPage/LoginPage";
 
 interface GalleryProps {
 	items: any[],
@@ -21,11 +22,8 @@ const components = {
 	portfolio: PortfolioItem,
 }
 
-const getRandomInt = (max: number) => {
-	return Math.floor(Math.random() * max);
-}
 
-const fillingTitles = [
+let titles = [
 	'Жоская ауф цитата',
 	'Волк, это не тот кто волк, walk - это ходить',
 	'Тяжело это когда тяжело',
@@ -38,6 +36,20 @@ const fillingTitles = [
 	'Цитата 6',
 	'Цитата 7',
 ]
+
+const ids =  [...titles]
+
+function getRandomInt(max: number) {
+	/*for (let i = max; i >= 0; i--) {
+		console.log(i)
+
+		yield Math.floor(Math.random() * i);
+		yield i
+	}*/
+
+	return Math.floor(Math.random() * max);
+}
+
 
 const Gallery = observer(({items, type}: GalleryProps) => {
 
@@ -90,7 +102,6 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 		paint.swapPaints(currentDragItem, item);
 	}
-
 	let gridSize = 0;
 
 	return (
@@ -108,21 +119,23 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 				{items.map((item, index, array) => {
 
 					const rowGridSpace = 12 - gridSize % 12;
-
 					let additiveComponent = null;
 
-					if (index != array.length && !user.adminView) {
+					if (!user.adminView && rowGridSpace - item.relativeSize < 0) {
+						gridSize += rowGridSpace
+						const fillingIndex = getRandomInt(titles.length);
 
-						if ( rowGridSpace - item.relativeSize < 0) {
-							gridSize += rowGridSpace;
-							additiveComponent = (
-								<Filling
-									key={item.title + index}
-									md={rowGridSpace}
-									title={fillingTitles[getRandomInt(fillingTitles.length)]}
-								/>
-							)
-						}
+						console.log(titles)
+
+						additiveComponent = (
+							<Filling
+								key={item.title + index}
+								space={rowGridSpace}
+								title={titles.splice(fillingIndex, 1)[0]}
+							/>
+						)
+
+						if (titles.length === 0) titles = [...ids]
 					}
 
 					gridSize += +item.relativeSize;
@@ -139,7 +152,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 								xs={sizes.full}
 								// Поведение при нуле может отличаться: при значении 'auto' будет приниматься
 								// размер изображения, а при 0 поведение аналогично поведению при 12
-								// true расчитывает значение для md относительно других элементов
+								// true расчитывает значение для mds относительно других элементов
 								// исходя из
 								// (12 - сумма явных md значений элементов) / кол-во элементов с значениями md = true
 								md={item.relativeSize === 0 ? true : item.relativeSize}
@@ -175,8 +188,8 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 				{gridSize % 12 !== 0 && (
 					<Filling
-						md={12 - gridSize % 12}
-						title={fillingTitles[getRandomInt(fillingTitles.length)]}
+						space={12 - gridSize % 12}
+						title={ids[1]}
 						img={''}
 					/>
 				)}

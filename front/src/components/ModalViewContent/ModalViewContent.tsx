@@ -78,7 +78,7 @@ const ModalViewContent = ({item}) => {
 							//fontStyle: 'italic'
 						}}
 					>
-						Купить картину ->
+						Купить картину -
 					</Typography>
 
 					<IconButton

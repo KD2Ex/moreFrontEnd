@@ -18,7 +18,6 @@ import TextFieldPopover from "../../components/TextFieldPopover/TextFieldPopover
 
 const GalleryPage = observer(() => {
 
-
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 	const [anchor, setAnchor] = useState(null);
 
@@ -73,14 +72,6 @@ const GalleryPage = observer(() => {
 
 	useEffect(() => {
 
-		(async () => {
-
-			if (paint.loading) return;
-
-			await paint.getItems();
-
-			paint.setViewItems(paint.items)
-		})()
 
 	}, [])
 

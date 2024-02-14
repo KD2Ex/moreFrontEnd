@@ -35,7 +35,7 @@ const ModalCarousel = ({items, setItems}) => {
 
 		const newItems = items.filter((item, index) => index != imageIndex)
 
-		await paint.deleteImage(items[imageIndex]);
+		await paint.deleteImage(items[imageIndex].name);
 
 		if (imageIndex === items.length - 1) {
 			setSlideIndex(prev => prev - 1);
@@ -72,6 +72,8 @@ const ModalCarousel = ({items, setItems}) => {
 			setIsShiftPressed(false)
 		})*/
 
+
+
 	}, [])
 
 	return (
@@ -102,7 +104,7 @@ const ModalCarousel = ({items, setItems}) => {
 				ref={sliderRef}
 				slideIndex={slideIndex}
 			>
-				{items?.map((image, index) => (
+				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
 					<Box
 						sx={{
 							height: '500px',
@@ -119,7 +121,7 @@ const ModalCarousel = ({items, setItems}) => {
 					>
 						<Box
 							component={'img'}
-							src={import.meta.env.VITE_BASE_URL + image}
+							src={import.meta.env.VITE_BASE_URL + image.name}
 							sx={{
 								width: '100%',
 								height: '100%',

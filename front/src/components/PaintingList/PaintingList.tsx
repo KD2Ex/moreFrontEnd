@@ -80,6 +80,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 
 	function dragStartHandler(e, item) {
 		console.log('drag', item)
+
 		setCurrentDragItem(item);
 		console.log(e.target)
 	}
@@ -121,7 +122,6 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 					gridSize += rowGridSpace
 					const fillingIndex = getRandomInt(titles.length);
 
-					console.log(titles)
 
 					additiveComponent = (
 						<Filling
@@ -182,13 +182,13 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 
 			})}
 
-			{gridSize % 12 !== 0 && (
+			{/*{gridSize % 12 !== 0 && (
 				<Filling
 					space={12 - gridSize % 12}
 					title={ids[1]}
 					img={''}
 				/>
-			)}
+			)}*/}
 
 			{items.length === 0
 				&& !paint.loading

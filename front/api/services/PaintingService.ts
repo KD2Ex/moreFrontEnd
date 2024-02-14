@@ -4,10 +4,18 @@ import loginPage from "../../src/pages/LoginPage/LoginPage";
 
 export default class PaintingService {
 
-	static async fetchPaintings() {
+	static async fetchPaintings(page, limit, materialId, techniqueId, sort) {
 
 		try {
-			const response = await $api.get('/paint');
+			const response = await $api.get('/paint', {
+				params: {
+					page,
+					limit,
+					materialId,
+					techniqueId,
+					sort
+				}
+			});
 			return response.data;
 
 		} catch (e) {
@@ -24,6 +32,19 @@ export default class PaintingService {
 
 	}
 
+	static async getFilteredCount(materialId, techniqueId) {
+
+		const response = await $api.get('/paint/filteredCount', {
+			params: {
+				materialId,
+				techniqueId
+			}
+		})
+
+		return response.data
+	}
+
+
 	static async addPainting(data) {
 
 		for(let item of data) {
@@ -37,6 +58,8 @@ export default class PaintingService {
 		})
 
 	}
+
+
 
 	static async editSizes(data) {
 
@@ -77,6 +100,7 @@ export default class PaintingService {
 	static async updateOrder(items) {
 		return $api.post('/paint/updateOrder', items)
 	}
+
 
 }
 

@@ -19,20 +19,39 @@ class Paint {
 	viewItems: IPaint[] = [];
 	rowHeight: number = 500;
 	//filling: boolean = true;
-
+	totalPages: number;
 	newItem: IPaint | null = null;
+	currentPage: number = 1;
+
+	filters = {
+		materialId: 0,
+		techniqueId: 0
+	}
 
 	loading: boolean;
+
 	sort: (a, b) => number;
+	sortId: number = 1
 
 	editedPaintingsSizes: ISizeEdit[] = [];
+
+	setCurrentPage(value: number) {
+
+		this.currentPage = value;
+	}
+
+	setFilters(value: {materialId: number, techniqueId: number}) {
+		this.filters = {...value};
+	}
 
 	setRowHeight(value: number) {
 		this.rowHeight = value;
 	}
 
-	setSort(func: (a, b) => number) {
+	setSort(func: (a, b) => number, id) {
 		this.sort = func;
+
+		this.sortId = id;
 	}
 
 	swapPaints(currentItem: IPaint, targetItem: IPaint) {
@@ -61,17 +80,30 @@ class Paint {
 		return -1;
 	}
 
-	async getItems() {
+	async getFilteredCount() {
+
+		return PaintingService.getFilteredCount(this.filters.materialId, this.filters.techniqueId);
+
+	}
+
+	async getItems(page: number, limit: number) {
 
 		this.setLoading(true);
 
-		const response = await PaintingService.fetchPaintings();
+		const response = await PaintingService
+			.fetchPaintings(page, limit, this.filters.materialId, this.filters.techniqueId, this.sortId);
 
-		response.sort(this.sortPaints).forEach(i => i.isFiltered = true)
+		console.log(response.paintings)
 
-		this.setItems(response)
-		console.log([...response].map(i => i.order))
+		const newItems = response.paintings.slice()
+		//newItems.forEach(i => i.isFiltered = true)
+		console.log(newItems)
+
+		this.setItems([...this.items, ...newItems])
+		//console.log([...newItems].map(i => i.order))
+		this.totalPages = response.totalPages
 		this.setLoading(false);
+
 	}
 
 	setItems(value: IPaint[]) {
@@ -275,10 +307,10 @@ class Paint {
 			const response = await PaintingService.deleteImage(name);
 
 			const paint = this.items.find((item) => {
-				return item.images.includes(name);
+				return item.images.find(i => i.name === name)
 			})
 			console.log(paint)
-			paint.images = paint.images.filter((item) => item != name);
+			paint.images = paint.images.filter((item) => item.name != name);
 
 			return response;
 		} catch (e) {

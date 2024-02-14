@@ -14,11 +14,16 @@ interface PaintItemProps {
 
 const PaintItem: FC<PaintItemProps> = observer(({
 		item,
-	height,
+		height,
 	}: PaintItemProps) =>
 {
 
-	const img = item?.images ? item.images[0] : null;
+	let img = item.images
+		.find(i => i.order === Math.min(...item?.images.map(img => img.order)));
+
+	if (!img) {
+		img = item.images[0]
+	}
 
 	const [anchor, setAnchor] = useState(null);
 
@@ -28,6 +33,8 @@ const PaintItem: FC<PaintItemProps> = observer(({
 	}
 
 	useEffect(() => {
+
+
 
 	}, [])
 
@@ -98,6 +105,10 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					</Typography>
 
 					<Typography>
+						{item.price}
+					</Typography>
+
+					<Typography>
 						Материал: {item.material ? item.material.name : "Не указано"}
 					</Typography>
 
@@ -117,7 +128,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				<Box
 					loading={'lazy'}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + img}
+					src={import.meta.env.VITE_BASE_URL + img?.name}
 					sx={{
 						width: '100%',
 						height: '100%',

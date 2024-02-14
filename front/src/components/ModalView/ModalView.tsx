@@ -71,7 +71,6 @@ const ModalView = observer(() => {
 			open={open}
 			onClose={handleClose}
 			maxWidth={'xl'}
-
 		>
 {/*
 			<DialogTitle
@@ -81,7 +80,7 @@ const ModalView = observer(() => {
 
 			<DialogContent
 				sx={{
-					minWidth: '1200px',
+					//minWidth: '1200px',
 					borderColor: '#8bb9a2',
 					mb: 2,
 					mt: 1,

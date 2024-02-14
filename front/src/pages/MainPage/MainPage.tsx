@@ -26,14 +26,13 @@ const MainPage = () => {
 	return (
 		<Box
 			sx={{
-				maxWidth: '90%',
+				maxWidth: '95%',
 				display: 'flex',
 				flexDirection: 'column',
 				margin: 'auto',
-				px: {xs: 3, xl: 0}
+				px: {xs: 1, xl: 0}
 			}}
 		>
-
 
 			<NavBar/>
 

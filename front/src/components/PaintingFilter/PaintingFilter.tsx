@@ -22,29 +22,32 @@ const PaintingFilter = observer(() => {
 
 	useEffect(() => {
 
-		paint.setSort(paint.sortPaints);
+		paint.setSort(paint.sortPaints, 1);
 
 		if (paint.items.length === 0) return;
 		let filtered = paint.items;
-
 		let filter = paint.items;
 
+
+		paint.setFilters({techniqueId: techniqueId, materialId: materialId})
 
 		if (materialId) {
 
 			filter = filter.filter(i => i.material?.id === materialId);
-
 		}
 
 		if (techniqueId) {
 
 			filter = filter.filter(i => i.technique?.id === techniqueId);
+
 		}
 
 
 		if (sort) {
 
 			let sortType;
+			let sortId;
+
 
 			switch (sort) {
 
@@ -52,15 +55,17 @@ const PaintingFilter = observer(() => {
 					sortType = (a, b) => {
 						return a.price - b.price
 					}
+					sortId = 2;
 					break;
 				case 2:
 					sortType = (a, b) => {
 						return b.price - a.price
 					}
+					sortId = 3;
 					break;
 			}
 
-			paint.setSort(sortType);
+			paint.setSort(sortType, sortId);
 
 			filtered = [...filtered]
 				.sort((a, b) => {
@@ -86,11 +91,12 @@ const PaintingFilter = observer(() => {
 
 		filtered.forEach(item => item.isFiltered = !!filter.find(j => j.id === item.id))
 
-		paint.setViewItems(filtered);
+		paint.getFilteredCount().then(res => {
+			console.log(res)
+			alert.openAlert(`Картин с выбранными фильтрами:
+			 ${res}`,"info")
+		})
 
-		alert.openAlert(`Картин с выбранными фильтрами:
-		 ${filter.length}`
-			,"info")
 
 	}, [materialId, techniqueId, sort])
 

@@ -75,7 +75,8 @@ const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, de
 			</AdminComponent>
 			<FormControl
 				sx={{
-					flex: 1
+					flex: 1,
+					minWidth: '250px'
 				}}
 			>
 				<InputLabel size={'small'}>{label}</InputLabel>
@@ -84,6 +85,8 @@ const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, de
 					value={id}
 					label={label}
 					onChange={handleChange}
+					sx={{
+					}}
 				>
 					{items.map(item => (
 						<MenuItem

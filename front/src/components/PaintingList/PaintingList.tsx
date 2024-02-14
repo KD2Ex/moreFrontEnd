@@ -57,6 +57,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [currentDragItem, setCurrentDragItem] = useState(null);
 
+
 	const Component = components[type];
 	let gridSize = 0;
 

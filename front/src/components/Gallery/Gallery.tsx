@@ -20,7 +20,7 @@ interface GalleryProps {
 
 const Gallery = observer(({items, type}: GalleryProps) => {
 
-	//const [page, setPage] = useState(1);
+	const [page, setPage] = useState(1);
 
 	const lastElement = useRef();
 	const observer = useRef();
@@ -33,8 +33,9 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 		if (observer.current) observer.current.disconnect();
 
 		const callback = (entries) => {
-			if (entries[0].isIntersecting && paint.currentPage < paint.totalPages) {
-				paint.setCurrentPage(paint.currentPage + 1)
+			if (entries[0].isIntersecting && page < paint.totalPages) {
+				setPage(prevState => prevState + 1)
+				//paint.setCurrentPage(paint.currentPage + 1)
 			}
 		}
 
@@ -47,13 +48,13 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 		(async () => {
 
-			console.log("Page:", paint.currentPage)
+			console.log("Page:", page)
 			if (paint.loading) return;
 
-			await paint.getItems(paint.currentPage, 6);
+			await paint.getItems(page, 6);
 		})()
 
-	}, [paint.currentPage])
+	}, [page])
 
 	useEffect(() => {
 
@@ -62,14 +63,22 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 			if (paint.loading) return;
 
 			paint.setItems([]);
-			paint.setCurrentPage(1);
+			setPage(1);
 			await paint.getItems(1, 6);
 
-			console.log('Sort effect', paint.currentPage)
+			console.log('Sort effect', page)
 
 		})()
 
 	}, [paint.sortId])
+
+	useEffect(() => {
+
+		return () => {
+			paint.setItems([])
+		}
+
+	}, [])
 
 	return (
 

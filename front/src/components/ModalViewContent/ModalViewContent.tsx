@@ -10,7 +10,6 @@ const ModalViewContent = ({item}) => {
 
 	const [images, setImages] = useState([])
 
-
 	const profileURI = encodeURI('https://t.me/Katerina_Serebryanskaya')
 	const message = encodeURI('Hello')
 	const tgLink = `https://t.me/Katerina_Serebryanskaya`
@@ -30,7 +29,7 @@ const ModalViewContent = ({item}) => {
 	return (
 		<Grid
 			container
-			spacing={4}
+			spacing={{xs: 0, lg: 4}}
 			sx={{
 				width: '100%'
 			}}
@@ -39,6 +38,7 @@ const ModalViewContent = ({item}) => {
 			<Grid
 				item
 				md={8}
+				xs={12}
 			>
 				<ModalCarousel
 					items={images}
@@ -50,6 +50,7 @@ const ModalViewContent = ({item}) => {
 			<Grid
 				item
 				md={4}
+				xs={12}
 				sx={{
 				}}
 			>
@@ -73,7 +74,7 @@ const ModalViewContent = ({item}) => {
 					}}
 				>
 					<Typography
-						fontSize={28}
+						fontSize={20}
 						sx={{
 							//fontStyle: 'italic'
 						}}

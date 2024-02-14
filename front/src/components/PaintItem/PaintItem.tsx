@@ -6,6 +6,7 @@ import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import user from "../../store/user";
+import {useSearchParams} from "react-router-dom";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -26,14 +27,16 @@ const PaintItem: FC<PaintItemProps> = observer(({
 	}
 
 	const [anchor, setAnchor] = useState(null);
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const handleClick = (event) => {
 		if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
+
+		setSearchParams({id: item.id})
 	}
 
 	useEffect(() => {
-
 
 
 	}, [])

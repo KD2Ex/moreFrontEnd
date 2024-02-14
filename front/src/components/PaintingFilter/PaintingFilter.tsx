@@ -9,7 +9,7 @@ import alert from "../../store/alert";
 
 const sortingMethods = [
 	{id: 0, name: 'Как задумано'},
-	{id: 1, name: 	'По возрастанию цены'},
+	{id: 1, name: 'По возрастанию цены'},
 	{id: 2, name: 'По убыванию цены'},
 ]
 
@@ -47,7 +47,6 @@ const PaintingFilter = observer(() => {
 
 			let sortType;
 			let sortId;
-
 
 			switch (sort) {
 
@@ -107,7 +106,9 @@ const PaintingFilter = observer(() => {
 			sx={{
 				display: 'flex',
 				gap: 2,
-				alignItems: 'center'
+				alignItems: 'center',
+				flexWrap: 'wrap',
+				justifyContent: 'space-between'
 			}}
 		>
 

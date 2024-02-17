@@ -284,7 +284,7 @@ class Paint {
 
 
 
-	async deletePainting(id: number) {
+	async delete(id: number) {
 
 		try {
 			const response = await PaintingService.deletePainting(id);

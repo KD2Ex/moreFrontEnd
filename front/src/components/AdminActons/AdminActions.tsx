@@ -6,7 +6,11 @@ import user from "../../store/user";
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
 
-const AdminActions = observer(({actions}) => {
+interface AdminActionsProps {
+	actions: any[]
+}
+
+const AdminActions = observer(({actions}: AdminActionsProps) => {
 
 
 	return (

@@ -9,7 +9,7 @@ import {Grid, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import {IPaint} from "../../models/interfaces/IPaint";
 import PaintItem from "../PaintItem/PaintItem";
-import PortfolioItem from "../PortfolioItem/PortfolioItem";
+import ProjectItem from "../ProjectItem/ProjectItem";
 
 
 let titles = [
@@ -41,8 +41,8 @@ function getRandomInt(max: number) {
 
 
 const components = {
-	gallery: PaintItem,
-	portfolio: PortfolioItem,
+	painting: PaintItem,
+	project: ProjectItem,
 }
 
 
@@ -52,7 +52,7 @@ interface PaintingListProps {
 	isShiftPressed: boolean
 }
 
-const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
+const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [currentDragItem, setCurrentDragItem] = useState(null);
@@ -75,7 +75,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 
 	const handleDelete = async (id: number) => {
 
-		await paint.deletePainting(id)
+		await store.delete(id)
 	}
 
 
@@ -105,7 +105,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 		console.log('drop', item)
 		console.log(currentDragItem)
 
-		paint.swapPaints(currentDragItem, item);
+		//paint.swapPaints(currentDragItem, item);
 	}
 
 	return (
@@ -114,7 +114,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 			spacing={2}
 		>
 
-			{items.map((item, index, array) => {
+			{items?.map((item, index, array) => {
 
 				const rowGridSpace = 12 - gridSize % 12;
 				let additiveComponent = null;
@@ -191,8 +191,8 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type}) => {
 				/>
 			)}*/}
 
-			{items.length === 0
-				&& !paint.loading
+			{items?.length === 0
+				&& !store.loading
 				&& (
 					<Typography>
 						sadness

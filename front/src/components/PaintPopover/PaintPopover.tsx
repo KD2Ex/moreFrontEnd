@@ -4,7 +4,7 @@ import SettingChangeSize from "../SettingChangeSize/SettingChangeSize";
 import {IPaint} from "../../models/interfaces/IPaint";
 import SettingChangeFit from "../SettingChangeFit/SettingChangeFit";
 import paint from "../../store/paint";
-import SettingDeletePainting from "../SettingDeletePainting/SettingDeletePainting";
+import SettingDelete from "../SettingDeletePainting/SettingDelete";
 import SettingEditPainting from "../SettingEditPainting/SettingEditPainting";
 
 interface PaintPopoverProps {
@@ -73,8 +73,9 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 						item={item}
 					/>
 
-					<SettingDeletePainting
+					<SettingDelete
 						id={item.id}
+						store={paint}
 					/>
 				</Box>
 

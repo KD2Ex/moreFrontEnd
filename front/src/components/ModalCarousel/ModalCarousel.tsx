@@ -131,7 +131,7 @@ const ModalCarousel = ({items, setItems}) => {
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
 					<Box
 						sx={{
-							height: '500px',
+							height: '450px',
 							//width: '1000px'
 						}}
 						key={index}

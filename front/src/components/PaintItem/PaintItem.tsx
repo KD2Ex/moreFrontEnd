@@ -30,10 +30,11 @@ const PaintItem: FC<PaintItemProps> = observer(({
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const handleClick = (event) => {
-		if (event.button === 0) modal.openPaintingView(item);
+		if (event.button === 0) setSearchParams({id: item.id})
+		//if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
 
-		setSearchParams({id: item.id})
+
 	}
 
 	useEffect(() => {

@@ -3,11 +3,11 @@ import {Box, Button} from "@mui/material";
 import paint from "../../store/paint";
 import modal from "../../store/modal";
 
-const SettingDeletePainting = ({id}) => {
+const SettingDelete = ({id, store}) => {
 
 	const handleClick = async () => {
 
-		modal.openActionDialog(paint.deletePainting.bind(paint), [id]);
+		modal.openActionDialog(store.delete.bind(store), [id]);
 
 		//await paint.deletePainting(id)
 	}
@@ -38,4 +38,4 @@ const SettingDeletePainting = ({id}) => {
 	);
 };
 
-export default SettingDeletePainting;
+export default SettingDelete;

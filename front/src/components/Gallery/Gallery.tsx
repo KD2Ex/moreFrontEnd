@@ -1,21 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import paint from "../../store/paint";
 import PaintItem from "../PaintItem/PaintItem";
 import {sizes} from "../../consts";
 import {Box, Grid, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import ActionDialog from "../ActionDialog/ActionDialog";
-import user from "../../store/user";
-import Filling from "../Filling/Filling";
-import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
-import AdminComponent from "../AdminComponent/AdminComponent";
-import PortfolioItem from "../PortfolioItem/PortfolioItem";
-import loginPage from "../../pages/LoginPage/LoginPage";
 import PaintingList from "../PaintingList/PaintingList";
+import {GalleryType} from "../../models/types/GalleryType";
+import portfolio from "../../store/project";
+import switchBaseClasses from "@mui/material/internal/switchBaseClasses";
+import {storeAnnotation} from "mobx/dist/api/decorators";
 
 interface GalleryProps {
 	items: any[],
-	type: string
+	type: GalleryType
 }
 
 const Gallery = observer(({items, type}: GalleryProps) => {
@@ -25,15 +23,31 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 	const lastElement = useRef();
 	const observer = useRef();
 
+	const store = useMemo(() => {
+		let store;
+
+		switch (type) {
+			case "painting":
+				store = paint
+				break;
+			case "project":
+				store = portfolio
+				break;
+		}
+
+		return store;
+	}, [type])
+
+
 	useEffect(() => {
 
-		if (paint.loading) return;
+		if (store.loading) return;
 		//if (paint.arrayMutating) return;
 		//if (lastElement.current == undefined) return;
 		if (observer.current) observer.current.disconnect();
 
 		const callback = (entries) => {
-			if (entries[0].isIntersecting && page < paint.totalPages) {
+			if (entries[0].isIntersecting && page < store.totalPages) {
 				setPage(prevState => prevState + 1)
 				//paint.setCurrentPage(paint.currentPage + 1)
 			}
@@ -42,16 +56,16 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 		observer.current = new IntersectionObserver(callback);
 		observer.current.observe(lastElement.current);
 
-	}, [paint.loading])
+	}, [store.loading])
 
 	useEffect(() => {
 
 		(async () => {
 
 			console.log("Page:", page)
-			if (paint.loading) return;
+			if (store.loading) return;
 
-			await paint.getItems(page, 6);
+			store.getItems(page, 6)
 		})()
 
 	}, [page])
@@ -60,11 +74,11 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 		(async () => {
 
-			if (paint.loading) return;
+			if (store.loading) return;
 
-			paint.setItems([]);
+			store.setItems([]);
 			setPage(1);
-			await paint.getItems(1, 6);
+			await store.getItems(1, 6);
 
 			console.log('Sort effect', page)
 
@@ -75,7 +89,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 	useEffect(() => {
 
 		return () => {
-			paint.setItems([])
+			store.setItems([])
 		}
 
 	}, [])
@@ -89,6 +103,7 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 			<PaintingList
 				items={items}
 				type={type}
+				store={store}
 			/>
 
 

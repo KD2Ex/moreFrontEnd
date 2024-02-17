@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Box, Popover, TextField} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
@@ -23,52 +23,56 @@ const GalleryPage = observer(() => {
 
 	const open = !!anchor;
 
-	const galleryActions = [
-		{
-			icon: <AddPhotoAlternateIcon/>,
-			name: "Добавить картину",
-			onClick: () => setIsAddModalOpen(true),
-		},
-		{
-			icon: <SaveIcon/>,
-			name: "Сохранить размеры",
-			onClick: async () => await paint.saveSizes()
-		},
-		{
-			icon: <CollectionsIcon/>,
-			name: user.adminView ? "Отключить заполнение" : "Включить заполнение",
-			onClick: () => user.setAdminView(!user.adminView)
-		},
-		{
-			icon: <CollectionsIcon/>,
-			name: user.changeOrderMode ? "Сохранить порядок" : "Изменить порядок",
-			onClick: async () => {
-				try {
-					user.setChangeOrderMode(!user.changeOrderMode)
+	const galleryActions = useMemo(() => {
 
-					console.log(user.changeOrderMode)
+		return [
+			{
+				icon: <AddPhotoAlternateIcon/>,
+				name: "Добавить картину",
+				onClick: () => setIsAddModalOpen(true),
+			},
+			{
+				icon: <SaveIcon/>,
+				name: "Сохранить размеры",
+				onClick: async () => await paint.saveSizes()
+			},
+			{
+				icon: <CollectionsIcon/>,
+				name: user.adminView ? "Отключить заполнение" : "Включить заполнение",
+				onClick: () => user.setAdminView(!user.adminView)
+			},
+			{
+				icon: <CollectionsIcon/>,
+				name: user.changeOrderMode ? "Сохранить порядок" : "Изменить порядок",
+				onClick: async () => {
+					try {
+						user.setChangeOrderMode(!user.changeOrderMode)
 
-					if (!user.changeOrderMode) {
-						paint.updateOrder()
-						alert.openAlert("Порядок успешно сохранен", "success")
+						console.log(user.changeOrderMode)
 
-					} else {
-						alert.openAlert("Убедитесь, что сортировка картин отключена", "warning")
+						if (!user.changeOrderMode) {
+							paint.updateOrder()
+							alert.openAlert("Порядок успешно сохранен", "success")
+
+						} else {
+							alert.openAlert("Убедитесь, что сортировка картин отключена", "warning")
+						}
+
+					} catch (e) {
+
 					}
-
-				} catch (e) {
-
+				}
+			},
+			{
+				icon: <CollectionsIcon/>,
+				name: `Текущая высота: ${paint.rowHeight} пикселей`,
+				onClick: (e) => {
+					setAnchor(e.currentTarget)
 				}
 			}
-		},
-		{
-			icon: <CollectionsIcon/>,
-			name: `Текущая высота: ${paint.rowHeight} пикселей`,
-			onClick: (e) => {
-				setAnchor(e.currentTarget)
-			}
-		}
-	]
+		]
+
+	}, [])
 
 	useEffect(() => {
 
@@ -96,7 +100,7 @@ const GalleryPage = observer(() => {
 
 			<Gallery
 				items={paint.items.slice().sort(paint.sort)}
-				type={"gallery"}
+				type={"painting"}
 			/>
 
 			<ModalAddPainting

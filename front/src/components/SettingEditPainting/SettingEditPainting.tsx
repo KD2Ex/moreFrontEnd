@@ -2,12 +2,17 @@ import React from 'react';
 import {Box, Button} from "@mui/material";
 import modal from "../../store/modal";
 
-const SettingEditPainting = ({item}) => {
+const SettingEditPainting = ({item, func}) => {
 
 	const handleClick = () => {
 
+		if (func) {
+			func('eqweqwe')
+			return;
+		}
 		console.log(item)
 		modal.openPaintingView(item, true);
+
 
 	}
 

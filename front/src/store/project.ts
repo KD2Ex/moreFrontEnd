@@ -3,6 +3,7 @@ import ProjectService from "../../api/services/ProjectService";
 import {IProject} from "../models/interfaces/IProject";
 import paint from "./paint";
 import {Form} from "react-router-dom";
+import alert from "./alert";
 
 
 class Project {
@@ -15,6 +16,29 @@ class Project {
 	rowHeight: number = 400;
 	loading: boolean = false;
 	totalPages: number;
+
+	editItem: IProject | null = null;
+	editModalOpen: boolean = false;
+
+	openEdit(item: IProject) {
+		//this.setEditItem(item)
+		this.editItem = item;
+		this.setOpen(true)
+	}
+
+	setEditItem(item: IProject | null) {
+
+		this.editItem = item;
+	}
+
+	setOpen(value: boolean) {
+		this.editModalOpen = value;
+		console.log(this.editModalOpen)
+		if (!value) {
+			this.editItem = null
+		}
+
+	}
 
 	validate(item: IProject) {
 
@@ -55,6 +79,30 @@ class Project {
 
 		return formData;
 
+	}
+
+	async update(newItem) {
+
+		const formData = this.appendFile(newItem);
+		formData.append("id", newItem.id)
+
+		const response = await ProjectService.update(formData);
+
+
+
+		const index = this.items.findIndex(i => i.id === newItem.id);
+		newItem.files = [];
+		this.items[index] = newItem;
+
+		for (const i of response.data) {
+			this.items[index].images.push(i);
+		}
+
+		console.log(response.data)
+
+		alert.openAlert("Проект успешно обновлен", "success");
+
+		return response;
 	}
 
 	async create(item: IProject) {

@@ -3,13 +3,18 @@ import {Box, Grid} from "@mui/material";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ProjectTextarea from "./ProjectTextarea/ProjectTextarea";
+import {observer} from "mobx-react-lite";
+import project from "../../store/project";
 
-const ModalAddProjectContent = ({item, setItem}) => {
+const ModalAddProjectContent = observer(({item, setItem}) => {
 
 	const [files, setFiles] = useState([])
 	const [images, setImages] = useState([])
 
 	useEffect(() => {
+
+
+		//setImages([...project.editItem?.images])
 
 		if (item?.images?.length) {
 			setImages([...item.images])
@@ -19,12 +24,24 @@ const ModalAddProjectContent = ({item, setItem}) => {
 
 	useEffect(() => {
 
+		console.log('editContent Effect')
+		console.log(project.editItem)
+
+
+	}, [project.editItem])
+
+	useEffect(() => {
+
+		console.log('files effect')
+
 		setItem(prev => {
 			return {
 				...prev,
 				files
 			}
 		})
+
+		//project.setEditItem({...project.editItem, files: files})
 
 	}, [files])
 
@@ -71,6 +88,6 @@ const ModalAddProjectContent = ({item, setItem}) => {
 
 		</Grid>
 	);
-};
+});
 
 export default ModalAddProjectContent;

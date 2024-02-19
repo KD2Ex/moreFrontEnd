@@ -22,6 +22,8 @@ const ModalView = observer(() => {
 
 	const [editMode, setEditMode] = useState(false);
 
+
+
 /*	useEffect(() => {
 		setItem(modal.paintingItem);
 		setEditMode(modal.editMode);

@@ -7,6 +7,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import project from "../../store/project";
 import {observer} from "mobx-react-lite";
 import ModalAddProject from "../../components/ModalAddProject/ModalAddProject";
+import ModalEditProject from "../../components/ModalEditProject/ModalEditProject";
 
 
 const PortfolioPage = observer(() => {
@@ -20,6 +21,14 @@ const PortfolioPage = observer(() => {
 
 	}
 
+	const changeOrder = () => {
+
+	}
+
+	const changeHeight = () => {
+
+	}
+
 	const actions = useMemo(() => {
 
 		return [
@@ -28,7 +37,16 @@ const PortfolioPage = observer(() => {
 				name: "Добавить проект",
 				onClick: addProject
 			},
-
+			{
+				icon: <AddPhotoAlternateIcon/>,
+				name: "Изменить порядок",
+				onClick: changeOrder
+			},
+			{
+				icon: <AddPhotoAlternateIcon/>,
+				name: `Изменить высоту, текущая высота: ${project.rowHeight}`,
+				onClick: changeHeight
+			}
 		]
 
 	}, [])
@@ -39,6 +57,10 @@ const PortfolioPage = observer(() => {
 			<ModalAddProject
 				open={open}
 				setOpen={setOpen}
+			/>
+
+			<ModalEditProject
+
 			/>
 
 			<Gallery

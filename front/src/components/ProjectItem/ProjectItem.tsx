@@ -5,6 +5,8 @@ import {observer} from "mobx-react-lite";
 import {IProject} from "../../models/interfaces/IProject";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import ProjectPopover from "../ProjectPopover/ProjectPopover";
+import ModalCarousel from "../ModalCarousel/ModalCarousel";
+import ProjectCarousel from "./ProjectCarousel/ProjectCarousel";
 
 interface ProjectItemProps {
 	item: IProject,
@@ -62,7 +64,8 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 
 				<Grid
 					item
-					lg={6}
+					lg={5}
+					xl={4}
 					xs={12}
 					sx={{
 						maxHeight: '100%',
@@ -70,7 +73,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					}}
 				>
 
-					<Box
+					{/*<Box
 						component={'img'}
 						src={import.meta.env.VITE_BASE_URL + item.images[0].name}
 						sx={{
@@ -80,13 +83,18 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 						}}
 					>
 
-					</Box>
+					</Box>*/}
+
+					<ProjectCarousel
+						items={item.images}
+					/>
 
 				</Grid>
 
 				<Grid
 					item
-					lg={6}
+					xl
+					lg={7}
 					xs={12}
 				>
 

@@ -30,4 +30,15 @@ export default class ProjectService {
 		return $api.delete(`/project/${id}`)
 	}
 
+	static async update(data) {
+
+		for(let item of data) {
+			console.log(item);
+		}
+
+		const id = data.get('id');
+
+		return $api.post(`/project/update/${id}`, data)
+	}
+
 }

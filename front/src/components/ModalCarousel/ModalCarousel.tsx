@@ -69,14 +69,16 @@ const ModalCarousel = ({items, setItems}) => {
 		setContextOpen(false)
 	}
 
-	const swipe = (forward: number) => {
+	const swipe = (forward: number | null) => {
 
+		console.log("swipte", forward)
 		setSwiping(forward)
 
 	}
 
 	useEffect(() => {
 
+		console.log("swiping", swiping)
 
 		if (swiping === 1) {
 
@@ -90,7 +92,14 @@ const ModalCarousel = ({items, setItems}) => {
 			setSlideIndex(prevState => prevState - 1)
 		}
 
+
 	}, [swiping])
+
+	useEffect(() => {
+
+		console.log(slideIndex)
+
+	}, [slideIndex])
 
 	return (
 		<>
@@ -126,7 +135,8 @@ const ModalCarousel = ({items, setItems}) => {
 				dragging={false}
 				ref={sliderRef}
 				slideIndex={slideIndex}
-				onDragEnd={() => swipe(true)}
+				onDragEnd={() => swipe(null)}
+				style={{height: '100%'}}
 			>
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
 					<Box

@@ -14,6 +14,7 @@ import CollectionsIcon from '@mui/icons-material/Collections';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import alert from "../../store/alert";
 import TextFieldPopover from "../../components/TextFieldPopover/TextFieldPopover";
+import ModalEdit from "../../components/ModalEdit/ModalEdit";
 
 
 const GalleryPage = observer(() => {
@@ -124,6 +125,8 @@ const GalleryPage = observer(() => {
 			<ModalView
 
 			/>
+
+			<ModalEdit/>
 
 		</Box>
 	);

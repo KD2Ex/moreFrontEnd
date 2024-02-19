@@ -74,7 +74,7 @@ const ImageZoom = ({src, slide, sliderRef}) => {
 					sx={{
 						width: '100%',
 						height: '100%',
-						objectFit: 'contain',
+						objectFit: 'cover',
 						//item.objectFit,
 						//filter: isShiftPressed && items.length !== 1 ? "brightness(50%)" : 'none',
 						//color: isShiftPressed ? "red" : 'none',

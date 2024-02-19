@@ -12,7 +12,6 @@ interface AdminActionsProps {
 
 const AdminActions = observer(({actions}: AdminActionsProps) => {
 
-
 	return (
 		<Box
 			sx={{

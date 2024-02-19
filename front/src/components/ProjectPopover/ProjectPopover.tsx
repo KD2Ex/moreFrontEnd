@@ -12,6 +12,11 @@ const ProjectPopover = ({anchor, setAnchor, item}) => {
 		setAnchor(null)
 	}
 
+	function handleOpen() {
+		project.openEdit(item);
+	}
+
+
 	return (
 		<Popover
 			open={open}
@@ -34,7 +39,9 @@ const ProjectPopover = ({anchor, setAnchor, item}) => {
 
 				<SettingEditPainting
 					item={item}
-					func={console.log}
+					func={project.openEdit.bind(project)}
+					proj={true}
+
 				/>
 				<SettingDelete
 					id={item.id}

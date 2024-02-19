@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Box, TextField} from "@mui/material";
 import {IProject} from "../../../models/interfaces/IProject";
+import {observer} from "mobx-react-lite";
+import project from "../../../store/project";
 
 interface ProjectTextareaProps {
 	item: IProject,
 	setItem: React.Dispatch<IProject | null>
 }
 
-const ProjectTextarea = ({item, setItem} : ProjectTextareaProps) => {
+const ProjectTextarea = observer(({item, setItem}) => {
 
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
@@ -29,6 +31,8 @@ const ProjectTextarea = ({item, setItem} : ProjectTextareaProps) => {
 		setTime(item.timePeriod)
 		setAddress(item.address)
 
+		console.log('textarea effect')
+
 	}, [])
 
 	useEffect(() => {
@@ -46,6 +50,17 @@ const ProjectTextarea = ({item, setItem} : ProjectTextareaProps) => {
 				address
 			}
 		})
+		/*project.setEditItem({
+			...project.editItem,
+			title,
+			desc,
+			levels,
+			area,
+			cost,
+			timePeriod: time,
+			address
+		})*/
+
 
 	}, [title, desc, levels, area, cost, time, address])
 
@@ -158,6 +173,6 @@ const ProjectTextarea = ({item, setItem} : ProjectTextareaProps) => {
 
 		</Box>
 	);
-};
+});
 
 export default ProjectTextarea;

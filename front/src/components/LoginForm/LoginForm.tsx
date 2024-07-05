@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Box, Button, Checkbox, FormControlLabel, FormGroup, TextField} from "@mui/material";
 import {Link} from "react-router-dom";
 import user from "../../store/user";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -9,6 +10,8 @@ const LoginForm = () => {
 	const [password, setPassword] = useState('');
 
 	const [showPassword, setShowPassword] = useState(false);
+
+	const navigate = useNavigate()
 
 	const handleLoginChange = (e) => {
 		setLogin(e.target.value)
@@ -24,7 +27,11 @@ const LoginForm = () => {
 
 	const handleClick = async () => {
 
-		await user.login(login, password)
+		const isAuth = await user.login(login, password)
+
+		if (isAuth) {
+			navigate('/gallery')
+		}
 
 	}
 

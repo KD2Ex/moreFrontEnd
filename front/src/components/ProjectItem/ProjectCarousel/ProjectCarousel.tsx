@@ -4,8 +4,9 @@ import ImageZoom from "../../ImageZoom/ImageZoom";
 import {Box} from "@mui/material";
 import user from "../../../store/user";
 import project from "../../../store/project";
+import ProjectImage from "../../ProjectImage/ProjectImage";
 
-const ProjectCarousel = ({items}) => {
+const ProjectCarousel = ({items, height}) => {
 
 	const [slideIndex, setSlideIndex] = useState(0)
 	const [swiping, setSwiping] = useState<number | null>(null)
@@ -39,10 +40,18 @@ const ProjectCarousel = ({items}) => {
 			}}
 		>
 			{items?.slice().sort((a, b) => a?.order - b?.order).map((image, index) => (
-				<Box
+
+				<ProjectImage
+					key={index}
+					sliderRef={sliderRef}
+					swipe={swipe}
+					image={image}
+					height={height}
+				/>
+				/*<Box
 					sx={{
 						width: '100%',
-						height: `${project.rowHeight - 20}px`
+						height: `${height - 20}px`
 					}}
 					key={index}
 					onContextMenu={(event) => {
@@ -58,8 +67,12 @@ const ProjectCarousel = ({items}) => {
 						src={image.name}
 						slide={swipe}
 						sliderRef={sliderRef}
+						fit={'cover'}
 					/>
-				</Box>
+
+				</Box>*/
+
+
 			))}
 
 		</Box>

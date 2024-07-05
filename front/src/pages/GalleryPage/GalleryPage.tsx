@@ -73,13 +73,12 @@ const GalleryPage = observer(() => {
 			}
 		]
 
-	}, [])
+	}, [paint.rowHeight, user.changeOrderMode, user.adminView])
 
 	useEffect(() => {
 
 
 	}, [])
-
 
 	return (
 		<Box

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ModalInfo from "../ModalInfo/ModalInfo";
-import {Box, Button, Divider, Grid, IconButton, Typography} from "@mui/material";
+import {Box, Button, Divider, Grid, Icon, IconButton, Typography} from "@mui/material";
 import {getWappLink} from "../../consts";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -74,7 +74,7 @@ const ModalViewContent = ({item}) => {
 					}}
 				>
 					<Typography
-						fontSize={20}
+						fontSize={18}
 						sx={{
 							//fontStyle: 'italic'
 						}}
@@ -92,9 +92,9 @@ const ModalViewContent = ({item}) => {
 							color: '#efefef',
 							'&:hover': {
 								bgcolor: "#1a6729"
-							}
+							},
 						}}
-						size={'large'}
+						size={'medium'}
 					>
 						<WhatsAppIcon fontSize={'inherit'}/>
 					</IconButton>
@@ -105,7 +105,7 @@ const ModalViewContent = ({item}) => {
 						component={'a'}
 						href={tgLink}
 						target={"_blank"}
-						size={'large'}
+						size={'medium'}
 						sx={{
 							bgcolor: "#3997d5",
 							color: '#efefef',

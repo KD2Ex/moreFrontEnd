@@ -4,6 +4,7 @@ import {IProject} from "../models/interfaces/IProject";
 import paint from "./paint";
 import {Form} from "react-router-dom";
 import alert from "./alert";
+import {IPaint} from "../models/interfaces/IPaint";
 
 
 class Project {
@@ -81,6 +82,30 @@ class Project {
 
 	}
 
+	swapItems(currentItem: IProject, targetItem: IProject) {
+
+		this.items = this.items.map(item => {
+
+			if (item.id === targetItem.id) {
+				return {...item, order: currentItem.order}
+			}
+			if (item.id === currentItem.id) {
+				return {...item, order: targetItem.order}
+			}
+
+			return item;
+		})
+
+		console.log(this.items)
+
+	}
+
+	async updateOrder() {
+
+		const response = await ProjectService.updateOrder(this.items);
+
+	}
+
 	async update(newItem) {
 
 		const formData = this.appendFile(newItem);
@@ -123,9 +148,15 @@ class Project {
 
 		this.setLoading(true)
 		const response = await ProjectService.getProjects(page, limit);
-
-		console.log(response)
 		this.totalPages = response.totalPages;
+
+		response.items.forEach(i => {
+			if (!i.height) {
+				i.height = 400
+			}
+		})
+		console.log(response)
+
 		this.setItems([...this.items, ...response.items]);
 
 
@@ -137,6 +168,13 @@ class Project {
 		const response = await ProjectService.delete(id)
 
 		this.setItems([...this.items.filter(i => i.id !== id)]);
+
+	}
+
+	async saveHeight() {
+
+		const response = await ProjectService.updateHeight(this.items);
+		console.log(response)
 
 	}
 

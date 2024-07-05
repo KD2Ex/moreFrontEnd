@@ -14,7 +14,7 @@ class User {
 	checkAuth() {
 
 		// is user auth + admin
-		this.isAdmin = true;
+		//this.isAdmin = true;
 
 	}
 
@@ -25,6 +25,12 @@ class User {
 
 	async login(login: string, password: string) {
 
+		if (login === 'login' && password === 'login') {
+			this.isAdmin = true;
+			return true;
+		}
+
+		return false;
 	}
 
 	setChangeOrderMode(value: boolean) {

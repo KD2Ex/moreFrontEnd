@@ -20,7 +20,7 @@ const ModalView = observer(() => {
 	const [open, setOpen] = useState(false);
 	const [item, setItem] = useState<IPaint | null>(null);
 
-	const [editMode, setEditMode] = useState(false);
+
 
 
 
@@ -70,25 +70,6 @@ const ModalView = observer(() => {
 		onClose();
 	}
 
-	const handleClick = async () => {
-
-		console.log(item)
-
-		const isValid = paint.isValidPaintData(item);
-
-		console.log(isValid)
-
-		if (!isValid) {
-			alert.openAlert('Заполните все поля', 'error')
-			return;
-		}
-
-		await paint.updatePainting(item)
-
-
-		onClose();
-
-	}
 
 	const onClose = () => {
 		modal.setPaintingViewOpen(false);
@@ -103,11 +84,13 @@ const ModalView = observer(() => {
 		<Dialog
 			open={open}
 			onClose={handleClose}
-			maxWidth={'xl'}
+			maxWidth={'lg'}
 			sx={{
 				'& .MuiPaper-root': {
 					m: 0,
-					mx: 2
+					mx: 2,
+					minWidth: {md: '900px', lg: '1200px'},
+
 				}
 			}}
 		>
@@ -128,33 +111,11 @@ const ModalView = observer(() => {
 					m: 0
 				}}
 			>
-				{!editMode
-					? <ModalViewContent
-						item={item}
-					/>
-
-					: <ModalEditContent
-						item={item}
-						setItem={setItem}
-						editMode={editMode}
-					/>
-				}
+				<ModalViewContent
+					item={item}
+				/>
 
 			</DialogContent>
-
-			{editMode &&
-                <DialogActions>
-
-                    <Button
-						onClick={handleClick}
-
-					>
-                        Сохранить
-
-                    </Button>
-
-                </DialogActions>
-			}
 
 		</Dialog>
 	);

@@ -5,6 +5,8 @@ import modal from "../../store/modal";
 import ModalViewContent from "../ModalViewContent/ModalViewContent";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import {observer} from "mobx-react-lite";
+import paint from "../../store/paint";
+import alert from "../../store/alert";
 
 const ModalEdit = observer(() => {
 
@@ -27,7 +29,24 @@ const ModalEdit = observer(() => {
 		onClose();
 	}
 
-	const handleClick = () => {
+	const handleClick = async () => {
+
+
+		console.log(item)
+
+		const isValid = paint.isValidPaintData(item);
+
+		console.log(isValid)
+
+		if (!isValid) {
+			alert.openAlert('Заполните все поля', 'error')
+			return;
+		}
+
+		await paint.updatePainting(item)
+
+		onClose();
+
 
 	}
 

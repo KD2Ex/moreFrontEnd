@@ -13,6 +13,7 @@ export interface IProject {
 	order: number,
 	timePeriod: string,
 	title: string,
-	files: File[]
+	files: File[],
+	height: number
 
 }

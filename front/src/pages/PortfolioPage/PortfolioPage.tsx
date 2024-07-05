@@ -8,7 +8,10 @@ import project from "../../store/project";
 import {observer} from "mobx-react-lite";
 import ModalAddProject from "../../components/ModalAddProject/ModalAddProject";
 import ModalEditProject from "../../components/ModalEditProject/ModalEditProject";
-
+import user from "../../store/user";
+import alert from "../../store/alert";
+import FullscreenImage from "../../components/FullscreenImage/FullscreenImage";
+import modal from "../../store/modal";
 
 const PortfolioPage = observer(() => {
 
@@ -21,13 +24,23 @@ const PortfolioPage = observer(() => {
 
 	}
 
-	const changeOrder = () => {
+	const changeOrder = async () => {
 
+		user.setChangeOrderMode(!user.changeOrderMode)
+
+		if (!user.changeOrderMode) {
+			project.updateOrder()
+			alert.openAlert("Порядок успешно сохранен", "success")
+		}
 	}
 
-	const changeHeight = () => {
+	const changeHeight = async () => {
 
+		await project.saveHeight().then(res => {
+			alert.openAlert("Размеры успешно сохранены", "success")
+		});
 	}
+
 
 	const actions = useMemo(() => {
 
@@ -39,17 +52,17 @@ const PortfolioPage = observer(() => {
 			},
 			{
 				icon: <AddPhotoAlternateIcon/>,
-				name: "Изменить порядок",
-				onClick: changeOrder
+				name: `Сохранить размер`,
+				onClick: changeHeight
 			},
 			{
 				icon: <AddPhotoAlternateIcon/>,
-				name: `Изменить высоту, текущая высота: ${project.rowHeight}`,
-				onClick: changeHeight
+				name: user.changeOrderMode ? "Сохранить порядок" : "Изменить порядок",
+				onClick: changeOrder
 			}
 		]
 
-	}, [])
+	}, [user.changeOrderMode, project.rowHeight])
 
 	return (
 		<Box>
@@ -64,8 +77,13 @@ const PortfolioPage = observer(() => {
 			/>
 
 			<Gallery
-				items={project.items}
+				items={project.items?.slice().sort((a, b) => a.order - b.order)}
 				type={'project'}
+			/>
+
+			<FullscreenImage
+				src={modal.projectImage}
+				open={modal.projectImageOpen}
 			/>
 
 			<AdminComponent>

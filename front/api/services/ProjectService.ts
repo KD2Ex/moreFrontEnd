@@ -41,4 +41,12 @@ export default class ProjectService {
 		return $api.post(`/project/update/${id}`, data)
 	}
 
+	static async updateOrder(items) {
+		return $api.post(`/project/updateOrder`, items)
+	}
+
+	static async updateHeight(items) {
+		return $api.post(`/project/updateHeight`, items)
+	}
+
 }

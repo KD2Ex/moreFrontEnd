@@ -1,6 +1,5 @@
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import {
-	BrowserRouter,
 	createBrowserRouter, RouterProvider,
 } from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
@@ -8,17 +7,22 @@ import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
-import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import user from "./store/user";
+import ParentPage from "./pages/ParentPage/ParentPage.tsx";
 
 function App() {
 
 	const browserRouter = createBrowserRouter([
 		{
 			path: '/',
-			element: <MainPage/>,
+			element: <ParentPage/>,
 			children: [
+				{
+					path: '/',
+					element: <MainPage/>,
+				},
 				{
 					path: '/gallery',
 					element: <GalleryPage/>,
@@ -51,6 +55,7 @@ function App() {
 		>
 			<CssBaseline/>
 			<RouterProvider router={browserRouter}/>
+			
 		</ThemeProvider>
 	)
 }

@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useRef, useState} from 'react';
 import paint from "../../store/paint";
 import PaintItem from "../PaintItem/PaintItem";
 import {sizes} from "../../consts";
-import {Box, Grid, Typography} from "@mui/material";
+import {Box, Grid, Skeleton, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import ActionDialog from "../ActionDialog/ActionDialog";
 import PaintingList from "../PaintingList/PaintingList";
@@ -106,15 +106,20 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 				store={store}
 			/>
 
-
 			{
 				paint.loading
-					? null
+					? <Skeleton
+						animation="wave"
+						sx={{
+							height: '60px'
+						}}
+					/>
 					: (<>
 
 						<Box
 							ref={lastElement}
 							sx={{
+								mt: 8,
 								height: 20,
 								bgcolor: 'cyan'
 							}}

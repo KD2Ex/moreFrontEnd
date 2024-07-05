@@ -163,22 +163,9 @@ const ModalCarousel = ({items, setItems}) => {
 							src={image.name}
 							slide={swipe}
 							sliderRef={sliderRef}
+							fit={'contain'}
 						/>
 
-
-						{/*<Box
-							draggable={false}
-							component={'img'}
-							src={import.meta.env.VITE_BASE_URL + image.name}
-							sx={{
-								width: '100%',
-								height: '100%',
-								objectFit: 'contain',//item.objectFit,
-								//filter: isShiftPressed && items.length !== 1 ? "brightness(50%)" : 'none',
-								//color: isShiftPressed ? "red" : 'none',
-							}}
-						>
-						</Box>*/}
 					</Box>
 
 				))}

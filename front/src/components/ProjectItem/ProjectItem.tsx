@@ -53,7 +53,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 				spacing={{xs: 0, md: 2}}
 				sx={{
 					width: '100%',
-					height: {lg: `${project.rowHeight}px`, xs: '100%'}
+					height: {lg: `${item.height ? item.height : 400}px`, xs: '100%'}
 
 				}}
 				onContextMenu={(e) => {
@@ -68,7 +68,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					xl={4}
 					xs={12}
 					sx={{
-						maxHeight: '100%',
+						height: '100%',
 						minHeight: '300px'
 					}}
 				>
@@ -86,6 +86,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					</Box>*/}
 
 					<ProjectCarousel
+						height={item.height}
 						items={item.images}
 					/>
 
@@ -121,8 +122,6 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 								}}
 							>
 								{item.desc}
-
-
 								{/*
 
 								На фото представлен один из проектов нашего бюро. В процессе работы мы назвали его "Игры разума", не просто так. Заказчик обратился к нам уже с готовым проектом, залитым фундаментом, но ощущением, что имеющийся проект не откликается его мечтам, желаниям, потребностям. Объясняется это достаточно просто. Это было типовое решение. Профессионально выполненое, но типовое.

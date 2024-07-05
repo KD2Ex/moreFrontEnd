@@ -63,6 +63,8 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 
 	useEffect(() => {
 
+		if (!user.isAdmin) return
+		console.log(user.isAdmin)
 		document.body.addEventListener('keydown', (e) => {
 			setIsShiftPressed(e.key === "Shift")
 		})
@@ -72,6 +74,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 		})
 
 	}, [])
+
 
 	const handleDelete = async (id: number) => {
 
@@ -105,7 +108,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 		console.log('drop', item)
 		console.log(currentDragItem)
 
-		//paint.swapPaints(currentDragItem, item);
+		store.swapItems(currentDragItem, item);
 	}
 
 	return (

@@ -1,9 +1,13 @@
-import React, {useCallback, useEffect, useRef} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import QuickPinchZoom, {make3dTransformValue} from "react-quick-pinch-zoom";
 import {Box} from "@mui/material";
-import loginPage from "../../pages/LoginPage/LoginPage";
+import { ImageGroup, Image } from 'react-fullscreen-image'
+import {useSearchParams} from "react-router-dom";
+import FullscreenImage from "../FullscreenImage/FullscreenImage";
 
-const ImageZoom = ({src, slide, sliderRef}) => {
+const ImageZoom = ({src, slide, sliderRef, fit}) => {
+
+	const [open, setOpen] = useState(false)
 
 	const imgRef = useRef()
 	const parentRef = useRef()
@@ -52,8 +56,15 @@ const ImageZoom = ({src, slide, sliderRef}) => {
 
 	}
 
+	const handleClick = () => {
+
+		setOpen(true)
+
+	}
+
 	return (
 		<Box
+			onClick={handleClick}
 			sx={{
 				height: '100%'
 			}}
@@ -74,7 +85,7 @@ const ImageZoom = ({src, slide, sliderRef}) => {
 					sx={{
 						width: '100%',
 						height: '100%',
-						objectFit: 'cover',
+						objectFit: fit,
 						//item.objectFit,
 						//filter: isShiftPressed && items.length !== 1 ? "brightness(50%)" : 'none',
 						//color: isShiftPressed ? "red" : 'none',
@@ -82,7 +93,26 @@ const ImageZoom = ({src, slide, sliderRef}) => {
 				>
 				</Box>
 
+				{/*<Image
+					draggable={false}
+					ref={imgRef}
+					src={import.meta.env.VITE_BASE_URL + src}
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						right: 0,
+						bottom: 0,
+						height: '100%',
+						width: '100%',
+						objectFit: fit,
+					}}
+				/>*/}
+
 			</QuickPinchZoom>
+
+
+
 		</Box>
 
 	);

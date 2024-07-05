@@ -1,10 +1,13 @@
 import React from 'react';
-import {Box, Popover} from "@mui/material";
+import {Box, Popover, TextField} from "@mui/material";
 import SettingDelete from "../SettingDeletePainting/SettingDelete";
 import SettingEditPainting from "../SettingEditPainting/SettingEditPainting";
 import project from "../../store/project";
+import SettingChangeSize from "../SettingChangeSize/SettingChangeSize";
+import SettingProjectHeight from "../SettingProjectHeight/SettingProjectHeight";
 
 const ProjectPopover = ({anchor, setAnchor, item}) => {
+
 
 	const open = Boolean(anchor)
 
@@ -36,7 +39,9 @@ const ProjectPopover = ({anchor, setAnchor, item}) => {
 					gap: 1
 				}}
 			>
-
+				<SettingProjectHeight
+					item={item}
+				/>
 				<SettingEditPainting
 					item={item}
 					func={project.openEdit.bind(project)}
@@ -47,7 +52,6 @@ const ProjectPopover = ({anchor, setAnchor, item}) => {
 					id={item.id}
 					store={project}
 				/>
-
 			</Box>
 
 		</Popover>

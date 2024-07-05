@@ -54,7 +54,7 @@ class Paint {
 		this.sortId = id;
 	}
 
-	swapPaints(currentItem: IPaint, targetItem: IPaint) {
+	swapItems(currentItem: IPaint, targetItem: IPaint) {
 
 		this.items = this.items.map(item => {
 

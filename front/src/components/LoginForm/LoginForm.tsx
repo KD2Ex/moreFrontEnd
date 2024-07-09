@@ -1,8 +1,9 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Box, Button, Checkbox, FormControlLabel, FormGroup, TextField} from "@mui/material";
 import {Link} from "react-router-dom";
 import user from "../../store/user";
 import { useNavigate } from "react-router-dom";
+import alert from "../../store/alert.ts";
 
 const LoginForm = () => {
 
@@ -24,15 +25,25 @@ const LoginForm = () => {
 		setShowPassword(e.target.checked)
 	}
 
-	const handleClick = async () => {
+	const handleClick = async (e) => {
 
+		e.preventDefault();
+		
 		const isAuth = await user.login(login, password)
 
 		if (isAuth) {
 			navigate('/gallery')
+			alert.openAlert("wElcoMe bAcK, coMMandeR", "success");
+		} else {
+			alert.openAlert("Неправильный логин или пароль", "error");
 		}
-
 	}
+	
+	useEffect(() => {
+		
+		alert.openAlert("hi", "success")
+		
+	}, [])
 
 	return (
 		<Box
@@ -58,7 +69,8 @@ const LoginForm = () => {
 				type={!showPassword && 'password'}
 			/>
 
-			<FormGroup>
+			<FormGroup
+			>
 				<FormControlLabel
 					control={
 						(
@@ -70,16 +82,24 @@ const LoginForm = () => {
 					}
 					label={'Показать пароль'}
 				/>
+
+				
 			</FormGroup>
 
 
-			<Button
-				variant={'contained'}
-				onClick={handleClick}
+			<form
+				onSubmit={handleClick}
 			>
+				<Button
+					variant={'contained'}
+					//onClick={handleClick}
+					type={"submit"}
+				>
 
-				Войти
-			</Button>
+					Войти
+				</Button>
+			</form>
+			
 
 			<Button
 				component={Link}

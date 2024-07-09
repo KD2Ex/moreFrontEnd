@@ -11,6 +11,7 @@ import {CssBaseline, ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import user from "./store/user";
 import ParentPage from "./pages/ParentPage/ParentPage.tsx";
+import GlobalAlerts from "./components/GlobalAlert/GlobalAlerts.tsx";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
 		>
 			<CssBaseline/>
 			<RouterProvider router={browserRouter}/>
+			<GlobalAlerts/>
 			
 		</ThemeProvider>
 	)

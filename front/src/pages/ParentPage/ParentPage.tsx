@@ -1,5 +1,6 @@
 ﻿import NavBar from "../../components/NavBar/NavBar.tsx";
 import {Outlet} from "react-router-dom";
+import GlobalAlerts from "../../components/GlobalAlert/GlobalAlerts.tsx";
 
 const ParentPage = () => {
     return (
@@ -8,6 +9,7 @@ const ParentPage = () => {
             <NavBar/>
             
             <Outlet/>
+
             
         </div>
     );

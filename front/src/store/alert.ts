@@ -1,6 +1,4 @@
-import {IPaint} from "../models/interfaces/IPaint";
 import {makeAutoObservable} from "mobx";
-
 
 class Alert {
 
@@ -14,6 +12,7 @@ class Alert {
 
 	openAlert(message: string, severity: string) {
 
+		
 		this.message = message;
 		this.severity = severity;
 		this.isOpen = true;

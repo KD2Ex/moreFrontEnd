@@ -185,7 +185,6 @@ const MainPage = () => {
 			
 			<Outlet/>
 
-			<GlobalAlerts/>
 
 		</Box>
 	);

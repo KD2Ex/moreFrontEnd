@@ -1,5 +1,4 @@
-import $api from "../http";
-import loginPage from "../../src/pages/LoginPage/LoginPage";
+import $api from "../../src/api/http";
 
 
 export default class PaintingService {

@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from "axios";
-import alert from "../../src/store/alert";
+import alert from "../../store/alert.ts";
 
 
 const $api = axios.create({

@@ -1,11 +1,8 @@
-import React from 'react';
-import {Box, Grid, TextField, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import LoginForm from "../../components/LoginForm/LoginForm";
 
 const AdminPage = () => {
-
-
-
+	
 	return (
 		<Box
 			sx={{

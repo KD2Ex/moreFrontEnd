@@ -1,4 +1,4 @@
-import $api from "../http";
+import $api from "../../src/api/http";
 
 
 export default class ProjectService {

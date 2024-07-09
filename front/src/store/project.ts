@@ -1,11 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import ProjectService from "../../api/services/ProjectService";
 import {IProject} from "../models/interfaces/IProject";
-import paint from "./paint";
-import {Form} from "react-router-dom";
 import alert from "./alert";
-import {IPaint} from "../models/interfaces/IPaint";
-
 
 class Project {
 
@@ -13,10 +9,10 @@ class Project {
 		makeAutoObservable(this)
 	}
 
-	items: IProject[];
+	items: IProject[] = [];
 	rowHeight: number = 400;
 	loading: boolean = false;
-	totalPages: number;
+	totalPages: number = 0;
 
 	editItem: IProject | null = null;
 	editModalOpen: boolean = false;
@@ -43,15 +39,6 @@ class Project {
 
 	validate(item: IProject) {
 
-		const trueItem = Object.entries(item);
-
-
-
-		/*for (let i = 0; i < trueItem.length; i++) {
-
-			if (!trueItem[i][1]) return false;
-
-		}*/
 		return item.title && (item.images?.length || item.files?.length);
 
 	}
@@ -156,7 +143,9 @@ class Project {
 			}
 		})
 		console.log(response)
-
+		
+		
+		
 		this.setItems([...this.items, ...response.items]);
 
 

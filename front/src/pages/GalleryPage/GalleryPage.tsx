@@ -1,5 +1,5 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {Box, Popover, TextField} from "@mui/material";
+import {useEffect, useMemo, useState} from 'react';
+import {Box} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
 import Gallery from "../../components/Gallery/Gallery";
@@ -83,7 +83,8 @@ const GalleryPage = observer(() => {
 	return (
 		<Box
 			sx={{
-				width: '100%'
+				maxWidth: '95%',
+				margin: 'auto'
 			}}
 		>
 

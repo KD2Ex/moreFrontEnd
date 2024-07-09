@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Box, Button, Checkbox, FormControlLabel, FormGroup, TextField} from "@mui/material";
 import {Link} from "react-router-dom";
 import user from "../../store/user";
@@ -11,6 +11,7 @@ const LoginForm = () => {
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 
+	
 	const navigate = useNavigate()
 
 	const handleLoginChange = (e) => {
@@ -25,10 +26,8 @@ const LoginForm = () => {
 		setShowPassword(e.target.checked)
 	}
 
-	const handleClick = async (e) => {
+	const handleClick = async () => {
 
-		e.preventDefault();
-		
 		const isAuth = await user.login(login, password)
 
 		if (isAuth) {
@@ -39,12 +38,12 @@ const LoginForm = () => {
 		}
 	}
 	
-	useEffect(() => {
-		
-		alert.openAlert("hi", "success")
-		
-	}, [])
-
+	const loginOnEnter = (e) => {
+		if (e.key === "Enter") {
+			handleClick();
+		}
+	}
+	
 	return (
 		<Box
 			sx={{
@@ -59,6 +58,7 @@ const LoginForm = () => {
 				size={'small'}
 				value={login}
 				onChange={handleLoginChange}
+				onKeyDown={loginOnEnter}
 			/>
 
 			<TextField
@@ -67,6 +67,7 @@ const LoginForm = () => {
 				value={password}
 				onChange={handlePasswordChange}
 				type={!showPassword && 'password'}
+				onKeyDown={loginOnEnter}
 			/>
 
 			<FormGroup
@@ -87,18 +88,13 @@ const LoginForm = () => {
 			</FormGroup>
 
 
-			<form
-				onSubmit={handleClick}
+			<Button
+				variant={'contained'}
+				onClick={handleClick}
 			>
-				<Button
-					variant={'contained'}
-					//onClick={handleClick}
-					type={"submit"}
-				>
 
-					Войти
-				</Button>
-			</form>
+				Войти
+			</Button>
 			
 
 			<Button

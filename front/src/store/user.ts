@@ -7,7 +7,7 @@ class User {
 		makeAutoObservable(this)
 	}
 
-	isAdmin = false;
+	isAdmin = true;
 	adminView = false;
 	changeOrderMode = false;
 

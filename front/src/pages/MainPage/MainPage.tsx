@@ -1,25 +1,10 @@
-import {useEffect} from 'react';
 import {Outlet} from 'react-router-dom'
 import {Box, Divider, Grid, Typography} from "@mui/material";
-import GlobalAlerts from "../../components/GlobalAlert/GlobalAlerts";
-import technique from "../../store/technique";
-import material from "../../store/material";
+
 
 const MainPage = () => {
 
-	useEffect(() => {
-		(async () => {
-
-			if (!technique.loading) {
-				await technique.getItems()
-			}
-
-			if (!material.loading) {
-				await material.getItems()
-			}
-
-		})()
-	}, [])
+	
 
 	return (
 		<Box

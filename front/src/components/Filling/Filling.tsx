@@ -1,24 +1,15 @@
-import React, {FC, useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
-import loginPage from "../../pages/LoginPage/LoginPage";
 import {observer} from "mobx-react-lite";
 
 
 interface FillingProps {
-	md: number,
+	space: number,
+	img?: string | null,
 	title: string,
-	img: string
 }
 
 const Filling: FC<FillingProps> = observer(({space, img, title}) => {
-
-
-
-	useEffect(() => {
-
-
-
-	}, [])
 
 
 	return (
@@ -38,7 +29,6 @@ const Filling: FC<FillingProps> = observer(({space, img, title}) => {
 					height: '100%',
 					display: 'flex',
 					bgcolor: '#1dacdc'
-
 				}}
 			>
 				<Typography

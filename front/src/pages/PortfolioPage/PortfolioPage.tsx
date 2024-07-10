@@ -79,6 +79,7 @@ const PortfolioPage = observer(() => {
 			<Gallery
 				items={project.items?.slice().sort((a, b) => a.order - b.order)}
 				type={'project'}
+				store={project}
 			/>
 
 			<FullscreenImage

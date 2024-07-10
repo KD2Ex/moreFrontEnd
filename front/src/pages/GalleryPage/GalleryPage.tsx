@@ -102,6 +102,7 @@ const GalleryPage = observer(() => {
 			<Gallery
 				items={paint.items.slice().sort(paint.sort)}
 				type={"painting"}
+				store={paint}
 			/>
 
 			<ModalAddPainting

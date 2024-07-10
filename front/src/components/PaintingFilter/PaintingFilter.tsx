@@ -28,7 +28,6 @@ const PaintingFilter = observer(() => {
 		let filtered = paint.items;
 		let filter = paint.items;
 
-
 		paint.setFilters({techniqueId: techniqueId, materialId: materialId})
 
 		if (materialId) {
@@ -41,7 +40,6 @@ const PaintingFilter = observer(() => {
 			filter = filter.filter(i => i.technique?.id === techniqueId);
 
 		}
-
 
 		if (sort) {
 
@@ -134,7 +132,6 @@ const PaintingFilter = observer(() => {
 				items={[{id: 0, name: 'Показывать все'}, ...technique.items]}
 				deleteFunc={() => false}
 			/>
-
 
 			<ParamSelect
 				id={sort}

@@ -1,4 +1,5 @@
 import {createTheme} from "@mui/material";
+import {enUS, ruRU} from "@mui/material/locale";
 
 export let theme = createTheme({
 	palette: {
@@ -54,4 +55,6 @@ export let theme = createTheme({
 			}
 		},
 	}
-})
+},
+	enUS
+)

@@ -2,9 +2,13 @@ import $api from "../../src/api/http";
 
 export default class MaterialService {
 
-	static async fetchMaterials() {
+	static async fetchMaterials(id: number) {
 
-		const response = await $api.get('/material');
+		const response = await $api.get('/material', {
+			params: {
+				localeId: id
+			}
+		});
 
 		return response.data;
 

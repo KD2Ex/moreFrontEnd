@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import {Box, Button, Checkbox, FormControlLabel, FormGroup, TextField} from "@mui/material";
 import {Link} from "react-router-dom";
 import user from "../../store/user";

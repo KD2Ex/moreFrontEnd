@@ -10,6 +10,7 @@ import {observer} from "mobx-react-lite";
 import {IPaint} from "../../models/interfaces/IPaint";
 import PaintItem from "../PaintItem/PaintItem";
 import ProjectItem from "../ProjectItem/ProjectItem";
+import project from "../../store/project";
 
 
 let titles = [
@@ -35,30 +36,36 @@ function getRandomInt(max: number) {
 		yield Math.floor(Math.random() * i);
 		yield i
 	}*/
-
 	return Math.floor(Math.random() * max);
 }
 
 
-const components = {
-	painting: PaintItem,
-	project: ProjectItem,
+const item = {
+	painting: {
+		component: PaintItem,
+		store: paint
+	},
+	project: {
+		component: ProjectItem,
+		store: project
+	}
 }
 
-
-interface PaintingListProps {
+interface ItemsListProps {
 	items: IPaint[],
 	type: string,
-	isShiftPressed: boolean
+	store: any,
+	component?: any
 }
 
-const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
+const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [currentDragItem, setCurrentDragItem] = useState(null);
 
+	const Component = item[type].component;
+	const store = item[type].store;
 
-	const Component = components[type];
 	let gridSize = 0;
 
 	useEffect(() => {
@@ -77,10 +84,8 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 
 
 	const handleDelete = async (id: number) => {
-
 		await store.delete(id)
 	}
-
 
 	function dragStartHandler(e, item) {
 		console.log('drag', item)
@@ -116,8 +121,7 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 			container
 			spacing={2}
 		>
-
-			{items?.map((item, index, array) => {
+			{items?.map((item, index) => {
 
 				const rowGridSpace = 12 - gridSize % 12;
 				let additiveComponent = null;
@@ -176,7 +180,6 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 
 							<Component
 								item={item}
-								height={paint.rowHeight}
 							/>
 
 						</Grid>
@@ -206,4 +209,4 @@ const PaintingList: FC<PaintingListProps> = observer(({items, type, store}) => {
 	);
 });
 
-export default PaintingList;
+export default ItemsList;

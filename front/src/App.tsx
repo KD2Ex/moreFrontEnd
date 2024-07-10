@@ -12,6 +12,8 @@ import {theme} from "./theme";
 import user from "./store/user";
 import ParentPage from "./pages/ParentPage/ParentPage.tsx";
 import GlobalAlerts from "./components/GlobalAlert/GlobalAlerts.tsx";
+import LocaleText from "./components/Locale/LocaleText/LocaleText";
+import locale from "./store/locale";
 
 function App() {
 
@@ -45,8 +47,12 @@ function App() {
 	])
 
 	useEffect(() => {
+		(async () => {
 
-		user.checkAuth();
+
+			user.checkAuth();
+
+		})()
 
 	}, [])
 
@@ -57,7 +63,8 @@ function App() {
 			<CssBaseline/>
 			<RouterProvider router={browserRouter}/>
 			<GlobalAlerts/>
-			
+
+
 		</ThemeProvider>
 	)
 }

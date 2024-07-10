@@ -7,15 +7,15 @@ import {observer} from "mobx-react-lite";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import user from "../../store/user";
 import {useSearchParams} from "react-router-dom";
+import paint from "../../store/paint";
 
 interface PaintItemProps {
 	item: IPaint,
-	onClick
+	height: number
 }
 
 const PaintItem: FC<PaintItemProps> = observer(({
 		item,
-		height,
 	}: PaintItemProps) =>
 {
 
@@ -33,14 +33,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 		if (event.button === 0) setSearchParams({id: item.id})
 		//if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
-
-
 	}
-
-	useEffect(() => {
-
-
-	}, [])
 
 	return (
 		<>
@@ -53,10 +46,9 @@ const PaintItem: FC<PaintItemProps> = observer(({
 			</AdminComponent>
 
 			<Box
-
 				onClick={handleClick}
 				sx={{
-					height: `${height}px`,
+					height: `${paint.rowHeight}px`,
 					backgroundColor: '#243a48',
 					p: 0,
 					borderRadius: 2,
@@ -67,9 +59,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						//backdropFilter: 'brightness(60%)',
 						'& img': {
 							filter: 'brightness(45%)',
-
 						},
-
 					}
 				}}
 				onContextMenu={(e) => {

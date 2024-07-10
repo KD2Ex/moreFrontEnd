@@ -2,6 +2,7 @@ import {IMaterial} from "../models/interfaces/IMaterial";
 import MaterialService from "../../api/services/MaterialService";
 import {makeAutoObservable} from "mobx";
 import alert from "./alert";
+import locale from "./locale";
 
 class Material {
 
@@ -19,7 +20,7 @@ class Material {
 		if (this.items.length === 0) {
 
 			this.loading = true;
-			const response = await MaterialService.fetchMaterials();
+			const response = await MaterialService.fetchMaterials(locale.currentLocale.id);
 
 			this.setItems(response)
 		}

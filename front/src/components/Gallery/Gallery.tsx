@@ -1,43 +1,26 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import paint from "../../store/paint";
-import PaintItem from "../PaintItem/PaintItem";
-import {sizes} from "../../consts";
-import {Box, Grid, Skeleton, Typography} from "@mui/material";
+import {Box, Skeleton } from "@mui/material";
 import {observer} from "mobx-react-lite";
 import ActionDialog from "../ActionDialog/ActionDialog";
-import PaintingList from "../PaintingList/PaintingList";
+import ItemsList from "../PaintingList/ItemsList";
 import {GalleryType} from "../../models/types/GalleryType";
-import portfolio from "../../store/project";
-import switchBaseClasses from "@mui/material/internal/switchBaseClasses";
-import {storeAnnotation} from "mobx/dist/api/decorators";
+import PaintItem from "../PaintItem/PaintItem.tsx";
+import locale from "../../store/locale";
+
 
 interface GalleryProps {
 	items: any[],
-	type: GalleryType
+	type: GalleryType,
+	store: any,
 }
 
-const Gallery = observer(({items, type}: GalleryProps) => {
+const Gallery = observer(({items, type, store}: GalleryProps) => {
 
 	const [page, setPage] = useState(1);
 
 	const lastElement = useRef();
 	const observer = useRef();
-
-	const store = useMemo(() => {
-		let store;
-
-		switch (type) {
-			case "painting":
-				store = paint
-				break;
-			case "project":
-				store = portfolio
-				break;
-		}
-
-		return store;
-	}, [type])
-
 
 	useEffect(() => {
 
@@ -61,11 +44,13 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 	useEffect(() => {
 
 		(async () => {
-
+			if (!locale.loading) {
+				await locale.getLocales();
+			}
 			console.log("Page:", page)
 			if (store.loading) return;
 
-			store.getItems(page, 6)
+			await store.getItems(page, 6)
 		})()
 
 	}, [page])
@@ -100,12 +85,11 @@ const Gallery = observer(({items, type}: GalleryProps) => {
 
 			<ActionDialog
 			/>
-			<PaintingList
+			<ItemsList
 				items={items}
 				type={type}
-				store={store}
 			/>
-
+			
 			{
 				paint.loading
 					? <Skeleton

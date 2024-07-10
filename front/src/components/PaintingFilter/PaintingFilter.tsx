@@ -6,12 +6,37 @@ import technique from "../../store/technique";
 import paint from "../../store/paint";
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
+import locale from "../../store/locale";
 
 const sortingMethods = [
-	{id: 0, name: 'Как задумано'},
-	{id: 1, name: 'По возрастанию цены'},
-	{id: 2, name: 'По убыванию цены'},
+	{id: 0, name: {
+			'ru': 'Как задумано',
+			'en-US': 'As intended'
+		}},
+	{id: 1, name: {
+			'ru': 'По возрастанию цены',
+			'en-US': 'Ascending price'
+		}},
+	{id: 2, name: {
+			'ru': 'По убыванию цены',
+			'en-US': 'Descending price'
+		}},
 ]
+
+const localeLabel = {
+	materials: {
+		ru: 'Материалы',
+		'en-US': 'Materials'
+	},
+	techs: {
+		ru: 'Техники',
+		'en-US': 'Techniques'
+	},
+	sort: {
+		ru: 'Соритровка',
+		'en-US': 'Sorting'
+	}
+}
 
 const PaintingFilter = observer(() => {
 
@@ -21,6 +46,12 @@ const PaintingFilter = observer(() => {
 	const [sort, setSort] = useState(0);
 
 	useEffect(() => {
+		sortingMethods.forEach(i => i.name = i.name[locale.currentLocale.name])
+
+	}, [])
+
+	useEffect(() => {
+
 
 		paint.setSort(paint.sortPaints, 1);
 
@@ -120,7 +151,7 @@ const PaintingFilter = observer(() => {
 			<ParamSelect
 				id={materialId}
 				setId={setMaterialId}
-				label={'Материалы'}
+				label={localeLabel.materials[locale.currentLocale.name]}
 				items={[{id: 0, name: 'Показывать все'}, ...material.items]}
 				deleteFunc={() => false}
 			/>
@@ -128,7 +159,7 @@ const PaintingFilter = observer(() => {
 			<ParamSelect
 				id={techniqueId}
 				setId={setTechniqueId}
-				label={'Техники'}
+				label={localeLabel.techs[locale.currentLocale.name]}
 				items={[{id: 0, name: 'Показывать все'}, ...technique.items]}
 				deleteFunc={() => false}
 			/>
@@ -137,7 +168,7 @@ const PaintingFilter = observer(() => {
 				id={sort}
 				setId={setSort}
 				items={sortingMethods}
-				label={"Сортировка"}
+				label={localeLabel.sort[locale.currentLocale.name]}
 				deleteFunc={() => false}
 			/>
 

@@ -1,10 +1,12 @@
 import React, {FC, useEffect, useState} from 'react';
 import technique from "../../store/technique";
-import {Button, FormControl, InputLabel, MenuItem, Popover, Select} from "@mui/material";
+import {Button, FormControl, InputLabel, MenuItem, Popover, Select, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
 import {IMaterial} from "../../models/interfaces/IMaterial";
 import AdminComponent from "../AdminComponent/AdminComponent";
+import LocaleText from "../Locale/LocaleText/LocaleText";
+import locale from "../../store/locale";
 
 interface ParamSelectProps {
 	id: number,
@@ -79,7 +81,9 @@ const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, de
 					minWidth: '250px'
 				}}
 			>
-				<InputLabel size={'small'}>{label}</InputLabel>
+				<InputLabel size={'small'}>
+					{label}
+				</InputLabel>
 				<Select
 					size={'small'}
 					value={id}

@@ -6,18 +6,14 @@ import locale from "../../../store/locale";
 
 const LocaleText = observer(({localeList}) => {
 
-    const list = {};
-
-    for(let item of localeList) {
-        list[item.locale] = item.value;
-    }
+    const text = locale.currentLocale
+        ? localeList?.find(i => i.locale === locale.currentLocale.name).value
+        : localeList[0].value;
 
     return (
-        <div>
-            <Typography>
-                {list[locale.currentLocale]}
-            </Typography>
-        </div>
+        <Typography>
+            {text}
+        </Typography>
     );
 });
 

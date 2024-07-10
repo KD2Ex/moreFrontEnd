@@ -38,9 +38,6 @@ const ParentPage = () => {
             
             <NavBar/>
 
-            <LocaleText
-                localeList={list}
-            />
 
             <Outlet/>
 

@@ -1,22 +1,52 @@
 import {Box, Button} from "@mui/material";
 import {Link} from "react-router-dom";
+import LocaleText from "../Locale/LocaleText/LocaleText";
 
 const NavBar = () => {
 
 	const buttons = [
 		{
-			title: 'Главная',
+			title: [
+				{
+					locale: "ru",
+					value: 'Главная'
+				},
+				{
+					locale: 'en-US',
+					value: "Main"
+				}
+			],
 			url: '',
 		},
 		{
-			title: 'Галерея',
+			title: [
+				{
+					locale: "ru",
+					value: 'Галерея'
+				},
+				{
+					locale: 'en-US',
+					value: "Gallery"
+				}
+			],
 			url: '/gallery',
 		},
 		{
-			title: 'Портфолио',
+			title: [
+				{
+					locale: "ru",
+					value: 'Портфолио'
+				},
+				{
+					locale: 'en-US',
+					value: "Projects"
+				}
+			],
 			url: '/portfolio',
 		},
 	]
+
+	console.log(...buttons[0].title)
 
 	return (
 		<Box
@@ -34,7 +64,9 @@ const NavBar = () => {
 					component={Link}
 					to={item.url}
 				>
-					{item.title}
+					<LocaleText
+						localeList={item.title}
+					/>
 				</Button>
 			))}
 

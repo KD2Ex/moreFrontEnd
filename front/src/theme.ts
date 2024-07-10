@@ -5,6 +5,7 @@ export let theme = createTheme({
 	palette: {
 		primary: {
 			main: '#3aa2ad',
+			//main: '#fff3b4',
 			red: '#e34343',
 			hoverRed: '#bd7171'
 		},
@@ -17,7 +18,8 @@ export let theme = createTheme({
 			//default: 'rgb(28,25,25)'
 		},
 		text: {
-			primary: '#84a9b2'
+			//primary: '#84a9b2'
+			primary: '#d5cec0'
 			//primary: '#57a1a4'
 		},
 		mode: 'dark'
@@ -35,7 +37,7 @@ export let theme = createTheme({
 					fontSize: 18,
 				},
 				text: {
-					color: '#84a9b2'
+					color: '#d3ccb8'
 
 				}
 			}

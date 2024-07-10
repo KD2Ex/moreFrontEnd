@@ -49,7 +49,6 @@ const PaintingFilter = observer(() => {
 
 	useEffect(() => {
 
-
 		paint.setSort(paint.sortPaints, 1);
 
 		if (paint.items.length === 0) return;

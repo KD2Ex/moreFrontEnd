@@ -11,15 +11,15 @@ const LanguageChange = observer(() => {
 
         console.log(newLang)
         setLang(newLang);
-        locale.setLocale(newLang)
 
+        locale.setLocale(newLang)
     }
 
     useEffect(() => {
 
         setLang(locale.currentLocale.name)
 
-    }, [])
+    }, [locale.currentLocale.name])
 
     return (
         <ToggleButtonGroup

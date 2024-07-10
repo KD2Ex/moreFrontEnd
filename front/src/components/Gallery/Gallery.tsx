@@ -44,9 +44,7 @@ const Gallery = observer(({items, type, store}: GalleryProps) => {
 	useEffect(() => {
 
 		(async () => {
-			if (!locale.loading) {
-				await locale.getLocales();
-			}
+
 			console.log("Page:", page)
 			if (store.loading) return;
 

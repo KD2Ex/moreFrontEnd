@@ -13,7 +13,7 @@ const ParentPage = () => {
     useEffect(() => {
         (async () => {
 
-            await locale.getLocales();
+            await locale.checkLocale();
             await technique.getItems()
             await material.getItems()
 

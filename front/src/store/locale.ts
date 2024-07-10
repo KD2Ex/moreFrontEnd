@@ -1,6 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import LocaleService from "../../api/services/LocaleService";
 import {Simulate} from "react-dom/test-utils";
+import localeText from "../components/Locale/LocaleText/LocaleText";
 
 class Locale {
 
@@ -18,7 +19,14 @@ class Locale {
     }
 
     setLocale(locale: string) {
-        this.currentLocale = {id: 0, name: locale};
+        const id = +this.locales.find(i => i.name === locale).id;
+
+        this.currentLocale = {id: id, name: locale};
+
+        localStorage.setItem("locale", this.currentLocale.name)
+        localStorage.setItem("localeId", this.currentLocale.id.toString())
+
+        window.location.reload();
     }
 
     getSystemLocale() {
@@ -31,16 +39,32 @@ class Locale {
 
         this.loading = true;
 
-        const res = await LocaleService.fetchLocales();
-
-        this.locales = res.map(i => {
-           return {id: i.id, name: i.name}
-        })
-
         this.currentLocale = this.locales.find(i => i.name === this.systemLocale);
         this.loading = false;
 
+        localStorage.setItem("locale", this.currentLocale.name)
+        localStorage.setItem("localeId", this.currentLocale.id.toString())
+
         return true;
+    }
+
+    async checkLocale() {
+        const res = await LocaleService.fetchLocales();
+
+        this.locales = res.map(i => {
+            return {id: i.id, name: i.name}
+        })
+
+        const locale = localStorage.getItem("locale")
+        const id = localStorage.getItem("localeId")
+
+        if (locale) {
+            this.currentLocale = {id: +id, name: locale}
+        } else {
+            await this.getLocales()
+        }
+
+        console.log(this.currentLocale.name)
     }
 
 }

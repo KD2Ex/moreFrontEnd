@@ -16,13 +16,10 @@ class Material {
 
 	async getItems() {
 
-
 		if (this.items.length === 0) {
 
 			this.loading = true;
-			const response = await MaterialService.fetchMaterials(locale.currentLocale.id);
-
-			this.setItems(response)
+			this.items = await MaterialService.fetchMaterials(locale.currentLocale.id);
 		}
 
 		this.loading = false;

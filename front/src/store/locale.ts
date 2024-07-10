@@ -1,7 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import LocaleService from "../../api/services/LocaleService";
 import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 
 class Locale {
 
@@ -12,7 +11,7 @@ class Locale {
     loading = false;
     locales = [];
     systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
-    currentLocale = this.systemLocale;
+    currentLocale = null;
 
     setLocale(locale: string) {
         this.currentLocale = locale;
@@ -25,6 +24,7 @@ class Locale {
     async getLocales() {
 
         if (this.locales.length > 0) return;
+        if (this.loading) return;
 
         this.loading = true;
 
@@ -34,9 +34,10 @@ class Locale {
            return {id: i.id, name: i.name}
         })
 
-
         this.currentLocale = this.locales.find(i => i.name === this.systemLocale);
         this.loading = false;
+
+        return true;
     }
 
 }

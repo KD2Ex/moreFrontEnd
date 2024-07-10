@@ -17,7 +17,7 @@ class Technique {
 	}
 
 	async getItems() {
-
+		if (this.loading) return;
 		try {
 			if (this.items.length === 0) {
 				this.loading = true;

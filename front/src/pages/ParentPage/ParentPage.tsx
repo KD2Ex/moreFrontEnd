@@ -6,24 +6,20 @@ import material from "../../store/material.ts";
 import LocaleText from "../../components/Locale/LocaleText/LocaleText";
 import locale from "../../store/locale";
 
+
+
 const ParentPage = () => {
 
     useEffect(() => {
         (async () => {
 
-            if (!locale.loading) {
-                await locale.getLocales();
-            }
+            await locale.getLocales();
+            await technique.getItems()
+            await material.getItems()
 
-            if (!technique.loading) {
-                await technique.getItems()
-            }
-
-            if (!material.loading) {
-                await material.getItems()
-            }
 
         })()
+
     }, [])
 
     const list = [

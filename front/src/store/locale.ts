@@ -11,10 +11,14 @@ class Locale {
     loading = false;
     locales = [];
     systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
-    currentLocale = null;
+
+    currentLocale = {
+        id: 0,
+        name: this.systemLocale
+    }
 
     setLocale(locale: string) {
-        this.currentLocale = locale;
+        this.currentLocale = {id: 0, name: locale};
     }
 
     getSystemLocale() {
@@ -22,7 +26,6 @@ class Locale {
     }
 
     async getLocales() {
-
         if (this.locales.length > 0) return;
         if (this.loading) return;
 

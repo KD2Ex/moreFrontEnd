@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import ParamSelect from "../ParamSelect/ParamSelect";
 import material from "../../store/material";
 import technique from "../../store/technique";
@@ -7,20 +7,21 @@ import paint from "../../store/paint";
 import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
 import locale from "../../store/locale";
+import LocaleText from "../Locale/LocaleText/LocaleText";
 
 const sortingMethods = [
-	{id: 0, name: {
-			'ru': 'Как задумано',
-			'en-US': 'As intended'
-		}},
-	{id: 1, name: {
-			'ru': 'По возрастанию цены',
-			'en-US': 'Ascending price'
-		}},
-	{id: 2, name: {
-			'ru': 'По убыванию цены',
-			'en-US': 'Descending price'
-		}},
+	{id: 0, name: <LocaleText localeList={[
+			{locale: 'ru', value: 'Как задумано'},
+			{locale: 'en-US', value: 'As intended'}
+		]}/>},
+	{id: 1, name: <LocaleText localeList={[
+			{locale: 'ru', value: 'По возрастанию цены'},
+			{locale: 'en-US', value: 'Ascending price'}
+		]}/>},
+	{id: 2, name: <LocaleText localeList={[
+			{locale: 'ru', value: 'По убыванию цены'},
+			{locale: 'en-US', value: 'Descending price'}
+		]}/>},
 ]
 
 const localeLabel = {
@@ -45,10 +46,6 @@ const PaintingFilter = observer(() => {
 
 	const [sort, setSort] = useState(0);
 
-	useEffect(() => {
-		sortingMethods.forEach(i => i.name = i.name[locale.currentLocale.name])
-
-	}, [])
 
 	useEffect(() => {
 
@@ -141,18 +138,30 @@ const PaintingFilter = observer(() => {
 			}}
 		>
 
-			<Typography
+			<LocaleText
+				localeList={[
+					{
+						locale: "ru",
+						value: "Фильтрация: "
+					},
+					{
+						locale: "en-US",
+						value: "Filtering: "
+					}
+				]}
 				sx={{
 					fontSize: 18
 				}}
-			>
-				Фильтрация:
-			</Typography>
+			/>
+
 			<ParamSelect
 				id={materialId}
 				setId={setMaterialId}
 				label={localeLabel.materials[locale.currentLocale.name]}
-				items={[{id: 0, name: 'Показывать все'}, ...material.items]}
+				items={[{id: 0, name: <LocaleText localeList={[
+						{locale: 'ru', value: 'Показывать все'},
+						{locale: 'en-US', value: 'Show all'}
+					]}/>}, ...material.items]}
 				deleteFunc={() => false}
 			/>
 
@@ -160,7 +169,18 @@ const PaintingFilter = observer(() => {
 				id={techniqueId}
 				setId={setTechniqueId}
 				label={localeLabel.techs[locale.currentLocale.name]}
-				items={[{id: 0, name: 'Показывать все'}, ...technique.items]}
+				items={
+					[
+						{
+							id: 0,
+							name: <LocaleText localeList={[
+								{locale: 'ru', value: 'Показывать все'},
+								{locale: 'en-US', value: 'Show all'}
+							]}/>
+						}
+						, ...technique.items
+					]
+				}
 				deleteFunc={() => false}
 			/>
 

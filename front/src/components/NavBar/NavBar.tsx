@@ -1,6 +1,7 @@
 import {Box, Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import LocaleText from "../Locale/LocaleText/LocaleText";
+import LanguageChange from "../LanguageChange/LanguageChange";
 
 const NavBar = () => {
 
@@ -52,25 +53,44 @@ const NavBar = () => {
 		<Box
 			sx={{
 				display: 'flex',
-				justifyContent: 'center',
-				my: 2,
-				gap: 2
+
 			}}
 		>
+			<Box
+				sx={{
+					flex: 1,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					my: 2,
+					gap: 2
+				}}
+			>
 
-			{buttons.map((item, index) => (
-				<Button
-					key={index}
-					component={Link}
-					to={item.url}
-				>
-					<LocaleText
-						localeList={item.title}
-					/>
-				</Button>
-			))}
+				{buttons.map((item, index) => (
+					<Button
+						key={index}
+						component={Link}
+						to={item.url}
+					>
+						<LocaleText
+							localeList={item.title}
+						/>
+					</Button>
+				))}
 
+
+			</Box>
+			<Box
+				sx={{
+					alignItems: 'center',
+					display: 'flex'
+				}}
+			>
+				<LanguageChange/>
+			</Box>
 		</Box>
+
 	);
 };
 

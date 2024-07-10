@@ -4,14 +4,14 @@ import {observer} from "mobx-react-lite";
 import locale from "../../../store/locale";
 
 
-const LocaleText = observer(({localeList}) => {
+const LocaleText = observer(({localeList, ...props}) => {
 
     const text = locale.currentLocale
         ? localeList?.find(i => i.locale === locale.currentLocale.name).value
         : localeList[0].value;
 
     return (
-        <Typography>
+        <Typography {...props}>
             {text}
         </Typography>
     );

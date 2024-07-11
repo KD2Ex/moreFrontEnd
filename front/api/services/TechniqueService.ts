@@ -2,18 +2,22 @@ import $api from "../../src/api/http";
 
 export default class TechniqueService {
 
-	static async fetchTechniques() {
+	static async fetchTechniques(id: number) {
 
-		const response = await $api.get('/technique');
+		const response = await $api.get('/technique', {
+			params: {
+				localeId: id
+			}
+		});
 
 		return response.data;
 
 	}
 
-	static async add(name: string) {
+	static async add(names: object[]) {
 
 		return $api.post('/technique', {
-			name
+			names
 		});
 
 	}

@@ -5,6 +5,7 @@ import {Box, Button, Divider, Grid, Icon, IconButton, Typography} from "@mui/mat
 import {getWappLink} from "../../consts";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LocaleText from "../Locale/LocaleText/LocaleText";
 
 const ModalViewContent = ({item}) => {
 
@@ -55,7 +56,6 @@ const ModalViewContent = ({item}) => {
 				}}
 			>
 
-
 				<ModalInfo
 					item={item}
 				/>
@@ -73,14 +73,16 @@ const ModalViewContent = ({item}) => {
 						gap: 1
 					}}
 				>
-					<Typography
+					<LocaleText
 						fontSize={18}
 						sx={{
-							//fontStyle: 'italic'
+							fontWeight: 'bold'
 						}}
-					>
-						Купить картину -
-					</Typography>
+						localeList={[
+							{locale: 'ru', value: `Купить картину -`},
+							{locale: 'en-US', value: `Buy this painting -`},
+						]}
+					/>
 
 					<IconButton
 						onClick={handleClick}

@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Box, Button, Popover, TextField, Typography} from "@mui/material";
 import MaterialService from "../../../api/services/MaterialService";
 import material from "../../store/material";
+import crud from "../../store/crud";
 
-const AddFilterParam = ({asyncFunc}) => {
+const AddFilterParam = ({asyncFunc, items}) => {
 
 	const [open, setOpen] = useState(false)
 	const [anchor, setAnchor] = useState(false)
@@ -31,10 +32,10 @@ const AddFilterParam = ({asyncFunc}) => {
 
 		if (!value && !enValue) return;
 
-		const close = await asyncFunc([
+		const close = await crud.addItem([
 			{text: value, localeId: 1},
 			{text: enValue, localeId: 2},
-		], MaterialService.add, material.items);
+		], asyncFunc, items)
 
 		if (!close) return;
 
@@ -115,8 +116,6 @@ const AddFilterParam = ({asyncFunc}) => {
 						OK
 					</Button>
 				</Box>
-
-
 
 			</Popover>
 			<Button

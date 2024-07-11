@@ -25,7 +25,10 @@ class Locale {
     }
 
     setLocale(locale: string, withReload: boolean) {
-        const id = +this.locales.find(i => i.name === locale).id;
+        console.log(locale)
+        console.log(this.locales)
+
+        const id = this.locales.find(i => i.name === locale).id;
 
         this.currentLocale = {id: id, name: locale};
 
@@ -62,11 +65,10 @@ class Locale {
 
         if (locale) {
             this.currentLocale = {id: +id, name: locale}
-            this.isLocaleLoaded = true;
         } else {
-            this.setLocale(this.locales.find(i => i.name === this.systemLocale), false)
+            this.setLocale(this.locales.find(i => i.name === this.systemLocale).name, false)
         }
-
+        this.isLocaleLoaded = true;
         console.log(this.currentLocale.name)
     }
 

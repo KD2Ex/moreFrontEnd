@@ -20,10 +20,6 @@ const ModalView = observer(() => {
 	const [open, setOpen] = useState(false);
 	const [item, setItem] = useState<IPaint | null>(null);
 
-
-
-
-
 /*	useEffect(() => {
 		setItem(modal.paintingItem);
 		setEditMode(modal.editMode);

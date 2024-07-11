@@ -2,6 +2,7 @@ import {ITechnique} from "../models/interfaces/ITechnique";
 import TechniqueService from "../../api/services/TechniqueService";
 import {makeAutoObservable} from "mobx";
 import alert from "./alert";
+import locale from "./locale";
 
 
 class Technique {
@@ -18,7 +19,7 @@ class Technique {
 		try {
 			if (this.items.length === 0) {
 				this.loading = true;
-				this.items = await TechniqueService.fetchTechniques();
+				this.items = await TechniqueService.fetchTechniques(locale.currentLocale.id);
 			}
 
 			this.loading = false;

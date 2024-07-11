@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, Divider, Typography} from "@mui/material";
 import material from "../../store/material";
+import LocaleText from "../Locale/LocaleText/LocaleText";
 
 const ModalInfo = ({item}) => {
 
@@ -13,21 +14,19 @@ const ModalInfo = ({item}) => {
 			}}
 		>
 
-
 			<Typography
 				fontSize={36}
 			>
 				{item?.title}
 			</Typography>
 
-			<Typography
+			<LocaleText
 				variant={'h5'}
-				sx={{
-
-				}}
-			>
-				Цена: {item.price} ₽
-			</Typography>
+				localeList={[
+					{locale: 'ru', value: `Цена: ${item.price} ₽ `},
+					{locale: 'en-US', value: `Cost: ${item.price} € `},
+				]}
+			/>
 
 			<Typography
 				sx={{
@@ -39,30 +38,30 @@ const ModalInfo = ({item}) => {
 				{item.desc}
 			</Typography>
 
-
-
 			<Box>
-				<Typography
-					//variant={'h6'}
+				<LocaleText
 					fontSize={18}
-				>
-					Размеры: {item.width} x {item.height} см
+					localeList={[
+						{locale: 'ru', value: `Размеры: ${item.width} x ${item.height} мм`},
+						{locale: 'en-US', value: `Dimensions: ${item.width} x ${item.height} mm`},
+					]}
+				/>
 
-				</Typography>
-
-				<Typography
+				<LocaleText
 					fontSize={16}
-				>
+					localeList={[
+						{locale: 'ru', value: `Материал: ${item.material ? item.material.name : "Не указано"}`},
+						{locale: 'en-US', value: `Material: ${item.material ? item.material.name : "Not specified"}`},
+					]}
+				/>
 
-					Материал: {item.material?.name ? item.material.name : "Не указано"}
-
-				</Typography>
-
-				<Typography
+				<LocaleText
 					fontSize={16}
-				>
-					Техника: {item.technique?.name ? item.technique.name : "Не указано"}
-				</Typography>
+					localeList={[
+						{locale: 'ru', value: `Техника: ${item.technique ? item.technique.name : "Не указано"}`},
+						{locale: 'en-US', value: `Technique: ${item.technique ? item.technique.name : "Not specified"}`},
+					]}
+				/>
 
 			</Box>
 

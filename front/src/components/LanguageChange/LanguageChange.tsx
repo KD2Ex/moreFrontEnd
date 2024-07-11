@@ -29,8 +29,8 @@ const LanguageChange = observer(() => {
             onChange={handleChange}
             exclusive
         >
-            <ToggleButton value={'ru'}>RU</ToggleButton>
-            <ToggleButton value={'en-US'}>EN</ToggleButton>
+            <ToggleButton value={'ru'} disabled={lang === 'ru'}>RU</ToggleButton>
+            <ToggleButton value={'en-US'} disabled={lang === 'en-US'}>EN</ToggleButton>
         </ToggleButtonGroup>
     );
 });

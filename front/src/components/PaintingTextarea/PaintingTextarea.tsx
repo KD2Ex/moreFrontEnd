@@ -9,6 +9,8 @@ import technique from "../../store/technique";
 import AddFilterParam from "../AddFilterParam/AddFilterParam";
 import ParamSelect from "../ParamSelect/ParamSelect";
 import crud from "../../store/crud";
+import MaterialService from "../../../api/services/MaterialService";
+import TechniqueService from "../../../api/services/TechniqueService";
 
 const PaintingTextarea = observer(({item, setItem}) => {
 
@@ -161,7 +163,8 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				/>
 
 				<AddFilterParam
-					asyncFunc={crud.addItem}
+					asyncFunc={MaterialService.add}
+					items={material.items}
 				/>
 
 			</Box>
@@ -181,7 +184,8 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				/>
 
 				<AddFilterParam
-					asyncFunc={technique.addItem.bind(technique)}
+					asyncFunc={TechniqueService.add}
+					items={technique.items}
 				/>
 			</Box>
 

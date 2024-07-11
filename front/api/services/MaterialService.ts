@@ -14,12 +14,12 @@ export default class MaterialService {
 
 	}
 
-	static async addMaterial(name: string) {
+	static async addMaterial(names: object[]) {
 
-		console.log(name)
+		console.log(names)
 
 		return $api.post('/material', {
-			name
+			names
 		})
 
 	}

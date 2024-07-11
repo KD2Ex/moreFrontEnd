@@ -26,10 +26,19 @@ class Material {
 		return this.items;
 	}
 
-	async addItem(value: string) {
+	async addItem(value: object[]) {
 
-		const existing = this.items.find(i =>
-			i.name.toLowerCase() === value.toLowerCase());
+		let existing = false;
+
+		value.forEach(name => {
+				const res = this.items.find(i =>
+						i.name.toLowerCase() === name.text.toLowerCase())
+				existing = !!res;
+			});
+
+		/*const req = value.map((i, index) => {
+			return {text: i, localeId: index + 1}
+		})*/
 
 		if (existing) {
 			alert.openAlert("Имя существует", "error");
@@ -39,7 +48,10 @@ class Material {
 		const response = await MaterialService.addMaterial(value)
 
 		console.log(response.data)
-		this.items.push({id: response.data.id, name: response.data.name})
+
+		const localeItem = response.data.find(i => i.localeId === locale.currentLocale.id)
+
+		this.items.push({id: localeItem.materialId, name: localeItem.name})
 
 		return true;
 	}

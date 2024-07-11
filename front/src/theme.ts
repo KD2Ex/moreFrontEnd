@@ -7,7 +7,8 @@ export let theme = createTheme({
 			main: '#3aa2ad',
 			//main: '#fff3b4',
 			red: '#e34343',
-			hoverRed: '#bd7171'
+			hoverRed: '#bd7171',
+			borderLight: '#464545'
 		},
 		secondary: {
 			main: '#225c64'

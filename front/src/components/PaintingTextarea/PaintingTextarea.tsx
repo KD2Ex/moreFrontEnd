@@ -13,11 +13,16 @@ import MaterialService from "../../../api/services/MaterialService";
 import TechniqueService from "../../../api/services/TechniqueService";
 import locale from "../../store/locale";
 
+interface LocaleInfo {
+	'ru': string,
+	'en-US': string
+}
+
 const PaintingTextarea = observer(({item, setItem}) => {
 
-	const [title, setTitle] = useState('');
-	const [price, setPrice] = useState(0);
-	const [desc, setDesc] = useState('');
+	const [title, setTitle] = useState<LocaleInfo>({'ru': '', "en-US": ''});
+	const [price, setPrice] = useState<LocaleInfo>({'ru': '', "en-US": ''});
+	const [desc, setDesc] = useState<LocaleInfo>({'ru': '', "en-US": ''});
 	const [width, setWidth] = useState(0);
 	const [height, setHeight] = useState(0);
 
@@ -31,13 +36,11 @@ const PaintingTextarea = observer(({item, setItem}) => {
 		if (item.material) setCurrentMaterial(item.material.id)
 		if (item.technique) setCurrentTechnique(item.technique.id)
 
-		setTitle(item.title[locale.currentLocale.name])
-		setPrice(item.price[locale.currentLocale.name])
-		setDesc(item.desc[locale.currentLocale.name])
+		setTitle(item.title)
+		setPrice(item.price)
+		setDesc(item.desc)
 		setWidth(item.width)
 		setHeight(item.height)
-
-
 
 	}, [])
 
@@ -90,14 +93,14 @@ const PaintingTextarea = observer(({item, setItem}) => {
 			<TextField
 				size={'small'}
 				label={'Название'}
-				value={title}
+				value={title[locale.currentLocale.name]}
 				onChange={(e) => setTitle(e.target.value)}
 			/>
 			<TextField
 				type={'number'}
 				size={'small'}
 				label={'Цена'}
-				value={price}
+				value={price[locale.currentLocale.name]}
 				onChange={(e) => setPrice(e.target.value)}
 			/>
 
@@ -107,7 +110,7 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				multiline
 				size={'small'}
 				label={'Описание'}
-				value={desc}
+				value={desc[locale.currentLocale.name]}
 				onChange={(e) => setDesc(e.target.value)}
 			/>
 

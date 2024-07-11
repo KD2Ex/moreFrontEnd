@@ -14,7 +14,7 @@ export default class MaterialService {
 
 	}
 
-	static async addMaterial(names: object[]) {
+	static async add(names: object[]) {
 
 		console.log(names)
 

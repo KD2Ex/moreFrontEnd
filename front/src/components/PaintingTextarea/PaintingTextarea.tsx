@@ -8,6 +8,7 @@ import {observer} from "mobx-react-lite";
 import technique from "../../store/technique";
 import AddFilterParam from "../AddFilterParam/AddFilterParam";
 import ParamSelect from "../ParamSelect/ParamSelect";
+import crud from "../../store/crud";
 
 const PaintingTextarea = observer(({item, setItem}) => {
 
@@ -160,7 +161,7 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				/>
 
 				<AddFilterParam
-					asyncFunc={material.addItem.bind(material)}
+					asyncFunc={crud.addItem}
 				/>
 
 			</Box>

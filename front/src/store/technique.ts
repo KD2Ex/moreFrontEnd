@@ -40,7 +40,7 @@ class Technique {
 			return false;
 		}
 
-		const response = await TechniqueService.addTechnique(value)
+		const response = await TechniqueService.add(value)
 
 		console.log(response.data)
 		this.items.push({id: response.data.id, name: response.data.name})

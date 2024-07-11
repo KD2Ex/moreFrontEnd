@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Button, Popover, TextField, Typography} from "@mui/material";
+import MaterialService from "../../../api/services/MaterialService";
+import material from "../../store/material";
 
 const AddFilterParam = ({asyncFunc}) => {
 
@@ -32,7 +34,7 @@ const AddFilterParam = ({asyncFunc}) => {
 		const close = await asyncFunc([
 			{text: value, localeId: 1},
 			{text: enValue, localeId: 2},
-		]);
+		], MaterialService.add, material.items);
 
 		if (!close) return;
 

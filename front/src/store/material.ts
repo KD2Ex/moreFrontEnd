@@ -45,12 +45,9 @@ class Material {
 			return false;
 		}
 
-		const response = await MaterialService.addMaterial(value)
-
+		const response = await MaterialService.add(value)
 		console.log(response.data)
-
 		const localeItem = response.data.find(i => i.localeId === locale.currentLocale.id)
-
 		this.items.push({id: localeItem.materialId, name: localeItem.text})
 
 		return true;

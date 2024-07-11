@@ -121,15 +121,22 @@ class Paint {
 		this.viewItems = value;
 	}
 
+	getAppendStringFromLocale(locale: object) {
+		let result = '';
+		Object.keys(locale).forEach(i => result += `${i}:${locale[i]}:`)
+		return result.slice(0, result.length - 1)
+	}
+
+
 	appendFile(item: IPaint) {
 
 		const formData = new FormData();
 
-		formData.append("title", item.title);
-		formData.append("desc", item.desc);
+		formData.append("title", `${this.getAppendStringFromLocale(item.title)}`);
+		formData.append("desc", `${this.getAppendStringFromLocale(item.desc)}`);
 		formData.append("height", `${item.height}`);
 		formData.append("width", `${item.width}`);
-		formData.append("price", `${item.price}`);
+		formData.append("price", `${this.getAppendStringFromLocale(item.price)}`);
 		formData.append("materialId", `${item.material.id}`)
 		formData.append("techniqueId", `${item.technique.id}`)
 
@@ -157,6 +164,7 @@ class Paint {
 		formData.append("relativeSize", `4`);
 		formData.append("objectFit", "cover");
 		//formData.append("order", this.items.find(i => ));
+
 
 		const response = await PaintingService.addPainting(formData);
 

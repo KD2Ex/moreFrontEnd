@@ -53,20 +53,22 @@ const ModalInfo = ({item}) => {
 				/>
 
 				<LocaleText
-					fontSize={16}
 					localeList={[
-						{locale: 'ru', value: `Материал: ${item.material ? item.material.name : "Не указано"}`},
-						{locale: 'en-US', value: `Material: ${item.material ? item.material.name : "Not specified"}`},
+						{locale: 'ru', value: `Материал: ${item.material ? '' : "Не указано"}`},
+						{locale: 'en-US', value: `Material: ${item.material ? '' : "Not specified"}`},
 					]}
-				/>
+				>
+					{item.material.name[locale.currentLocale.name]}
+				</LocaleText>
 
 				<LocaleText
-					fontSize={16}
 					localeList={[
-						{locale: 'ru', value: `Техника: ${item.technique ? item.technique.name : "Не указано"}`},
-						{locale: 'en-US', value: `Technique: ${item.technique ? item.technique.name : "Not specified"}`},
+						{locale: 'ru', value: `Техника: ${item.technique ? '' : "Не указано"}`},
+						{locale: 'en-US', value: `Technique: ${item.technique ? '' : "Not specified"}`},
 					]}
-				/>
+				>
+					{item.technique.name[locale.currentLocale.name]}
+				</LocaleText>
 
 			</Box>
 

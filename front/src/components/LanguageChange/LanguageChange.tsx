@@ -12,7 +12,7 @@ const LanguageChange = observer(() => {
         console.log(newLang)
         setLang(newLang);
 
-        locale.setLocale(newLang, true)
+        locale.setLocale(newLang, false)
     }
 
     useEffect(() => {

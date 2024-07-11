@@ -8,6 +8,7 @@ import {observer} from "mobx-react-lite";
 import alert from "../../store/alert";
 import locale from "../../store/locale";
 import LocaleText from "../Locale/LocaleText/LocaleText";
+/*
 
 const sortingMethods = [
 	{id: 0, name: <LocaleText localeList={[
@@ -23,6 +24,23 @@ const sortingMethods = [
 			{locale: 'en-US', value: 'Descending price'}
 		]}/>},
 ]
+*/
+
+const sortingMethods = [
+	{id: 0, name: {
+			'ru': 'Как задумано',
+			'en-US': "As intended"
+		}},
+	{id: 1, name: {
+			'ru': 'По возрастанию цены',
+			'en-US': "Ascending price"
+		}},
+	{id: 2, name: {
+			'ru': 'По убыванию цены',
+			'en-US': "Descending price"
+		}},
+]
+
 
 const localeLabel = {
 	materials: {
@@ -157,10 +175,10 @@ const PaintingFilter = observer(() => {
 				id={materialId}
 				setId={setMaterialId}
 				label={localeLabel.materials[locale.currentLocale.name]}
-				items={[{id: 0, name: <LocaleText localeList={[
-						{locale: 'ru', value: 'Показывать все'},
-						{locale: 'en-US', value: 'Show all'}
-					]}/>}, ...material.items]}
+				items={[{id: 0, name: {
+						'ru': 'Показывать все',
+						'en-US': 'Show All'
+					}}, ...material.items]}
 				deleteFunc={() => false}
 			/>
 
@@ -172,10 +190,10 @@ const PaintingFilter = observer(() => {
 					[
 						{
 							id: 0,
-							name: <LocaleText localeList={[
-								{locale: 'ru', value: 'Показывать все'},
-								{locale: 'en-US', value: 'Show all'}
-							]}/>
+							name: {
+								'ru': 'Показывать все',
+								'en-US': 'Show All'
+							}
 						}
 						, ...technique.items
 					]

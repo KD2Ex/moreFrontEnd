@@ -13,15 +13,17 @@ interface LocaleTextProps {
 }
 
 
-const LocaleText: FC<LocaleTextProps> = observer(({localeList, ...props} : LocaleTextProps) => {
+const LocaleText: FC<LocaleTextProps> = observer(({localeList, children, childBefore, ...props} : LocaleTextProps) => {
 
     const text = locale.currentLocale
         ? localeList?.find(i => i.locale === locale.currentLocale.name).value
         : localeList[0].value;
 
+    const result = childBefore ? [children, text] : [text, children]
+
     return (
         <Typography {...props}>
-            {text}
+            {result}
         </Typography>
     );
 });

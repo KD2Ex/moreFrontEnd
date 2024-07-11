@@ -105,8 +105,7 @@ const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, de
 								setCurrentId(item.id)
 							}}
 						>
-							{item.name}
-
+							{item.name[locale.currentLocale.name]}
 						</MenuItem>
 					))}
 				</Select>

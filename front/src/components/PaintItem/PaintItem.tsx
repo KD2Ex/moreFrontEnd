@@ -10,6 +10,7 @@ import {useSearchParams} from "react-router-dom";
 import paint from "../../store/paint";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import locale from "../../store/locale";
+import Utils from "../../utils";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -93,34 +94,39 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					}}
 				>
 
-					<LocaleText
+					<Typography
 						fontSize={33}
+					>
+						{item.title[locale.currentLocale.name]}
+					</Typography>
+
+					<LocaleText
+						childBefore
 						localeList={[
-							{locale: 'ru', value: `${item.title[locale.currentLocale.name]}`},
-							{locale: 'en-US', value: `${item.title[locale.currentLocale.name]}`},
+							{locale: 'ru', value: ` ₽`},
+							{locale: 'en-US', value: ` €`},
 						]}
-					/>
+					>
+						{item.price[locale.currentLocale.name]}
+					</LocaleText>
 
 					<LocaleText
 						localeList={[
-							{locale: 'ru', value: `${item.price[locale.currentLocale.name]} ₽`},
-							{locale: 'en-US', value: `${item.price[locale.currentLocale.name]} €`},
+							{locale: 'ru', value: `Материал: ${item.material ? '' : "Не указано"}`},
+							{locale: 'en-US', value: `Material: ${item.material ? '' : "Not specified"}`},
 						]}
-					/>
+					>
+						{item.material.name[locale.currentLocale.name]}
+					</LocaleText>
 
 					<LocaleText
 						localeList={[
-							{locale: 'ru', value: `Материал: ${item.material ? item.material.name : "Не указано"}`},
-							{locale: 'en-US', value: `Material: ${item.material ? item.material.name : "Not specified"}`},
+							{locale: 'ru', value: `Техника: ${item.technique ? '' : "Не указано"}`},
+							{locale: 'en-US', value: `Technique: ${item.technique ? '' : "Not specified"}`},
 						]}
-					/>
-
-					<LocaleText
-						localeList={[
-							{locale: 'ru', value: `Техника: ${item.technique ? item.technique.name : "Не указано"}`},
-							{locale: 'en-US', value: `Technique: ${item.technique ? item.technique.name : "Not specified"}`},
-						]}
-					/>
+					>
+						{item.technique.name[locale.currentLocale.name]}
+					</LocaleText>
 
 					<LocaleText
 						localeList={[

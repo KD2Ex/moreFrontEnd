@@ -82,7 +82,6 @@ const ModalEdit = observer(() => {
 				<ModalEditContent
 					item={item}
 					setItem={setItem}
-					editMode={true}
 				/>
 
 			</DialogContent>

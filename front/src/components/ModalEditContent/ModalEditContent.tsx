@@ -6,6 +6,7 @@ import paint from "../../store/paint";
 import PaintingTextarea from "../PaintingTextarea/PaintingTextarea";
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import loginPage from "../../pages/LoginPage/LoginPage";
+import LanguageChange from "../LanguageChange/LanguageChange";
 
 
 const ModalEditContent = observer(({item, setItem, editMode}) => {
@@ -19,7 +20,6 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 		if (!item) return;
 		setFiles(item.files)
 
-		if (!editMode) return;
 		console.log(item)
 		setImages(item.images)
 
@@ -50,21 +50,16 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 				item
 				md={7}
 			>
-
-				{editMode &&
-					(
-						<Box
-							sx={{
-								mb: 2
-							}}
-						>
-							<ModalCarousel
-								items={images}
-								setItems={setImages}
-							/>
-						</Box>
-					)
-				}
+				<Box
+					sx={{
+						mb: 2
+					}}
+				>
+					<ModalCarousel
+						items={images}
+						setItems={setImages}
+					/>
+				</Box>
 				<ImageUpload
 					files={files}
 					setFiles={setFiles}
@@ -78,7 +73,7 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 				sx={{
 				}}
 			>
-
+				<LanguageChange/>
 				<PaintingTextarea
 					item={item}
 					setItem={setItem}

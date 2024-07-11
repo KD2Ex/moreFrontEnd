@@ -77,6 +77,8 @@ const PaintingTextarea = observer(({item, setItem}) => {
 		setCurrentTechnique(event.target.value)
 	}*/
 
+
+
 	return (
 		<Box
 			sx={{
@@ -94,14 +96,24 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				size={'small'}
 				label={'Название'}
 				value={title[locale.currentLocale.name]}
-				onChange={(e) => setTitle(e.target.value)}
+				onChange={(e) => {
+					setTitle(prev => {
+						prev[locale.currentLocale.name] = e.target.value
+						return prev;
+					})
+				}}
 			/>
 			<TextField
 				type={'number'}
 				size={'small'}
 				label={'Цена'}
 				value={price[locale.currentLocale.name]}
-				onChange={(e) => setPrice(e.target.value)}
+				onChange={(e) => {
+					setPrice(prev => {
+						prev[locale.currentLocale.name] = e.target.value
+						return prev;
+					})
+				}}
 			/>
 
 			<TextField
@@ -111,9 +123,13 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				size={'small'}
 				label={'Описание'}
 				value={desc[locale.currentLocale.name]}
-				onChange={(e) => setDesc(e.target.value)}
+				onChange={(e) => {
+					setDesc(prev => {
+						prev[locale.currentLocale.name] = e.target.value
+						return prev;
+					})
+				}}
 			/>
-
 
 			<Box
 				sx={{

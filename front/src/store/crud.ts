@@ -8,14 +8,15 @@ interface LocaleName {
 
 class Crud {
 
-
     async addItem(names: LocaleName[], asyncFunc: any, items: any[]) {
 
         let existing = false;
 
         names.forEach(name => {
-            const res = items.find(i =>
-                i.name.toLowerCase() === name.text.toLowerCase())
+            const res = items.find((i) => {
+                const localeName = locale.locales.find(i => i.id === name.localeId).name
+                return i.name[localeName].toLowerCase() === name.text.toLowerCase()
+            })
             existing = !!res;
         });
 

@@ -124,7 +124,6 @@ const GalleryPage = observer(() => {
 			</AdminComponent>
 
 			<ModalView
-
 			/>
 
 			<ModalEdit/>

@@ -172,10 +172,10 @@ const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 						>
 
 							<AdminComponent>
-								<DeleteShortcut
+								{/*<DeleteShortcut
 									visibility={isShiftPressed}
 									onClick={() => handleDelete(item.id)}
-								/>
+								/>*/}
 							</AdminComponent>
 
 							<Component

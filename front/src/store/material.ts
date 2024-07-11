@@ -51,7 +51,7 @@ class Material {
 
 		const localeItem = response.data.find(i => i.localeId === locale.currentLocale.id)
 
-		this.items.push({id: localeItem.materialId, name: localeItem.name})
+		this.items.push({id: localeItem.materialId, name: localeItem.text})
 
 		return true;
 	}

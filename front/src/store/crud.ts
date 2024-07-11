@@ -30,13 +30,13 @@ class Crud {
 
         const itemName = {}
 
-
-
         response.data.forEach(i => {
             const localeName = locale.locales.find(l => l.id === i.localeId).name
             itemName[localeName] = i.text
         })
-        items.push({id: response.data[0].materialId, name: itemName})
+        items.push({id: response.data[0].entityId, name: itemName})
+
+        console.log(items)
 
         return true;
 

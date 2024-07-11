@@ -116,6 +116,12 @@ const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 		store.swapItems(currentDragItem, item);
 	}
 
+	const getFilling = (item, index) => {
+
+
+
+	}
+
 	return (
 		<Grid
 			container

@@ -1,4 +1,4 @@
-import {FC, useEffect} from 'react';
+import {FC, useEffect, useMemo} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import {observer} from "mobx-react-lite";
 
@@ -11,15 +11,8 @@ interface FillingProps {
 
 const Filling: FC<FillingProps> = observer(({space, img, title}) => {
 
-
-	return (
-		<Grid
-			item
-			md={space}
-			sx={{
-				position: 'relative',
-			}}
-		>
+	const res = useMemo(() => {
+		return (
 			<Box
 				sx={{
 					textAlign: 'center',
@@ -39,6 +32,18 @@ const Filling: FC<FillingProps> = observer(({space, img, title}) => {
 					{title}
 				</Typography>
 			</Box>
+		)
+	}, [])
+
+	return (
+		<Grid
+			item
+			md={space}
+			sx={{
+				position: 'relative',
+			}}
+		>
+			{res}
 
 		</Grid>
 	);

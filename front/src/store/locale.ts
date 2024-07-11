@@ -9,16 +9,22 @@ class Locale {
         makeAutoObservable(this)
     }
 
+    defaultIds = {
+        ru: 1,
+        'en-US': 2
+    }
+
     loading = false;
+    isLocaleLoaded = false;
     locales = [];
     systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
 
     currentLocale = {
-        id: 0,
+        id: this.defaultIds[this.systemLocale],
         name: this.systemLocale
     }
 
-    setLocale(locale: string) {
+    setLocale(locale: string, withReload: boolean) {
         const id = +this.locales.find(i => i.name === locale).id;
 
         this.currentLocale = {id: id, name: locale};
@@ -26,6 +32,7 @@ class Locale {
         localStorage.setItem("locale", this.currentLocale.name)
         localStorage.setItem("localeId", this.currentLocale.id.toString())
 
+        if (!withReload) return;
         window.location.reload();
     }
 
@@ -49,22 +56,28 @@ class Locale {
     }
 
     async checkLocale() {
-        const res = await LocaleService.fetchLocales();
-
-        this.locales = res.map(i => {
-            return {id: i.id, name: i.name}
-        })
 
         const locale = localStorage.getItem("locale")
         const id = localStorage.getItem("localeId")
 
         if (locale) {
             this.currentLocale = {id: +id, name: locale}
+            this.isLocaleLoaded = true;
         } else {
-            await this.getLocales()
+            this.setLocale(this.locales.find(i => i.name === this.systemLocale), false)
         }
 
         console.log(this.currentLocale.name)
+    }
+
+    async fetchLocaleList() {
+
+        const res = await LocaleService.fetchLocales();
+
+        this.locales = res.map(i => {
+            return {id: i.id, name: i.name}
+        })
+
     }
 
 }

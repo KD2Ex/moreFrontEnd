@@ -3,7 +3,7 @@ import $api from "../../src/api/http";
 
 export default class PaintingService {
 
-	static async fetchPaintings(page, limit, materialId, techniqueId, sort) {
+	static async fetchPaintings(page, limit, materialId, techniqueId, sort, localeId) {
 
 		try {
 			const response = await $api.get('/paint', {
@@ -12,7 +12,8 @@ export default class PaintingService {
 					limit,
 					materialId,
 					techniqueId,
-					sort
+					sort,
+					localeId
 				}
 			});
 			return response.data;

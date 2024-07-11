@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, ButtonGroup, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import locale from "../../store/locale";
 
@@ -12,7 +12,7 @@ const LanguageChange = observer(() => {
         console.log(newLang)
         setLang(newLang);
 
-        locale.setLocale(newLang)
+        locale.setLocale(newLang, true)
     }
 
     useEffect(() => {

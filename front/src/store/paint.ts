@@ -7,6 +7,7 @@ import PaintingService from "../../api/services/PaintingService";
 import alert from "./alert";
 import material from "./material";
 import technique from "./technique";
+import locale from "./locale";
 
 
 class Paint {
@@ -91,7 +92,13 @@ class Paint {
 		this.setLoading(true);
 
 		const response = await PaintingService
-			.fetchPaintings(page, limit, this.filters.materialId, this.filters.techniqueId, this.sortId);
+			.fetchPaintings(
+				page,
+				limit,
+				this.filters.materialId,
+				this.filters.techniqueId,
+				this.sortId,
+				locale.currentLocale.id);
 
 		console.log(response.paintings)
 

@@ -27,8 +27,16 @@ class Crud {
 
         const response = await asyncFunc(names)
         console.log(response.data)
-        const localeItem = response.data.find(i => i.localeId === locale.currentLocale.id)
-        items.push({id: localeItem.materialId, name: localeItem.text})
+
+        const itemName = {}
+
+
+
+        response.data.forEach(i => {
+            const localeName = locale.locales.find(l => l.id === i.localeId).name
+            itemName[localeName] = i.text
+        })
+        items.push({id: response.data[0].materialId, name: itemName})
 
         return true;
 

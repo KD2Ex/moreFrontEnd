@@ -51,7 +51,6 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 				md={7}
 			>
 
-
 				{editMode &&
 					(
 						<Box

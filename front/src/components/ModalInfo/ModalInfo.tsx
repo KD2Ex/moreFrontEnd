@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Divider, Typography} from "@mui/material";
 import material from "../../store/material";
 import LocaleText from "../Locale/LocaleText/LocaleText";
+import locale from "../../store/locale";
 
 const ModalInfo = ({item}) => {
 
@@ -14,29 +15,33 @@ const ModalInfo = ({item}) => {
 			}}
 		>
 
-			<Typography
+			<LocaleText
 				fontSize={36}
-			>
-				{item?.title}
-			</Typography>
+				localeList={[
+					{locale: 'ru', value: `${item.title[locale.currentLocale.name]}`},
+					{locale: 'en-US', value: `${item.title[locale.currentLocale.name]}`},
+				]}
+			/>
 
 			<LocaleText
 				variant={'h5'}
 				localeList={[
-					{locale: 'ru', value: `Цена: ${item.price} ₽ `},
-					{locale: 'en-US', value: `Cost: ${item.price} € `},
+					{locale: 'ru', value: `Цена: ${item.price[locale.currentLocale.name]} ₽ `},
+					{locale: 'en-US', value: `Cost: ${item.price[locale.currentLocale.name]} € `},
 				]}
 			/>
 
-			<Typography
+			<LocaleText
 				sx={{
 					flexWrap: 'wrap',
 					width: '100%',
 					wordWrap: 'break-word'
 				}}
-			>
-				{item.desc}
-			</Typography>
+				localeList={[
+					{locale: 'ru', value: `${item.desc[locale.currentLocale.name]}`},
+					{locale: 'en-US', value: `${item.desc[locale.currentLocale.name]}`},
+				]}
+			/>
 
 			<Box>
 				<LocaleText

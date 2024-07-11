@@ -11,6 +11,7 @@ import ParamSelect from "../ParamSelect/ParamSelect";
 import crud from "../../store/crud";
 import MaterialService from "../../../api/services/MaterialService";
 import TechniqueService from "../../../api/services/TechniqueService";
+import locale from "../../store/locale";
 
 const PaintingTextarea = observer(({item, setItem}) => {
 
@@ -30,9 +31,9 @@ const PaintingTextarea = observer(({item, setItem}) => {
 		if (item.material) setCurrentMaterial(item.material.id)
 		if (item.technique) setCurrentTechnique(item.technique.id)
 
-		setTitle(item.title)
-		setPrice(item.price)
-		setDesc(item.desc)
+		setTitle(item.title[locale.currentLocale.name])
+		setPrice(item.price[locale.currentLocale.name])
+		setDesc(item.desc[locale.currentLocale.name])
 		setWidth(item.width)
 		setHeight(item.height)
 

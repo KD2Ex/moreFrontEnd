@@ -9,6 +9,7 @@ import user from "../../store/user";
 import {useSearchParams} from "react-router-dom";
 import paint from "../../store/paint";
 import LocaleText from "../Locale/LocaleText/LocaleText";
+import locale from "../../store/locale";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -91,18 +92,21 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						}
 					}}
 				>
-					<Typography
-						sx={{
-							fontSize: 33
-						}}
-					>
-						{item.title}
-					</Typography>
 
-					<Typography>
-						{item.price}
-					</Typography>
+					<LocaleText
+						fontSize={33}
+						localeList={[
+							{locale: 'ru', value: `${item.title[locale.currentLocale.name]}`},
+							{locale: 'en-US', value: `${item.title[locale.currentLocale.name]}`},
+						]}
+					/>
 
+					<LocaleText
+						localeList={[
+							{locale: 'ru', value: `${item.price[locale.currentLocale.name]} ₽`},
+							{locale: 'en-US', value: `${item.price[locale.currentLocale.name]} €`},
+						]}
+					/>
 
 					<LocaleText
 						localeList={[

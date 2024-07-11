@@ -8,6 +8,7 @@ import AdminComponent from "../AdminComponent/AdminComponent";
 import user from "../../store/user";
 import {useSearchParams} from "react-router-dom";
 import paint from "../../store/paint";
+import LocaleText from "../Locale/LocaleText/LocaleText";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -102,21 +103,31 @@ const PaintItem: FC<PaintItemProps> = observer(({
 						{item.price}
 					</Typography>
 
-					<Typography>
-						Материал: {item.material ? item.material.name : "Не указано"}
-					</Typography>
 
-					<Typography>
-						Техника: {item.technique ? item.technique.name : "Не указано"}
-					</Typography>
+					<LocaleText
+						localeList={[
+							{locale: 'ru', value: `Материал: ${item.material ? item.material.name : "Не указано"}`},
+							{locale: 'en-US', value: `Material: ${item.material ? item.material.name : "Not specified"}`},
+						]}
+					/>
 
-					<Typography
+					<LocaleText
+						localeList={[
+							{locale: 'ru', value: `Техника: ${item.technique ? item.technique.name : "Не указано"}`},
+							{locale: 'en-US', value: `Technique: ${item.technique ? item.technique.name : "Not specified"}`},
+						]}
+					/>
+
+					<LocaleText
+						localeList={[
+							{locale: 'ru', value: `${item.width} x ${item.height} мм`},
+							{locale: 'en-US', value: `${item.width} x ${item.height} mm`},
+						]}
 						sx={{
 							fontSize: 20
 						}}
-					>
-						{item.width} x {item.height} мм
-					</Typography>
+					/>
+
 				</Box>
 
 				<Box

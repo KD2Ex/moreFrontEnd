@@ -46,12 +46,6 @@ const ParamSelect: FC<ParamSelectProps> = observer(({id, setId, items, label, de
 		await deleteFunc(currentId);
 	}
 
-	useEffect(() => {
-
-		console.log(id)
-
-	}, [id])
-
 	return (
 		<>
 			<AdminComponent>

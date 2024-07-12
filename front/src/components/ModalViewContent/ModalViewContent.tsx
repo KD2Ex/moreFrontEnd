@@ -6,8 +6,10 @@ import {getWappLink} from "../../consts";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocaleText from "../Locale/LocaleText/LocaleText";
+import modal from "../../store/modal";
+import {observer} from "mobx-react-lite";
 
-const ModalViewContent = ({item}) => {
+const ModalViewContent = observer(({item}) => {
 
 	const [images, setImages] = useState([])
 
@@ -42,8 +44,7 @@ const ModalViewContent = ({item}) => {
 				xs={12}
 			>
 				<ModalCarousel
-					items={images}
-					setItems={setImages}
+					items={item.images}
 				/>
 
 			</Grid>
@@ -126,6 +127,6 @@ const ModalViewContent = ({item}) => {
 
 		</Grid>
 	);
-};
+});
 
 export default ModalViewContent;

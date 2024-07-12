@@ -1,7 +1,5 @@
 import {IPaint} from "../models/interfaces/IPaint";
 import {makeAutoObservable} from "mobx";
-import projectImage from "../components/ProjectImage/ProjectImage";
-
 
 class Modal {
 
@@ -28,6 +26,19 @@ class Modal {
 	openProjectImage(value, src?) {
 		this.projectImage = src
 		this.projectImageOpen = value;
+	}
+
+	setItemHeight(item, value) {
+		item.height = value;
+	}
+
+	setWidth(item, value) {
+		item.width = value;
+	}
+
+	setName(item: object, name: object, id: number) {
+		item.name = name
+		item.id = id
 	}
 
 	setIsOpen = (value: boolean, item?: IPaint) => {

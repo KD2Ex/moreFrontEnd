@@ -1,7 +1,7 @@
 import {IPaint} from "../models/interfaces/IPaint";
 import art1 from "../assets/art1.jpg";
 import {sizes} from "../consts";
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, toJS} from "mobx";
 import {ISizeEdit} from "../models/interfaces/ISizeEdit";
 import PaintingService from "../../api/services/PaintingService";
 import alert from "./alert";
@@ -12,6 +12,37 @@ import locale from "./locale";
 
 class Paint {
 
+	defaultPaint = {
+		id: 0,
+		title: {
+			'ru': '',
+			'en-US': '',
+		},
+		order: 0,
+		technique: {
+			id: 0,
+			name: ''
+		},
+		material: {
+			id: 0,
+			name: '',
+		},
+		price: {
+			'ru': '',
+			'en-US': '',
+		},
+		files: [],
+		desc: {
+			'ru': '',
+			'en-US': '',
+		},
+		images: [],
+		height: 0,
+		isFiltered: true,
+		relativeSize: 4,
+		width: 0,
+	}
+
 	constructor() {
 		makeAutoObservable(this)
 	}
@@ -21,7 +52,7 @@ class Paint {
 	rowHeight: number = 500;
 	//filling: boolean = true;
 	totalPages: number;
-	newItem: IPaint | null = null;
+	newItem: IPaint | { } = this.defaultPaint;
 	currentPage: number = 1;
 
 	filters = {
@@ -35,6 +66,10 @@ class Paint {
 	sortId: number = 1
 
 	editedPaintingsSizes: ISizeEdit[] = [];
+
+	resetNewItem() {
+		this.newItem = this.defaultPaint;
+	}
 
 	setCurrentPage(value: number) {
 
@@ -104,13 +139,12 @@ class Paint {
 
 		const newItems = response.paintings.slice()
 		//newItems.forEach(i => i.isFiltered = true)
-		console.log(newItems)
 
 		this.setItems([...this.items, ...newItems])
 		//console.log([...newItems].map(i => i.order))
 		this.totalPages = response.totalPages
 		this.setLoading(false);
-
+		console.log(toJS(this.items))
 	}
 
 	setItems(value: IPaint[]) {
@@ -153,13 +187,11 @@ class Paint {
 		return formData;
 	}
 
-	async addPainting() {
+	async addPainting(item: IPaint) {
 
+		console.log(item)
 
-		const newItem = this.newItem;
-		console.log(newItem)
-
-		const formData = this.appendFile(newItem)
+		const formData = this.appendFile(item)
 
 		formData.append("relativeSize", `4`);
 		formData.append("objectFit", "cover");
@@ -196,8 +228,6 @@ class Paint {
 		* Либо добавлять картину по order'у последней картины на странице
 		* Тогда придется инкрементировать order у всех картин впереди (хуйня)
 		*  */
-
-
 		this.items.push(data)
 
 		console.log(data)
@@ -285,6 +315,8 @@ class Paint {
 			if (i[0] === 'files'
 				|| i[0] === 'relativeSize'
 				|| i[0] === 'objectFit'
+				|| i[0] === 'id'
+				|| i[0] === 'order'
 			) continue;
 
 			if (!i[1]) return false;

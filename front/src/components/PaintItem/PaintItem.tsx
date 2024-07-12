@@ -33,7 +33,10 @@ const PaintItem: FC<PaintItemProps> = observer(({
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const handleClick = (event) => {
-		if (event.button === 0) setSearchParams({id: item.id})
+		if (event.button === 0) {
+			setSearchParams({id: item.id})
+			modal.paintingItem = paint.items.find(i => i.id == item.id)
+		}
 		//if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
 	}

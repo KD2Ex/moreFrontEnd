@@ -7,12 +7,12 @@ import PaintingTextarea from "../PaintingTextarea/PaintingTextarea";
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import loginPage from "../../pages/LoginPage/LoginPage";
 import LanguageChange from "../LanguageChange/LanguageChange";
+import modal from "../../store/modal";
 
 
-const ModalEditContent = observer(({item, setItem, editMode}) => {
+const ModalEditContent = observer(({item}) => {
 
 	const [files, setFiles] = useState([])
-	const [images, setImages] = useState([]);
 
 	useEffect(() => {
 
@@ -21,20 +21,11 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 		setFiles(item.files)
 
 		console.log(item)
-		setImages(item.images)
-
 
 	}, [])
 
 	useEffect(() => {
-
-		setItem(prev => {
-			return {
-				...prev,
-				files: files
-			}
-		})
-
+		item.files = files
 	}, [files])
 
 	return (
@@ -56,8 +47,7 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 					}}
 				>
 					<ModalCarousel
-						items={images}
-						setItems={setImages}
+						items={item.images}
 					/>
 				</Box>
 				<ImageUpload
@@ -76,7 +66,6 @@ const ModalEditContent = observer(({item, setItem, editMode}) => {
 				<LanguageChange/>
 				<PaintingTextarea
 					item={item}
-					setItem={setItem}
 				/>
 
 			</Grid>

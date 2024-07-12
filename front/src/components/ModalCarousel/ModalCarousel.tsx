@@ -8,9 +8,10 @@ import AdminComponent from "../AdminComponent/AdminComponent";
 import user from "../../store/user";
 import {useLinkClickHandler} from "react-router-dom";
 import ImageZoom from "../ImageZoom/ImageZoom";
+import {observer} from "mobx-react-lite";
 
 
-const ModalCarousel = ({items, setItems}) => {
+const ModalCarousel = observer(({items}) => {
 
 	const sliderRef = useRef(null);
 	const [slideIndex, setSlideIndex] = useState(0);
@@ -48,7 +49,7 @@ const ModalCarousel = ({items, setItems}) => {
 			setSlideIndex(prev => prev - 1);
 		}
 
-		setItems([...newItems])
+		items = [...newItems]
 	}
 
 	const handleClick = async (event, index) => {
@@ -173,6 +174,6 @@ const ModalCarousel = ({items, setItems}) => {
 		</>
 
 	);
-};
+});
 
 export default ModalCarousel;

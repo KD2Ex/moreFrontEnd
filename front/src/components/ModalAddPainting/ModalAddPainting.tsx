@@ -7,11 +7,9 @@ import alert from "../../store/alert";
 
 const ModalAddPainting = observer(({open, setOpen}) => {
 
-	const [newItem, setNewItem] = useState(null)
+	//const [newItem, setNewItem] = useState(null)
 
 	useEffect(() => {
-
-
 
 	}, [])
 
@@ -19,14 +17,16 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 
 		if (reason === 'backdropClick') return;
 
-		paint.setNewItem(newItem)
+		//paint.setNewItem(newItem)
 		setOpen(false);
 		console.log(paint.newItem)
 	}
 
 	const handleAdd = () => {
 
-		paint.newItem = newItem;
+		//paint.newItem = newItem;
+		if (Object.keys(paint.newItem).length === 0) return;
+
 		const isValid = paint.isValidPaintData(paint.newItem) && paint.isValidPaintImages(paint.newItem);
 
 		console.log(isValid)
@@ -38,10 +38,10 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 		}
 
 
-		paint.addPainting().then(res => {
+		paint.addPainting(paint.newItem).then(res => {
 			handleClose()
 			alert.openAlert('Картина успешно добавлена', 'success')
-			setNewItem(null)
+			paint.resetNewItem();
 		})
 
 	}
@@ -64,8 +64,7 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 			>
 
 				<ModalEditContent
-					item={newItem}
-					setItem={setNewItem}
+					item={paint.newItem}
 				/>
 
 			</DialogContent>

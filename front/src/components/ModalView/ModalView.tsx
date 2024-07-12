@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Typography} from "@mui/material";
+import {Dialog, DialogContent} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import ModalViewContent from "../ModalViewContent/ModalViewContent";
 import modal from "../../store/modal";
-import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import paint from "../../store/paint";
-import alert from "../../store/alert";
-import loginPage from "../../pages/LoginPage/LoginPage";
 import {IPaint} from "../../models/interfaces/IPaint";
 import {useSearchParams} from "react-router-dom";
+import {toJS} from "mobx";
 
 interface ModalViewProps {
 	handleClose: React.Dispatch<boolean>,
@@ -40,9 +38,9 @@ const ModalView = observer(() => {
 			setOpen(true)
 			const id = searchParams.get('id')
 
-			setItem(paint.items.find(i => i.id == id));
+			console.log(toJS(modal.paintingItem));
 
-			console.log(paint.items.find(i => i.id == id))
+			//setItem(paint.items.find(i => i.id == id));
 
 		}
 
@@ -51,7 +49,7 @@ const ModalView = observer(() => {
 	useEffect(() => {
 
 		if (!open) {
-			setSearchParams({})
+
 		}
 
 	}, [open])
@@ -60,7 +58,7 @@ const ModalView = observer(() => {
 
 		console.log(reason)
 
-		if (reason === 'backdropClick' && !item) return;
+		//if (reason === 'backdropClick' && !item) return;
 
 		//setOpen(false);
 		onClose();
@@ -69,12 +67,12 @@ const ModalView = observer(() => {
 
 	const onClose = () => {
 		modal.setPaintingViewOpen(false);
-
-		console.log(item.files)
+		setSearchParams({})
+		//console.log(modal.paintingItem.files)
 		setOpen(false)
 	}
 
-	if (!item) return;
+	//if (!item) return;
 
 	return (
 		<Dialog
@@ -108,7 +106,7 @@ const ModalView = observer(() => {
 				}}
 			>
 				<ModalViewContent
-					item={item}
+					item={modal.paintingItem}
 				/>
 
 			</DialogContent>

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dialog, DialogActions, DialogContent, TextField} from "@mui/material";
+import {Button, Dialog, DialogActions, DialogContent} from "@mui/material";
 import {IPaint} from "../../models/interfaces/IPaint";
 import modal from "../../store/modal";
-import ModalViewContent from "../ModalViewContent/ModalViewContent";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
@@ -10,54 +9,38 @@ import alert from "../../store/alert";
 
 const ModalEdit = observer(() => {
 
-	const [open, setOpen] = useState(false);
-	const [item, setItem] = useState<IPaint | null>(null);
 
 	useEffect(() => {
-		setItem(modal.paintingItem);
-		setOpen(modal.paintingViewOpen)
 
-		console.log('effec')
 
 	}, [modal.paintingViewOpen])
 
 	const handleClose = (event, reason) => {
 		console.log(reason)
-
-
-		//setOpen(false);
 		onClose();
 	}
 
 	const handleClick = async () => {
 
+		const isValid = paint.isValidPaintData(modal.paintingItem);
 
-		console.log(item)
-
-		const isValid = paint.isValidPaintData(item);
-
-		console.log(isValid)
 
 		if (!isValid) {
 			alert.openAlert('Заполните все поля', 'error')
 			return;
 		}
 
-		await paint.updatePainting(item)
-
+		await paint.updatePainting(modal.paintingItem)
 		onClose();
-
-
 	}
 
 	const onClose = () => {
 		modal.setPaintingViewOpen(false);
-		setOpen(false)
 	}
 
 	return (
 		<Dialog
-			open={open}
+			open={modal.paintingViewOpen}
 			onClose={handleClose}
 			maxWidth={'xl'}
 			sx={{
@@ -80,8 +63,7 @@ const ModalEdit = observer(() => {
 				}}
 			>
 				<ModalEditContent
-					item={item}
-					setItem={setItem}
+					item={modal.paintingItem}
 				/>
 
 			</DialogContent>

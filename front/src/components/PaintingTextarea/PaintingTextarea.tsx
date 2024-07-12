@@ -12,61 +12,54 @@ import crud from "../../store/crud";
 import MaterialService from "../../../api/services/MaterialService";
 import TechniqueService from "../../../api/services/TechniqueService";
 import locale from "../../store/locale";
+import modal from "../../store/modal";
+import {toJS} from "mobx";
 
 interface LocaleInfo {
 	'ru': string,
 	'en-US': string
 }
 
-const PaintingTextarea = observer(({item, setItem}) => {
+const updateItem = (items, id, item) => {
+	const newItem = items.find(i => i.id === +id)
 
-	const [title, setTitle] = useState<LocaleInfo>({'ru': '', "en-US": ''});
-	const [price, setPrice] = useState<LocaleInfo>({'ru': '', "en-US": ''});
-	const [desc, setDesc] = useState<LocaleInfo>({'ru': '', "en-US": ''});
-	const [width, setWidth] = useState(0);
-	const [height, setHeight] = useState(0);
+	if (!newItem) return;
+
+	modal.setName(item,{
+		'ru': newItem.name['ru'],
+		'en-US': newItem.name['en-US'],
+	}, +newItem.id)
+}
+
+const PaintingTextarea = observer(({item}) => {
 
 	const [currentMaterial, setCurrentMaterial] = useState('');
 	const [currentTechnique, setCurrentTechnique] = useState('')
 
 	useEffect(() => {
-		
+
+		console.log(item)
+
 		if (!item) return;
 
 		if (item.material) setCurrentMaterial(item.material.id)
 		if (item.technique) setCurrentTechnique(item.technique.id)
 
-		setTitle(item.title)
-		setPrice(item.price)
-		setDesc(item.desc)
-		setWidth(item.width)
-		setHeight(item.height)
 
 	}, [])
 
 	useEffect(() => {
 
-		setItem(prev => {
-			return {
-				...prev,
-				title,
-				price,
-				desc,
-				width,
-				height,
-				material: {
-					id: currentMaterial,
-					name: material.items.find(i => i.id == currentMaterial)?.name
-				},
-				technique: {
-					id: currentTechnique,
-					name: technique.items.find(i => i.id == currentTechnique)?.name
-				},
 
-			}
-		})
+		updateItem(material.items, +currentMaterial, item.material);
 
-	}, [title, price, desc, width, height, currentMaterial, currentTechnique])
+	}, [currentMaterial])
+
+	useEffect(() => {
+
+		updateItem(technique.items, currentTechnique, item.technique);
+
+	}, [currentTechnique])
 
 
 	const handleMaterialChange = (event) => {
@@ -76,8 +69,6 @@ const PaintingTextarea = observer(({item, setItem}) => {
 /*	const handleTechniqueChange = (event) => {
 		setCurrentTechnique(event.target.value)
 	}*/
-
-
 
 	return (
 		<Box
@@ -89,30 +80,23 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				position: 'sticky',
 				top: 0
 			}}
-
 		>
-
 			<TextField
 				size={'small'}
 				label={'Название'}
-				value={title[locale.currentLocale.name]}
+				value={item.title[locale.currentLocale.name]}
 				onChange={(e) => {
-					setTitle(prev => {
-						prev[locale.currentLocale.name] = e.target.value
-						return prev;
-					})
+					console.log(e.target.value)
+					item.title[locale.currentLocale.name] = e.target.value
 				}}
 			/>
 			<TextField
 				type={'number'}
 				size={'small'}
 				label={'Цена'}
-				value={price[locale.currentLocale.name]}
+				value={item.price[locale.currentLocale.name]}
 				onChange={(e) => {
-					setPrice(prev => {
-						prev[locale.currentLocale.name] = e.target.value
-						return prev;
-					})
+					item.price[locale.currentLocale.name] = e.target.value
 				}}
 			/>
 
@@ -122,12 +106,9 @@ const PaintingTextarea = observer(({item, setItem}) => {
 				multiline
 				size={'small'}
 				label={'Описание'}
-				value={desc[locale.currentLocale.name]}
+				value={item.desc[locale.currentLocale.name]}
 				onChange={(e) => {
-					setDesc(prev => {
-						prev[locale.currentLocale.name] = e.target.value
-						return prev;
-					})
+					item.desc[locale.currentLocale.name] = e.target.value
 				}}
 			/>
 
@@ -147,8 +128,10 @@ const PaintingTextarea = observer(({item, setItem}) => {
 					}}
 					type={'number'}
 					label={'Ширина'}
-					value={width}
-					onChange={(e) => setWidth(e.target.value)}
+					value={item.width}
+					onChange={(e) => {
+						modal.setWidth(item, e.target.value)
+					}}
 				/>
 				x
 				<TextField
@@ -158,13 +141,12 @@ const PaintingTextarea = observer(({item, setItem}) => {
 					size={'small'}
 					type={'number'}
 					label={'Высота'}
-					value={height}
-					onChange={(e) => setHeight(e.target.value)}
+					value={item.height}
+					onChange={(e) => {
+						modal.setItemHeight(item, e.target.value)
+					}}
 				/>
 			</Box>
-
-
-
 
 			<Box
 				sx={{
@@ -172,10 +154,8 @@ const PaintingTextarea = observer(({item, setItem}) => {
 					gap: 1
 				}}
 			>
-
-
 				<ParamSelect
-					id={currentMaterial}
+					id={item.material.id}
 					setId={setCurrentMaterial}
 					items={material.items}
 					deleteFunc={material.deleteItem.bind(material)}

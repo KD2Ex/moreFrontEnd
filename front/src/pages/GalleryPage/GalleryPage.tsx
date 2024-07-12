@@ -94,7 +94,6 @@ const GalleryPage = observer(() => {
 				}}
 			>
 				<PaintingFilter
-
 				/>
 			</Box>
 
@@ -123,8 +122,7 @@ const GalleryPage = observer(() => {
 				/>
 			</AdminComponent>
 
-			<ModalView
-			/>
+			<ModalView/>
 
 			<ModalEdit/>
 

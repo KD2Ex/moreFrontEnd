@@ -138,10 +138,10 @@ class Paint {
 		console.log(response.paintings)
 
 		const newItems = response.paintings.slice()
-		//newItems.forEach(i => i.isFiltered = true)
+
 
 		this.setItems([...this.items, ...newItems])
-		//console.log([...newItems].map(i => i.order))
+
 		this.totalPages = response.totalPages
 		this.setLoading(false);
 		console.log(toJS(this.items))

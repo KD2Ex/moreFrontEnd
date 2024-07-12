@@ -11,23 +11,11 @@ import {observer} from "mobx-react-lite";
 
 const ModalViewContent = observer(({item}) => {
 
-	const [images, setImages] = useState([])
-
 	const profileURI = encodeURI('https://t.me/Katerina_Serebryanskaya')
 	const message = encodeURI('Hello')
 	const tgLink = `https://t.me/Katerina_Serebryanskaya`
 
 	const wAppLink = getWappLink(`Здравствуйте, меня заинтересовала картина ${item.title}`)
-
-	useEffect(() => {
-
-		setImages(item.images)
-
-	}, [])
-
-	const handleClick = () => {
-
-	}
 
 	return (
 		<Grid
@@ -86,7 +74,6 @@ const ModalViewContent = observer(({item}) => {
 					/>
 
 					<IconButton
-						onClick={handleClick}
 						component={'a'}
 						href={wAppLink}
 						target={"_blank"}
@@ -104,7 +91,6 @@ const ModalViewContent = observer(({item}) => {
 
 
 					<IconButton
-						onClick={handleClick}
 						component={'a'}
 						href={tgLink}
 						target={"_blank"}

@@ -15,7 +15,7 @@ export let theme = createTheme({
 		},
 		background: {
 			default: 'rgb(24,22,22)',
-			paper: 'rgb(26,26,26)'
+			paper: 'rgb(16,16,16)'
 			//default: 'rgb(28,25,25)'
 		},
 		text: {
@@ -29,8 +29,29 @@ export let theme = createTheme({
 		fontFamily: 'Manrope',
 		textDecoration: 'none',
 		textTransform: 'none',
+		transition: '300ms',
 	},
 	components: {
+		MuiToggleButtonGroup: {
+			styleOverrides: {
+				root: {
+					'.Mui-selected': {
+						backgroundColor: '#103a44',
+					}
+				}
+			}
+		},
+		MuiToggleButton:{
+			styleOverrides:{
+				root: ({ownerState}) => ({
+					...ownerState.selected ? {
+							backgroundColor: '#111111',
+					}
+					: {backgroundColor: '#111111',}
+				}),
+
+			}
+		},
 		MuiButton: {
 			styleOverrides: {
 				root: {
@@ -38,6 +59,7 @@ export let theme = createTheme({
 					fontSize: 18,
 				},
 				text: {
+					//color: '#d3ccb8'
 					color: '#d3ccb8'
 
 				}

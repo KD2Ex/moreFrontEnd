@@ -29,7 +29,7 @@ export let theme = createTheme({
 		fontFamily: 'Manrope',
 		textDecoration: 'none',
 		textTransform: 'none',
-		transition: '300ms',
+		transition: 'all 300ms',
 	},
 	components: {
 		MuiToggleButtonGroup: {

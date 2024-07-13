@@ -7,9 +7,18 @@ import AdminComponent from "../AdminComponent/AdminComponent";
 import ProjectPopover from "../ProjectPopover/ProjectPopover";
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ProjectCarousel from "./ProjectCarousel/ProjectCarousel";
+import locale from "../../store/locale";
+import LocaleText from "../Locale/LocaleText/LocaleText";
+import Utils from "../../utils";
 
 interface ProjectItemProps {
 	item: IProject,
+}
+
+const getEnLevelName = (value: number) => {
+
+	return value > 1 ? 'levels' : 'level'
+
 }
 
 function getLevelName(value: number) {
@@ -113,7 +122,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 							<Typography
 								variant={'h4'}
 							>
-								{item.title}
+								{item.title[locale.currentLocale.name]}
 							</Typography>
 							<Typography
 								fontSize={15}
@@ -121,7 +130,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 									textAlign: 'justify'
 								}}
 							>
-								{item.desc}
+								{item.desc[locale.currentLocale.name]}
 								{/*
 
 								На фото представлен один из проектов нашего бюро. В процессе работы мы назвали его "Игры разума", не просто так. Заказчик обратился к нам уже с готовым проектом, залитым фундаментом, но ощущением, что имеющийся проект не откликается его мечтам, желаниям, потребностям. Объясняется это достаточно просто. Это было типовое решение. Профессионально выполненое, но типовое.
@@ -133,20 +142,48 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 							</Typography>
 						</Box>
 
-						<Typography
-							fontSize={18}
-						>
-							{item.levels ? `${item.levels} ${getLevelName(item.levels)},` : null}
-							{item.area ? `Общая площадь ${item.area} м²` : null} <br/>
-							{item.cost ? `Итоговая стоимость: ${item.cost} рублей` : null}<br/>
-							{item.timePeriod ? `Срок реализации: ${item.timePeriod} ` : null}<br/>
-							{item.address ? `${item.address}` : null}<br/>
-						</Typography>
-						{/*<Typography
-							fontSize={20}
-						>
-							Общая площадь 1000 м<sup>2</sup> Цена, Срок реализации, Расположение,
-						</Typography>*/}
+						<Box>
+							<LocaleText
+								useDefault
+								childBefore
+								fontSize={18}
+								localeList={[
+									`${getLevelName(item.levels)}, Общая площадь ${item.area} м²`,
+									`${getEnLevelName(item.levels)}, Total area ${item.area} m²`,
+								]}
+							>
+								{item.levels ? `${item.levels} ` : null}
+							</LocaleText>
+
+							<LocaleText
+								useDefault
+								fontSize={18}
+								localeList={[
+									`Итоговая стоимость: `,
+									`Total cost: `,
+								]}
+							>
+								{item.cost ? item.cost[locale.currentLocale.name] : null}
+							</LocaleText>
+
+							<LocaleText
+								useDefault
+								fontSize={18}
+								localeList={[
+									`Срок реализации: `,
+									`Time spent: `,
+								]}
+							>
+								{item.timePeriod ? item.timePeriod[locale.currentLocale.name] : null}
+							</LocaleText>
+
+							<Typography
+								fontSize={18}
+							>
+								{item.address ? `${item.address[locale.currentLocale.name]}` : null}<br/>
+							</Typography>
+						</Box>
+
 					</Box>
 				</Grid>
 			</Grid>

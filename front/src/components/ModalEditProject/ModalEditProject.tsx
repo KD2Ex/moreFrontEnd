@@ -8,14 +8,13 @@ import {observer} from "mobx-react-lite";
 
 const ModalEditProject = observer(() => {
 
-	const [item, setItem] = useState<IProject | null>(project.editItem);
+	//const [item, setItem] = useState<IProject | null>(project.editItem);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 
 		console.log(project.editItem)
 		setOpen(project.editModalOpen)
-		setItem(project.editItem)
 
 	}, [project.editModalOpen])
 
@@ -26,14 +25,14 @@ const ModalEditProject = observer(() => {
 
 	const handleClick = async () => {
 
-		const isValid = project.validate(item);
+		const isValid = project.validate(project.editItem);
 
 		if (!isValid) {
 			alert.openAlert('Заполните все поля', 'error')
 			return;
 		}
 
-		await project.update(item)
+		await project.update(project.editItem)
 
 		handleClose();
 	}
@@ -48,8 +47,7 @@ const ModalEditProject = observer(() => {
 			<DialogContent>
 
 				<ModalAddProjectContent
-					item={item}
-					setItem={setItem}
+					item={project.editItem}
 				/>
 
 			</DialogContent>

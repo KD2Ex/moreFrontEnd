@@ -3,22 +3,16 @@ import {Box, Button} from "@mui/material";
 import modal from "../../store/modal";
 import project from "../../store/project";
 
-const SettingEditPainting = ({item, func, proj}) => {
+const SettingEditPainting = ({item, func, close}) => {
 
 	const handleClick = () => {
 
-		if (proj) {
-			console.log(item)
-			project.openEdit(item)
-			return;
-		}
+		close()
 
 		if (func) {
 			func(item)
 			return;
 		}
-		console.log(item)
-		modal.openPaintingView(item, true);
 	}
 
 	return (

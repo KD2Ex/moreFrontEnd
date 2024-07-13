@@ -49,4 +49,12 @@ export default class ProjectService {
 		return $api.post(`/project/updateHeight`, items)
 	}
 
+	static async deleteImage(name: string) {
+		return $api.delete(`/projectImage`, {
+			data: {
+				name
+			}
+		})
+	}
+
 }

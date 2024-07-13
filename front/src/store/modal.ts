@@ -8,7 +8,6 @@ class Modal {
 
 	paintingViewOpen = false;
 	paintingItem = null;
-	editMode = false;
 
 	isOpen: boolean = false;
 	displayItem: IPaint | null;
@@ -70,11 +69,10 @@ class Modal {
 
 	}
 
-	openPaintingView(item: IPaint, editMode: boolean = false) {
+	openPaintingView(item: IPaint) {
 
 		this.paintingViewOpen = true;
 		this.paintingItem = item;
-		this.editMode = editMode;
 
 	}
 

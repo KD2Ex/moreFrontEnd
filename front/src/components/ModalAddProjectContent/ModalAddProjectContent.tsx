@@ -5,41 +5,26 @@ import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ProjectTextarea from "./ProjectTextarea/ProjectTextarea";
 import {observer} from "mobx-react-lite";
 import project from "../../store/project";
+import {toJS} from "mobx";
 
-const ModalAddProjectContent = observer(({item, setItem}) => {
+const ModalAddProjectContent = observer(({item}) => {
 
 	const [files, setFiles] = useState([])
-	const [images, setImages] = useState([])
 
 	useEffect(() => {
 
+		console.log(toJS(item))
+		setFiles(item.files)
 
-		//setImages([...project.editItem?.images])
-
-		if (item?.images?.length) {
-			setImages([...item.images])
-		}
 
 	}, [])
 
-	useEffect(() => {
-
-		console.log('editContent Effect')
-		console.log(project.editItem)
-
-
-	}, [project.editItem])
 
 	useEffect(() => {
 
 		console.log('files effect')
 
-		setItem(prev => {
-			return {
-				...prev,
-				files
-			}
-		})
+		item.files = files;
 
 		//project.setEditItem({...project.editItem, files: files})
 
@@ -61,10 +46,10 @@ const ModalAddProjectContent = observer(({item, setItem}) => {
 				xs={12}
 			>
 
-				{images?.length ? (
+				{item?.images?.length ? (
 					<ModalCarousel
-						items={images}
-						setItems={setImages}
+						items={item.images}
+						deleteImage={project.deleteImage.bind(project)}
 					/>
 				) : null}
 
@@ -82,7 +67,6 @@ const ModalAddProjectContent = observer(({item, setItem}) => {
 			>
 				<ProjectTextarea
 					item={item}
-					setItem={setItem}
 				/>
 			</Grid>
 

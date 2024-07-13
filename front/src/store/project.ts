@@ -9,13 +9,33 @@ class Project {
 		makeAutoObservable(this)
 	}
 
+	defaultItem: IProject = {
+		area: 0,
+		cost: 0,
+		address: '',
+		images: [],
+		levels: 0,
+		timePeriod: '',
+		order: 0,
+		files: [],
+		desc: '',
+		height: 400,
+		title: '',
+		id: 0
+	}
+
 	items: IProject[] = [];
 	rowHeight: number = 400;
 	loading: boolean = false;
 	totalPages: number = 0;
 
 	editItem: IProject | null = null;
+	newItem: IProject = this.defaultItem;
 	editModalOpen: boolean = false;
+
+	resetEditItem(item: IProject) {
+		item = this.defaultItem;
+	}
 
 	openEdit(item: IProject) {
 		//this.setEditItem(item)
@@ -31,10 +51,6 @@ class Project {
 	setOpen(value: boolean) {
 		this.editModalOpen = value;
 		console.log(this.editModalOpen)
-		if (!value) {
-			this.editItem = null
-		}
-
 	}
 
 	validate(item: IProject) {
@@ -100,8 +116,6 @@ class Project {
 
 		const response = await ProjectService.update(formData);
 
-
-
 		const index = this.items.findIndex(i => i.id === newItem.id);
 		newItem.files = [];
 		this.items[index] = newItem;
@@ -157,6 +171,25 @@ class Project {
 		const response = await ProjectService.delete(id)
 
 		this.setItems([...this.items.filter(i => i.id !== id)]);
+
+	}
+
+	async deleteImage(name: string) {
+
+		try {
+			const response = await ProjectService.deleteImage(name);
+
+			const proj = this.items.find((i) => {
+				return i.images.find(j => j.name === name);
+			})
+
+			proj.images = proj.images.filter(i => i.name !== name);
+
+			alert.openAlert("Изображение успешно удалено", "success")
+		} catch (e) {
+			alert.openAlert(e.message, "error")
+		}
+
 
 	}
 

@@ -3,93 +3,50 @@ import {Box, TextField} from "@mui/material";
 import {IProject} from "../../../models/interfaces/IProject";
 import {observer} from "mobx-react-lite";
 import project from "../../../store/project";
+import {toJS} from "mobx";
 
 interface ProjectTextareaProps {
 	item: IProject,
 	setItem: React.Dispatch<IProject | null>
 }
 
-const ProjectTextarea = observer(({item, setItem}) => {
+const ProjectTextarea = observer(({item}) => {
 
-	const [title, setTitle] = useState('')
-	const [desc, setDesc] = useState('')
-	const [levels, setLevels] = useState(0)
-	const [area, setArea] = useState(0)
-	const [cost, setCost] = useState(0)
-	const [time, setTime] = useState('')
-	const [address, setAddress] = useState('')
 
 	useEffect(() => {
 
 		if (!item) return;
-
-		setTitle(item.title)
-		setDesc(item.desc)
-		setLevels(item.levels)
-		setArea(item.area)
-		setCost(item.cost)
-		setTime(item.timePeriod)
-		setAddress(item.address)
-
 		console.log('textarea effect')
-
+		console.log(toJS(item))
 	}, [])
 
-	useEffect(() => {
-
-		//@ts-ignore
-		setItem((prev) => {
-			return {
-				...prev,
-				title,
-				desc,
-				levels,
-				area,
-				cost,
-				timePeriod: time,
-				address
-			}
-		})
-		/*project.setEditItem({
-			...project.editItem,
-			title,
-			desc,
-			levels,
-			area,
-			cost,
-			timePeriod: time,
-			address
-		})*/
-
-
-	}, [title, desc, levels, area, cost, time, address])
 
 	const changeTitle = (e) => {
-		setTitle(e.target.value)
+		item.title = e.target.value
 	}
 
 	const changeDesc = (e) => {
-		setDesc(e.target.value)
+		item.desc= e.target.value
 	}
 
 	const changeLevels = (e) => {
-		setLevels(e.target.value)
+		item.levels = e.target.value
 	}
 
 	const changeArea = (e) => {
-		setArea(e.target.value)
+		item.area = e.target.value
 	}
 
 	const changeCost = (e) => {
-		setCost(e.target.value)
+		item.cost = e.target.value
 	}
 
 	const changeTime = (e) => {
-		setTime(e.target.value)
+		item.timePeriod = e.target.value
 	}
 
 	const changeAddress = (e) => {
-		setAddress(e.target.value)
+		item.address = e.target.value
 	}
 
 	return (
@@ -106,14 +63,14 @@ const ProjectTextarea = observer(({item, setItem}) => {
 			<TextField
 				size={'small'}
 				label={'Название'}
-				value={title}
+				value={item.title}
 				onChange={changeTitle}
 			/>
 			<TextField
 				size={'small'}
 				label={'Описание'}
 				multiline
-				value={desc}
+				value={item.desc}
 				onChange={changeDesc}
 				maxRows={8}
 				minRows={8}
@@ -130,7 +87,7 @@ const ProjectTextarea = observer(({item, setItem}) => {
 				<TextField
 					size={'small'}
 					label={'Этажей'}
-					value={levels}
+					value={item.levels}
 					type={'number'}
 					onChange={changeLevels}
 					sx={{
@@ -141,7 +98,7 @@ const ProjectTextarea = observer(({item, setItem}) => {
 					size={'small'}
 					label={'Площадь'}
 					type={'number'}
-					value={area}
+					value={item.area}
 					onChange={changeArea}
 					sx={{
 						width: '100%'
@@ -153,20 +110,20 @@ const ProjectTextarea = observer(({item, setItem}) => {
 				size={'small'}
 				label={'Итоговая стоимость'}
 				type={'number'}
-				value={cost}
+				value={item.cost}
 				onChange={changeCost}
 			/>
 			<TextField
 				size={'small'}
 				label={'Срок реализации'}
-				value={time}
+				value={item.timePeriod}
 				onChange={changeTime}
 			/>
 
 			<TextField
 				size={'small'}
 				label={'Местоположение'}
-				value={address}
+				value={item.address}
 				onChange={changeAddress}
 			/>
 

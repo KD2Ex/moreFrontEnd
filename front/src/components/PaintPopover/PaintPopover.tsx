@@ -6,6 +6,7 @@ import SettingChangeFit from "../SettingChangeFit/SettingChangeFit";
 import paint from "../../store/paint";
 import SettingDelete from "../SettingDeletePainting/SettingDelete";
 import SettingEditPainting from "../SettingEditPainting/SettingEditPainting";
+import modal from "../../store/modal";
 
 interface PaintPopoverProps {
 	anchor: HTMLAnchorElement,
@@ -40,7 +41,6 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 				vertical: 'bottom',
 				horizontal: 'center',
 			}}
-
 		>
 
 			<Box
@@ -60,7 +60,6 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 					changeFit={changeFit}
 				/>
 
-
 				<Box
 					onClick={handleClose}
 					sx={{
@@ -71,6 +70,8 @@ const PaintPopover = ({anchor, setAnchor, item}) => {
 				>
 					<SettingEditPainting
 						item={item}
+						func={modal.openPaintingView.bind(modal)}
+						close={handleClose}
 					/>
 
 					<SettingDelete

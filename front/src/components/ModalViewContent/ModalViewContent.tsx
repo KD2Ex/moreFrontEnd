@@ -8,6 +8,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
+import paint from "../../store/paint";
 
 const ModalViewContent = observer(({item}) => {
 
@@ -33,6 +34,7 @@ const ModalViewContent = observer(({item}) => {
 			>
 				<ModalCarousel
 					items={item.images}
+					deleteImage={paint.deleteImage}
 				/>
 
 			</Grid>

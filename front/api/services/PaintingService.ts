@@ -59,8 +59,6 @@ export default class PaintingService {
 
 	}
 
-
-
 	static async editSizes(data) {
 
 		console.log(data)

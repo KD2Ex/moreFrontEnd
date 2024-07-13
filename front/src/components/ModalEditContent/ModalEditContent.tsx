@@ -16,11 +16,8 @@ const ModalEditContent = observer(({item}) => {
 
 	useEffect(() => {
 
-		console.log(item)
 		if (!item) return;
 		setFiles(item.files)
-
-		console.log(item)
 
 	}, [])
 
@@ -48,6 +45,7 @@ const ModalEditContent = observer(({item}) => {
 				>
 					<ModalCarousel
 						items={item.images}
+						deleteImage={paint.deleteImage.bind(paint)}
 					/>
 				</Box>
 				<ImageUpload

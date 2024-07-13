@@ -11,7 +11,7 @@ import ImageZoom from "../ImageZoom/ImageZoom";
 import {observer} from "mobx-react-lite";
 
 
-const ModalCarousel = observer(({items}) => {
+const ModalCarousel = observer(({items, deleteImage}) => {
 
 	const sliderRef = useRef(null);
 	const [slideIndex, setSlideIndex] = useState(0);
@@ -31,19 +31,13 @@ const ModalCarousel = observer(({items}) => {
 		console.log(items)
 	}, [items])
 
-	useEffect(() => {
-
-		//if (modal.editMode) setItems(modal.paintingItem.images)
-
-	}, [modal.editMode])
-
 	const deleteImg = async (imageIndex) => {
 
 		console.log(items)
 
 		const newItems = items.filter((item, index) => index != imageIndex)
 
-		await paint.deleteImage(items[imageIndex].name);
+		await deleteImage(items[imageIndex].name);
 
 		if (imageIndex === items.length - 1) {
 			setSlideIndex(prev => prev - 1);

@@ -8,8 +8,6 @@ import alert from "../../store/alert";
 
 const ModalAddProject = ({open, setOpen}) => {
 
-	const [newItem, setNewItem] = useState<IProject | null>(null);
-
 	const handleClose = () => {
 		setOpen(false)
 	}
@@ -17,9 +15,8 @@ const ModalAddProject = ({open, setOpen}) => {
 	const handleClick = async () => {
 		//await project
 
-		if (newItem === null) return;
 
-		const isValid = project.validate(newItem)
+		const isValid = project.validate(project.newItem)
 
 		if (!isValid) {
 
@@ -28,7 +25,7 @@ const ModalAddProject = ({open, setOpen}) => {
 			return;
 		}
 
-		const response = await project.create(newItem)
+		const response = await project.create(project.newItem)
 
 		handleClose()
 		alert.openAlert("Проект успешно добавлен", "success")
@@ -46,8 +43,7 @@ const ModalAddProject = ({open, setOpen}) => {
 			<DialogContent>
 
 				<ModalAddProjectContent
-					item={newItem}
-					setItem={setNewItem}
+					item={project.newItem}
 				/>
 
 			</DialogContent>

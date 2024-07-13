@@ -5,8 +5,9 @@ import {Box} from "@mui/material";
 import user from "../../../store/user";
 import project from "../../../store/project";
 import ProjectImage from "../../ProjectImage/ProjectImage";
+import {observer} from "mobx-react-lite";
 
-const ProjectCarousel = ({items, height}) => {
+const ProjectCarousel = observer(({items, height}) => {
 
 	const [slideIndex, setSlideIndex] = useState(0)
 	const [swiping, setSwiping] = useState<number | null>(null)
@@ -77,6 +78,6 @@ const ProjectCarousel = ({items, height}) => {
 
 		</Box>
 	);
-};
+});
 
 export default ProjectCarousel;

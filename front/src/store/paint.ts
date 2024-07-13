@@ -8,7 +8,7 @@ import alert from "./alert";
 import material from "./material";
 import technique from "./technique";
 import locale from "./locale";
-
+import utils from "../utils";
 
 class Paint {
 
@@ -155,22 +155,15 @@ class Paint {
 		this.viewItems = value;
 	}
 
-	getAppendStringFromLocale(locale: object) {
-		let result = '';
-		Object.keys(locale).forEach(i => result += `${i}:${locale[i]}:`)
-		return result.slice(0, result.length - 1)
-	}
-
-
 	appendFile(item: IPaint) {
 
 		const formData = new FormData();
 
-		formData.append("title", `${this.getAppendStringFromLocale(item.title)}`);
-		formData.append("desc", `${this.getAppendStringFromLocale(item.desc)}`);
+		formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`);
+		formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`);
 		formData.append("height", `${item.height}`);
 		formData.append("width", `${item.width}`);
-		formData.append("price", `${this.getAppendStringFromLocale(item.price)}`);
+		formData.append("price", `${utils.getAppendStringFromLocale(item.price)}`);
 		formData.append("materialId", `${item.material.id}`)
 		formData.append("techniqueId", `${item.technique.id}`)
 

@@ -65,7 +65,11 @@ const PortfolioPage = observer(() => {
 	}, [user.changeOrderMode, project.rowHeight])
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				mx: 4
+			}}
+		>
 
 			<ModalAddProject
 				open={open}

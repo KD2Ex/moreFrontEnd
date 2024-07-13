@@ -84,7 +84,7 @@ const GalleryPage = observer(() => {
 		<Box
 			sx={{
 				maxWidth: '95%',
-				margin: 'auto'
+				margin: 'auto',
 			}}
 		>
 
@@ -98,12 +98,12 @@ const GalleryPage = observer(() => {
 			</Box>
 
 
+
 			<Gallery
 				items={paint.items.slice().sort(paint.sort)}
 				type={"painting"}
 				store={paint}
 			/>
-
 			<ModalAddPainting
 				open={isAddModalOpen}
 				setOpen={setIsAddModalOpen}

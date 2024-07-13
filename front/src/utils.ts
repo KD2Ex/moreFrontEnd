@@ -10,5 +10,11 @@ export default class Utils {
 
     }
 
+    static getAppendStringFromLocale(locale: object) {
+        let result = '';
+        Object.keys(locale).forEach(i => result += `${i}:${locale[i]}:`)
+        return result.slice(0, result.length - 1)
+    }
+
 }
 

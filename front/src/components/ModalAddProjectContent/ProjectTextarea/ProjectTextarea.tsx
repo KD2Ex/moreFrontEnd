@@ -4,6 +4,7 @@ import {IProject} from "../../../models/interfaces/IProject";
 import {observer} from "mobx-react-lite";
 import project from "../../../store/project";
 import {toJS} from "mobx";
+import locale from "../../../store/locale";
 
 interface ProjectTextareaProps {
 	item: IProject,
@@ -22,11 +23,11 @@ const ProjectTextarea = observer(({item}) => {
 
 
 	const changeTitle = (e) => {
-		item.title = e.target.value
+		item.title[locale.currentLocale.name] = e.target.value
 	}
 
 	const changeDesc = (e) => {
-		item.desc= e.target.value
+		item.desc[locale.currentLocale.name] = e.target.value
 	}
 
 	const changeLevels = (e) => {
@@ -38,15 +39,15 @@ const ProjectTextarea = observer(({item}) => {
 	}
 
 	const changeCost = (e) => {
-		item.cost = e.target.value
+		item.cost[locale.currentLocale.name] = e.target.value
 	}
 
 	const changeTime = (e) => {
-		item.timePeriod = e.target.value
+		item.timePeriod[locale.currentLocale.name] = e.target.value
 	}
 
 	const changeAddress = (e) => {
-		item.address = e.target.value
+		item.address[locale.currentLocale.name] = e.target.value
 	}
 
 	return (
@@ -63,14 +64,14 @@ const ProjectTextarea = observer(({item}) => {
 			<TextField
 				size={'small'}
 				label={'Название'}
-				value={item.title}
+				value={item.title[locale.currentLocale.name]}
 				onChange={changeTitle}
 			/>
 			<TextField
 				size={'small'}
 				label={'Описание'}
 				multiline
-				value={item.desc}
+				value={item.desc[locale.currentLocale.name]}
 				onChange={changeDesc}
 				maxRows={8}
 				minRows={8}
@@ -109,25 +110,22 @@ const ProjectTextarea = observer(({item}) => {
 			<TextField
 				size={'small'}
 				label={'Итоговая стоимость'}
-				type={'number'}
-				value={item.cost}
+				value={item.cost[locale.currentLocale.name]}
 				onChange={changeCost}
 			/>
 			<TextField
 				size={'small'}
 				label={'Срок реализации'}
-				value={item.timePeriod}
+				value={item.timePeriod[locale.currentLocale.name]}
 				onChange={changeTime}
 			/>
 
 			<TextField
 				size={'small'}
 				label={'Местоположение'}
-				value={item.address}
+				value={item.address[locale.currentLocale.name]}
 				onChange={changeAddress}
 			/>
-
-
 		</Box>
 	);
 });

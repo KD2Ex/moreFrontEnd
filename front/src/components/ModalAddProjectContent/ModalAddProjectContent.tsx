@@ -6,6 +6,7 @@ import ProjectTextarea from "./ProjectTextarea/ProjectTextarea";
 import {observer} from "mobx-react-lite";
 import project from "../../store/project";
 import {toJS} from "mobx";
+import LanguageChange from "../LanguageChange/LanguageChange";
 
 const ModalAddProjectContent = observer(({item}) => {
 
@@ -65,6 +66,15 @@ const ModalAddProjectContent = observer(({item}) => {
 				md={6}
 				xs={12}
 			>
+				<Box
+					sx={{
+						mb: 2
+					}}
+				>
+					<LanguageChange/>
+
+				</Box>
+
 				<ProjectTextarea
 					item={item}
 				/>

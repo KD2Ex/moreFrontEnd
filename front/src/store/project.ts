@@ -2,6 +2,7 @@ import {makeAutoObservable} from "mobx";
 import ProjectService from "../../api/services/ProjectService";
 import {IProject} from "../models/interfaces/IProject";
 import alert from "./alert";
+import utils from "../utils";
 
 class Project {
 
@@ -11,16 +12,16 @@ class Project {
 
 	defaultItem: IProject = {
 		area: 0,
-		cost: 0,
-		address: '',
+		cost: {},
+		address: {},
 		images: [],
 		levels: 0,
-		timePeriod: '',
+		timePeriod: {},
 		order: 0,
 		files: [],
-		desc: '',
+		desc: {},
 		height: 400,
-		title: '',
+		title: {},
 		id: 0
 	}
 
@@ -63,13 +64,13 @@ class Project {
 
 		const formData = new FormData();
 
-		formData.append("title", item.title)
-		formData.append("desc", item.desc)
+		formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`)
+		formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`)
 		formData.append("levels", `${item.levels}`)
 		formData.append("area", `${item.area}`)
-		formData.append("cost", `${item.cost}`)
-		formData.append("timePeriod", item.timePeriod)
-		formData.append("address", item.address)
+		formData.append("cost", `${utils.getAppendStringFromLocale(item.cost)}`)
+		formData.append("timePeriod", `${utils.getAppendStringFromLocale(item.timePeriod)}`)
+		formData.append("address", `${utils.getAppendStringFromLocale(item.address)}`)
 
 		if (item.files) {
 			const fileImages = item.files.map(i => {

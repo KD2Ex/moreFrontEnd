@@ -13,6 +13,9 @@ import user from "./store/user";
 import ParentPage from "./pages/ParentPage/ParentPage.tsx";
 import GlobalAlerts from "./components/GlobalAlert/GlobalAlerts.tsx";
 import locale from "./store/locale";
+import BlogPage from "./pages/BlogPage/BlogPage";
+import PostPage, {loader as postLoader} from "./pages/PostPage/PostPage";
+import BlogCreatePage from "./pages/BlogCreatePage/BlogCreatePage";
 
 function App() {
 
@@ -36,6 +39,19 @@ function App() {
 				{
 					path: '/login',
 					element: <LoginPage/>,
+				},
+				{
+					path: '/blog',
+					element: <BlogPage/>,
+				},
+				{
+					path: '/blog/:id',
+					element: <PostPage/>,
+					loader: postLoader
+				},
+				{
+					path: '/blog/create',
+					element: <BlogCreatePage/>,
 				},
 			]
 		},

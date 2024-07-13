@@ -45,6 +45,19 @@ const NavBar = () => {
 			],
 			url: '/portfolio',
 		},
+		{
+			title: [
+				{
+					locale: "ru",
+					value: 'Блог'
+				},
+				{
+					locale: 'en-US',
+					value: "Blog"
+				}
+			],
+			url: '/blog',
+		},
 	]
 
 	console.log(...buttons[0].title)

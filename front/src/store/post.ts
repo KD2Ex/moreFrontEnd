@@ -17,6 +17,56 @@ class Post {
         },
     ]
 
+    newItem = {
+        id: 0,
+        title: '',
+        paragraphs: [
+            {order: 0, value: 'asdf'}
+        ],
+        images: [
+            {order: 1, size: 12, file: {}}
+        ],
+        links: []
+    }
+
+    getOrder(item) {
+        return item.paragraphs.length + item.images.length;
+    }
+
+    addParagraph(value: string) {
+
+        const order = this.getOrder(this.newItem);
+
+        this.newItem.paragraphs.push({
+            order: order,
+            value: value
+        })
+    }
+
+    addImages(images: File[]) {
+        const order = this.getOrder(this.newItem);
+
+        for (let i = 0; i < images.length; i++) {
+            this.newItem.images.push({
+                order: order + i,
+                size: 12 / images.length,
+                file: images[i]
+            })
+        }
+
+    }
+
+    resetItem(item) {
+        item = {
+            title: '',
+        }
+        return item
+    }
+
+    updateItem(item, property, value) {
+        item[property] = value;
+    }
+
     async getItem(id: number) {
         return this.items.find(i => i.id === +id);
     }

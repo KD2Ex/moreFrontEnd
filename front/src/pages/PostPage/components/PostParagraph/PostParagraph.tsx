@@ -3,8 +3,6 @@ import {Grid, Typography} from "@mui/material";
 
 const PostParagraph = ({text}) => {
 
-
-
     return (
         <Grid
             item

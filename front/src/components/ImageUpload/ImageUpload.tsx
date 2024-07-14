@@ -20,15 +20,27 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, F
 
 
 
-const ImageUpload = ({files, setFiles}) => {
+const ImageUpload = ({disabled, files, setFiles}) => {
 
 
 	return (
 		<Box
 			sx={{
+				'.filepond--panel-root': {
+					bgcolor: '#181818',
+					border: '2px',
+					borderColor: (theme) => theme.palette.text.primary,
+					borderStyle: 'dashed solid',
+				},
+				'.filepond--drop-label': {
+					color: (theme) => theme.palette.text.primary
+				},
+				'.filepond--root': {
+				},
 			}}
 		>
 			<FilePond
+				disabled={disabled}
 				files={files}
 				onupdatefiles={setFiles}
 				allowMultiple={true}

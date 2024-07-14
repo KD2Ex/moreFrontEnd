@@ -5,6 +5,7 @@ import {Box, Button, Grid, Typography} from "@mui/material";
 import LocaleText from "../../components/Locale/LocaleText/LocaleText";
 import PostImage from "./components/PostImage/PostImage";
 import PostParagraph from "./components/PostParagraph/PostParagraph";
+import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 const items = [
     {id: 1, order: 0, type: "text", value: "Getting inspiration from the Living by Design Showhouse, I picked out lights from Lamps Plus  to help one of my clients brighten up their living room. They loved how I used my Mitzi collection to create depth in the showhouse and they wanted something similar in their space. They have amazing natural light coming in during the day but in the evening they struggled to create the perfect ambience. When it comes to a living room, I like to layer a variety of floor and table lamps to add dimension to the space. Here, I chose two table lamps and two floor lamps, one in each corner to balance the lighting. The gourd table lamp might be my favorite. It’s sculptural and modern. I’ve always loved pharmacy floor lamps. They’re timeless and work with so many different styles. I chose the jug lamp for a traditional touch and contrasted it with a contemporary arc floor lamp. And lastly, I hung art above the sofa and brought in pillows and throws to make it all cozy. Now the space feels perfectly balanced. Shop LampPlus.com for lighting, furniture, and home decor for indoor and outdoor spaces", gridSize: 12},
@@ -44,13 +45,7 @@ const PostPage = () => {
                         height: 'fit-content'
                     }}
                 >
-                    <Button
-                        onClick={() => {
-                            navigate(-1)
-                        }}
-                    >
-                        Вернуться
-                    </Button>
+                    <ButtonBack/>
                 </Grid>
 
                 <Grid

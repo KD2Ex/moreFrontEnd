@@ -15,7 +15,7 @@ import GlobalAlerts from "./components/GlobalAlert/GlobalAlerts.tsx";
 import locale from "./store/locale";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import PostPage, {loader as postLoader} from "./pages/PostPage/PostPage";
-import BlogCreatePage from "./pages/BlogCreatePage/BlogCreatePage";
+import PostCreatePage from "./pages/BlogCreatePage/PostCreatePage";
 
 function App() {
 
@@ -51,7 +51,7 @@ function App() {
 				},
 				{
 					path: '/blog/create',
-					element: <BlogCreatePage/>,
+					element: <PostCreatePage/>,
 				},
 			]
 		},

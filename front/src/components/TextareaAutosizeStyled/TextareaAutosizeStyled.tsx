@@ -1,15 +1,17 @@
 import React from 'react';
 import {TextareaAutosize} from "@mui/material";
+import './TextareaStyles.css'
 
 const TextareaAutosizeStyled = ({height, ...props}) => {
     return (
         <React.Fragment>
             <TextareaAutosize
                 {...props}
-                className="CustomTextarea"
+                className={"CustomTextarea scrollbar"}
                 placeholder='Введите текст'
                 style={{
-                    height: `${height}px`
+                    height: `${height}px`,
+                    overflow: 'auto',
                 }}
             />
             <Styles />

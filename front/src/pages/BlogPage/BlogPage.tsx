@@ -1,14 +1,22 @@
 import React from 'react';
-import {Box, Button, Grid} from "@mui/material";
-import LocaleText from "../../components/Locale/LocaleText/LocaleText";
-import {Link, useNavigate} from "react-router-dom";
+import {Box, Button, Grid, Typography} from "@mui/material";
+import {Link, useNavigate, useLoaderData} from "react-router-dom";
 import AdminComponent from "../../components/AdminComponent/AdminComponent";
+import post from "../../store/post";
+import {observer} from "mobx-react-lite";
+import locale from "../../store/locale";
 
+export async function loader({params}) {
+    const items = await post.getPostList();
+    return {items}
+}
 
-
-const BlogPage = () => {
+const BlogPage = observer(() => {
 
     const navigate = useNavigate();
+    const {items} = useLoaderData();
+
+    console.log(items)
 
     return (
         <Grid
@@ -40,7 +48,7 @@ const BlogPage = () => {
                 container
                 spacing={2}
             >
-                {[1, 1, 1, 1, 1].map((i, index) => (
+                {items.map((i, index) => (
                     <Grid
                         item
                         key={index}
@@ -48,7 +56,7 @@ const BlogPage = () => {
                         md={6}
                         lg={4}
                         onClick={(e) => {
-                            navigate(`./${i}`)
+                            navigate(`./${i.id}`)
                         }}
                         sx={{
                             cursor: 'pointer'
@@ -75,16 +83,13 @@ const BlogPage = () => {
                             </Box>
 
 
-                            <LocaleText
-                                useDefault
-                                localeList={[
-                                    'Заголовок',
-                                    'Title'
-                                ]}
+                            <Typography
                                 sx={{
                                     textAlign: 'center'
                                 }}
-                            />
+                            >
+                                {i.title.find(i => i.localeId === locale.currentLocale.id).title}
+                            </Typography>
 
                         </Box>
                     </Grid>
@@ -93,10 +98,8 @@ const BlogPage = () => {
 
             </Grid>
             <Grid item sm={2.5} />
-
-
         </Grid>
     );
-};
+});
 
 export default BlogPage;

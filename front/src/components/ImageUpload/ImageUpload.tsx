@@ -29,8 +29,8 @@ const ImageUpload = ({disabled, files, setFiles}) => {
 				'.filepond--panel-root': {
 					bgcolor: '#181818',
 					border: '2px',
-					borderColor: (theme) => theme.palette.text.primary,
-					borderStyle: 'dashed solid',
+					borderColor: (theme) => theme.palette.secondary.main,
+					borderStyle: 'solid',
 				},
 				'.filepond--drop-label': {
 					color: (theme) => theme.palette.text.primary

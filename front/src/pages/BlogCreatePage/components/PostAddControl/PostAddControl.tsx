@@ -1,35 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import ImageUpload from "../../../../components/ImageUpload/ImageUpload";
-import {Box, Button, Divider} from "@mui/material";
+import {Box, Divider, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {observer} from "mobx-react-lite";
-import post from "../../../../store/post";
 import TextareaAutosizeStyled from "../../../../components/TextareaAutosizeStyled/TextareaAutosizeStyled";
+import locale from "../../../../store/locale";
 
 const PostAddControl = observer(({text, setText, files, setFiles}) => {
-
-    const [textMode, setTextMode] = useState(false);
-    const [imgMode, setImgMode] = useState(false);
-
-    useEffect(() => {
-
-        if (text.length > 0) {
-
-        }
-
-    }, [text])
-
-    useEffect(() => {
-
-        post.newItem.files = files;
-    }, [files])
-
-    useEffect(() => {
-
-        if (files.length > 0) {
-        } else {
-        }
-
-    }, [files.length])
 
     return (
         <Box
@@ -41,12 +17,18 @@ const PostAddControl = observer(({text, setText, files, setFiles}) => {
                 mt: 2
             }}
         >
+
             <TextareaAutosizeStyled
                 height={200}
-                value={text}
-                onChange={(e) => setText(e.target.value)}
+                value={text[locale.currentLocale.name]}
+                onChange={(e) => {
+                    const newText = {...text};
+                    newText[locale.currentLocale.name] = e.target.value;
+                    setText(newText)
+                }}
                 disabled={files.length > 0}
             />
+
 
             <Box
             >

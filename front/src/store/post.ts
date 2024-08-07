@@ -1,4 +1,6 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, toJS} from "mobx";
+import BlogService from "../../api/services/BlogService";
+import locale from "./locale";
 
 
 class Post {
@@ -10,47 +12,66 @@ class Post {
     items = [
         {
             id: 1,
-            name: "Пост 1",
-            images: [
-                {id: 1, src: 'https://images.squarespace-cdn.com/content/v1/52efdac1e4b07964224912f6/1195b9e2-1e5f-4e7b-8ef4-d7aa35299445/4P2A3157.jpg?format=1000w'}
-            ]
+            title: "Пост 1",
+            blocks: [
+                {id: 1, order: 1, size: 12, value: 'fdas', type: 'text'},
+                {id: 2, order: 0, size: 12, value: 'xzcvb', type: 'text'},
+            ],
+        },
+        {
+            id: 2,
+            title: "Пост 2",
+            blocks: [
+                {id: 1, order: 0, size: 12, value: 'fdas', type: 'text'},
+                {id: 2, order: 1, size: 12, value: 'xzcvb', type: 'text'},
+            ],
         },
     ]
 
-    newItem = {
-        id: 0,
-        title: '',
-        paragraphs: [
-            {order: 0, value: 'asdf'}
-        ],
-        images: [
-            {order: 1, size: 12, file: {}}
-        ],
-        links: []
+    newItem = this.defaultItem()
+
+
+    defaultItem() {
+
+        return {
+            id: 0,
+            title: {
+                'ru': '',
+                'en-US': ''
+            },
+            blocks: [],
+            links: []
+        }
     }
 
     getOrder(item) {
-        return item.paragraphs.length + item.images.length;
+        return item.blocks.length;
     }
 
     addParagraph(value: string) {
 
         const order = this.getOrder(this.newItem);
 
-        this.newItem.paragraphs.push({
+        this.newItem.blocks.push({
             order: order,
-            value: value
+            value: value,
+            size: 12,
+            type: 'text'
         })
+
+        console.log(toJS(this.newItem.blocks))
     }
 
     addImages(images: File[]) {
+        console.log(images)
         const order = this.getOrder(this.newItem);
 
         for (let i = 0; i < images.length; i++) {
-            this.newItem.images.push({
+            this.newItem.blocks.push({
                 order: order + i,
                 size: 12 / images.length,
-                file: images[i]
+                value: images[i],
+                type: 'newImage'
             })
         }
 
@@ -67,8 +88,92 @@ class Post {
         item[property] = value;
     }
 
+    updateItem(property, value) {
+        property = value;
+    }
+
+    updateTitle(value) {
+        this.newItem.title[locale.currentLocale.name] = value;
+    }
+
     async getItem(id: number) {
-        return this.items.find(i => i.id === +id);
+
+        const response = await BlogService.getPost(id);
+
+        const post = {
+            id: id,
+            blocks: response.blocks,
+            title: response.title
+        }
+
+        for (const p of post.blocks) {
+
+            if (p.type !== "text") continue;
+            const res = {}
+
+            for (const lP of p.value) {
+                const l = locale.locales.find(i => i.id === lP.localeId)
+                console.log(toJS(l))
+
+                res[l.name] = lP.text;
+
+                console.log(res)
+            }
+
+            p.value = {...res}
+        }
+
+        return post;
+    }
+
+    async getPostList() {
+        const list = await BlogService.getPostList();
+        this.items = list.posts
+        return list.posts;
+    }
+
+    async createItem(item) {
+        console.log(toJS(item))
+
+        const texts = item.blocks.filter(i => i.type === "text");
+        const itemWithTexts = {blocks: texts, ...item}
+        await BlogService.createTexts(itemWithTexts);
+
+        return;
+
+        for (let i = 0; i < texts.length; i++) {
+            const text = texts[i];
+
+
+        }
+
+        const formData = new FormData()
+        const images = item.blocks.filter(i => i.type === "newImage")
+
+        console.log(images)
+        for (let i = 0; i < images.length; i++) {
+
+            const img = images[i];
+
+            const obj = {
+                order: img.order,
+                size: img.size,
+            }
+            formData.append("img" + i, JSON.stringify(obj))
+            formData.append("img" + i, img.value.file)
+        }
+
+        for(let item of formData.entries()) {
+            console.log(item)
+        }
+
+        await BlogService.create(formData);
+    }
+
+    addItem(item) {
+
+        this.items.push({...item});
+
     }
 }
 

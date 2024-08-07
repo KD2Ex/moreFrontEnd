@@ -1,16 +1,16 @@
 import React from 'react';
 import {Box, Grid} from "@mui/material";
 
-const PostImage = ({gridSize, src}) => {
+const PostImage = ({block}) => {
     return (
         <Grid
             item
             xs={12}
-            md={gridSize}
+            md={block.size}
         >
             <Box
                 component={'img'}
-                src={src}
+                src={block.value}
                 sx={{
                     width: '100%',
                     height: '100%',

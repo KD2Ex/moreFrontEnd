@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, toJS} from "mobx";
 import LocaleService from "../../api/services/LocaleService";
 import {Simulate} from "react-dom/test-utils";
 import localeText from "../components/Locale/LocaleText/LocaleText";
@@ -79,6 +79,8 @@ class Locale {
         this.locales = res.map(i => {
             return {id: i.id, name: i.name}
         })
+
+        console.log(toJS(this.locales))
 
     }
 

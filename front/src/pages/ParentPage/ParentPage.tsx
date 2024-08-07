@@ -6,21 +6,20 @@ import material from "../../store/material.ts";
 import locale from "../../store/locale";
 import {observer} from "mobx-react-lite";
 
+export async function loader({params}) {
+    await locale.fetchLocaleList();
+    await locale.checkLocale();
+    await technique.getItems()
+    await material.getItems()
+
+    // Promise.All ?
+    return null;
+}
+
 const ParentPage = observer(() => {
 
     const [canLoad, setCanLoad] = useState(false);
 
-    useEffect(() => {
-        (async () => {
-
-            await locale.fetchLocaleList();
-            await locale.checkLocale();
-            await technique.getItems()
-            await material.getItems()
-
-        })()
-
-    }, [])
 
     useEffect(() => {
 

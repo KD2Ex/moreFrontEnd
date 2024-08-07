@@ -10,10 +10,9 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import user from "./store/user";
-import ParentPage from "./pages/ParentPage/ParentPage.tsx";
+import ParentPage, {loader as parentLoader} from "./pages/ParentPage/ParentPage.tsx";
 import GlobalAlerts from "./components/GlobalAlert/GlobalAlerts.tsx";
-import locale from "./store/locale";
-import BlogPage from "./pages/BlogPage/BlogPage";
+import BlogPage, {loader as postListLoader} from "./pages/BlogPage/BlogPage";
 import PostPage, {loader as postLoader} from "./pages/PostPage/PostPage";
 import PostCreatePage from "./pages/BlogCreatePage/PostCreatePage";
 
@@ -23,6 +22,7 @@ function App() {
 		{
 			path: '/',
 			element: <ParentPage/>,
+			loader: parentLoader,
 			children: [
 				{
 					path: '/',
@@ -43,6 +43,7 @@ function App() {
 				{
 					path: '/blog',
 					element: <BlogPage/>,
+					loader: postListLoader
 				},
 				{
 					path: '/blog/:id',
@@ -64,10 +65,7 @@ function App() {
 	useEffect(() => {
 
 		(async () => {
-
-
 			user.checkAuth();
-
 		})()
 
 	}, [])

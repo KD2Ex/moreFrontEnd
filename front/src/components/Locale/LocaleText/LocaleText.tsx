@@ -24,7 +24,6 @@ const LocaleText: FC<LocaleTextProps> = observer(({localeList, childBefore, useD
         if (useDefault) {
             const id = locale.currentLocale.id === 1 ? 0 : 1;
             setText(localeList[id])
-
         } else {
             setText(locale.currentLocale
                 ? localeList?.find(i => i.locale === locale.currentLocale.name).value

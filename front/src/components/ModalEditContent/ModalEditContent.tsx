@@ -25,6 +25,8 @@ const ModalEditContent = observer(({item}) => {
 		item.files = files
 	}, [files])
 
+	if (!item) return null;
+
 	return (
 		<Grid
 			container

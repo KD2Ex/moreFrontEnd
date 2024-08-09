@@ -3,9 +3,9 @@ import $api from "../../src/api/http";
 
 export default class BlogService {
 
-    static async create(data) {
+    static async create(data, id) {
 
-        return $api.post('/post/test', data)
+        return $api.post(`/post/addImage/${id}`, data)
 
     }
 

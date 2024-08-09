@@ -30,9 +30,6 @@ const PostPage = observer(() => {
     const { postItem } = useLoaderData();
     const navigate = useNavigate();
 
-    if (!postItem) return (<div></div>)
-
-
     return (
         <>
             <Grid
@@ -95,7 +92,7 @@ const PostPage = observer(() => {
                     >
                         {postItem.blocks.slice().sort((a, b) => a.order - b.order).map(i => {
 
-                            return <PostBlock key={i.id} item={i}/>
+                            return <PostBlock key={i.order} item={i}/>
 
                         })}
                     </Grid>

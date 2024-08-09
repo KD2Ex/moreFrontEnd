@@ -136,21 +136,22 @@ class Post {
         console.log(toJS(item))
 
         const texts = item.blocks.filter(i => i.type === "text");
-        const itemWithTexts = {blocks: texts, ...item}
-        await BlogService.createTexts(itemWithTexts);
-
-        return;
-
-        for (let i = 0; i < texts.length; i++) {
-            const text = texts[i];
 
 
-        }
+        const itemWithTexts = { ...item, blocks: texts }
+
+        console.log(toJS(texts))
+        console.log(toJS(itemWithTexts))
+
+        //const response = await BlogService.createTexts(itemWithTexts);
+
+        //const postId = response.data.id;
 
         const formData = new FormData()
         const images = item.blocks.filter(i => i.type === "newImage")
 
         console.log(images)
+
         for (let i = 0; i < images.length; i++) {
 
             const img = images[i];
@@ -167,7 +168,7 @@ class Post {
             console.log(item)
         }
 
-        await BlogService.create(formData);
+        await BlogService.create(formData, 16);
     }
 
     addItem(item) {

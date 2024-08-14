@@ -5,7 +5,7 @@ import {sizes} from "../../consts";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
 import paint from "../../store/paint";
-import {Grid, Typography} from "@mui/material";
+import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import {IPaint} from "../../models/interfaces/IPaint";
 import PaintItem from "../PaintItem/PaintItem";
@@ -62,6 +62,8 @@ const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [currentDragItem, setCurrentDragItem] = useState(null);
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
 	const Component = item[type].component;
 	const store = item[type].store;
@@ -123,25 +125,28 @@ const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 		>
 			{items?.map((item, index) => {
 
-				const rowGridSpace = 12 - gridSize % 12;
 				let additiveComponent = null;
 
-				if (!user.adminView && rowGridSpace - item.relativeSize < 0) {
-					gridSize += rowGridSpace
-					const fillingIndex = getRandomInt(titles.length);
+				if (!isMobile) {
+					const rowGridSpace = 12 - gridSize % 12;
 
-					additiveComponent = (
-						<Filling
-							key={item.title + index}
-							space={rowGridSpace}
-							title={titles.splice(fillingIndex, 1)[0]}
-						/>
-					)
+					if (!user.adminView && rowGridSpace - item.relativeSize < 0) {
+						gridSize += rowGridSpace
+						const fillingIndex = getRandomInt(titles.length);
 
-					if (titles.length === 0) titles = [...ids]
+						additiveComponent = (
+							<Filling
+								key={item.title + index}
+								space={rowGridSpace}
+								title={titles.splice(fillingIndex, 1)[0]}
+							/>
+						)
+
+						if (titles.length === 0) titles = [...ids]
+					}
+
+					gridSize += +item.relativeSize;
 				}
-
-				gridSize += +item.relativeSize;
 
 				//console.log(`${item.title} ${rowGridSpace}`)
 

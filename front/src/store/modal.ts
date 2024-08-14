@@ -3,7 +3,7 @@ import {makeAutoObservable} from "mobx";
 
 class Modal {
 
-	projectImage = '';
+	projectImage = [];
 	projectImageOpen = false;
 
 	paintingViewOpen = false;
@@ -25,6 +25,13 @@ class Modal {
 	openProjectImage(value, src?) {
 		this.projectImage = src
 		this.projectImageOpen = value;
+	}
+
+	openFullscreenImage(list) {
+		console.log(list)
+
+		this.projectImageOpen = true;
+		this.projectImage = list
 	}
 
 	setItemHeight(item, value) {

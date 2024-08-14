@@ -10,6 +10,7 @@ import ProjectCarousel from "./ProjectCarousel/ProjectCarousel";
 import locale from "../../store/locale";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import Utils from "../../utils";
+import modal from "../../store/modal";
 
 interface ProjectItemProps {
 	item: IProject,
@@ -62,7 +63,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 				spacing={{xs: 0, md: 2}}
 				sx={{
 					width: '100%',
-					height: {lg: `${item.height ? item.height : 400}px`, xs: '100%'}
+					//height: {lg: `${item.height ? item.height : 400}px`, xs: '100%'}
 
 				}}
 				onContextMenu={(e) => {
@@ -79,6 +80,10 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					sx={{
 						height: '100%',
 						minHeight: '300px'
+					}}
+
+					onClick={ () => {
+						 modal.openFullscreenImage(item.images)
 					}}
 				>
 

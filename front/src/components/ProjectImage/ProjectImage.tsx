@@ -8,7 +8,7 @@ import modal from "../../store/modal";
 const ProjectImage = ({image, height, swipe, sliderRef}) => {
 
 	const handleClick = () => {
-		modal.openProjectImage(true, image.name)
+		//modal.openProjectImage(true, image.name)
 	}
 
 	return (

@@ -45,7 +45,7 @@ const NavBar = () => {
 			],
 			url: '/portfolio',
 		},
-		{
+		/*{
 			title: [
 				{
 					locale: "ru",
@@ -57,7 +57,7 @@ const NavBar = () => {
 				}
 			],
 			url: '/blog',
-		},
+		},*/
 	]
 
 	console.log(...buttons[0].title)
@@ -66,7 +66,7 @@ const NavBar = () => {
 		<Box
 			sx={{
 				display: 'flex',
-
+				scrollSnapAlign: 'start',
 			}}
 		>
 			<Box

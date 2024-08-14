@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ServiceTabSwitch from "../ServiceTabSwitch/ServiceTabSwitch";
 import ServiceTab from "../ServiceTab/ServiceTab";
-import {Box, useMediaQuery, useTheme} from "@mui/material";
+import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {useInView} from "react-intersection-observer";
 
 const Services = () => {
@@ -22,6 +22,8 @@ const Services = () => {
         console.log(inView, entry)
 
         if (inView) {
+
+
             document.documentElement.style.scrollSnapType = 'x'
         } else {
 
@@ -35,15 +37,28 @@ const Services = () => {
         <div
             ref={ref}
             style={{
-                scrollSnapAlign: "center",
+
 
             }}
         >
 
-        {/*    <ServiceTabSwitch
+            <Typography
+                variant={'h3'}
+                textAlign={'center'}
+                sx={{
+                    scrollSnapAlign: "start",
+
+                }}
+            >
+                Наши услуги
+            </Typography>
+
+            <ServiceTabSwitch
                 tab={tab}
                 setTab={setTab}
-            />*/}
+                sx={{
+                }}
+            />
 
             <ServiceTab
                 tab={tab}

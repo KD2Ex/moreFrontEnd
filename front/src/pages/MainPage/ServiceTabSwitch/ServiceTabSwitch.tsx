@@ -18,6 +18,7 @@ const ServiceTabSwitch = ({tab, setTab}) => {
                 value={tab}
                 exclusive
                 sx={{
+
                     overflow: 'hidden',
                     position: 'sticky',
                     top: 24,

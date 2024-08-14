@@ -1,7 +1,7 @@
 import React from 'react';
 import LocaleText from "../../../components/Locale/LocaleText/LocaleText";
 import ServiceCard from "../ServiceCard/ServiceCard";
-import {Box, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 
 const minimumItems = [
     '•	Обмерочный план',
@@ -59,7 +59,8 @@ const ProjectTab = () => {
                     }
                 }}
             >
-                <Box
+                <Grid
+                    container
                 >
 
                     <ServiceCard
@@ -117,17 +118,8 @@ const ProjectTab = () => {
                             'Свыше 200 кв.м. условия обговариваются индивидуально\n'
                         ]}
                     />
-
-                </Box>
-
-                <Box
-                    sx={{
-                        maxWidth: '1000px',
-                        margin: 'auto'
-                    }}
-                >
-
                     <ServiceCard
+                        height={500}
                         title={[
                             'Комплектация',
                             'Minimum'
@@ -141,6 +133,16 @@ const ProjectTab = () => {
                             Закупка производится у рекомендованных поставщиков на специальных условиях
                         </Typography>
                     </ServiceCard>
+                </Grid>
+
+                <Box
+                    sx={{
+                        maxWidth: '1000px',
+                        margin: 'auto'
+                    }}
+                >
+
+
                 </Box>
             </Box>
         </>

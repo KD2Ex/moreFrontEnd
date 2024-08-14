@@ -5,12 +5,13 @@ import ImageContainer from "./MainBlock/ImageContainer/ImageContainer";
 import StickyImageContainer from "./MainBlock/ImageContainer/StickyImageContainer";
 import React, {useEffect} from "react";
 import '../../style.css'
+import StickyText from "./MainBlock/StickyText/StickyText";
 
 const MainPage = () => {
 
 	useEffect(() => {
 
-		document.documentElement.style.scrollSnapType = 'y mandatory'
+		//document.documentElement.style.scrollSnapType = 'y mandatory'
 
 		return () => {
 
@@ -81,18 +82,21 @@ const MainPage = () => {
 
 					</Box>
 
-					<Box
-						sx={{
-							position: 'relative',
-							top: 0,
 
-						}}
-					>
+					<StickyText
+						mockHeight={1500}
+						text={'Мы занимаемся проектированием, дизайном интерьеров, архитектурой индивидуальных жилых домов, уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений, что не мало важно как в проектировании так и на этапе реализации проектов, тем более когда работа ведется в режиме сжатых сроков.\n'}
+					/>
 
-					</Box>
-					<Box
+					<StickyText
+						mockHeight={1500}
+						text={'Помимо проектного бюро, к Вашим услугам художественная мастерская, где вы можете подобрать картины в ваши интерьеры, оформить офис, кафе ресторан или гостиничные номера, уникальными авторскими произведениями. Мы не делаем копии мы создаем искусство.\n'}
+					/>
+
+					{/*<Box
 						sx={{
 							position: 'sticky',
+							top:  0,
 							width: '100%',
 							//scrollSnapType: 'y mandatory',
 
@@ -137,7 +141,7 @@ const MainPage = () => {
 							</Typography>
 						</Box>
 
-					</Box>
+					</Box>*/}
 
 				</Grid>
 			</Grid>

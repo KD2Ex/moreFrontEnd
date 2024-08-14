@@ -28,7 +28,7 @@ const Services = () => {
         } else {
 
            if (isMobile) return;
-           document.documentElement.style.scrollSnapType = 'y mandatory'
+           //document.documentElement.style.scrollSnapType = 'y mandatory'
         }
 
     }, [inView, entry])

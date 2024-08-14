@@ -2,13 +2,14 @@ import {Box, Divider, Grid, ToggleButton, ToggleButtonGroup, Typography} from "@
 import MainTitle from "./MainTItle/MainTitle";
 import Services from "./Services/Services";
 
-
 const MainPage = () => {
+
+
 
 	return (
 		<Box
 			sx={{
-				maxWidth: '95%',
+				maxWidth: '1200px',
 				display: 'flex',
 				flexDirection: 'column',
 				margin: 'auto',
@@ -36,7 +37,9 @@ const MainPage = () => {
 				sx={{
 					width: '100%',
 					height: '100%',
-					maxHeight: 'fit-content'
+					display: 'flex',
+					margin: 'auto',
+
 				}}
 			>
 				<MainTitle/>

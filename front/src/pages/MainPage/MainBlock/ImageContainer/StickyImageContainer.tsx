@@ -1,25 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import main4 from "../../../../assets/main4.jpg";
-import {Box, Typography} from "@mui/material";
+import mainPC from "../../../../assets/mainPC.jpg";
+import mainPC2 from "../../../../assets/mainPC2.jpg";
+import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 
-const ImageContainer = () => {
+const StickyImageContainer = () => {
 
-    const [lastScroll, setLastScroll] = useState(0)
-
-    useEffect(() => {
-
-    }, [])
-
-    const handleScroll = (e) => {
-        const {scrollTop, scrollHeight, clientHeight} = e.target;
-
-        const pos = scrollTop / (scrollHeight - clientHeight)
-        e.target.scrollIntoView({behavior: "smooth"})
-
-
-        console.log(pos)
-    }
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     return (
     /*    <Box
             sx={{
@@ -39,18 +27,16 @@ const ImageContainer = () => {
         component={'img'}
         sx={{
             width: {xs: '100%', md: '100%'},
-            height: '100vh',
             bgcolor: '#1b1e1f',
-            objectFit: 'cover',
+            objectFit: 'contain',
             opacity: .4,
-            position: 'sticky',
-            top: 0,
+            height: '100%',
         }}
-        src={main4}
+        src={isMobile ? main4 : mainPC2}
     >
     </Box>
 
     );
 };
 
-export default ImageContainer;
+export default StickyImageContainer;

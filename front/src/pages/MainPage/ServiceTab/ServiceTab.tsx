@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectTab from "../ServiceProjectTab/ProjectTab";
 import ConsultTab from "../ServiceConsultTab/ConsultTab";
 import CommercialTab from "../CommercialTab/CommercialTab";
-import {Box, Tabs} from "@mui/material";
+import {Box, Tabs, useMediaQuery, useTheme} from "@mui/material";
 import TabPanel from "../TabPanel/TabPanel";
 
 
@@ -27,8 +27,16 @@ const ServiceTab = ({tab}) => {
         default: return null;
     }*/
 
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+
     return (
-        <Box>
+        <Box
+            sx={{
+
+            }}
+        >
             <TabPanel value={tab} index={1}><ConsultTab/></TabPanel>
             <TabPanel value={tab} index={2}><ProjectTab/></TabPanel>
             <TabPanel value={tab} index={3}><CommercialTab/></TabPanel>

@@ -8,6 +8,8 @@ const ServiceTabSwitch = ({tab, setTab}) => {
         setTab(item);
     }
 
+
+
     return (
         <>
             <ToggleButtonGroup
@@ -16,6 +18,7 @@ const ServiceTabSwitch = ({tab, setTab}) => {
                 value={tab}
                 exclusive
                 sx={{
+                    overflow: 'hidden',
                     position: 'sticky',
                     top: 24,
                     zIndex: 3000,

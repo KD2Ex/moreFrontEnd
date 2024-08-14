@@ -67,7 +67,29 @@ const MainPage = () => {
 						top: 0
 					}}
 				>
-					<StickyImageContainer/>
+					<Box
+						sx={{
+							position: 'sticky',
+							top: 0,
+							height: '100vh',
+							display: 'flex',
+							alignItems: 'center',
+							justifyItems: 'center'
+						}}
+					>
+						<StickyImageContainer/>
+
+					</Box>
+
+					<Box
+						sx={{
+							position: 'relative',
+							top: 0,
+
+						}}
+					>
+
+					</Box>
 					<Box
 						sx={{
 							position: 'sticky',
@@ -80,7 +102,7 @@ const MainPage = () => {
 								justifyContent: 'center',
 								alignItems: 'center',
 								scrollSnapAlign: 'start',
-								p: 4,
+								p: {xs: 4, md: 32},
 								scrollSnapStop: 'always'
 							}
 						}}
@@ -92,7 +114,7 @@ const MainPage = () => {
 							}}
 						>
 							<Typography
-								fontSize={{xs: 24, md: 34}}
+								fontSize={{xs: 24, md: 32}}
 								textAlign={'center'}
 
 							>
@@ -107,7 +129,7 @@ const MainPage = () => {
 							}}
 						>
 							<Typography
-								fontSize={{xs: 24, md: 34}}
+								fontSize={{xs: 24, md: 32}}
 								textAlign={'center'}
 
 							>
@@ -116,8 +138,6 @@ const MainPage = () => {
 						</Box>
 
 					</Box>
-
-
 
 				</Grid>
 			</Grid>

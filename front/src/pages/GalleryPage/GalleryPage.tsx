@@ -15,6 +15,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import alert from "../../store/alert";
 import TextFieldPopover from "../../components/TextFieldPopover/TextFieldPopover";
 import ModalEdit from "../../components/ModalEdit/ModalEdit";
+import BackToTop from "../../components/BackToTop/BackToTop";
 
 
 const GalleryPage = observer(() => {
@@ -75,10 +76,7 @@ const GalleryPage = observer(() => {
 
 	}, [paint.rowHeight, user.changeOrderMode, user.adminView])
 
-	useEffect(() => {
 
-
-	}, [])
 
 	return (
 		<Box
@@ -96,8 +94,6 @@ const GalleryPage = observer(() => {
 				<PaintingFilter
 				/>
 			</Box>
-
-
 
 			<Gallery
 				items={paint.items.slice().sort(paint.sort)}
@@ -126,6 +122,7 @@ const GalleryPage = observer(() => {
 
 			<ModalEdit/>
 
+			<BackToTop/>
 		</Box>
 	);
 });

@@ -1,0 +1,14 @@
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.anim {
+    transition-property: opacity;
+    transition-duration: .5s;
+    transition-timing-function: linear;
+}
+

@@ -30,8 +30,6 @@ const LocaleText: FC<LocaleTextProps> = observer(({localeList, childBefore, useD
                 : localeList[0].value)
         }
 
-        console.log('localeText')
-
     }, [locale.currentLocale])
 
 

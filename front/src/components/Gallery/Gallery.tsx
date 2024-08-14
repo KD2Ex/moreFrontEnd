@@ -7,6 +7,7 @@ import ItemsList from "../PaintingList/ItemsList";
 import {GalleryType} from "../../models/types/GalleryType";
 import PaintItem from "../PaintItem/PaintItem.tsx";
 import locale from "../../store/locale";
+import LoadingAnim from "../LoadingAnim/LoadingAnim";
 
 
 interface GalleryProps {
@@ -90,12 +91,7 @@ const Gallery = observer(({items, type, store}: GalleryProps) => {
 			
 			{
 				paint.loading
-					? <Skeleton
-						animation="wave"
-						sx={{
-							height: '60px'
-						}}
-					/>
+					? (<LoadingAnim/>)
 					: (<>
 
 						<Box

@@ -18,7 +18,10 @@ const ModalEditProject = observer(() => {
 
 	}, [project.editModalOpen])
 
-	const handleClose = () => {
+	const handleClose = (e, reason) => {
+
+		if (reason === 'backdropClick') return;
+
 		setOpen(false)
 		project.setOpen(false);
 	}
@@ -57,6 +60,11 @@ const ModalEditProject = observer(() => {
 					onClick={handleClick}
 				>
 					Сохранить
+				</Button>
+				<Button
+					onClick={handleClose}
+				>
+					Отмена
 				</Button>
 			</DialogActions>
 

@@ -16,7 +16,8 @@ const ModalEdit = observer(() => {
 	}, [modal.paintingViewOpen])
 
 	const handleClose = (event, reason) => {
-		console.log(reason)
+
+		if (reason === 'backdropClick') return;
 		onClose();
 	}
 
@@ -76,6 +77,12 @@ const ModalEdit = observer(() => {
 				>
 					Сохранить
 
+				</Button>
+
+				<Button
+					onClick={handleClose}
+				>
+					Отмена
 				</Button>
 
 			</DialogActions>

@@ -1,13 +1,25 @@
-import React, {useEffect} from 'react';
-import {Box, Button} from "@mui/material";
-import LocaleText from "../../Locale/LocaleText/LocaleText";
-import {Link} from "react-router-dom";
-import HomeIcon from '@mui/icons-material/Home';
+import React, {useEffect, useState} from 'react';
+import {Box, Button, Popover} from "@mui/material";
 import {Home} from "@mui/icons-material";
 import NavBarButton from "./NavBarButton/NavBarButton";
 import { useLocation } from 'react-router-dom';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import LanguageChange from "../../LanguageChange/LanguageChange";
 
 const NavBarMobile = ({pages}) => {
+
+    const [anchor, setAnchor] = useState(null)
+
+    const handleClick = (e) => {
+        setAnchor(e.currentTarget)
+    }
+
+    const handleClose = () => {
+        setAnchor(null)
+    }
+
+    const open = Boolean(anchor);
+
     let location = useLocation();
 
     useEffect(() => {
@@ -62,9 +74,35 @@ const NavBarMobile = ({pages}) => {
                         right: 0
                     }}
                 >
-                    <Button>
-                        ...
+                    <Button
+                        onClick={handleClick}
+                    >
+                        <MoreVertIcon/>
                     </Button>
+
+                    <Popover
+                        open={open}
+                        anchorEl={anchor}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right'
+                        }}
+                        transformOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                        }}
+                        sx={{
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                p: 2
+                            }}
+                        >
+                            <LanguageChange/>
+                        </Box>
+                    </Popover>
                 </Box>
             </Box>
 

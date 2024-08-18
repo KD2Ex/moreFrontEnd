@@ -3,6 +3,7 @@ import ServiceTabSwitchMobile from "../ServiceTabSwitchMobile/ServiceTabSwitchMo
 import ServiceTabSwitch from "../ServiceTabSwitch/ServiceTabSwitch";
 import appInfo from "../../../../store/appInfo";
 import ServiceTab from "../ServiceTab/ServiceTab";
+import {Box} from "@mui/material";
 
 const tabs = [
     {value: 0, name: 'Консультация'},
@@ -33,6 +34,13 @@ const ServiceTabSwitchFactory = ({tab, setTab, inView}) => {
 
     }
 
+    tabSwitch = <ServiceTabSwitchMobile
+        tabs={tabs}
+        tab={tab}
+        setTab={setTab}
+        visible={inView}
+    />
+
     return (
         <>
             {tabSwitch}
@@ -40,6 +48,7 @@ const ServiceTabSwitchFactory = ({tab, setTab, inView}) => {
                 tab={tab}
                 setTab={setTab}
             />
+
         </>
     );
 };

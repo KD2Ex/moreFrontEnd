@@ -9,6 +9,7 @@ const ServiceCard = ({title, listItems, flex, height, children}) => {
         <Grid
             item
             md={6}
+            xs={12}
         >
 
             <Paper

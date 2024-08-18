@@ -142,13 +142,6 @@ const CommercialTab = () => {
                     </ServiceCard>
                 </Box>
 
-                <Box
-                    sx={{
-                        height: '200px'
-                    }}
-                >
-
-                </Box>
             </Box>
         </>
     );

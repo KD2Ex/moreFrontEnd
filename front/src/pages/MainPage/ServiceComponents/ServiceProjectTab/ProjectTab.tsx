@@ -2,6 +2,7 @@ import React from 'react';
 import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import {Box, Grid, Typography} from "@mui/material";
+import appInfo from "../../../../store/appInfo";
 
 const minimumItems = [
     '•	Обмерочный план',
@@ -31,6 +32,7 @@ const ProjectTab = () => {
                 <LocaleText
                     useDefault
                     variant={'h3'}
+                    fontSize={'2.75rem'}
                     localeList={[
                         'Ваше пространство - ваш стиль.',
                         'Project'
@@ -44,6 +46,9 @@ const ProjectTab = () => {
                         'Персонализированные решения для дома и бизнеса, созданные с любовью к деталям.',
                         'Project'
                     ]}
+                    sx={{
+                        my: 2
+                    }}
                 />
             </Box>
 
@@ -61,10 +66,10 @@ const ProjectTab = () => {
             >
                 <Grid
                     container
+                    spacing={2}
                 >
 
                     <ServiceCard
-                        flex={6}
                         height={500}
                         title={[
                             'Минимум',
@@ -72,33 +77,57 @@ const ProjectTab = () => {
                         ]}
                         listItems={minimumItems}
                     >
-                        <Typography
-                            variant={'h5'}
+                        <Box
+                            sx={{
+                                textAlign: 'center'
+                            }}
                         >
-                            3000 руб./кв.м.
-                        </Typography>
+                            <Typography
+                                variant={'h5'}
+                            >
+                                1500 руб./ кв.м. <br/>
+                                <Typography
+                                    fontSize={'1.2rem'}
+                                >
+                                    Срок выполнения от 10 рабочих дней
+                                </Typography>
+                            </Typography>
+
+                        </Box>
+
                     </ServiceCard>
 
                     <ServiceCard
                         height={500}
-                        flex={6}
                         title={[
                             'Полный',
                             'Full'
                         ]}
                         listItems={minimumItems}
                     >
-                        <Typography
-                            variant={'h6'}
+                        <Box
+                            sx={{
+                                textAlign: 'center'
+                            }}
                         >
-                            4500 руб./кв.м.
-                            Срок выполнения от 30 рабочих дней
-                        </Typography>
+                            <Typography
+                                variant={'h5'}
+                            >
+                                4500 руб./кв.м.
+                                <br/>
+                                <Typography
+                                    fontSize={'1.2rem'}
+                                >
+                                    Срок выполнения от 30 рабочих дней
+
+                                </Typography>
+                            </Typography>
+                        </Box>
+
                     </ServiceCard>
 
                     <ServiceCard
-                        height={500}
-                        flex={6}
+                        height={appInfo.isMobile ? 600 : 500}
                         title={[
                             'Авторское сопровождение дома/квартиры',
                             'Minimum'
@@ -137,11 +166,9 @@ const ProjectTab = () => {
 
                 <Box
                     sx={{
-                        maxWidth: '1000px',
-                        margin: 'auto'
+                        height: '70px'
                     }}
                 >
-
 
                 </Box>
             </Box>

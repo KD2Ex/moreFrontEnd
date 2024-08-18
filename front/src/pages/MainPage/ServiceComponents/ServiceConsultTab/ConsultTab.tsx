@@ -1,6 +1,7 @@
 import React from 'react';
 import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import {Box} from "@mui/material";
+import appInfo from "../../../../store/appInfo";
 
 const ConsultTab = () => {
     return (
@@ -9,20 +10,22 @@ const ConsultTab = () => {
             >
                 <LocaleText
                     useDefault
-                    variant={'h3'}
+                    variant={appInfo.isMobile ? 'h3' : 'h3'}
+                    fontSize={'2.75rem'}
                     sx={{
                         textAlign: 'center',
+                        wordBreak: 'break-word',
                         mb: 2
                     }}
                     localeList={[
-                        'Специализированная консультация дизайнера: помощь в критических моментах.',
+                        'Консультация дизайнера: помощь в критических моментах.',
                         'Project'
                     ]}
                 />
 
                 <LocaleText
+                    fontSize={'1.1rem'}
                     useDefault
-                    variant={'h5'}
                     sx={{
                         textAlign: 'justify'
                     }}

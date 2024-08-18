@@ -37,6 +37,7 @@ const MainPage = () => {
 				sx={{
 					display: 'flex',
 					alignItems: 'center',
+					justifyContent: 'space-between',
 					gap: 1,
 					height: 48,
 					mt: 2
@@ -52,14 +53,24 @@ const MainPage = () => {
 
 				</Box>
 				<Typography
-					variant={'h5'}
+					variant={'h6'}
 					/*fontSize={'4.5rem'}*/
 					sx={{
-
+						alignSelf: 'flex-end'
 					}}
 				>
-					Мастерская пространства "МО"
+					Мастерская пространства
 				</Typography>
+				<Typography
+					variant={'h5'}
+					fontSize={'1.75rem'}
+					sx={{
+						alignSelf: 'flex-end'
+					}}
+				>
+					"МО"
+				</Typography>
+
 			</Box>
 
 			

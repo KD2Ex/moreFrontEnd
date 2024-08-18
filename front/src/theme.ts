@@ -8,14 +8,16 @@ export let theme = createTheme({
 			//main: '#fff3b4',
 			red: '#e34343',
 			hoverRed: '#bd7171',
-			borderLight: '#464545'
+			borderLight: '#464545',
 		},
 		secondary: {
 			main: '#225c64'
 		},
 		background: {
 			default: 'rgb(24,22,22)',
-			paper: 'rgb(16,16,16)'
+			paper: 'rgb(16,16,16)',
+			light: 'rgb(56,56,56)',
+
 			//default: 'rgb(28,25,25)'
 		},
 		text: {

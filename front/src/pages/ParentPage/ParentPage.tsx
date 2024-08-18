@@ -53,7 +53,6 @@ const ParentPage = observer(() => {
 
                 <NavBar/>
 
-
                 <Outlet/>
 
             </div>

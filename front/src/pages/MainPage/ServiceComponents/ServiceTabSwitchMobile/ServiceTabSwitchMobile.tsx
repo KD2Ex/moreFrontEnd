@@ -1,11 +1,54 @@
 import React from 'react';
-import {Tab, Tabs} from "@mui/material";
+import {Box, Chip, Tab, Tabs} from "@mui/material";
+import './styles.css'
 
 const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
+
+
 
     const handleChange = (event, value) => {
         setTab(value)
     }
+
+    const handleClick = (e) => {
+        const newTab = +e.target.ariaLabel
+        console.log(newTab)
+
+        setTab(newTab)
+    }
+
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                width: '100%',
+                overflow: 'auto',
+                alignItems: 'center',
+                px: 1,
+                height: 36,
+                gap: 1,
+                my: 2
+            }}
+            className={'tabs'}
+        >
+            {tabs.map((item, index) => (
+                <Chip
+                    clickable={false}
+                    key={index}
+                    aria-label={item.value}
+                    onClick={handleClick}
+                    label={item.name}
+                    sx={{
+                        color: (theme) => item.value === tab ? 'black' : theme.palette.text.primary,
+                        bgcolor: (theme) => item.value === tab ? theme.palette.text.primary : theme.palette.background.light,
+                        '& span': {
+                            pointerEvents: 'none'
+                        }
+                    }}
+                />
+            ))}
+        </Box>
+    )
 
     return (
         <Tabs
@@ -14,9 +57,6 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
             variant={'scrollable'}
             scrollButtons={'auto'}
             sx={{
-                position: 'fixed',
-                bottom: 0,
-                left: 0,
                 width: '250px',
                 mb: 1,
                 ml: 1,

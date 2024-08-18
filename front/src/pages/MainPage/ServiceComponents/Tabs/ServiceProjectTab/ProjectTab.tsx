@@ -1,21 +1,22 @@
 import React from 'react';
-import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
-import ServiceCard from "../ServiceCard/ServiceCard";
+import LocaleText from "../../../../../components/Locale/LocaleText/LocaleText";
+import ServiceCard from "../../ServiceCard/ServiceCard";
 import {Box, Grid, Typography} from "@mui/material";
-import appInfo from "../../../../store/appInfo";
+import appInfo from "../../../../../store/appInfo";
+import test from '../../../../../assets/test.jpg'
 
 const minimumItems = [
     '•	Обмерочный план',
     '•	Планировочные решения',
-    '•	План расстановки мебели и оборудования',
-    '•	Схемы эргономики',
+    '•\tКонцепция (Фотореалистичное изображение помещений 1 ракурс на помещение)',
+    '•	Схема освещения',
+    '•	Схема электрики',
+/*    '•	Схема расстановки инженерного оборудования',
+    '•	Развертка стен',
+        '•	Схемы эргономики',
     '•	Стилевой коллаж мудборд',
     '•	План полов',
     '•	План потолков',
-    '•	Схема освещения',
-    '•	Схема электрики',
-    /*'•	Схема расстановки инженерного оборудования',
-    '•	Развертка стен',
     '•	Карты предчистовой и декоративной отделки',
     '•	Спецификация декоративных отделочных материалов',
     '•	Ведомость отделки помещений',
@@ -24,6 +25,11 @@ const minimumItems = [
     '•	Ведомость комплектации декоративных отделочных материалов, мебели, оборудования и освещения (без декора)',
     '•	Ориентировочная смета на реализацию под ключ',*/
 ]
+
+const full = [
+
+]
+
 const ProjectTab = () => {
     return (
         <>
@@ -70,7 +76,7 @@ const ProjectTab = () => {
                 >
 
                     <ServiceCard
-                        height={500}
+                        height={appInfo.isMobile ? 'auto' : 500}
                         title={[
                             'Минимум',
                             'Minimum'
@@ -96,6 +102,40 @@ const ProjectTab = () => {
                         </Box>
 
                     </ServiceCard>
+
+                    <ServiceCard
+                        height={500}
+                        title={[
+                            'Стандарт',
+                            'Standard'
+                        ]}
+                        listItems={minimumItems}
+                        sx={{
+                            bgcolor: 'red',
+                            backgroundImage: `url(${test})`
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                textAlign: 'center',
+
+                            }}
+                        >
+                            <Typography
+                                variant={'h5'}
+                            >
+                                3000 руб./ кв.м. <br/>
+                                <Typography
+                                    fontSize={'1.2rem'}
+                                >
+                                    Срок выполнения от 10 рабочих дней
+                                </Typography>
+                            </Typography>
+
+                        </Box>
+
+                    </ServiceCard>
+
 
                     <ServiceCard
                         height={500}
@@ -127,7 +167,6 @@ const ProjectTab = () => {
                     </ServiceCard>
 
                     <ServiceCard
-                        height={appInfo.isMobile ? 600 : 500}
                         title={[
                             'Авторское сопровождение дома/квартиры',
                             'Minimum'
@@ -148,7 +187,6 @@ const ProjectTab = () => {
                         ]}
                     />
                     <ServiceCard
-                        height={500}
                         title={[
                             'Комплектация',
                             'Minimum'
@@ -157,6 +195,7 @@ const ProjectTab = () => {
                     >
                         <Typography
                             variant={'h6'}
+                            fontSize={'1rem'}
                         >
                             Стоимость комплектации 10% от суммы закупки<br/>
                             Закупка производится у рекомендованных поставщиков на специальных условиях

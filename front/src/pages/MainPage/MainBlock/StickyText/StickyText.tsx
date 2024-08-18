@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Typography} from "@mui/material";
 
-const StickyText = ({text, mockHeight}) => {
+const StickyText = ({text, mockHeight, children}) => {
     return (
         <Box
             sx={{
@@ -36,6 +36,7 @@ const StickyText = ({text, mockHeight}) => {
 
                     >
                         {text}
+                        {children}
                     </Typography>
                 </Box>
 

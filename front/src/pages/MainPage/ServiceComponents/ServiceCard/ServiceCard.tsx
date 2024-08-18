@@ -1,8 +1,9 @@
 import React from 'react';
 import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import {Box, Grid, List, ListItemText, Paper} from "@mui/material";
+import test from "../../../../assets/test.jpg";
 
-const ServiceCard = ({title, listItems, flex, height, children}) => {
+const ServiceCard = ({title, listItems, minHeight, height, children}) => {
 
 
     return (
@@ -21,9 +22,13 @@ const ServiceCard = ({title, listItems, flex, height, children}) => {
                     borderColor: (theme) => theme.palette.primary.borderLight,
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
+                    alignItems: 'space-between',
+                    justifyContent: 'space-between',
                     p: 2,
                     height: height,
+                    minHeight: minHeight,
+                    backgroundRepeat: 'no-repeat',
+
                 }}
             >
                 <LocaleText
@@ -56,9 +61,12 @@ const ServiceCard = ({title, listItems, flex, height, children}) => {
                     )}
                 </List>
 
-                <Box>
-                    {children}
-                </Box>
+                {children && (
+                    <Box>
+                        {children}
+                    </Box>
+                )}
+
             </Paper>
         </Grid>
     );

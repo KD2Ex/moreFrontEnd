@@ -7,6 +7,7 @@ import React, {useEffect} from "react";
 import './style.css'
 import StickyText from "./MainBlock/StickyText/StickyText";
 import Cube3D from "./3DCube/Cube3D";
+import logo from '../../assets/logo.jpg'
 
 const MainPage = () => {
 
@@ -32,15 +33,34 @@ const MainPage = () => {
 			}}
 		>
 
-
-			<Typography
-				variant={'h4'}
+			<Box
 				sx={{
-
+					display: 'flex',
+					alignItems: 'center',
+					gap: 1,
+					height: 48
 				}}
 			>
-				Мастерская пространства "МО"
-			</Typography>
+				<Box
+					component={'img'}
+					src={logo}
+					sx={{
+						height: '100%'
+					}}
+				>
+
+				</Box>
+				<Typography
+					variant={'h5'}
+					/*fontSize={'4.5rem'}*/
+					sx={{
+
+					}}
+				>
+					Мастерская пространства "МО"
+				</Typography>
+			</Box>
+
 			
 			<Divider
 				sx={{
@@ -93,6 +113,15 @@ const MainPage = () => {
 
 					</Box>
 
+
+					<StickyText
+						mockHeight={1000}
+					>
+
+						Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом.<br/>
+						Опыт и уникальные решения для каждого проекта.
+
+					</StickyText>
 
 					<StickyText
 						mockHeight={1000}

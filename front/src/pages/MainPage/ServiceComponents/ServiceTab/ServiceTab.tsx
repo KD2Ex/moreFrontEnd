@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
-import ProjectTab from "../ServiceProjectTab/ProjectTab";
-import ConsultTab from "../ServiceConsultTab/ConsultTab";
-import CommercialTab from "../CommercialTab/CommercialTab";
+import ProjectTab from "../Tabs/ServiceProjectTab/ProjectTab";
+import ConsultTab from "../Tabs/ServiceConsultTab/ConsultTab";
+import CommercialTab from "../Tabs/CommercialTab/CommercialTab";
 import {Box, Tabs, useMediaQuery, useTheme} from "@mui/material";
 import TabPanel from "../../TabPanel/TabPanel";
 import {useSwipeable} from "react-swipeable";
 import actionDialog from "../../../../components/ActionDialog/ActionDialog";
+import {Architecture} from "@mui/icons-material";
+import ArchTab from "../Tabs/ArchTab/ArchTab";
 
 
 const ServiceTab = ({tab, setTab}) => {
@@ -56,6 +58,8 @@ const ServiceTab = ({tab, setTab}) => {
 
     }, [tab])
 
+    // different bg images for different tabs
+
     return (
         <Box
             {...handlers}
@@ -66,6 +70,7 @@ const ServiceTab = ({tab, setTab}) => {
             <TabPanel value={tab} index={0}><ConsultTab/></TabPanel>
             <TabPanel value={tab} index={1}><ProjectTab/></TabPanel>
             <TabPanel value={tab} index={2}><CommercialTab/></TabPanel>
+            <TabPanel value={tab} index={3}><ArchTab/></TabPanel>
         </Box>
 
     )

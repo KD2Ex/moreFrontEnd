@@ -1,6 +1,6 @@
 import React from 'react';
-import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
-import ServiceCard from "../ServiceCard/ServiceCard";
+import LocaleText from "../../../../../components/Locale/LocaleText/LocaleText";
+import ServiceCard from "../../ServiceCard/ServiceCard";
 import {Box, Grid, Typography} from "@mui/material";
 
 const minimumItems = [
@@ -32,6 +32,7 @@ const CommercialTab = () => {
                 <LocaleText
                     useDefault
                     variant={'h3'}
+                    fontSize={'2.75rem'}
                     localeList={[
                         'Эффективный дизайн-проект для вашего бизнеса.',
                         'Project'
@@ -45,6 +46,9 @@ const CommercialTab = () => {
                         'Оптимизация пространства и создание впечатляющей атмосферы для вашего коммерческого успеха.',
                         'Project'
                     ]}
+                    sx={{
+                        my: 2
+                    }}
                 />
             </Box>
 
@@ -62,6 +66,7 @@ const CommercialTab = () => {
             >
                 <Grid
                     container
+                    spacing={2}
                 >
 
                     <ServiceCard
@@ -96,7 +101,6 @@ const CommercialTab = () => {
                     </ServiceCard>
 
                     <ServiceCard
-                        height={500}
                         title={[
                             'Авторское сопровождение дома/квартиры',
                             'Minimum'
@@ -117,14 +121,6 @@ const CommercialTab = () => {
                         ]}
                     />
 
-                </Grid>
-
-                <Box
-                    sx={{
-                        maxWidth: '1000px',
-                        margin: 'auto'
-                    }}
-                >
 
                     <ServiceCard
                         title={[
@@ -135,11 +131,21 @@ const CommercialTab = () => {
                     >
                         <Typography
                             variant={'h6'}
+                            fontSize={'1rem'}
                         >
                             Стоимость комплектации 10% от суммы закупки<br/>
                             Закупка производится у рекомендованных поставщиков на специальных условиях
                         </Typography>
                     </ServiceCard>
+                </Grid>
+
+
+                <Box
+                    sx={{
+                        height: '70px'
+                    }}
+                >
+
                 </Box>
 
             </Box>

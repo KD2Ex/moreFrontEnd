@@ -38,7 +38,8 @@ const MainPage = () => {
 					display: 'flex',
 					alignItems: 'center',
 					gap: 1,
-					height: 48
+					height: 48,
+					mt: 2
 				}}
 			>
 				<Box

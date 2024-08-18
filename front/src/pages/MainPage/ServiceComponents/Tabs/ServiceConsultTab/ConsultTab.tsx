@@ -14,9 +14,8 @@ const ConsultTab = () => {
                 <LocaleText
                     useDefault
                     variant={appInfo.isMobile ? 'h3' : 'h3'}
-                    fontSize={'2.75rem'}
+                    fontSize={'2.5rem'}
                     sx={{
-                        textAlign: 'center',
                         wordBreak: 'break-word',
                         mb: 2
                     }}

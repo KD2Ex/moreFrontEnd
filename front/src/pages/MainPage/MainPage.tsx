@@ -1,11 +1,12 @@
 import {Box, Divider, Grid, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import MainTitle from "./MainTItle/MainTitle";
-import Services from "./Services/Services";
+import Services from "./ServiceComponents/Services/Services";
 import ImageContainer from "./MainBlock/ImageContainer/ImageContainer";
 import StickyImageContainer from "./MainBlock/ImageContainer/StickyImageContainer";
 import React, {useEffect} from "react";
-import '../../style.css'
+import './style.css'
 import StickyText from "./MainBlock/StickyText/StickyText";
+import Cube3D from "./3DCube/Cube3D";
 
 const MainPage = () => {
 
@@ -30,7 +31,8 @@ const MainPage = () => {
 				px: {xs: 1, xl: 0},
 			}}
 		>
-			
+
+
 			<Typography
 				variant={'h4'}
 				sx={{
@@ -47,7 +49,8 @@ const MainPage = () => {
 					mt: 1
 				}}
 			/>
-			
+			<Cube3D/>
+
 			<Grid
 				container
 				spacing={0}
@@ -68,6 +71,12 @@ const MainPage = () => {
 						top: 0
 					}}
 				>
+{/*					<Box
+						className={"progress"}
+					>
+					</Box>*/}
+
+
 					<Box
 						sx={{
 							position: 'sticky',
@@ -84,13 +93,13 @@ const MainPage = () => {
 
 
 					<StickyText
-						mockHeight={1500}
-						text={'Мы занимаемся проектированием, дизайном интерьеров, архитектурой индивидуальных жилых домов, уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений, что не мало важно как в проектировании так и на этапе реализации проектов, тем более когда работа ведется в режиме сжатых сроков.\n'}
+						mockHeight={1000}
+						text={'Мы занимаемся проектированием и архитектурой жилых домов уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений\n'}
 					/>
 
 					<StickyText
-						mockHeight={1500}
-						text={'Помимо проектного бюро, к Вашим услугам художественная мастерская, где вы можете подобрать картины в ваши интерьеры, оформить офис, кафе ресторан или гостиничные номера, уникальными авторскими произведениями. Мы не делаем копии мы создаем искусство.\n'}
+						mockHeight={1000}
+						text={'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.\n'}
 					/>
 
 					{/*<Box

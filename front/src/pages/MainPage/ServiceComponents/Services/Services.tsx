@@ -3,10 +3,11 @@ import ServiceTabSwitch from "../ServiceTabSwitch/ServiceTabSwitch";
 import ServiceTab from "../ServiceTab/ServiceTab";
 import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {useInView} from "react-intersection-observer";
+import ServiceTabSwitchFactory from "../ServiceTabFactory/ServiceTabSwitchFactory";
 
 const Services = () => {
 
-    const [tab, setTab] = useState(1);
+    const [tab, setTab] = useState(0);
 
 
     const { ref, inView, entry } = useInView({
@@ -15,21 +16,9 @@ const Services = () => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-    //if (isMobile) return (<></>)
 
     useEffect(() => {
 
-        console.log(inView, entry)
-
-        if (inView) {
-
-
-            document.documentElement.style.scrollSnapType = 'x'
-        } else {
-
-           if (isMobile) return;
-           //document.documentElement.style.scrollSnapType = 'y mandatory'
-        }
 
     }, [inView, entry])
 
@@ -53,7 +42,13 @@ const Services = () => {
                 Наши услуги
             </Typography>
 
-            <ServiceTabSwitch
+            <ServiceTabSwitchFactory
+                tab={tab}
+                setTab={setTab}
+                inView={inView}
+            />
+
+ {/*           <ServiceTabSwitch
                 tab={tab}
                 setTab={setTab}
                 sx={{
@@ -63,7 +58,7 @@ const Services = () => {
             <ServiceTab
                 tab={tab}
             />
-
+*/}
         </div>
     );
 };

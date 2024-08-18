@@ -1,0 +1,100 @@
+
+.cube-wrap {
+    z-index: 3000;
+    --size: 8vmin;
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    /*top: 50%;
+    left: 50%;*/
+    /*    top: 10%;
+        left: 5%;*/
+    width: 0;
+    height: 0;
+    perspective: 50vmin;
+}
+
+@media (min-width: 1200px) {
+    .cube-wrap {
+        bottom: 5rem;
+        right: 5rem;
+        --size: 5vmin;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+    .cube-wrap {
+        bottom: 3rem;
+        right: 3rem;
+        --size: 5vmin;
+    }
+}
+
+.cube {
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateZ(45deg) rotateY(-45deg);
+    animation: cube 1s linear infinite;
+}
+
+.cubeOpacityAnimation {
+    opacity: 0;
+    animation: cubeOpacity .1s linear;
+}
+
+@keyframes cubeOpacity {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cube {
+    to {
+        transform: rotateX(360deg) rotateZ(45deg) rotateY(-45deg);
+    }
+}
+
+.side {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    top: calc(var(--size) * -.5);
+    left: calc(var(--size) * -.5);
+    background-color: #eee;
+    backface-visibility: visible;
+
+    /*border: 1px solid #cbcbcb;*/
+}
+.top {
+    background-color: #fff; /* 255 */
+    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
+
+}
+.bottom {
+    background-color: #999; /* 153 */
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
+}
+.left {
+    background-color: #ccc; /* 204 */
+    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
+}
+.right {
+    background-color: #ddd; /* 221 */
+    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
+}
+.front {
+    background-color: #aaa; /* 170 */
+    transform: translateZ(calc(var(--size) * .5));
+}
+.back {
+    background-color: #bbb; /* 187 */
+    transform: translateZ(calc(var(--size) * -.5));
+}
+
+
+:root * {
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}

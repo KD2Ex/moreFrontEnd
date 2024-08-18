@@ -1,0 +1,99 @@
+.progress {
+    width: 0%;
+    height: 10px;
+    background-color: #22bdd2;
+    top: 0;
+    left: 0;
+    position: fixed;
+    animation: progress 1s linear;
+    z-index: 3100;
+}
+
+@keyframes progress {
+    to {
+        width: 100%;
+    }
+}
+
+.cube-wrap {
+    z-index: 3;
+    --size:8vmin;
+    position: fixed;
+    bottom: 5%;
+    right: 12%;
+    /*top: 50%;
+    left: 50%;*/
+/*    top: 10%;
+    left: 5%;*/
+    width: 0;
+    height: 0;
+    perspective: 100vmin;
+}
+
+.cube {
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateZ(45deg) rotateY(-45deg);
+    animation: cube .5s linear infinite;
+}
+
+.cubeOpacityAnimation {
+    opacity: 0;
+    animation: cubeOpacity .1s linear;
+}
+
+@keyframes cubeOpacity {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cube {
+    to {
+        transform: rotateX(360deg) rotateZ(45deg) rotateY(-45deg);
+    }
+}
+
+.side {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: #eee;
+    backface-visibility: visible;
+    top: calc(var(--size) * -.5);
+    left: calc(var(--size) * -.5);
+    /*border: 1px solid #cbcbcb;*/
+}
+.top {
+    background-color: #fff; /* 255 */
+    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
+
+}
+.bottom {
+    background-color: #999; /* 153 */
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
+}
+.left {
+    background-color: #ccc; /* 204 */
+    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
+}
+.right {
+    background-color: #ddd; /* 221 */
+    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
+}
+.front {
+    background-color: #aaa; /* 170 */
+    transform: translateZ(calc(var(--size) * .5));
+}
+.back {
+    background-color: #bbb; /* 187 */
+    transform: translateZ(calc(var(--size) * -.5));
+}
+
+
+:root * {
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}

@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 
-const ServiceTabSwitch = ({tab, setTab}) => {
+const ServiceTabSwitch = ({tabs, tab, setTab}) => {
 
     const handleChange = (e, item) => {
         if (!item) return
         setTab(item);
     }
-
-
 
     return (
         <>
@@ -18,7 +16,6 @@ const ServiceTabSwitch = ({tab, setTab}) => {
                 value={tab}
                 exclusive
                 sx={{
-
                     overflow: 'hidden',
                     position: 'sticky',
                     top: 24,
@@ -38,12 +35,14 @@ const ServiceTabSwitch = ({tab, setTab}) => {
                     }
                 }}
             >
-                <ToggleButton value={1}>Консультация</ToggleButton>
-                <ToggleButton value={2}>Проект</ToggleButton>
+                {tabs.map((i, index) => (
+                    <ToggleButton value={i.value}>{i.name}</ToggleButton>
+                ))}
+{/*                <ToggleButton value={2}>Проект</ToggleButton>
                 <ToggleButton value={3}>Коммерция</ToggleButton>
                 <ToggleButton value={4}>Архитектура</ToggleButton>
                 <ToggleButton value={5}>Ландшафт</ToggleButton>
-                <ToggleButton value={6}>Комплексные решения</ToggleButton>
+                <ToggleButton value={6}>Комплексные решения</ToggleButton>*/}
             </ToggleButtonGroup>
 
 

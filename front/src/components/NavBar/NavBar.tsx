@@ -2,6 +2,8 @@ import {Box, Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import LanguageChange from "../LanguageChange/LanguageChange";
+import appInfo from "../../store/appInfo";
+import NavBarMobile from "./NavBarMobile/NavBarMobile";
 
 const NavBar = () => {
 
@@ -17,7 +19,7 @@ const NavBar = () => {
 					value: "Main"
 				}
 			],
-			url: '',
+			url: '/',
 		},
 		{
 			title: [
@@ -62,6 +64,8 @@ const NavBar = () => {
 
 	console.log(...buttons[0].title)
 
+	if (appInfo.isMobile) return (<NavBarMobile pages={buttons}/>)
+
 	return (
 		<Box
 			sx={{
@@ -97,7 +101,8 @@ const NavBar = () => {
 			<Box
 				sx={{
 					alignItems: 'center',
-					display: 'flex'
+					display: 'flex',
+					mr: 1
 				}}
 			>
 				<LanguageChange/>

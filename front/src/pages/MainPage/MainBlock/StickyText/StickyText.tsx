@@ -6,7 +6,8 @@ const StickyText = ({text, mockHeight}) => {
         <Box
             sx={{
                 position: 'relative',
-                top: 0
+                top: 0,
+                zIndex: 2
             }}
         >
             <Box
@@ -23,9 +24,12 @@ const StickyText = ({text, mockHeight}) => {
                         width: '100%',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyItems: 'center'
+                        justifyItems: 'center',
+                        p: {xs: 4, md: 32},
+                        zIndex: 2
                     }}
                 >
+
                     <Typography
                         fontSize={{xs: 24, md: 32}}
                         textAlign={'center'}
@@ -38,6 +42,7 @@ const StickyText = ({text, mockHeight}) => {
             </Box>
             <Box
                 sx={{
+                    //bgcolor: 'white',
                     height: `${mockHeight}px`
                 }}
             >

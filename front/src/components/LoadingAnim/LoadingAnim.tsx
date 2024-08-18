@@ -14,6 +14,7 @@ const LoadingAnim = () => {
                 width: '100vw',
                 height: '100vh',
                 bgcolor: 'rgba(0,0,0,0.49)',
+                zIndex: 4000
             }}
         >
             <GridLoader

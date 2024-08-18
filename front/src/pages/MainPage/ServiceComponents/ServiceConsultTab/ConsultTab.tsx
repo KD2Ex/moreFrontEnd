@@ -1,5 +1,5 @@
 import React from 'react';
-import LocaleText from "../../../components/Locale/LocaleText/LocaleText";
+import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import {Box} from "@mui/material";
 
 const ConsultTab = () => {

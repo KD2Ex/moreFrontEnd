@@ -3,7 +3,7 @@ import ProjectTab from "../ServiceProjectTab/ProjectTab";
 import ConsultTab from "../ServiceConsultTab/ConsultTab";
 import CommercialTab from "../CommercialTab/CommercialTab";
 import {Box, Tabs, useMediaQuery, useTheme} from "@mui/material";
-import TabPanel from "../TabPanel/TabPanel";
+import TabPanel from "../../TabPanel/TabPanel";
 
 
 const ServiceTab = ({tab}) => {
@@ -37,9 +37,9 @@ const ServiceTab = ({tab}) => {
 
             }}
         >
-            <TabPanel value={tab} index={1}><ConsultTab/></TabPanel>
-            <TabPanel value={tab} index={2}><ProjectTab/></TabPanel>
-            <TabPanel value={tab} index={3}><CommercialTab/></TabPanel>
+            <TabPanel value={tab} index={0}><ConsultTab/></TabPanel>
+            <TabPanel value={tab} index={1}><ProjectTab/></TabPanel>
+            <TabPanel value={tab} index={2}><CommercialTab/></TabPanel>
         </Box>
 
     )

@@ -1,5 +1,5 @@
 import React from 'react';
-import LocaleText from "../../../components/Locale/LocaleText/LocaleText";
+import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import {Box, Grid, Typography} from "@mui/material";
 

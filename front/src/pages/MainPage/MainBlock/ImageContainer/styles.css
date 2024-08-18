@@ -1,0 +1,18 @@
+.image {
+    opacity: 1;
+    animation: image .1s linear;
+}
+
+@keyframes image {
+    to {
+        opacity: .2;
+    }
+}
+
+:root * {
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}

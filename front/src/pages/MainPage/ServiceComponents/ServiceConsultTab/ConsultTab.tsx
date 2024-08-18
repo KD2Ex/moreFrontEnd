@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import {Box} from "@mui/material";
 import appInfo from "../../../../store/appInfo";
 
 const ConsultTab = () => {
+
+
+
     return (
         <>
             <Box

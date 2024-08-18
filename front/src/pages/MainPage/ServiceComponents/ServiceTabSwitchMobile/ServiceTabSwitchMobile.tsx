@@ -12,7 +12,6 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
 
     const handleClick = (e) => {
         const newTab = +e.target.ariaLabel
-        console.log(newTab)
 
         setTab(newTab)
     }

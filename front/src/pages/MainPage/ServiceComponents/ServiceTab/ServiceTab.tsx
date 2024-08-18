@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProjectTab from "../ServiceProjectTab/ProjectTab";
 import ConsultTab from "../ServiceConsultTab/ConsultTab";
 import CommercialTab from "../CommercialTab/CommercialTab";
@@ -12,7 +12,7 @@ const ServiceTab = ({tab, setTab}) => {
 
     const handlers = useSwipeable({
         onSwiped: (eventData) => {
-            console.log("Swipe", eventData)
+            //console.log("Swipe", eventData)
 
             const dir = eventData.dir;
 
@@ -50,6 +50,11 @@ const ServiceTab = ({tab, setTab}) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+    useEffect(() => {
+
+        console.log('service tab changed')
+
+    }, [tab])
 
     return (
         <Box

@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import ServiceTabSwitch from "../ServiceTabSwitch/ServiceTabSwitch";
-import ServiceTab from "../ServiceTab/ServiceTab";
 import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {useInView} from "react-intersection-observer";
 import ServiceTabSwitchFactory from "../ServiceTabFactory/ServiceTabSwitchFactory";
@@ -21,6 +19,15 @@ const Services = () => {
 
 
     }, [inView, entry])
+
+    useEffect(() => {
+        console.log('render')
+    }, [])
+
+
+    useEffect(() => {
+        console.log('tab changed')
+    }, [tab])
 
     return (
         <div

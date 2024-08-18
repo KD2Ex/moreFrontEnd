@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box} from "@mui/material";
 
 const TabPanel = ({value, index, children, ...props}) => {
+
+    console.log('TAB PANEL')
 
     return (
         <Box
@@ -11,7 +13,7 @@ const TabPanel = ({value, index, children, ...props}) => {
             }}
             {...props}
         >
-            {value === index && {...children}}
+            {children}
         </Box>
     );
 };

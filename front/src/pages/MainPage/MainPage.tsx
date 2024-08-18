@@ -39,7 +39,7 @@ const MainPage = () => {
 					alignItems: 'center',
 					justifyContent: 'space-between',
 					gap: 1,
-					height: 48,
+					height: {xs: 48, md: 128},
 					mt: 2
 				}}
 			>
@@ -54,7 +54,7 @@ const MainPage = () => {
 				</Box>
 				<Typography
 					variant={'h6'}
-					/*fontSize={'4.5rem'}*/
+					fontSize={{xs: '1.2rem', md: '4rem'}}
 					sx={{
 						alignSelf: 'flex-end'
 					}}
@@ -63,7 +63,7 @@ const MainPage = () => {
 				</Typography>
 				<Typography
 					variant={'h5'}
-					fontSize={'1.75rem'}
+					fontSize={{xs: '1.75rem', md: '6rem'}}
 					sx={{
 						alignSelf: 'flex-end'
 					}}

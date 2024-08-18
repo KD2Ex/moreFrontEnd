@@ -49,7 +49,6 @@ const MainPage = () => {
 					mt: 1
 				}}
 			/>
-			<Cube3D/>
 
 			<Grid
 				container
@@ -88,6 +87,9 @@ const MainPage = () => {
 						}}
 					>
 						<StickyImageContainer/>
+
+						<Cube3D/>
+
 
 					</Box>
 
@@ -156,6 +158,8 @@ const MainPage = () => {
 			</Grid>
 
 			<Services/>
+
+
 
 		</Box>
 	);

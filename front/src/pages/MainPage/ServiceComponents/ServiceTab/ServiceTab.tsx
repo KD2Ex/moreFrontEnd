@@ -4,9 +4,29 @@ import ConsultTab from "../ServiceConsultTab/ConsultTab";
 import CommercialTab from "../CommercialTab/CommercialTab";
 import {Box, Tabs, useMediaQuery, useTheme} from "@mui/material";
 import TabPanel from "../../TabPanel/TabPanel";
+import {useSwipeable} from "react-swipeable";
+import actionDialog from "../../../../components/ActionDialog/ActionDialog";
 
 
-const ServiceTab = ({tab}) => {
+const ServiceTab = ({tab, setTab}) => {
+
+    const handlers = useSwipeable({
+        onSwiped: (eventData) => {
+            console.log("Swipe", eventData)
+
+            const dir = eventData.dir;
+
+            if (dir === "Left") {
+                if (tab === 5) return;
+                setTab(prev => prev + 1)
+            }
+
+            if (dir === "Right") {
+                if (tab === 0) return;
+                setTab(prev => prev - 1)
+            }
+        }
+    })
 
    /* switch (tab) {
         case 'qwe': {
@@ -33,6 +53,7 @@ const ServiceTab = ({tab}) => {
 
     return (
         <Box
+            {...handlers}
             sx={{
 
             }}

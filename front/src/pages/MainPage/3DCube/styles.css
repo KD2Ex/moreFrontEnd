@@ -1,12 +1,12 @@
 
 .cube-wrap {
     z-index: 3000;
-    --size: 8vmin;
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
-    /*top: 50%;
-    left: 50%;*/
+    --size: 15vmin;
+    position: absolute;
+/*    bottom: 2.5rem;
+    right: 2.5rem;*/
+    top: 50%;
+    left: 50%;
     /*    top: 10%;
         left: 5%;*/
     width: 0;
@@ -62,31 +62,31 @@
     background-color: #eee;
     backface-visibility: visible;
 
-    /*border: 1px solid #cbcbcb;*/
+    border: 1px solid #565656;
 }
 .top {
-    background-color: #fff; /* 255 */
+    background-color: #505050; /* 255 */
     transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
 
 }
 .bottom {
-    background-color: #999; /* 153 */
+    background-color: #373737; /* 153 */
     transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
 }
 .left {
-    background-color: #ccc; /* 204 */
+    background-color: #464646; /* 204 */
     transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
 }
 .right {
-    background-color: #ddd; /* 221 */
+    background-color: #484848; /* 221 */
     transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
 }
 .front {
-    background-color: #aaa; /* 170 */
+    background-color: #414141; /* 170 */
     transform: translateZ(calc(var(--size) * .5));
 }
 .back {
-    background-color: #bbb; /* 187 */
+    background-color: #464646; /* 187 */
     transform: translateZ(calc(var(--size) * -.5));
 }
 

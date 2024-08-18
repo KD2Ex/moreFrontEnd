@@ -38,7 +38,7 @@ const ServiceTabSwitchFactory = ({tab, setTab, inView}) => {
             {tabSwitch}
             <ServiceTab
                 tab={tab}
-
+                setTab={setTab}
             />
         </>
     );

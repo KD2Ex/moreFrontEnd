@@ -1,7 +1,7 @@
 import React from 'react';
 import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import ServiceCard from "../ServiceCard/ServiceCard";
-import {Box, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 
 const minimumItems = [
     '•	Обмерочный план',
@@ -60,11 +60,11 @@ const CommercialTab = () => {
                     }
                 }}
             >
-                <Box
+                <Grid
+                    container
                 >
 
                     <ServiceCard
-                        flex={6}
                         height={500}
                         title={[
                             'Минимум',
@@ -81,7 +81,6 @@ const CommercialTab = () => {
 
                     <ServiceCard
                         height={500}
-                        flex={6}
                         title={[
                             'Полный',
                             'Full'
@@ -98,7 +97,6 @@ const CommercialTab = () => {
 
                     <ServiceCard
                         height={500}
-                        flex={6}
                         title={[
                             'Авторское сопровождение дома/квартиры',
                             'Minimum'
@@ -119,7 +117,7 @@ const CommercialTab = () => {
                         ]}
                     />
 
-                </Box>
+                </Grid>
 
                 <Box
                     sx={{
@@ -142,6 +140,14 @@ const CommercialTab = () => {
                             Закупка производится у рекомендованных поставщиков на специальных условиях
                         </Typography>
                     </ServiceCard>
+                </Box>
+
+                <Box
+                    sx={{
+                        height: '200px'
+                    }}
+                >
+
                 </Box>
             </Box>
         </>

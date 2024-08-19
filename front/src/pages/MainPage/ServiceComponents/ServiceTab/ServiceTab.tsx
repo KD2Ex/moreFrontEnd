@@ -32,34 +32,6 @@ const ServiceTab = ({tab, setTab}) => {
         }
     })
 
-   /* switch (tab) {
-        case 'qwe': {
-            return (
-                <ConsultTab/>
-            );
-        }
-        case 'qwe1': {
-            return (
-                <ProjectTab/>
-            );
-        }
-        case 'qwe2': {
-            return (
-                <CommercialTab/>
-            );
-        }
-        default: return null;
-    }*/
-
-    const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-    useEffect(() => {
-
-        console.log('service tab changed')
-
-    }, [tab])
-
     // different bg images for different tabs
 
     return (

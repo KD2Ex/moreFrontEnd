@@ -14,13 +14,13 @@ const TabPanel = ({value, index, children, ...props}) => {
                 {...props}
             >
                 {children}
-                <Box
+                {/*<Box
                     sx={{
                         height: '70px'
                     }}
                 >
 
-                </Box>
+                </Box>*/}
             </Box>
 
         </>

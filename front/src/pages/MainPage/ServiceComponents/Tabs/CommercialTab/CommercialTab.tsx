@@ -243,16 +243,6 @@ const CommercialTab = () => {
                     </CardItem>
                 </Grid>
             </Grid>
-
-            <Box
-                sx={{
-                    height: '70px'
-                }}
-            >
-
-            </Box>
-
-
         </>
     );
 };

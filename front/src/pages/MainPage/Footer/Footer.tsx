@@ -1,0 +1,65 @@
+import React from 'react';
+import {Box, Button, Typography} from "@mui/material";
+import TelegramIcon from '@mui/icons-material/Telegram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
+const Footer = () => {
+
+
+    return (
+        <>
+            <Box
+                sx={{
+                    bgcolor: 'black',
+                    mt: 4
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        justifyItems: 'flex-start',
+                        px: 2
+                    }}
+                >
+                    <Typography
+                        variant={'h5'}
+                    >
+                        Контакты:
+                    </Typography>
+                    <Button
+                        sx={{
+                            color: '#26c21f',
+                            bgcolor: '#313131',
+                        }}
+                        variant={'contained'}
+                        startIcon={<WhatsAppIcon/>}
+                    >
+                            Whats app
+                    </Button>
+                    <Button
+                        sx={{
+                            color: '#109dff'
+                        }}
+                        startIcon={<TelegramIcon/>}
+                        variant={'contained'}
+                    >
+                         Telegram
+                    </Button>
+                </Box>
+
+            </Box>
+            <Box
+                sx={{
+                    height: '60px'
+                }}
+            >
+
+            </Box>
+        </>
+
+    );
+};
+
+export default Footer;

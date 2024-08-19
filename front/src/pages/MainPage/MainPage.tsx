@@ -8,6 +8,7 @@ import './style.css'
 import StickyText from "./MainBlock/StickyText/StickyText";
 import Cube3D from "./3DCube/Cube3D";
 import logo from '../../assets/logo.jpg'
+import Footer from "./Footer/Footer";
 
 const MainPage = () => {
 
@@ -29,7 +30,6 @@ const MainPage = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				margin: 'auto',
-				px: {xs: 1, xl: 0},
 			}}
 		>
 
@@ -40,7 +40,9 @@ const MainPage = () => {
 					justifyContent: 'space-between',
 					gap: 1,
 					height: {xs: 48, md: 128},
-					mt: 2
+					mt: 2,
+					px: {xs: 1, xl: 0},
+
 				}}
 			>
 				<Box
@@ -78,7 +80,7 @@ const MainPage = () => {
 				sx={{
 					width:'100%',
 					mb: 2,
-					mt: 1
+					mt: 1,
 				}}
 			/>
 
@@ -102,11 +104,6 @@ const MainPage = () => {
 						top: 0
 					}}
 				>
-{/*					<Box
-						className={"progress"}
-					>
-					</Box>*/}
-
 
 					<Box
 						sx={{
@@ -145,62 +142,20 @@ const MainPage = () => {
 						text={'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.\n'}
 					/>
 
-					{/*<Box
-						sx={{
-							position: 'sticky',
-							top:  0,
-							width: '100%',
-							//scrollSnapType: 'y mandatory',
-
-							'& .MuiBox-root': {
-								height: '100vh',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								scrollSnapAlign: 'start',
-								p: {xs: 4, md: 32},
-								scrollSnapStop: 'always'
-							}
-						}}
-					>
-
-						<Box
-							sx={{
-
-							}}
-						>
-							<Typography
-								fontSize={{xs: 24, md: 32}}
-								textAlign={'center'}
-
-							>
-								Мы занимаемся проектированием, дизайном интерьеров, архитектурой индивидуальных жилых домов, уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений, что не мало важно как в проектировании так и на этапе реализации проектов, тем более когда работа ведется в режиме сжатых сроков.
-							</Typography>
-						</Box>
-
-
-						<Box
-							sx={{
-
-							}}
-						>
-							<Typography
-								fontSize={{xs: 24, md: 32}}
-								textAlign={'center'}
-
-							>
-								Помимо проектного бюро, к Вашим услугам художественная мастерская, где вы можете подобрать картины в ваши интерьеры, оформить офис, кафе ресторан или гостиничные номера, уникальными авторскими произведениями. Мы не делаем копии мы создаем искусство.
-							</Typography>
-						</Box>
-
-					</Box>*/}
 
 				</Grid>
 			</Grid>
 
-			<Services/>
+			<Box
+				sx={{
+					px: 1
+				}}
+			>
+				<Services/>
+			</Box>
 
 
+			<Footer/>
 
 		</Box>
 	);

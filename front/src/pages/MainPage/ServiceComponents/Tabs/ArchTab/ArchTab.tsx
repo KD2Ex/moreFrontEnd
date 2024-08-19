@@ -184,14 +184,6 @@ const ArchTab = () => {
 
             </Grid>
 
-            <Box
-                sx={{
-                    height: '70px'
-                }}
-            >
-
-            </Box>
-
         </>
     );
 };

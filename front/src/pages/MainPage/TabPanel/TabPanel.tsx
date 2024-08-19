@@ -6,15 +6,25 @@ const TabPanel = ({value, index, children, ...props}) => {
     console.log('TAB PANEL')
 
     return (
-        <Box
-            hidden={value !== index}
-            sx={{
-                height: '1000px'
-            }}
-            {...props}
-        >
-            {children}
-        </Box>
+        <>
+            <Box
+                hidden={value !== index}
+                sx={{
+                }}
+                {...props}
+            >
+                {children}
+                <Box
+                    sx={{
+                        height: '70px'
+                    }}
+                >
+
+                </Box>
+            </Box>
+
+        </>
+
     );
 };
 

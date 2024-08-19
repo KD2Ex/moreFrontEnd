@@ -8,6 +8,8 @@ import {useSwipeable} from "react-swipeable";
 import actionDialog from "../../../../components/ActionDialog/ActionDialog";
 import {Architecture} from "@mui/icons-material";
 import ArchTab from "../Tabs/ArchTab/ArchTab";
+import LandscapeTab from "../Tabs/LandscapeTab/LandscapeTab";
+import ComplexDecisionTab from "../Tabs/ComplexDecisionTab/ComplexDecisionTab";
 
 
 const ServiceTab = ({tab, setTab}) => {
@@ -71,6 +73,8 @@ const ServiceTab = ({tab, setTab}) => {
             <TabPanel value={tab} index={1}><ProjectTab/></TabPanel>
             <TabPanel value={tab} index={2}><CommercialTab/></TabPanel>
             <TabPanel value={tab} index={3}><ArchTab/></TabPanel>
+            <TabPanel value={tab} index={4}><LandscapeTab/></TabPanel>
+            <TabPanel value={tab} index={5}><ComplexDecisionTab/></TabPanel>
         </Box>
 
     )

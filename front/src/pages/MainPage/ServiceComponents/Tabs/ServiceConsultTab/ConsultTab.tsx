@@ -183,13 +183,6 @@ const ConsultTab = () => {
 
                 </Grid>
 
-                <Box
-                    sx={{
-                        height: '70px'
-                    }}
-                >
-
-                </Box>
             </Box>
         </>
     );

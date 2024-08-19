@@ -1,11 +1,11 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import {Box, Paper} from "@mui/material";
 import LocaleText from "../../../components/Locale/LocaleText/LocaleText";
 
 const CardItem = ({title, children, height, ...props}) => {
 
     return (
-        <Box
+        <Paper
             sx={{
                 borderRadius: 2,
                 border: '2px solid',
@@ -15,6 +15,7 @@ const CardItem = ({title, children, height, ...props}) => {
                 alignItems: 'center',
                 justifyContent: 'flex-start',
                 p: 2,
+                gap: 1,
                 height: height
             }}
             {...props}
@@ -34,12 +35,14 @@ const CardItem = ({title, children, height, ...props}) => {
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     alignItems: 'space-between',
-                    height: '100%'
+                    gap: 1,
+                    height: '100%',
+                    width: '100%'
                 }}
             >
                 {children}
             </Box>
-        </Box>
+        </Paper>
     );
 };
 

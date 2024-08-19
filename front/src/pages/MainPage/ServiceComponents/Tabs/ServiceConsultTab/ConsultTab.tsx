@@ -69,9 +69,7 @@ const ConsultTab = () => {
                             <Typography
                                 fontSize={'1.2rem'}
                                 textAlign={'center'}
-                                sx={{
-                                    my: 1
-                                }}
+
                             >
                                 Консультация в мессенджере или по видеосвязи
                             </Typography>
@@ -152,13 +150,20 @@ const ConsultTab = () => {
                         </CardItem>
                     </Grid>
 
+
+                    {!appInfo.isMobile && (
+                        <Grid
+                            item
+                            md={4}
+                        />
+                    )}
+
                     <Grid
                         item
                         md={4}
                         xs={12}
                     >
                         <CardItem
-                            height={{xs: 'auto', md: 300}}
                             title={[
                                 'Бесплатная',
                                 'Free'
@@ -173,14 +178,6 @@ const ConsultTab = () => {
                             >
                                 По телефону: выявление потребностей перед началом сотрудничества, подбор необходимого пакета услуг
                             </Typography>
-                            <Typography
-                                fontSize={'1.5rem'}
-                                textAlign={'center'}
-                            >
-                                990 руб.
-
-                            </Typography>
-
                         </CardItem>
                     </Grid>
 

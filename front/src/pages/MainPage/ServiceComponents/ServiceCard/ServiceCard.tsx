@@ -3,18 +3,19 @@ import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 import {Box, Grid, List, ListItemText, Paper} from "@mui/material";
 import test from "../../../../assets/test.jpg";
 
-const ServiceCard = ({title, listItems, minHeight, height, children}) => {
+const ServiceCard = ({title, listItems, minHeight, height, children, ...props}) => {
 
 
     return (
         <Grid
             item
-            md={6}
+            md={4}
             xs={12}
         >
 
             <Paper
                 variant={'outlined'}
+                {...props}
                 sx={{
                     //bgcolor: (theme) => theme.palette.background.paper,
                     borderRadius: 2,
@@ -28,7 +29,6 @@ const ServiceCard = ({title, listItems, minHeight, height, children}) => {
                     height: height,
                     minHeight: minHeight,
                     backgroundRepeat: 'no-repeat',
-
                 }}
             >
                 <LocaleText
@@ -41,25 +41,28 @@ const ServiceCard = ({title, listItems, minHeight, height, children}) => {
                     localeList={[...title]}
                 />
 
-                <List
-                    sx={{
-                        width: '100%',
-                        flex: listItems.length > 0 ? 1 : 0,
-                        '.MuiListItemText-root': {
-                            'span': {
-                                fontSize:'16px',
+                {listItems && (
+                    <List
+                        sx={{
+                            width: '100%',
+                            flex: listItems?.length > 0 ? 1 : 0,
+                            '.MuiListItemText-root': {
+                                'span': {
+                                    fontSize:'16px',
+                                }
                             }
-                        }
-                    }}
-                >
-                    {listItems.map((i, index) =>
-                        <ListItemText
-                            key={index}
-                        >
-                            {i}
-                        </ListItemText>
-                    )}
-                </List>
+                        }}
+                    >
+                        {listItems?.map((i, index) =>
+                            <ListItemText
+                                key={index}
+                            >
+                                {i}
+                            </ListItemText>
+                        )}
+                    </List>
+                )}
+
 
                 {children && (
                     <Box>

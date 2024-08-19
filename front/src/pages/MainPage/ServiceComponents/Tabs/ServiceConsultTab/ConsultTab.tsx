@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import LocaleText from "../../../../../components/Locale/LocaleText/LocaleText";
-import {Box} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 import appInfo from "../../../../../store/appInfo";
+import ServiceCard from "../../ServiceCard/ServiceCard";
+import CardItem from "../../../CardItem/CardItem";
 
 const ConsultTab = () => {
 
@@ -29,7 +31,8 @@ const ConsultTab = () => {
                     fontSize={'1.1rem'}
                     useDefault
                     sx={{
-                        textAlign: 'justify'
+                        textAlign: 'justify',
+                        mb: 2
                     }}
                     localeList={[
                         'Онлайн или на месте — мы помогаем вам в любой ситуации, от выбора материалов до оптимизации пространства.\n' +
@@ -45,6 +48,151 @@ const ConsultTab = () => {
                     С выездом на объект, онлайн по видео связи, а иногда даже в мессенджере.
 
                 </LocaleText>
+
+
+                <Grid
+                    container
+                    spacing={2}
+                >
+                    <Grid
+                        item
+                        md={4}
+                        xs={12}
+                    >
+                        <CardItem
+                            height={{xs: 'auto', md: 300}}
+                            title={[
+                                'Онлайн',
+                                'Online'
+                            ]}
+                        >
+                            <Typography
+                                fontSize={'1.2rem'}
+                                textAlign={'center'}
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                                Консультация в мессенджере или по видеосвязи
+                            </Typography>
+                            <Typography
+                                fontSize={'1.5rem'}
+                                textAlign={'center'}
+                            >
+                                5000 руб./час
+
+                            </Typography>
+                        </CardItem>
+                    </Grid>
+
+
+                    <Grid
+                        item
+                        md={4}
+                        xs={12}
+                    >
+                        <CardItem
+                            height={{xs: 'auto', md: 300}}
+                            title={[
+                                'Оффлайн',
+                                'Offline'
+                            ]}
+                        >
+                            <Typography
+                                    fontSize={'1.2rem'}
+                                    textAlign={'center'}
+                                    sx={{
+                                        my: 1
+                                    }}
+                                >
+                                    Консультация с выездом на объект/ личная встреча на нейтральной территории/ встреча в интерьерных салонах и магазинах
+
+                                </Typography>
+                                <Typography
+                                    fontSize={'1.5rem'}
+                                    textAlign={'center'}
+                                >
+                                    7500 руб. (до 2 часов)
+
+                                </Typography>
+
+                        </CardItem>
+                    </Grid>
+
+
+                    <Grid
+                        item
+                        md={4}
+                        xs={12}
+                    >
+                        <CardItem
+                            height={{xs: 'auto', md: 300}}
+                            title={[
+                                'Один вопрос',
+                                'One quesiton'
+                            ]}
+                        >
+                            <Typography
+                                fontSize={'1.2rem'}
+                                textAlign={'center'}
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                                В мессенджере: развернутый ответ/решение одной проблемы/задачи/ситуации
+                            </Typography>
+                            <Typography
+                                fontSize={'1.5rem'}
+                                textAlign={'center'}
+                            >
+                                990 руб.
+
+                            </Typography>
+
+                        </CardItem>
+                    </Grid>
+
+                    <Grid
+                        item
+                        md={4}
+                        xs={12}
+                    >
+                        <CardItem
+                            height={{xs: 'auto', md: 300}}
+                            title={[
+                                'Бесплатная',
+                                'Free'
+                            ]}
+                        >
+                            <Typography
+                                fontSize={'1.2rem'}
+                                textAlign={'center'}
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                                По телефону: выявление потребностей перед началом сотрудничества, подбор необходимого пакета услуг
+                            </Typography>
+                            <Typography
+                                fontSize={'1.5rem'}
+                                textAlign={'center'}
+                            >
+                                990 руб.
+
+                            </Typography>
+
+                        </CardItem>
+                    </Grid>
+
+                </Grid>
+
+                <Box
+                    sx={{
+                        height: '70px'
+                    }}
+                >
+
+                </Box>
             </Box>
         </>
     );

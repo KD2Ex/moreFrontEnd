@@ -23,7 +23,7 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
                 width: '100%',
                 overflow: 'auto',
                 alignItems: 'center',
-                px: 1,
+                px: 0,
                 height: 36,
                 gap: 1,
                 my: 2

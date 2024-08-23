@@ -74,6 +74,8 @@ class Locale {
 
     async fetchLocaleList() {
 
+        if (this.locales.length != 0) return;
+
         const res = await LocaleService.fetchLocales();
 
         this.locales = res.map(i => {

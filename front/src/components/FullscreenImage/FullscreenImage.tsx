@@ -62,7 +62,7 @@ const FullscreenImage = observer(({open}) => {
 					position: 'fixed',
 					top: 0,
 					left: 0,
-					bgcolor: 'rgba(0, 0, 0, .25)',
+					bgcolor: 'rgba(0,0,0,0.75)',
 					zIndex: 1,
 				}}
 			>

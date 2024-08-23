@@ -42,14 +42,15 @@ const PaintingTextarea = observer(({item}) => {
 
 		if (!item) return;
 
-		if (item.material) setCurrentMaterial(item.material.id)
-		if (item.technique) setCurrentTechnique(item.technique.id)
+		const mId = item.material.id === 0 ? '' : item.material.id
+		const tId = item.technique.id === 0 ? '' : item.technique.id
+		if (item.material) setCurrentMaterial(mId)
+		if (item.technique) setCurrentTechnique(tId)
 
 
 	}, [])
 
 	useEffect(() => {
-
 
 		updateItem(material.items, +currentMaterial, item.material);
 
@@ -86,7 +87,6 @@ const PaintingTextarea = observer(({item}) => {
 				label={'Название'}
 				value={item.title[locale.currentLocale.name]}
 				onChange={(e) => {
-					console.log(e.target.value)
 					item.title[locale.currentLocale.name] = e.target.value
 				}}
 			/>
@@ -155,7 +155,7 @@ const PaintingTextarea = observer(({item}) => {
 				}}
 			>
 				<ParamSelect
-					id={item.material.id}
+					id={currentMaterial}
 					setId={setCurrentMaterial}
 					items={material.items}
 					deleteFunc={material.deleteItem.bind(material)}

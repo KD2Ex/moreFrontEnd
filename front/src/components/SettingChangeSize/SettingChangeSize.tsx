@@ -41,6 +41,7 @@ const SettingChangeSize = ({size, changeSize}) => {
 				}}
 				value={value}
 				onChange={handleChange}
+				color={value <= 2 ? "warning" : null}
 			>
 
 			</TextField>

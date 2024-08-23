@@ -54,7 +54,7 @@ const ModalView = observer(() => {
 					m: 0,
 					mx: 2,
 					minWidth: {md: '900px', lg: '1200px'},
-
+					zIndex: 4100
 				}
 			}}
 		>
@@ -67,7 +67,8 @@ const ModalView = observer(() => {
 					mt: 1,
 					mx: 2*/
 					p: 1,
-					m: 0
+					m: 0,
+					zIndex: 4100
 				}}
 			>
 				<ModalViewContent

@@ -35,7 +35,7 @@ const NavBarMobile = ({pages}) => {
                 bottom: 0,
                 bgcolor: 'black',
                 height: 56,
-                zIndex: 3500,
+                zIndex: 1300,
                 width: '100%',
             }}
         >

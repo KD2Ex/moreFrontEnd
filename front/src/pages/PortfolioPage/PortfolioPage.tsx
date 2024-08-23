@@ -67,7 +67,7 @@ const PortfolioPage = observer(() => {
 	return (
 		<Box
 			sx={{
-				mx: 4
+				mx: {xs: 1, md: 4}
 			}}
 		>
 

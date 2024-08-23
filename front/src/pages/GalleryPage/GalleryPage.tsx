@@ -88,7 +88,8 @@ const GalleryPage = observer(() => {
 
 			<Box
 				sx={{
-					mb: 2
+					mb: 2,
+					mt: {xs: 2, md: 0}
 				}}
 			>
 				<PaintingFilter

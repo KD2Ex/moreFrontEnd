@@ -4,8 +4,9 @@ import LocaleText from "../Locale/LocaleText/LocaleText";
 import LanguageChange from "../LanguageChange/LanguageChange";
 import appInfo from "../../store/appInfo";
 import NavBarMobile from "./NavBarMobile/NavBarMobile";
+import {observer} from "mobx-react-lite";
 
-const NavBar = () => {
+const NavBar = observer(() => {
 
 	const buttons = [
 		{
@@ -110,6 +111,6 @@ const NavBar = () => {
 		</Box>
 
 	);
-};
+});
 
 export default NavBar;

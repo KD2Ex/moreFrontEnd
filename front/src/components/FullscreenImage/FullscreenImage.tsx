@@ -4,18 +4,13 @@ import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
 
-const wheel = (e) => {
-	e.preventDefault();
-}
 
-const FullscreenImage = observer(({src, open}) => {
+const FullscreenImage = observer(({open}) => {
 
-	const [index, setIndex] = useState(0)
 
 	useEffect(() => {
 		console.log("IMAGES")
 
-		setIndex(0);
 
 	}, [])
 
@@ -24,22 +19,20 @@ const FullscreenImage = observer(({src, open}) => {
 		if (open) {
 			document.body.style.overflow = "hidden"
 		} else {
-			setIndex(0)
 			document.body.style.overflow = ""
 		}
 
 	}, [open])
 
-	const handlePrev = () => {
-		if (index - 1 < 0) return;
 
-		setIndex(prev => prev - 1);
+
+	const handlePrev = () => {
+		modal.setOrder(modal.projectImageOrder - 1)
 	}
 
 	const handleNext = () => {
-		if (index + 1 >= modal.projectImage.length) return;
 
-		setIndex(prev => prev + 1)
+		modal.setOrder(modal.projectImageOrder + 1)
 	}
 
 	const handleClose = () => {
@@ -89,7 +82,7 @@ const FullscreenImage = observer(({src, open}) => {
 				<Box
 					draggable={false}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + modal.projectImage[index].name}
+					src={import.meta.env.VITE_BASE_URL + modal.projectImage[modal.projectImageOrder].name}
 					sx={{
 						width: '80%',
 						height: 'auto',

@@ -83,7 +83,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					}}
 
 					onClick={ () => {
-						 modal.openFullscreenImage(item.images)
+						 //modal.openFullscreenImage(item.images)
 					}}
 				>
 

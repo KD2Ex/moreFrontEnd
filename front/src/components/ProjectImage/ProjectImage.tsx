@@ -28,12 +28,23 @@ const ProjectImage = ({image, height, swipe, sliderRef}) => {
 
 				}}
 			>
-				<ImageZoom
+				{/*<ImageZoom
 					src={image.name}
 					slide={swipe}
 					sliderRef={sliderRef}
 					fit={'cover'}
-				/>
+				/>*/}
+				<Box
+					sx={{
+						width: '100%',
+						height: '100%',
+						objectFit: 'contain',
+					}}
+					component={'img'}
+					src={import.meta.env.VITE_BASE_URL + image.name}
+				>
+
+				</Box>
 
 			</Box>
 

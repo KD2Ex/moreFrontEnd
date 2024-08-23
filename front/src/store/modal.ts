@@ -5,6 +5,7 @@ class Modal {
 
 	projectImage = [];
 	projectImageOpen = false;
+	projectImageOrder = 0;
 
 	paintingViewOpen = false;
 	paintingItem = null;
@@ -22,16 +23,27 @@ class Modal {
 		makeAutoObservable(this)
 	}
 
+	setOrder(value: number) {
+		console.log(value)
+
+		if (value < 0) return;
+		if (value >= this.projectImage.length) return;
+
+		this.projectImageOrder = value;
+	}
+
 	openProjectImage(value, src?) {
 		this.projectImage = src
 		this.projectImageOpen = value;
 	}
 
-	openFullscreenImage(list) {
+	openFullscreenImage(list, image) {
 		console.log(list)
 
+		this.projectImageOrder = image.order;
 		this.projectImageOpen = true;
 		this.projectImage = list
+
 	}
 
 	setItemHeight(item, value) {

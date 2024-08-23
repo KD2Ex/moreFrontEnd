@@ -12,16 +12,31 @@ class Project {
 
 	defaultItem: IProject = {
 		area: 0,
-		cost: {},
-		address: {},
+		cost: {
+			'ru': '',
+			'en-US': ''
+		},
+		address: {
+			'ru': '',
+			'en-US': ''
+		},
 		images: [],
 		levels: 0,
-		timePeriod: {},
+		timePeriod: {
+			'ru': '',
+			'en-US': ''
+		},
 		order: 0,
 		files: [],
-		desc: {},
+		desc: {
+			'ru': '',
+			'en-US': ''
+		},
 		height: 400,
-		title: {},
+		title: {
+			'ru': '',
+			'en-US': ''
+		},
 		id: 0
 	}
 

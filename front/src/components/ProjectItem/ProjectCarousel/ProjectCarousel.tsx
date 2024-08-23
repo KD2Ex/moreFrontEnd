@@ -6,6 +6,7 @@ import user from "../../../store/user";
 import project from "../../../store/project";
 import ProjectImage from "../../ProjectImage/ProjectImage";
 import {observer} from "mobx-react-lite";
+import modal from "../../../store/modal";
 
 const ProjectCarousel = observer(({items, height}) => {
 
@@ -42,13 +43,18 @@ const ProjectCarousel = observer(({items, height}) => {
 		>
 			{items?.slice().sort((a, b) => a?.order - b?.order).map((image, index) => (
 
-				<ProjectImage
-					key={index}
-					sliderRef={sliderRef}
-					swipe={swipe}
-					image={image}
-					height={height}
-				/>
+				<Box
+					onClick={() => modal.openFullscreenImage(items, image)}
+				>
+					<ProjectImage
+						key={index}
+						sliderRef={sliderRef}
+						swipe={swipe}
+						image={image}
+						height={height}
+					/>
+				</Box>
+
 				/*<Box
 					sx={{
 						width: '100%',

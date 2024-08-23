@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Button, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import appInfo from "../../../store/appInfo";
 
 const Footer = () => {
 
@@ -11,7 +12,8 @@ const Footer = () => {
             <Box
                 sx={{
                     bgcolor: 'black',
-                    mt: 4
+                    mt: 4,
+                    py: 2
                 }}
             >
                 <Box
@@ -28,35 +30,38 @@ const Footer = () => {
                     >
                         Контакты:
                     </Typography>
-                    <Button
-                        sx={{
-                            color: '#26c21f',
-                            bgcolor: '#313131',
-                        }}
-                        variant={'contained'}
-                        startIcon={<WhatsAppIcon/>}
-                    >
+                    <Box>
+                        <Button
+                            sx={{
+                                color: '#26c21f',
+                            }}
+                            startIcon={<WhatsAppIcon/>}
+                        >
                             Whats app
-                    </Button>
-                    <Button
-                        sx={{
-                            color: '#109dff'
-                        }}
-                        startIcon={<TelegramIcon/>}
-                        variant={'contained'}
-                    >
-                         Telegram
-                    </Button>
+                        </Button>
+                        <Button
+                            sx={{
+                                color: '#109dff'
+                            }}
+                            startIcon={<TelegramIcon/>}
+                        >
+                            Telegram
+                        </Button>
+                    </Box>
+
                 </Box>
 
             </Box>
-            <Box
-                sx={{
-                    height: '60px'
-                }}
-            >
+            {appInfo.isMobile && (
+                <Box
+                    sx={{
+                        height: '60px'
+                    }}
+                >
 
-            </Box>
+                </Box>
+            )}
+
         </>
 
     );

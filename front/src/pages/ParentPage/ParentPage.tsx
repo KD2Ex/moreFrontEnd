@@ -22,7 +22,6 @@ const ParentPage = observer(() => {
 
     const [canLoad, setCanLoad] = useState(false);
 
-
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 

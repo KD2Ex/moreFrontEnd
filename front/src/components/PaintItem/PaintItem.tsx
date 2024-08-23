@@ -59,6 +59,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					p: 0,
 					borderRadius: 2,
 					transition: 'filter  300ms linear',
+					position: 'relative',
 					//filter: 'brightness(40%)',
 					//opacity: .2,'
 					'&:hover': {
@@ -76,7 +77,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 			>
 				<Box
 					sx={{
-						position: "absolute",
+						position: 'absolute',
 						width: '100%',
 						height: '100%',
 						display: 'flex',

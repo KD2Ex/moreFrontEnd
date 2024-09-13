@@ -15,7 +15,6 @@ class Material {
 	}
 
 
-
 	async getItems() {
 
 		if (this.items.length === 0) {
@@ -41,6 +40,9 @@ class Material {
 		/*const req = value.map((i, index) => {
 			return {text: i, localeId: index + 1}
 		})*/
+
+		console.log(value)
+		return;
 
 		if (existing) {
 			alert.openAlert("Имя существует", "error");

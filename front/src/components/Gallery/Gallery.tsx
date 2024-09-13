@@ -28,6 +28,9 @@ const Gallery = observer(({items, type, store}: GalleryProps) => {
 		if (store.loading) return;
 		//if (paint.arrayMutating) return;
 		//if (lastElement.current == undefined) return;
+
+		// Заменить на react-intersection-observer
+
 		if (observer.current) observer.current.disconnect();
 
 		const callback = (entries) => {
@@ -99,7 +102,6 @@ const Gallery = observer(({items, type, store}: GalleryProps) => {
 							sx={{
 								mt: 8,
 								height: 20,
-								bgcolor: 'cyan'
 							}}
 						>
 						</Box>

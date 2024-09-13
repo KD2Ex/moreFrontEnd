@@ -35,10 +35,24 @@ const ModalEditContent = observer(({item}) => {
 				width: '100%'
 			}}
 		>
+			<Grid
+				item
+				md
+				xs={12}
+				sx={{
+				}}
+			>
+				<LanguageChange/>
+				<PaintingTextarea
+					item={item}
+				/>
+
+			</Grid>
 
 			<Grid
 				item
-				md={7}
+				md={6}
+				xs={12}
 			>
 				<Box
 					sx={{
@@ -57,18 +71,7 @@ const ModalEditContent = observer(({item}) => {
 
 			</Grid>
 
-			<Grid
-				item
-				md
-				sx={{
-				}}
-			>
-				<LanguageChange/>
-				<PaintingTextarea
-					item={item}
-				/>
 
-			</Grid>
 
 		</Grid>
 	);

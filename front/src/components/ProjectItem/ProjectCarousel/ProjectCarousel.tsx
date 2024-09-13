@@ -45,6 +45,7 @@ const ProjectCarousel = observer(({items, height}) => {
 
 				<Box
 					onClick={() => modal.openFullscreenImage(items, image)}
+					key={index}
 				>
 					<ProjectImage
 						key={index}

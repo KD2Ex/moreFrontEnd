@@ -54,7 +54,7 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 
 			<DialogContent
 				sx={{
-					minWidth: '1200px'
+					minWidth: {xs: '350px', md: 700, lg: 1000}
 				}}
 			>
 

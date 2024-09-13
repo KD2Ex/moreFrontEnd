@@ -16,6 +16,7 @@ import alert from "../../store/alert";
 import TextFieldPopover from "../../components/TextFieldPopover/TextFieldPopover";
 import ModalEdit from "../../components/ModalEdit/ModalEdit";
 import BackToTop from "../../components/BackToTop/BackToTop";
+import appInfo from "../../store/appInfo";
 
 
 const GalleryPage = observer(() => {
@@ -123,7 +124,9 @@ const GalleryPage = observer(() => {
 
 			<ModalEdit/>
 
-			<BackToTop/>
+			{!appInfo.isMobile && (
+				<BackToTop/>
+			)}
 		</Box>
 	);
 });

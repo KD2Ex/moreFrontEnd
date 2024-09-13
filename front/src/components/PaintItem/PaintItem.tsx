@@ -100,6 +100,9 @@ const PaintItem: FC<PaintItemProps> = observer(({
 
 					<Typography
 						fontSize={33}
+						sx={{
+							textAlign: 'center'
+						}}
 					>
 						{item.title[locale.currentLocale.name]}
 					</Typography>

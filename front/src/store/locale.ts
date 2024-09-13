@@ -66,7 +66,16 @@ class Locale {
         if (locale) {
             this.currentLocale = {id: +id, name: locale}
         } else {
-            this.setLocale(this.locales.find(i => i.name === this.systemLocale).name, false)
+            const systemLocale = this.locales.find(i => i.name === this.systemLocale);
+
+            console.log(systemLocale)
+
+            if (systemLocale) {
+                this.setLocale(systemLocale.name, false)
+            } else {
+                this.setLocale("en-US", false)
+            }
+
         }
         this.isLocaleLoaded = true;
         console.log(this.currentLocale.name)

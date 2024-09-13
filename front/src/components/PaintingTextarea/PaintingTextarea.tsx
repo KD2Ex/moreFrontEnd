@@ -122,19 +122,6 @@ const PaintingTextarea = observer(({item}) => {
 				<span>Фактические размеры: </span>
 
 				<TextField
-					size={'small'}
-					sx={{
-						maxWidth: '100px'
-					}}
-					type={'number'}
-					label={'Ширина'}
-					value={item.width}
-					onChange={(e) => {
-						modal.setWidth(item, e.target.value)
-					}}
-				/>
-				x
-				<TextField
 					sx={{
 						maxWidth: '100px'
 					}}
@@ -144,6 +131,21 @@ const PaintingTextarea = observer(({item}) => {
 					value={item.height}
 					onChange={(e) => {
 						modal.setItemHeight(item, e.target.value)
+					}}
+				/>
+
+				x
+
+				<TextField
+					size={'small'}
+					sx={{
+						maxWidth: '100px'
+					}}
+					type={'number'}
+					label={'Ширина'}
+					value={item.width}
+					onChange={(e) => {
+						modal.setWidth(item, e.target.value)
 					}}
 				/>
 			</Box>

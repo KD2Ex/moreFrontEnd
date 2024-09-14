@@ -21,7 +21,6 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab}) => {
                 height: 36,
                 gap: 1,
                 my: 2,
-
             }}
             className={'tabs'}
         >

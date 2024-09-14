@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, useTheme} from "@mui/material";
+import {Box, Button, IconButton, useTheme} from "@mui/material";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import './styles.css'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const BackToTop = () => {
 
@@ -30,25 +32,19 @@ const BackToTop = () => {
                 zIndex: 3000,
             }}
         >
-            <Button
+            <IconButton
                 onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+                size={'large'}
                 variant={'contained'}
                 sx={{
-                    bgcolor: 'black',
                     transition: theme.transitions.create(['opacity'], {
                         duration: 500
                     })
                 }}
                 className={'anim ' + style}
             >
-                <LocaleText
-                    localeList={[
-                        'К началу',
-                        'To the top'
-                    ]}
-                    useDefault
-                />
-            </Button>
+                <KeyboardArrowUpIcon fontSize={'large'}/>
+            </IconButton>
 
         </Box>
     );

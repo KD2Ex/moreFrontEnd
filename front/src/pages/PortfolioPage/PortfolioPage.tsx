@@ -13,6 +13,7 @@ import alert from "../../store/alert";
 import FullscreenImage from "../../components/FullscreenImage/FullscreenImage";
 import modal from "../../store/modal";
 import BackToTop from "../../components/BackToTop/BackToTop";
+import appInfo from "../../store/appInfo";
 
 const PortfolioPage = observer(() => {
 
@@ -92,7 +93,10 @@ const PortfolioPage = observer(() => {
 				open={modal.projectImageOpen}
 			/>
 
-			<BackToTop/>
+			{!appInfo.isMobile && (
+				<BackToTop/>
+			)}
+
 			<AdminComponent>
 				<AdminActions
 					actions={actions}

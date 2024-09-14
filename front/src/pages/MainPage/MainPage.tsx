@@ -11,6 +11,7 @@ import logo from '../../assets/logo.jpg'
 import DesktopFooter from "./Footer/DesktopFooter/DesktopFooter";
 import appInfo from "../../store/appInfo";
 import MobileFooter from "./Footer/MobileFooter/MobileFooter";
+import BackToTop from "../../components/BackToTop/BackToTop";
 
 const MainPage = () => {
 
@@ -158,7 +159,9 @@ const MainPage = () => {
 				</Box>
 
 
-
+				{!appInfo.isMobile && (
+					<BackToTop/>
+				)}
 			</Box>
 			{
 				appInfo.isMobile

@@ -132,10 +132,13 @@ class Project {
 
 	}
 
+	async updateOrderFrom(items) {
+		const response = await ProjectService.updateOrder(items);
+	}
+
 	async updateOrder() {
 
 		const response = await ProjectService.updateOrder(this.items);
-
 	}
 
 	async update(newItem) {
@@ -174,6 +177,11 @@ class Project {
 		return response;
 	}
 
+	async getAllItems() {
+		const response = await ProjectService.getProjects(1, 999);
+		return response
+	}
+
 	async getItems(page, limit) {
 
 		this.setLoading(true)
@@ -187,11 +195,8 @@ class Project {
 		})
 		console.log(response)
 		
-		
-		
+
 		this.setItems([...this.items, ...response.items]);
-
-
 		this.setLoading(false)
 	}
 

@@ -15,7 +15,7 @@ import BlogPage, {loader as postListLoader} from "./pages/BlogPage/BlogPage";
 import PostPage, {loader as postLoader} from "./pages/PostPage/PostPage";
 import PostCreatePage from "./pages/BlogCreatePage/PostCreatePage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import PaintingAdminPage, {loader as pAdminLoader} from "./pages/AdminPages/PaintingAdminPage/PaintingAdminPage";
+import PaintingAdminPage, {loader as pAdminLoader, projectsLoader} from "./pages/AdminPages/PaintingAdminPage/PaintingAdminPage";
 
 function App() {
 
@@ -58,8 +58,13 @@ function App() {
 				},
 				{
 					path: '/padmin',
-					element: <PaintingAdminPage/>,
+					element: <PaintingAdminPage type={"painting"}/>,
 					loader: pAdminLoader
+				},
+				{
+					path: '/projectadmin',
+					element: <PaintingAdminPage type={"project"}/>,
+					loader: projectsLoader
 				}
 			]
 		},

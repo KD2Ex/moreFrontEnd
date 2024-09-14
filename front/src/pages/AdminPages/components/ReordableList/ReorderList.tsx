@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Box} from "@mui/material";
-import ReorderItem from "../ReorderItem/ReorderItem";
+import ReorderItem from "../ReorderItem/PaintingReorderItem/ReorderItem";
+import ReorderItemFactory from "../ReorderItem/ReorderItemFactory";
 
 
 const ReorderList = ({items, setItems}) => {
@@ -43,15 +44,16 @@ const ReorderList = ({items, setItems}) => {
             }}
         >
             {items.map((i, index) => (
-                <ReorderItem
+                <ReorderItemFactory
                     draggable
                     onDragStart={(e) => handleDragStart(e,index)}
                     onDragEnter={() => handleDragEnter(index)}
                     onDragOver={(e) => e.preventDefault()}
                     //onDrop={() => handleDragEnter(index)}
                     key={index}
-                    item={i}
-                />
+                    item={i}>
+
+                </ReorderItemFactory>
             ))}
         </Box>
     );

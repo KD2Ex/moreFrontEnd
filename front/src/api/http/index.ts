@@ -5,7 +5,7 @@ const db =  localStorage.getItem("db")
 
 const $api = axios.create({
 	withCredentials: true,
-	baseURL: db ? `${db}api` : 'https://art-space-mo.com:8443/api'
+	baseURL: import.meta.env.VITE_API_URL
 })
 
 

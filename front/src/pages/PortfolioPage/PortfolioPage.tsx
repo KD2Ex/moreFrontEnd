@@ -14,11 +14,14 @@ import FullscreenImage from "../../components/FullscreenImage/FullscreenImage";
 import modal from "../../store/modal";
 import BackToTop from "../../components/BackToTop/BackToTop";
 import appInfo from "../../store/appInfo";
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import {useNavigate} from 'react-router-dom'
 
 const PortfolioPage = observer(() => {
 
 	const [open, setOpen] = useState(false)
 
+	const navigate = useNavigate();
 
 	const addProject = () => {
 
@@ -61,6 +64,12 @@ const PortfolioPage = observer(() => {
 				icon: <AddPhotoAlternateIcon/>,
 				name: user.changeOrderMode ? "Сохранить порядок" : "Изменить порядок",
 				onClick: changeOrder
+			}
+			,
+			{
+				icon: <ViewStreamIcon/>,
+				name: 'Открыть список проектов',
+				onClick: () => navigate('/projectadmin')
 			}
 		]
 

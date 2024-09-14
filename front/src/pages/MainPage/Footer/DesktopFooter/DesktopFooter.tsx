@@ -2,9 +2,9 @@ import React from 'react';
 import {Box, Button, IconButton, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import appInfo from "../../../store/appInfo";
+import appInfo from "../../../../store/appInfo";
 
-const Footer = () => {
+const DesktopFooter = () => {
 
 
     return (
@@ -85,4 +85,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default DesktopFooter;

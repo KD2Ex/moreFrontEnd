@@ -8,7 +8,9 @@ import './style.css'
 import StickyText from "./MainBlock/StickyText/StickyText";
 import Cube3D from "./3DCube/Cube3D";
 import logo from '../../assets/logo.jpg'
-import Footer from "./Footer/Footer";
+import DesktopFooter from "./Footer/DesktopFooter/DesktopFooter";
+import appInfo from "../../store/appInfo";
+import MobileFooter from "./Footer/MobileFooter/MobileFooter";
 
 const MainPage = () => {
 
@@ -158,7 +160,11 @@ const MainPage = () => {
 
 
 			</Box>
-			<Footer/>
+			{
+				appInfo.isMobile
+					? <MobileFooter/>
+					: <DesktopFooter/>
+			}
 		</>
 	);
 };

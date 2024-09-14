@@ -134,7 +134,19 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 				style={{height: '100%'}}
 			>
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
+
 					<Box
+						component={'img'}
+						src={import.meta.env.VITE_BASE_URL + image.name}
+						sx={{
+							height: 450,
+							width: '100%',
+							objectFit: 'contain'
+						}}
+					>
+
+					</Box>
+					/*<Box
 						sx={{
 							height: '450px',
 							//width: '1000px'
@@ -161,7 +173,7 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 							fit={'contain'}
 						/>
 
-					</Box>
+					</Box>*/
 
 				))}
 			</Carousel>

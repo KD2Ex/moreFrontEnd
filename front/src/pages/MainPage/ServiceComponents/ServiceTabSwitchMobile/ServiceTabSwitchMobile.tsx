@@ -2,13 +2,7 @@ import React from 'react';
 import {Box, Chip, Tab, Tabs} from "@mui/material";
 import './styles.css'
 
-const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
-
-
-
-    const handleChange = (event, value) => {
-        setTab(value)
-    }
+const ServiceTabSwitchMobile = ({tabs, tab, setTab}) => {
 
     const handleClick = (e) => {
         const newTab = +e.target.ariaLabel
@@ -26,7 +20,8 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
                 px: 0,
                 height: 36,
                 gap: 1,
-                my: 2
+                my: 2,
+
             }}
             className={'tabs'}
         >
@@ -42,6 +37,9 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
                         bgcolor: (theme) => item.value === tab ? theme.palette.text.primary : theme.palette.background.light,
                         '& span': {
                             pointerEvents: 'none'
+                        },
+                        '&:hover': {
+                            backgroundColor: item.value === tab ? 'none' : '#6e6853',
                         }
                     }}
                 />
@@ -49,32 +47,7 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab, visible}) => {
         </Box>
     )
 
-    return (
-        <Tabs
-            value={tab}
-            onChange={handleChange}
-            variant={'scrollable'}
-            scrollButtons={'auto'}
-            sx={{
-                width: '250px',
-                mb: 1,
-                ml: 1,
-                zIndex: 3000,
-                opacity: visible ? 1 : 0,
-                transition: 'opacity 500ms linear',
-                backgroundColor: (theme) => theme.palette.background.default,
-            }}
-        >
-            {tabs.map((item, index) => (
-                <Tab
-                    label={item.name}
-                    sx={{
-                        textTransform: 'none'
-                    }}
-                />
-            ))}
-        </Tabs>
-    );
+
 };
 
 export default ServiceTabSwitchMobile;

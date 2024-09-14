@@ -3,9 +3,11 @@ import {Box, Button, IconButton, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import appInfo from "../../../../store/appInfo";
+import {getWappLink} from "../../../../consts";
 
 const DesktopFooter = () => {
-
+    const tgLink = `https://t.me/Katerina_Serebryanskaya`
+    const wAppLink = getWappLink(`Здравствуйте!`)
 
     return (
         <>
@@ -38,6 +40,9 @@ const DesktopFooter = () => {
                         </Typography>*/}
                         <Box>
                             <IconButton
+                                component={'a'}
+                                href={wAppLink}
+                                target={"_blank"}
                                 sx={{
                                     color: (theme) => theme.palette.text.secondary,
                                 }}
@@ -45,6 +50,9 @@ const DesktopFooter = () => {
                                 <WhatsAppIcon/>
                             </IconButton>
                             <IconButton
+                                component={'a'}
+                                href={tgLink}
+                                target={"_blank"}
                                 sx={{
                                     color: (theme) => theme.palette.text.secondary,
                                 }}

@@ -2,11 +2,20 @@ import React from 'react';
 import {Box, IconButton, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import {getWappLink} from "../../../../consts";
+
+
 
 const MobileFooter = () => {
+    const tgLink = `https://t.me/Katerina_Serebryanskaya`
+    const wAppLink = getWappLink(`Здравствуйте!`)
     return (
         <Box
             sx={{
+                py: 2,
+                mt: 4,
+                bgcolor: '#171717',
+                boxShadow: '#0b0b0b inset 0px 9px 30px -6px ',
                 height: '100vh',
                 position: 'relative'
             }}
@@ -29,6 +38,9 @@ const MobileFooter = () => {
                     }}
                 >
                     <IconButton
+                        component={'a'}
+                        href={wAppLink}
+                        target={"_blank"}
                         size={'large'}
                         sx={{
                             color: (theme) => theme.palette.text.secondary,
@@ -37,6 +49,9 @@ const MobileFooter = () => {
                         <WhatsAppIcon fontSize="large"/>
                     </IconButton>
                     <IconButton
+                        component={'a'}
+                        href={tgLink}
+                        target={"_blank"}
                         size={'large'}
                         sx={{
                             color: (theme) => theme.palette.text.secondary,

@@ -15,7 +15,6 @@ const ModalViewContent = observer(({item}) => {
 	const profileURI = encodeURI('https://t.me/Katerina_Serebryanskaya')
 	const message = encodeURI('Hello')
 	const tgLink = `https://t.me/Katerina_Serebryanskaya`
-
 	const wAppLink = getWappLink(`Здравствуйте, меня заинтересовала картина ${item.title}`)
 
 	return (

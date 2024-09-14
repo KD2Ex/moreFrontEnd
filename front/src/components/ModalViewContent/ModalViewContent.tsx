@@ -44,6 +44,7 @@ const ModalViewContent = observer(({item}) => {
 				md={4}
 				xs={12}
 				sx={{
+					p: 1
 				}}
 			>
 
@@ -64,29 +65,14 @@ const ModalViewContent = observer(({item}) => {
 						gap: 1
 					}}
 				>
-					<LocaleText
-						fontSize={18}
-						sx={{
-							fontWeight: 'bold'
-						}}
-						localeList={[
-							{locale: 'ru', value: `Купить картину -`},
-							{locale: 'en-US', value: `Buy this painting -`},
-						]}
-					/>
-
 					<IconButton
 						component={'a'}
 						href={wAppLink}
 						target={"_blank"}
-						sx={{
-							bgcolor: "#21a124",
-							color: '#efefef',
-							'&:hover': {
-								bgcolor: "#1a6729"
-							},
-						}}
 						size={'medium'}
+						sx={{
+							color: (theme) => theme.palette.text.primary
+						}}
 					>
 						<WhatsAppIcon fontSize={'inherit'}/>
 					</IconButton>
@@ -97,13 +83,9 @@ const ModalViewContent = observer(({item}) => {
 						href={tgLink}
 						target={"_blank"}
 						size={'medium'}
+
 						sx={{
-							bgcolor: "#3997d5",
-							color: '#efefef',
-							'&:hover': {
-								bgcolor: "#106b81"
-							},
-							width: 'fit-content'
+							color: (theme) => theme.palette.text.primary
 						}}
 					>
 						<TelegramIcon fontSize={'inherit'}/>

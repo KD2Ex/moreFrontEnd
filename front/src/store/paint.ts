@@ -122,6 +122,19 @@ class Paint {
 
 	}
 
+	async getAllItems() {
+		const response = await PaintingService
+			.fetchPaintings(
+				1,
+				 999,
+				0,
+				0,
+				1,
+				1);
+
+		return response;
+	}
+
 	async getItems(page: number, limit: number) {
 
 		this.setLoading(true);
@@ -284,6 +297,18 @@ class Paint {
 		console.log('arr:')
 		console.log(this.editedPaintingsSizes)
 
+	}
+
+	async updateOrderFrom(items: IPaint[]) {
+		try {
+			console.log(items)
+
+			const response = await PaintingService.updateOrder(items);
+
+		} catch (e) {
+			alert.openAlert(e.message, "error")
+			console.log(e.message)
+		}
 	}
 
 	async saveSizes() {

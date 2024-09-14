@@ -62,7 +62,6 @@ const ModalEdit = observer(() => {
 					p: 1,
 					mx: 2,
 					minWidth: {xs: '350px', md: 700, lg: 1000},
-					maxWidth: {xs: 500, md: 1200}
 				}}
 			>
 				<ModalEditContent

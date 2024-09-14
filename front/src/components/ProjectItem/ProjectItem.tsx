@@ -63,8 +63,9 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 				spacing={{xs: 0, md: 2}}
 				sx={{
 					width: '100%',
+					borderBottom: '1px solid',
+					borderColor: (theme) => theme.palette.text.primary,
 					//height: {lg: `${item.height ? item.height : 400}px`, xs: '100%'}
-
 				}}
 				onContextMenu={(e) => {
 					e.preventDefault();
@@ -79,7 +80,10 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 					xs={12}
 					sx={{
 						height: '100%',
-						minHeight: '300px'
+						minHeight: '300px',
+						borderRight: '1px solid',
+						borderColor: (theme) => theme.palette.text.primary,
+						pr: 2
 					}}
 
 					onClick={ () => {
@@ -120,7 +124,8 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 							gap: 2,
 							justifyContent: 'space-between',
 							alignItems: 'start',
-							height: '100%'
+							height: '100%',
+							pb: 2
 						}}
 					>
 						<Box>

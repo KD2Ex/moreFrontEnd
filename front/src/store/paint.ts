@@ -321,8 +321,6 @@ class Paint {
 		return true;
 	}
 
-
-
 	async delete(id: number) {
 
 		try {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, IconButton, useTheme} from "@mui/material";
+import {Box, Button, Fade, IconButton, useTheme} from "@mui/material";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import './styles.css'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -8,11 +8,13 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 const BackToTop = () => {
 
     const [style, setStyle] = useState('hidden')
+    const [visible, setVisible] = useState(false)
+
     const theme = useTheme();
 
 
     const onScroll = () => {
-        setStyle(window.scrollY < 400 ? 'hidden' : 'visible');
+        setVisible(window.scrollY >= 400);
     }
 
     useEffect(() => {
@@ -29,22 +31,23 @@ const BackToTop = () => {
                 position: 'fixed',
                 bottom: 16,
                 right: 16,
-                zIndex: 3000,
+                zIndex: 1000,
             }}
         >
-            <IconButton
-                onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-                size={'large'}
-                variant={'contained'}
-                sx={{
-                    transition: theme.transitions.create(['opacity'], {
-                        duration: 500
-                    })
-                }}
-                className={'anim ' + style}
+            <Fade
+                in={visible}
             >
-                <KeyboardArrowUpIcon fontSize={'large'}/>
-            </IconButton>
+                <IconButton
+                    onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+                    size={'large'}
+                    variant={'contained'}
+                    sx={{
+                    }}
+                >
+                    <KeyboardArrowUpIcon fontSize={'large'}/>
+                </IconButton>
+            </Fade>
+
 
         </Box>
     );

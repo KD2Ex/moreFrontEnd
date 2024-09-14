@@ -1,10 +1,34 @@
-import React from 'react';
+import {Box} from "@mui/material";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 const LoginPage = () => {
+	
 	return (
-		<div>
+		<Box
+			sx={{
+				width: '100vw',
+				height: '100vh'
+			}}
+		>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: '100%',
+					height: '100%'
+				}}
+			>
 
-		</div>
+				<LoginForm
+
+				/>
+
+			</Box>
+
+
+
+		</Box>
 	);
 };
 

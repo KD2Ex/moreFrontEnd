@@ -17,6 +17,8 @@ import TextFieldPopover from "../../components/TextFieldPopover/TextFieldPopover
 import ModalEdit from "../../components/ModalEdit/ModalEdit";
 import BackToTop from "../../components/BackToTop/BackToTop";
 import appInfo from "../../store/appInfo";
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import {useNavigate} from 'react-router-dom'
 
 
 const GalleryPage = observer(() => {
@@ -25,6 +27,7 @@ const GalleryPage = observer(() => {
 	const [anchor, setAnchor] = useState(null);
 
 	const open = !!anchor;
+	const navigate = useNavigate();
 
 	const galleryActions = useMemo(() => {
 
@@ -71,6 +74,13 @@ const GalleryPage = observer(() => {
 				name: `Текущая высота: ${paint.rowHeight} пикселей`,
 				onClick: (e) => {
 					setAnchor(e.currentTarget)
+				}
+			},
+			{
+				icon: <ViewStreamIcon/>,
+				name: 'Открыть список картин',
+				onClick: () => {
+					navigate('/padmin')
 				}
 			}
 		]

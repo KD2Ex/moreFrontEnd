@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import {Box, SpeedDial, SpeedDialAction} from "@mui/material";
-import paint from "../../store/paint";
 import SpeedDialIcon from '@mui/icons-material/Add';
-import user from "../../store/user";
 import {observer} from "mobx-react-lite";
-import alert from "../../store/alert";
 
 interface AdminActionsProps {
 	actions: any[]
@@ -12,25 +9,28 @@ interface AdminActionsProps {
 
 const AdminActions = observer(({actions}: AdminActionsProps) => {
 
+	const [open, setOpen] = useState(false)
+
 	return (
 		<Box
 			sx={{
 				position: 'fixed',
-				bottom: 8,
+				top: 8,
 				left: 8,
 				zIndex: 2200,
-				transform: "translateZ(0px)"
 			}}
 		>
 			<SpeedDial
+				onClick={() => setOpen(prev => !prev)}
+				open={open}
 				ariaLabel={"SpeedDial basic"}
 				sx={{
 					position: 'absolute',
-					bottom: 16,
+					top: 16,
 					left: 16
 				}}
 				icon={<SpeedDialIcon/>}
-				direction={"up"}
+				direction={"down"}
 
 			>
 				{actions?.map((action, index) => (
@@ -46,10 +46,8 @@ const AdminActions = observer(({actions}: AdminActionsProps) => {
 								width: 'fit-content',
 								whiteSpace: 'nowrap',
 								//border: '1px white solid'
-								bgcolor: 'primary.main'
 							}
 						}}
-
 					/>
 				))}
 			</SpeedDial>

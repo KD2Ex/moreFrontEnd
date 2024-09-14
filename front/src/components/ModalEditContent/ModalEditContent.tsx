@@ -37,7 +37,8 @@ const ModalEditContent = observer(({item}) => {
 		>
 			<Grid
 				item
-				md
+				md={12}
+				lg={6}
 				xs={12}
 				sx={{
 				}}

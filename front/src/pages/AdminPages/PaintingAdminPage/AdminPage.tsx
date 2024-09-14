@@ -17,7 +17,7 @@ export const projectsLoader = async () => {
     return response.items
 }
 
-const PaintingAdminPage = ({type}) => {
+const AdminPage = ({type}) => {
 
     const loaderData = useLoaderData();
 
@@ -80,4 +80,4 @@ const PaintingAdminPage = ({type}) => {
     );
 };
 
-export default PaintingAdminPage;
+export default AdminPage;

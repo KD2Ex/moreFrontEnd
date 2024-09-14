@@ -7,11 +7,13 @@ class User {
 		makeAutoObservable(this)
 	}
 
-	isAdmin = true;
+	isAdmin = false;
 	adminView = false;
 	changeOrderMode = false;
 
 	checkAuth() {
+
+		this.isAdmin = localStorage.getItem("admin") == "1";
 
 		// is user auth + admin
 		//this.isAdmin = true;
@@ -27,6 +29,8 @@ class User {
 
 		if (login === 'login' && password === 'login') {
 			this.isAdmin = true;
+
+			localStorage.setItem("admin", '1')
 			return true;
 		}
 

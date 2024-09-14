@@ -24,140 +24,142 @@ const MainPage = () => {
 	})
 
 	return (
-		<Box
-			sx={{
-				maxWidth: '1200px',
-				display: 'flex',
-				flexDirection: 'column',
-				margin: 'auto',
-			}}
-		>
-
+		<>
 			<Box
 				sx={{
+					maxWidth: '1200px',
 					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					gap: 1,
-					height: {xs: 48, md: 128},
-					mt: 2,
-					px: {xs: 1, xl: 0},
-
-				}}
-			>
-				<Box
-					component={'img'}
-					src={logo}
-					sx={{
-						height: '100%'
-					}}
-				>
-
-				</Box>
-				<Typography
-					variant={'h6'}
-					fontSize={{xs: '1.2rem', md: '4rem'}}
-					sx={{
-						alignSelf: 'flex-end'
-					}}
-				>
-					Мастерская пространства
-				</Typography>
-				<Typography
-					variant={'h5'}
-					fontSize={{xs: '1.75rem', md: '6rem'}}
-					sx={{
-						alignSelf: 'flex-end'
-					}}
-				>
-					"МО"
-				</Typography>
-
-			</Box>
-
-			
-			<Divider
-				sx={{
-					width:'100%',
-					mb: 2,
-					mt: 1,
-				}}
-			/>
-
-			<Grid
-				container
-				spacing={0}
-				sx={{
-					width: '100%',
-					height: '100%',
-					display: 'flex',
+					flexDirection: 'column',
 					margin: 'auto',
-
 				}}
 			>
 
-				<Grid
-					item
-					xs={12}
+				<Box
 					sx={{
-						position: 'relative',
-						top: 0
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						gap: 1,
+						height: {xs: 48, md: 128},
+						mt: 2,
+						px: {xs: 1, xl: 0},
+
 					}}
 				>
-
 					<Box
+						component={'img'}
+						src={logo}
 						sx={{
-							position: 'sticky',
-							top: 0,
-							height: '100vh',
-							display: 'flex',
-							alignItems: 'center',
-							justifyItems: 'center'
+							height: '100%'
 						}}
 					>
-						<StickyImageContainer/>
-
-						<Cube3D/>
-
 
 					</Box>
+					<Typography
+						variant={'h6'}
+						fontSize={{xs: '1.2rem', md: '4rem'}}
+						sx={{
+							alignSelf: 'flex-end'
+						}}
+					>
+						Мастерская пространства
+					</Typography>
+					<Typography
+						variant={'h5'}
+						fontSize={{xs: '1.75rem', md: '6rem'}}
+						sx={{
+							alignSelf: 'flex-end'
+						}}
+					>
+						"МО"
+					</Typography>
+
+				</Box>
 
 
-					<StickyText
-						mockHeight={1000}
+				<Divider
+					sx={{
+						width:'100%',
+						mb: 2,
+						mt: 1,
+					}}
+				/>
+
+				<Grid
+					container
+					spacing={0}
+					sx={{
+						width: '100%',
+						height: '100%',
+						display: 'flex',
+						margin: 'auto',
+
+					}}
+				>
+
+					<Grid
+						item
+						xs={12}
+						sx={{
+							position: 'relative',
+							top: 0
+						}}
 					>
 
-						Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом.<br/>
-						Опыт и уникальные решения для каждого проекта.
+						<Box
+							sx={{
+								position: 'sticky',
+								top: 0,
+								height: '100vh',
+								display: 'flex',
+								alignItems: 'center',
+								justifyItems: 'center'
+							}}
+						>
+							<StickyImageContainer/>
 
-					</StickyText>
-
-					<StickyText
-						mockHeight={1000}
-						text={'Мы занимаемся проектированием и архитектурой жилых домов уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений\n'}
-					/>
-
-					<StickyText
-						mockHeight={1000}
-						text={'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.\n'}
-					/>
+							<Cube3D/>
 
 
+						</Box>
+
+
+						<StickyText
+							mockHeight={1000}
+						>
+
+							Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом.<br/>
+							Опыт и уникальные решения для каждого проекта.
+
+						</StickyText>
+
+						<StickyText
+							mockHeight={1000}
+							text={'Мы занимаемся проектированием и архитектурой жилых домов уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений\n'}
+						/>
+
+						<StickyText
+							mockHeight={1000}
+							text={'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.\n'}
+						/>
+
+
+					</Grid>
 				</Grid>
-			</Grid>
 
-			<Box
-				sx={{
-					px: 1
-				}}
-			>
-				<Services/>
+				<Box
+					sx={{
+						px: 1
+					}}
+				>
+					<Services/>
+				</Box>
+
+
+
 			</Box>
-
-
 			<Footer/>
-
-		</Box>
+		</>
 	);
 };
 

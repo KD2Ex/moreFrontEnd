@@ -23,7 +23,7 @@ const ModalEdit = observer(() => {
 
 	const handleClick = async () => {
 
-		const isValid = paint.isValidPaintData(modal.paintingItem);
+		const isValid = paint.isPaintDataValid(modal.paintingItem);
 
 
 		if (!isValid) {

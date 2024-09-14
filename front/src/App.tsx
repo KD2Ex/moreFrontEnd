@@ -70,6 +70,10 @@ function App() {
 	}, [])
 
 	useEffect(() => {
+
+		const db = localStorage.getItem("db")
+		if (db) import.meta.env.VITE_BASE_URL = db;
+
 		window.addEventListener('scroll', onScroll, false);
 		(async () => {
 

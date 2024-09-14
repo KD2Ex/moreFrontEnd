@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, toJS} from "mobx";
 import ProjectService from "../../api/services/ProjectService";
 import {IProject} from "../models/interfaces/IProject";
 import alert from "./alert";
@@ -71,8 +71,21 @@ class Project {
 
 	validate(item: IProject) {
 
-		return item.title && (item.images?.length || item.files?.length);
+		console.log(toJS(item))
+		if (item.title['ru'] === '' || item.title['en-US'] === '') return false;
+		if (item.desc['ru'] === '' || item.desc['en-US'] === '') return false;
+		if (item.images?.length && item.files?.length) return false;
 
+		return true;
+	}
+
+	isFull(item: IProject) {
+		if (item.cost['ru'] === '' || item.cost['en-US'] === '') return false;
+		if (item.timePeriod['ru'] === '' || item.timePeriod['en-US'] === '') return false;
+		if (item.address['ru'] === '' || item.address['en-US'] === '') return false;
+		if (item.levels === 0 || item.area === 0) return false;
+
+		return true;
 	}
 
 	appendFile(item: IProject) {

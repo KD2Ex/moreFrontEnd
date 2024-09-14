@@ -37,13 +37,31 @@ const ModalAddProjectContent = observer(({item}) => {
 			spacing={2}
 			sx={{
 				mt: .5,
-				minWidth: '1000px'
 			}}
 		>
-
 			<Grid
 				item
-				md={6}
+				lg={6}
+				md={12}
+				xs={12}
+			>
+				<Box
+					sx={{
+						mb: 2
+					}}
+				>
+					<LanguageChange/>
+
+				</Box>
+
+				<ProjectTextarea
+					item={item}
+				/>
+			</Grid>
+			<Grid
+				item
+				lg={6}
+				md={12}
 				xs={12}
 			>
 
@@ -61,24 +79,7 @@ const ModalAddProjectContent = observer(({item}) => {
 				/>
 			</Grid>
 
-			<Grid
-				item
-				md={6}
-				xs={12}
-			>
-				<Box
-					sx={{
-						mb: 2
-					}}
-				>
-					<LanguageChange/>
 
-				</Box>
-
-				<ProjectTextarea
-					item={item}
-				/>
-			</Grid>
 
 		</Grid>
 	);

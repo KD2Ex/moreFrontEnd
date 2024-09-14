@@ -51,7 +51,8 @@ const ModalEditContent = observer(({item}) => {
 
 			<Grid
 				item
-				md={6}
+				md={12}
+				lg={6}
 				xs={12}
 			>
 				<Box

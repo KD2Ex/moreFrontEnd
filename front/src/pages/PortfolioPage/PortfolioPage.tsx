@@ -12,6 +12,7 @@ import user from "../../store/user";
 import alert from "../../store/alert";
 import FullscreenImage from "../../components/FullscreenImage/FullscreenImage";
 import modal from "../../store/modal";
+import BackToTop from "../../components/BackToTop/BackToTop";
 
 const PortfolioPage = observer(() => {
 
@@ -91,6 +92,7 @@ const PortfolioPage = observer(() => {
 				open={modal.projectImageOpen}
 			/>
 
+			<BackToTop/>
 			<AdminComponent>
 				<AdminActions
 					actions={actions}

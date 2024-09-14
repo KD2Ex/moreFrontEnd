@@ -22,7 +22,8 @@ export let theme = createTheme({
 		},
 		text: {
 			//primary: '#84a9b2'
-			primary: '#d5cec0'
+			primary: '#d5cec0',
+			secondary: '#d5cec0'
 			//primary: '#57a1a4'
 		},
 		mode: 'dark'

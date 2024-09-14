@@ -6,11 +6,11 @@ import {IImage} from "./IImage";
 
 export interface IPaint {
 	id: number,
-	title: string,
-	desc: string,
+	title: object,
+	desc: object,
 	images: IImage[],
 	files: File[],
-	price: number,
+	price: object,
 	relativeSize: number,
 	objectFit: Fit,
 	previewIndex: number,

@@ -96,7 +96,18 @@ const PaintingTextarea = observer(({item}) => {
 				label={'Цена'}
 				value={item.price[locale.currentLocale.name]}
 				onChange={(e) => {
-					item.price[locale.currentLocale.name] = e.target.value
+
+					/*const value = e.target.value.replace(/^\d+$/, '.')
+					console.log(value)*/
+
+				/*	function numberWithCommas(x) {
+						return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+					}
+
+					console.log(e.target.value)
+					console.log(numberWithCommas(e.target.value))*/
+
+					item.price[locale.currentLocale.name] = e.target.value;
 				}}
 			/>
 

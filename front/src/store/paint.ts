@@ -295,27 +295,14 @@ class Paint {
 
 	}
 
-	isValidPaintData(item: IPaint) {
+	isPaintDataValid(item: IPaint) {
+		console.log(toJS(item))
+		console.log(item.material)
 
-		let index = 0;
-		const trueItem = Object.entries(item);
-
-		console.log(trueItem);
-
-		for (let i of trueItem) {
-			console.log(index++)
-
-			if (i[0] === 'files'
-				|| i[0] === 'relativeSize'
-				|| i[0] === 'objectFit'
-				|| i[0] === 'id'
-				|| i[0] === 'order'
-			) continue;
-
-			if (!i[1]) return false;
-		}
-
-		if (!item.material.name || !item.technique.name) return false;
+		if (item.title['ru'].length === 0 || item.title['en-US'].length === 0) return false;
+		if (item.price['ru'].length === 0 || item.price['en-US'].length === 0) return false;
+		if (item.width === 0 && item.height === 0) return false;
+		if (item.material.name == '' || item.technique.name == '') return false;
 
 		return true;
 	}

@@ -3,31 +3,51 @@ import user from "../../store/user";
 import Filling from "../Filling/Filling";
 import {sizes} from "../../consts";
 import AdminComponent from "../AdminComponent/AdminComponent";
-import DeleteShortcut from "../DeleteShortcut/DeleteShortcut";
 import paint from "../../store/paint";
-import {Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
+import {Box, Grid, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {observer} from "mobx-react-lite";
 import {IPaint} from "../../models/interfaces/IPaint";
 import PaintItem from "../PaintItem/PaintItem";
 import ProjectItem from "../ProjectItem/ProjectItem";
 import project from "../../store/project";
-
+import one from '../../assets/filling/1.jpg'
+import two from '../../assets/filling/2.jpg'
+import three from '../../assets/filling/3.jpg'
+import four from '../../assets/filling/4.jpg'
+import six from '../../assets/filling/6.jpg'
+import nine from '../../assets/filling/9.jpg'
+import ten from '../../assets/filling/10.jpg'
 
 let titles = [
-	'Жоская ауф цитата',
-	'Волк, это не тот кто волк, walk - это ходить',
-	'Тяжело это когда тяжело',
-	'Удары в спину наносят только те, кто сзади',
-	'Цитата 1',
-	'Цитата 2',
-	'Цитата 3',
-	'Цитата 4',
-	'Цитата 5',
-	'Цитата 6',
-	'Цитата 7',
+	'Принципы истинного искусства – не изображать, а вызывать.',
+	'Цель искусства - представлять не внешний вид вещей, а их внутреннее значение.',
+	'Искусство заключается в том, чтобы найти необыкновенное в обыкновенном и обыкновенное в необыкновенном',
+	'Искусство смывает пыль повседневности с души',
+	'В сущности, Искусство – зеркало, отражающее того, кто в него смотрится, а вовсе не жизнь',
+	'Искусство — это то, что освобождает душу, провоцирует воображение и побуждает людей идти дальше',
+	'Между сумасшествием и искусством такая тонкая грань',
+	'Перед картиной каждый должен стоять так же, как перед королем, выжидая, скажет ли она она ему что-нибудь и что именно скажет, и как с королем, так и с картиной он не смеет заговаривать первым, иначе он услышит только самого себя',
+	'Мы все расточаем свои дни в поисках смысла жизни. Знайте же, этот смысл — в Искусстве',
+]
+
+let enTitles = [
+	"Art washes away from the soul the dust of everyday life",
 ]
 
 const ids =  [...titles]
+
+
+
+
+const imgs = [
+	one,
+	two,
+	three,
+	four,
+	six,
+	nine,
+	ten
+]
 
 function getRandomInt(max: number) {
 	/*for (let i = max; i >= 0; i--) {
@@ -133,11 +153,13 @@ const ItemsList: FC<ItemsListProps> = observer(({items, type}) => {
 					if (!user.adminView && rowGridSpace - item.relativeSize < 0) {
 						gridSize += rowGridSpace
 						const fillingIndex = getRandomInt(titles.length);
+						const imgIndex = getRandomInt(imgs.length);
 
 						additiveComponent = (
 							<Filling
 								key={item.title + index}
 								space={rowGridSpace}
+								img={imgs[imgIndex]}
 								title={titles.splice(fillingIndex, 1)[0]}
 							/>
 						)

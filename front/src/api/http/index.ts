@@ -1,10 +1,11 @@
 import axios, {AxiosResponse} from "axios";
 import alert from "../../store/alert.ts";
 
+const db =  localStorage.getItem("db")
 
 const $api = axios.create({
 	withCredentials: true,
-	baseURL: import.meta.env.VITE_API_URL
+	baseURL: db ? `${db}api` : 'https://art-space-mo.com:8443/api'
 })
 
 

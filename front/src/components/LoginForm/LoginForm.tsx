@@ -52,7 +52,6 @@ const LoginForm = () => {
 				gap: 1
 			}}
 		>
-
 			<TextField
 				label={'Логин'}
 				size={'small'}
@@ -84,18 +83,35 @@ const LoginForm = () => {
 					label={'Показать пароль'}
 				/>
 
-				
+
 			</FormGroup>
 
 
 			<Button
 				variant={'contained'}
 				onClick={handleClick}
+				type={'submit'}
 			>
 
 				Войти
 			</Button>
-			
+
+			<Button
+				onClick={() => {
+
+					localStorage.setItem("db", 'http://localhost:7000/');
+				}}
+			>
+				Set database to local
+			</Button>
+
+			<Button
+				onClick={() => {
+					localStorage.setItem("db", 'https://art-space-mo.com:8443/');
+				}}
+			>
+				Set database to production db
+			</Button>
 
 			<Button
 				component={Link}

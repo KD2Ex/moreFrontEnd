@@ -160,27 +160,36 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 								{item.levels ? `${item.levels} ` : null}
 							</LocaleText>
 
-							<LocaleText
-								useDefault
-								fontSize={18}
-								localeList={[
-									`Итоговая стоимость: `,
-									`Total cost: `,
-								]}
-							>
-								{item.cost ? item.cost[locale.currentLocale.name] : null}
-							</LocaleText>
+							{item.cost.ru
+								? (
+									<LocaleText
+										useDefault
+										fontSize={18}
+										localeList={[
+											`Итоговая стоимость: `,
+											`Total cost: `,
+										]}
+									>
+										{item.cost[locale.currentLocale.name]}
+									</LocaleText>
+								)
+								: null}
 
-							<LocaleText
-								useDefault
-								fontSize={18}
-								localeList={[
-									`Срок реализации: `,
-									`Time spent: `,
-								]}
-							>
-								{item.timePeriod ? item.timePeriod[locale.currentLocale.name] : null}
-							</LocaleText>
+
+							{item.timePeriod.ru
+								? (
+									<LocaleText
+										useDefault
+										fontSize={18}
+										localeList={[
+											`Срок реализации: `,
+											`Time spent: `,
+										]}
+									>
+										{item.timePeriod[locale.currentLocale.name]}
+									</LocaleText>
+								)
+								: null}
 
 							<Typography
 								fontSize={18}

@@ -5,11 +5,15 @@ import project from "../../store/project";
 import ModalAddProjectContent from "../ModalAddProjectContent/ModalAddProjectContent";
 import {IProject} from "../../models/interfaces/IProject";
 import alert from "../../store/alert";
+import projectItem from "../ProjectItem/ProjectItem";
 
 const ModalAddProject = ({open, setOpen}) => {
 
+	const [doubleCheck, setDoubleCheck] = useState(false);
+
 	const handleClose = () => {
 		setOpen(false)
+		setDoubleCheck(false)
 	}
 
 	const handleClick = async () => {
@@ -17,6 +21,7 @@ const ModalAddProject = ({open, setOpen}) => {
 
 
 		const isValid = project.validate(project.newItem)
+		const isFull = project.isFull(project.newItem);
 
 		if (!isValid) {
 
@@ -25,8 +30,15 @@ const ModalAddProject = ({open, setOpen}) => {
 			return;
 		}
 
+		if (!isFull && !doubleCheck) {
+			setDoubleCheck(true)
+			alert.openAlert("Этажность, площадь, местоположение, сроки и/или стоимость не заполнены. Проверьте заполнение на английском. Если вы хотите оставить эти поля пустыми, нажмите кнопку \"Добавить\" еще раз", "warning")
+			return;
+		}
+
 		const response = await project.create(project.newItem)
 
+		project.newItem = project.defaultItem;
 		handleClose()
 		alert.openAlert("Проект успешно добавлен", "success")
 	}
@@ -40,7 +52,11 @@ const ModalAddProject = ({open, setOpen}) => {
 				Создание
 			</DialogTitle>
 
-			<DialogContent>
+			<DialogContent
+				sx={{
+					minWidth: {xs: '350px', md: 700, lg: 1000}
+				}}
+			>
 
 				<ModalAddProjectContent
 					item={project.newItem}

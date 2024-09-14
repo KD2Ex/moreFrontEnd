@@ -3,7 +3,9 @@ import {Box, Button, Dialog, DialogContent, Modal} from "@mui/material";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import ModalEditContent from "../ModalEditContent/ModalEditContent";
-
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const FullscreenImage = observer(({open}) => {
 
@@ -84,7 +86,8 @@ const FullscreenImage = observer(({open}) => {
 					component={'img'}
 					src={import.meta.env.VITE_BASE_URL + modal.projectImage[modal.projectImageOrder].name}
 					sx={{
-						width: '80%',
+						maxWidth: '80%',
+						width: 'auto',
 						height: 'auto',
 						maxHeight: '80%',
 						objectFit: 'contain',
@@ -109,7 +112,7 @@ const FullscreenImage = observer(({open}) => {
 				<Button
 					onClick={handleClose}
 				>
-					X
+					<CloseIcon/>
 				</Button>
 			</Box>
 
@@ -126,20 +129,20 @@ const FullscreenImage = observer(({open}) => {
 						display: 'flex',
 						margin: 'auto',
 						width: '100%',
-						justifyContent: 'center'
+						justifyContent: 'center',
+						mb: 2
 					}}
 				>
 					<Button
-						variant={'contained'}
 						onClick={handlePrev}
 					>
-						Prev
+						<ArrowBackIosNewIcon/>
 					</Button>
 
 					<Button
 						onClick={handleNext}
 					>
-						next
+						<ArrowForwardIosIcon/>
 					</Button>
 				</Box>
 

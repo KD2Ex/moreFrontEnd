@@ -17,10 +17,37 @@ interface PaintItemProps {
 	height: number
 }
 
+
+
+function calculateSize(img, maxWidth, maxHeight) {
+	let width = img.width;
+	let height = img.height;
+
+	console.log(img.width)
+	console.log(img.height)
+
+	// calculate the width and height, constraining the proportions
+	if (width > height) {
+		if (width > maxWidth) {
+			height = Math.round((height * maxWidth) / width);
+			width = maxWidth;
+		}
+	} else {
+		if (height > maxHeight) {
+			width = Math.round((width * maxHeight) / height);
+			height = maxHeight;
+		}
+	}
+	return [width, height];
+}
+
 const PaintItem: FC<PaintItemProps> = observer(({
 		item,
 	}: PaintItemProps) =>
 {
+
+	const MAX_WIDTH = item.relativeSize * 1900 / 12;
+	const MAX_HEIGHT = paint.rowHeight;
 
 	let img = item.images
 		.find(i => i.order === Math.min(...item?.images.map(img => img.order)));
@@ -40,6 +67,38 @@ const PaintItem: FC<PaintItemProps> = observer(({
 		//if (event.button === 0) modal.openPaintingView(item);
 		else setAnchor(event.currentTarget)
 	}
+
+	useEffect(() => {
+
+		console.log(import.meta.env.VITE_BASE_URL)
+
+		/*const image = new Image();
+		image.src = import.meta.env.VITE_BASE_URL + img?.name;
+		console.log(image)
+		console.log(MAX_WIDTH)
+		console.log(MAX_HEIGHT)
+
+		const [newW, newH] = calculateSize(image, MAX_WIDTH, MAX_HEIGHT);
+
+		console.log(newW)
+		console.log(newH)
+		const canvas = document.createElement('canvas')
+		canvas.width = newW;
+		canvas.height = newH;
+		canvas.style.maxWidth = '100%';
+		canvas.style.maxHeight = '100%';
+
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(image, 0, 0, newW, newH);
+
+		canvas.toBlob((blob) => {
+
+
+			},"image/jpeg", 0.8)
+
+		document.getElementById(`itemCanvas${item.id}`)?.append(canvas)
+		console.log(canvas)*/
+	}, [])
 
 	return (
 		<>
@@ -146,6 +205,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					/>
 
 				</Box>
+				{/*Image */}
 
 				<Box
 					loading={'lazy'}
@@ -163,6 +223,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 					}}
 				>
 				</Box>
+
 			</Box>
 
 		</>

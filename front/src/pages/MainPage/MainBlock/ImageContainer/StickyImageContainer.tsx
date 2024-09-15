@@ -30,7 +30,7 @@ const StickyImageContainer = () => {
         sx={{
             width: {xs: '100%', md: '100%'},
             bgcolor: '#1b1e1f',
-            objectFit: 'contain',
+            objectFit: {xs: 'cover', md: 'contain'},
             height: '100%',
         }}
         src={isMobile ? main4 : mainPC2}

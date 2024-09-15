@@ -49,6 +49,19 @@ const MainPage = () => {
 
 					}}
 				>
+
+					<Box>
+						<Typography
+							variant={'h6'}
+							fontSize={{xs: '1.2rem', md: '3.5rem'}}
+							sx={{
+								alignSelf: 'flex-end'
+							}}
+						>
+							Мастерская пространства "МО"
+						</Typography>
+					</Box>
+
 					<Box
 						component={'img'}
 						src={logo}
@@ -58,24 +71,6 @@ const MainPage = () => {
 					>
 
 					</Box>
-					<Typography
-						variant={'h6'}
-						fontSize={{xs: '1.2rem', md: '4rem'}}
-						sx={{
-							alignSelf: 'flex-end'
-						}}
-					>
-						Мастерская пространства
-					</Typography>
-					<Typography
-						variant={'h5'}
-						fontSize={{xs: '1.75rem', md: '6rem'}}
-						sx={{
-							alignSelf: 'flex-end'
-						}}
-					>
-						"МО"
-					</Typography>
 
 				</Box>
 

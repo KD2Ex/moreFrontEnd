@@ -8,7 +8,7 @@ const CardItem = ({title, children, height, ...props}) => {
         <Paper
             sx={{
                 borderRadius: 2,
-                border: '2px solid',
+                border: '0px solid',
                 borderColor: (theme) => theme.palette.primary.borderLight,
                 display: 'flex',
                 flexDirection: 'column',
@@ -16,9 +16,13 @@ const CardItem = ({title, children, height, ...props}) => {
                 justifyContent: 'flex-start',
                 p: 2,
                 gap: 1,
-                height: height
+                height: height,
+                bgcolor: 'rgba(77,77,77,0.47)',
+/*                bgcolor: 'rgb(220,210,192)',
+                color: 'rgb(61,61,61)'*/
             }}
             {...props}
+            elevation={12}
         >
             <LocaleText
                 useDefault

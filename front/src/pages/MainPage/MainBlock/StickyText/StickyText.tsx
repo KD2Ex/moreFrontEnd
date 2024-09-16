@@ -1,5 +1,6 @@
 import React from 'react';
 import {Box, Typography} from "@mui/material";
+import LocaleText from "../../../../components/Locale/LocaleText/LocaleText";
 
 const StickyText = ({text, mockHeight, children}) => {
     return (

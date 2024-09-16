@@ -14,7 +14,8 @@ export let theme = createTheme({
 			main: '#225c64'
 		},
 		background: {
-			default: 'rgb(24,22,22)',
+			//default: 'rgb(33,33,33)',
+			default: 'rgb(24,24,24)',
 			paper: 'rgb(16,16,16)',
 			light: 'rgb(56,56,56)',
 

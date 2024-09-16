@@ -1,8 +1,10 @@
 import React from 'react';
 import {Box, Chip, Tab, Tabs} from "@mui/material";
 import './styles.css'
+import {observer} from "mobx-react-lite";
+import locale from "../../../../store/locale";
 
-const ServiceTabSwitchMobile = ({tabs, tab, setTab}) => {
+const ServiceTabSwitchMobile = observer(({tabs, tab, setTab}) => {
 
     const handleClick = (e) => {
         const newTab = +e.target.ariaLabel
@@ -31,7 +33,7 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab}) => {
                         key={index}
                         aria-label={item.value}
                         onClick={handleClick}
-                        label={item.name}
+                        label={item.name[locale.currentLocale.name]}
                         sx={{
                             px: {xs: 0, md: 4},
                             py: 2,
@@ -52,6 +54,6 @@ const ServiceTabSwitchMobile = ({tabs, tab, setTab}) => {
     )
 
 
-};
+});
 
 export default ServiceTabSwitchMobile;

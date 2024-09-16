@@ -10,6 +10,7 @@ const TabPanel = ({value, index, children, ...props}) => {
             <Box
                 hidden={value !== index}
                 sx={{
+                    px: {xs: 1.5, lg: 0}
                 }}
                 {...props}
             >

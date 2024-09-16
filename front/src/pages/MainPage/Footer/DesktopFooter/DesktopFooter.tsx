@@ -15,6 +15,7 @@ const DesktopFooter = () => {
                 sx={{
                     mt: 4,
                     py: 2,
+                    bgcolor: '#171717',
                     boxShadow: '#0b0b0b inset 0px 9px 30px -6px ',
                 }}
             >

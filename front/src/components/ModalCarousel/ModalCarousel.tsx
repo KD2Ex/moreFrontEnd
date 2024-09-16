@@ -143,6 +143,17 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 							width: '100%',
 							objectFit: 'contain'
 						}}
+						onContextMenu={(event) => {
+
+							if (!user.isAdmin) {
+								return;
+							}
+
+							event.preventDefault();
+							setContextOpen(true);
+							setId(index);
+							setPoints({x: event.clientX, y: event.clientY})
+						}}
 					>
 
 					</Box>

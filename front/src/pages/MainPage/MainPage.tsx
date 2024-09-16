@@ -1,7 +1,5 @@
-import {Box, Divider, Grid, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import MainTitle from "./MainTItle/MainTitle";
+import {Box, Divider, Grid, Typography} from "@mui/material";
 import Services from "./ServiceComponents/Services/Services";
-import ImageContainer from "./MainBlock/ImageContainer/ImageContainer";
 import StickyImageContainer from "./MainBlock/ImageContainer/StickyImageContainer";
 import React, {useEffect} from "react";
 import './style.css'
@@ -12,6 +10,23 @@ import DesktopFooter from "./Footer/DesktopFooter/DesktopFooter";
 import appInfo from "../../store/appInfo";
 import MobileFooter from "./Footer/MobileFooter/MobileFooter";
 import BackToTop from "../../components/BackToTop/BackToTop";
+import RawLocale from "./MainBlock/StickyText/RawLocale/RawLocale";
+
+
+const ru = {
+	title1: 'Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом.',
+	title12:  'Опыт и уникальные решения для каждого проекта.',
+	title2: 'Мы занимаемся проектированием и архитектурой жилых домов уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений',
+	title3: 'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.',
+}
+
+const en = {
+	title1: `Your Home - Your Style: Design and Architecture with a Professional Touch.`,
+	title12: `Experience and Unique Solutions for Every Project.`,
+	title2: 'We have been designing and architecting residential buildings for 17 years. During this time we have developed author\'s methods of work and algorithms of decision making.',
+	title3: 'In addition to the design bureau, we have an art workshop at your service, where you can choose paintings for your interior. We also offer unique author\'s works to order.'
+}
+
 
 const MainPage = () => {
 
@@ -121,25 +136,37 @@ const MainPage = () => {
 
 						</Box>
 
-
 						<StickyText
 							mockHeight={500}
 						>
 
-							Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом.<br/>
-							Опыт и уникальные решения для каждого проекта.
+							<RawLocale
+								list={[ru.title1, en.title1]}
+							/>
+							<br/>
+							<RawLocale
+								list={[ru.title12, en.title12]}
+							/>
 
 						</StickyText>
 
 						<StickyText
 							mockHeight={500}
-							text={'Мы занимаемся проектированием и архитектурой жилых домов уже 17 лет. За это время мы выработали авторские методики работы и алгоритмы принятия решений\n'}
-						/>
+						>
+							<RawLocale
+								list={[ru.title2, en.title2]}
+							/>
+
+
+						</StickyText>
 
 						<StickyText
 							mockHeight={500}
-							text={'Помимо проектного бюро к Вашим услугам художественная мастерская, где вы можете подобрать картины в Ваши интерьеры. Мы также предлагаем уникальные авторские произведения на заказ.\n'}
-						/>
+						>
+							<RawLocale
+								list={[ru.title3, en.title3]}
+							/>
+						</StickyText>
 
 
 					</Grid>

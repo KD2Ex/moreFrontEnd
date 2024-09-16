@@ -11,7 +11,6 @@ const LoginForm = () => {
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 
-	
 	const navigate = useNavigate()
 
 	const handleLoginChange = (e) => {
@@ -94,23 +93,6 @@ const LoginForm = () => {
 			>
 
 				Войти
-			</Button>
-
-			<Button
-				onClick={() => {
-
-					localStorage.setItem("db", 'http://localhost:7000/');
-				}}
-			>
-				Set database to local
-			</Button>
-
-			<Button
-				onClick={() => {
-					localStorage.setItem("db", 'https://art-space-mo.com:8443/');
-				}}
-			>
-				Set database to production db
 			</Button>
 
 			<Button

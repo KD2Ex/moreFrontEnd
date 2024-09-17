@@ -77,7 +77,7 @@ const LandscapeTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {minimumItems.map((item, index) => (
-                                    <>{item} <br/></>
+                                    <React.Fragment key={index}>{item} <br/></React.Fragment>
                                 ))}
                             </Typography>
 

@@ -102,7 +102,7 @@ const ArchTab = () => {
                             fontSize={'1rem'}
                         >
                             {minimumItems.map((item, index) => (
-                                <>{item} <br/></>
+                                <React.Fragment key={index}>{item} <br/></React.Fragment>
                             ))}
                         </Typography>
 
@@ -133,7 +133,7 @@ const ArchTab = () => {
                             fontSize={'1rem'}
                         >
                             {standardItems.map((item, index) => (
-                                <>{item} <br/></>
+                                <React.Fragment key={index}>{item} <br/></React.Fragment>
                             ))}
                         </Typography>
 

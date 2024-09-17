@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import projectItem from "../components/ProjectItem/ProjectItem";
 
 
 class AppStore {
@@ -8,6 +9,20 @@ class AppStore {
     }
 
     isMobile = false;
+    productionURL = 'https://art-space-mo.com:8443/';
+    testURL = 'https://art-space-mo.com:7443/';
+    url = localStorage.getItem("testMode") ? this.testURL : this.productionURL;
+
+    activateTestMode() {
+        this.url = this.testURL;
+        localStorage.setItem("testMode", '1')
+        localStorage.setItem("admin", '1')
+    }
+
+    activateProduction() {
+        this.url = this.productionURL;
+        localStorage.removeItem("testMode");
+    }
 
 }
 

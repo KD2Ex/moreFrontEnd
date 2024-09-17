@@ -11,6 +11,7 @@ import paint from "../../store/paint";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import locale from "../../store/locale";
 import Utils from "../../utils";
+import appInfo from "../../store/appInfo";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -70,7 +71,6 @@ const PaintItem: FC<PaintItemProps> = observer(({
 
 	useEffect(() => {
 
-		console.log(import.meta.env.VITE_BASE_URL)
 
 		/*const image = new Image();
 		image.src = import.meta.env.VITE_BASE_URL + img?.name;
@@ -210,7 +210,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 				<Box
 					loading={'lazy'}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + img?.name}
+					src={appInfo.url + img?.name}
 					sx={{
 						width: '100%',
 						height: '100%',

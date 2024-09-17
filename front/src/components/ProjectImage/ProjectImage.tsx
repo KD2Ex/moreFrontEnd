@@ -4,6 +4,7 @@ import ImageZoom from "../ImageZoom/ImageZoom";
 import {Box} from "@mui/material";
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
 import modal from "../../store/modal";
+import appInfo from "../../store/appInfo";
 
 const ProjectImage = ({image, height, swipe, sliderRef}) => {
 
@@ -41,7 +42,7 @@ const ProjectImage = ({image, height, swipe, sliderRef}) => {
 						objectFit: 'contain',
 					}}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + image.name}
+					src={appInfo.url + image.name}
 				>
 
 				</Box>

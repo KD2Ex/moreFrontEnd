@@ -6,6 +6,7 @@ import ModalEditContent from "../ModalEditContent/ModalEditContent";
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import appInfo from "../../store/appInfo";
 
 const FullscreenImage = observer(({open}) => {
 
@@ -84,7 +85,7 @@ const FullscreenImage = observer(({open}) => {
 				<Box
 					draggable={false}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + modal.projectImage[modal.projectImageOrder].name}
+					src={appInfo.url + modal.projectImage[modal.projectImageOrder].name}
 					sx={{
 						maxWidth: '80%',
 						width: 'auto',

@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import appInfo from "./appInfo";
 
 
 class User {
@@ -14,7 +15,7 @@ class User {
 	checkAuth() {
 
 		this.isAdmin = localStorage.getItem("admin") == "1";
-
+		console.log(appInfo.url)
 		// is user auth + admin
 		//this.isAdmin = true;
 

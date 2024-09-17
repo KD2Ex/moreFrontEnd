@@ -36,7 +36,16 @@ const fullProjectItems = [
     '•\tВидеообзор'
 ]
 
+const centerStyle = {
+    '*': {
+        textAlign: 'center'
+    }
+}
+
 const ProjectTab = () => {
+
+
+
     return (
         <>
             <Box
@@ -89,26 +98,29 @@ const ProjectTab = () => {
                                 'Minimum'
                             ]}
                         >
-                            <Typography
-                                fontSize={'1rem'}
+                            <Box
                             >
                                 {minimumItems.map((item, index) => (
-                                    <>{item} <br/></>
+                                    <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
                                 ))}
-                            </Typography>
+                            </Box>
 
-
-                            <Typography
-                                fontSize={'1.5rem'}
-                                textAlign={'center'}
+                            <Box
+                                sx={...centerStyle}
                             >
-                                1500 руб./час
+                                <Typography
+                                    fontSize={'1.5rem'}
+                                >
+                                    1500 руб./час
+
+                                </Typography>
                                 <Typography
                                     fontSize={'1.2rem'}
                                 >
                                     Срок выполнения от 10 рабочих дней
                                 </Typography>
-                            </Typography>
+                            </Box>
+
                         </CardItem>
 
                         <CardItem
@@ -118,26 +130,30 @@ const ProjectTab = () => {
                                 'Full'
                             ]}
                         >
-                            <Typography
-                                fontSize={'1rem'}
+                            <Box
                             >
                                 {fullProjectItems.map((item, index) => (
-                                    <>{item} <br/></>
+                                    <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
                                 ))}
-                            </Typography>
+                            </Box>
 
 
-                            <Typography
-                                variant={'h5'}
-                                textAlign={'center'}
+                            <Box
+                                sx={...centerStyle}
                             >
-                                4500 руб./ кв.м. <br/>
+                                <Typography
+                                    variant={'h5'}
+                                >
+                                    4500 руб./ кв.м.
+
+                                </Typography>
                                 <Typography
                                     fontSize={'1.2rem'}
                                 >
                                     Срок выполнения от 30 рабочих дней
                                 </Typography>
-                            </Typography>
+                            </Box>
+
                         </CardItem>
                     </Box>
 
@@ -156,26 +172,28 @@ const ProjectTab = () => {
                             'Standard'
                         ]}
                     >
-                        <Typography
-                            fontSize={'1rem'}
+                        <Box
                         >
                             {standardItems.map((item, index) => (
-                                <>{item} <br/></>
+                                <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
                             ))}
-                        </Typography>
+                        </Box>
 
+                        <Box sx={...centerStyle}>
+                            <Typography
+                                variant={'h5'}
+                                textAlign={'center'}
+                            >
+                                3000 руб./ кв.м. <br/>
 
-                        <Typography
-                            variant={'h5'}
-                            textAlign={'center'}
-                        >
-                            3000 руб./ кв.м. <br/>
+                            </Typography>
                             <Typography
                                 fontSize={'1.2rem'}
                             >
                                 Срок выполнения от 20 рабочих дней
                             </Typography>
-                        </Typography>
+                        </Box>
+
                     </CardItem>
                 </Grid>
 
@@ -226,18 +244,24 @@ const ProjectTab = () => {
                         </Box>
 
 
-                        <Typography
-                            variant={'h5'}
-                            fontSize={'1.2rem'}
-                            textAlign={'center'}
+                        <Box
+                            sx={...centerStyle}
                         >
-                            Свыше 200 кв.м. условия обговариваются индивидуально <br/>
+                            <Typography
+                                variant={'h5'}
+                                fontSize={'1.2rem'}
+                                textAlign={'center'}
+                            >
+                                Свыше 200 кв.м. условия обговариваются индивидуально <br/>
+
+                            </Typography>
                             <Typography
                                 fontSize={'1.2rem'}
                             >
                                 Оплата производится поэтапно
                             </Typography>
-                        </Typography>
+                        </Box>
+
                     </CardItem>
                 </Grid>
             </Grid>

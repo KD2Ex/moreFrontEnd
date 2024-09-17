@@ -4,6 +4,7 @@ import {Box} from "@mui/material";
 import { ImageGroup, Image } from 'react-fullscreen-image'
 import {useSearchParams} from "react-router-dom";
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
+import appInfo from "../../store/appInfo";
 
 const ImageZoom = ({src, slide, sliderRef, fit}) => {
 
@@ -81,7 +82,7 @@ const ImageZoom = ({src, slide, sliderRef, fit}) => {
 					ref={imgRef}
 					draggable={false}
 					component={'img'}
-					src={import.meta.env.VITE_BASE_URL + src}
+					src={appInfo.url + src}
 					sx={{
 						width: '100%',
 						height: '100%',

@@ -38,6 +38,11 @@ const fullProjectItems = [
 ]
 
 
+const centerStyle = {
+    '*': {
+        textAlign: 'center'
+    }
+}
 
 const CommercialTab = () => {
     return (
@@ -95,22 +100,26 @@ const CommercialTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {minimumItems.map((item, index) => (
-                                    <>{item} <br/></>
+                                    <React.Fragment key={index}>{item} <br/></React.Fragment>
                                 ))}
                             </Typography>
 
 
-                            <Typography
-                                fontSize={'1.5rem'}
-                                textAlign={'center'}
-                            >
-                                2000 руб./час
+                            <Box sx={...centerStyle}>
+                                <Typography
+                                    fontSize={'1.5rem'}
+                                    textAlign={'center'}
+                                >
+                                    2000 руб./час
+
+                                </Typography>
                                 <Typography
                                     fontSize={'1.2rem'}
                                 >
                                     Срок выполнения от 7 рабочих дней
                                 </Typography>
-                            </Typography>
+                            </Box>
+
                         </CardItem>
 
                         <CardItem
@@ -124,22 +133,25 @@ const CommercialTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {fullProjectItems.map((item, index) => (
-                                    <>{item} <br/></>
+                                    <React.Fragment key={index}>{item} <br/></React.Fragment>
                                 ))}
                             </Typography>
 
+                            <Box sx={...centerStyle}>
+                                <Typography
+                                    variant={'h5'}
+                                    textAlign={'center'}
+                                >
+                                    5000 руб./ кв.м. <br/>
 
-                            <Typography
-                                variant={'h5'}
-                                textAlign={'center'}
-                            >
-                                5000 руб./ кв.м. <br/>
+                                </Typography>
                                 <Typography
                                     fontSize={'1.2rem'}
                                 >
                                     Срок выполнения от 20 рабочих дней
                                 </Typography>
-                            </Typography>
+                            </Box>
+
                         </CardItem>
                     </Box>
 
@@ -162,22 +174,26 @@ const CommercialTab = () => {
                             fontSize={'1rem'}
                         >
                             {standardItems.map((item, index) => (
-                                <>{item} <br/></>
+                                <React.Fragment key={index}>{item} <br/></React.Fragment>
                             ))}
                         </Typography>
 
 
-                        <Typography
-                            variant={'h5'}
-                            textAlign={'center'}
-                        >
-                            3500 руб./ кв.м. <br/>
+                        <Box sx={...centerStyle}>
+                            <Typography
+                                variant={'h5'}
+                                textAlign={'center'}
+                            >
+                                3500 руб./ кв.м. <br/>
+
+                            </Typography>
                             <Typography
                                 fontSize={'1.2rem'}
                             >
                                 Срок выполнения от 15 рабочих дней
                             </Typography>
-                        </Typography>
+                        </Box>
+
                     </CardItem>
                 </Grid>
 

@@ -9,6 +9,7 @@ import user from "../../store/user";
 import {useLinkClickHandler} from "react-router-dom";
 import ImageZoom from "../ImageZoom/ImageZoom";
 import {observer} from "mobx-react-lite";
+import appInfo from "../../store/appInfo";
 
 
 const ModalCarousel = observer(({items, deleteImage}) => {
@@ -132,7 +133,7 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 
 					<Box
 						component={'img'}
-						src={import.meta.env.VITE_BASE_URL + image.name}
+						src={appInfo.url + image.name}
 						sx={{
 							height: 450,
 							width: '100%',

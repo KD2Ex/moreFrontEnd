@@ -79,7 +79,7 @@ const ComplexDecisionTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {flat.map((i, index) => (
-                                    <>{i}<br/></>
+                                    <React.Fragment key={index}>{i} <br/></React.Fragment>
                                 ))}
                             </Typography>
 
@@ -108,7 +108,7 @@ const ComplexDecisionTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {house.map((i, index) => (
-                                    <>{i}<br/></>
+                                    <React.Fragment key={index}>{i} <br/></React.Fragment>
                                 ))}
                             </Typography>
 
@@ -148,7 +148,7 @@ const ComplexDecisionTab = () => {
                                 fontSize={'1rem'}
                             >
                                 {business.map((i, index) => (
-                                    <>{i}<br/></>
+                                    <React.Fragment key={index}>{i} <br/></React.Fragment>
                                 ))}
                             </Typography>
 

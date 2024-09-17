@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {Box} from "@mui/material";
+import appInfo from "../../../../../store/appInfo";
 
 
 
@@ -33,7 +34,7 @@ const ReorderItem = ({item, ...props}) => {
             >
                 <Box
                     component={'img'}
-                    src={import.meta.env.VITE_BASE_URL + item.images[0].name}
+                    src={appInfo.url + item.images[0].name}
                     sx={{
                         height: '100%',
                         objectFit: 'contain'

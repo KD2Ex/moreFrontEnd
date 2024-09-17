@@ -16,6 +16,7 @@ import PostPage, {loader as postLoader} from "./pages/PostPage/PostPage";
 import PostCreatePage from "./pages/BlogCreatePage/PostCreatePage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AdminPage, {loader as pAdminLoader, projectsLoader} from "./pages/AdminPages/PaintingAdminPage/AdminPage";
+import LoginToPortfolio from "./pages/LoginToPortfolio/LoginToPortfolio";
 
 function App() {
 
@@ -37,10 +38,6 @@ function App() {
 				{
 					path: '/portfolio',
 					element: <PortfolioPage/>,
-				},
-				{
-					path: '/login',
-					element: <LoginPage/>,
 				},
 				{
 					path: '/blog',
@@ -71,6 +68,10 @@ function App() {
 		{
 			path: '/admin',
 			element: <LoginPage/>,
+		},
+		{
+			path: '/portfoliomode',
+			element: <LoginToPortfolio/>
 		}
 	])
 
@@ -81,8 +82,6 @@ function App() {
 
 	useEffect(() => {
 
-		const db = localStorage.getItem("db")
-		if (db) import.meta.env.VITE_BASE_URL = db;
 
 		window.addEventListener('scroll', onScroll, false);
 		(async () => {

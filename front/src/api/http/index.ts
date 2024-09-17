@@ -1,11 +1,12 @@
 import axios, {AxiosResponse} from "axios";
 import alert from "../../store/alert.ts";
+import appInfo from "../../store/appInfo";
 
 const db =  localStorage.getItem("db")
 
 const $api = axios.create({
 	withCredentials: true,
-	baseURL: import.meta.env.VITE_API_URL
+	baseURL: appInfo.url + 'api'
 })
 
 

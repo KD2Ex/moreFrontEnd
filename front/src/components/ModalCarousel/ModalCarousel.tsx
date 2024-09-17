@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Carousel from "nuka-carousel";
 import {Box, Button, Popover} from "@mui/material";
 import alert from "../../store/alert";
@@ -11,23 +11,15 @@ import FullscreenImage from "../FullscreenImage/FullscreenImage";
 
 const ModalCarousel = observer(({items, deleteImage}) => {
 
-	const sliderRef = useRef(null);
 	const [slideIndex, setSlideIndex] = useState(0);
-
 	const [contextOpen, setContextOpen] = useState(false);
 	const [points, setPoints] = useState({
 		x: 0,
 		y: 0
 	})
 	const [id, setId] = useState(0);
-	const [swiping, setSwiping] = useState<number | null>(null);
 	const [fullscreenOpen, setFullscreenOpen] = useState(false)
 
-	useEffect(() => {
-		console.log(items)
-
-		console.log(sliderRef)
-	}, [items])
 
 	const deleteImg = async (imageIndex) => {
 
@@ -61,38 +53,6 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 		setContextOpen(false)
 	}
 
-	const swipe = (forward: number | null) => {
-
-		console.log("swipte", forward)
-		setSwiping(forward)
-
-	}
-
-	useEffect(() => {
-
-		console.log("swiping", swiping)
-
-		if (swiping === 1) {
-
-			if (slideIndex === items.length - 1) return;
-			setSlideIndex(prevState => prevState + 1)
-		}
-
-		if (swiping === 0) {
-
-			if (slideIndex === 0) return
-			setSlideIndex(prevState => prevState - 1)
-		}
-
-
-	}, [swiping])
-
-	useEffect(() => {
-
-		console.log(slideIndex)
-
-	}, [slideIndex])
-
 	return (
 		<>
 			<AdminComponent>
@@ -123,20 +83,19 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 				open={fullscreenOpen}
 				defaultOrder={id}
 			/>
+
 			<Carousel
-				dragging={false}
-				ref={sliderRef}
-				slideIndex={slideIndex}
-				onDragEnd={(e) => {
-					console.log(slideIndex)
-					console.log(e)
-					swipe(null)
+				afterSlide={(number) => {
+					setId(number)
 				}}
+				dragging={false}
+				slideIndex={slideIndex}
 				style={{height: '100%'}}
 			>
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
 
 					<Box
+						key={index}
 						component={'img'}
 						src={appInfo.url + image.name}
 						sx={{
@@ -145,18 +104,14 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 							objectFit: 'contain'
 						}}
 						onClick={() => {
-							setId(index);
-						}}
-						onDoubleClick={() => {
 							setFullscreenOpen(true)
-
 						}}
+
 						onContextMenu={(event) => {
 
 							if (!user.isAdmin) {
 								return;
 							}
-
 							event.preventDefault();
 							setContextOpen(true);
 							setId(index);
@@ -165,35 +120,6 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 					>
 
 					</Box>
-					/*<Box
-						sx={{
-							height: '450px',
-							//width: '1000px'
-						}}
-						key={index}
-						//onClick={(event) => handleClick(event, index)}
-						onContextMenu={(event) => {
-
-							if (!user.isAdmin) {
-								return;
-							}
-
-							event.preventDefault();
-							setContextOpen(true);
-							setId(index);
-							setPoints({x: event.clientX, y: event.clientY})
-						}}
-					>
-
-						<ImageZoom
-							src={image.name}
-							slide={swipe}
-							sliderRef={sliderRef}
-							fit={'contain'}
-						/>
-
-					</Box>*/
-
 				))}
 			</Carousel>
 		</>

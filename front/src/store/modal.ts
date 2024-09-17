@@ -3,6 +3,7 @@ import {makeAutoObservable} from "mobx";
 
 class Modal {
 
+
 	projectImage = [];
 	projectImageOpen = false;
 	projectImageOrder = 0;

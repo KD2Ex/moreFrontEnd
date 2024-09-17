@@ -6,16 +6,12 @@ import FullscreenImage from "../FullscreenImage/FullscreenImage";
 import modal from "../../store/modal";
 import appInfo from "../../store/appInfo";
 
-const ProjectImage = ({image, height, swipe, sliderRef}) => {
+const ProjectImage = ({image, height}) => {
 
-	const handleClick = () => {
-		//modal.openProjectImage(true, image.name)
-	}
 
 	return (
 		<>
 			<Box
-				onClick={handleClick}
 				sx={{
 					width: '100%',
 					height: `${height - 20}px`
@@ -29,12 +25,7 @@ const ProjectImage = ({image, height, swipe, sliderRef}) => {
 
 				}}
 			>
-				{/*<ImageZoom
-					src={image.name}
-					slide={swipe}
-					sliderRef={sliderRef}
-					fit={'cover'}
-				/>*/}
+
 				<Box
 					sx={{
 						width: '100%',

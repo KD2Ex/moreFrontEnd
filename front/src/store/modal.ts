@@ -38,10 +38,10 @@ class Modal {
 		this.projectImageOpen = value;
 	}
 
-	openFullscreenImage(list, image) {
+	openFullscreenImage(list, image, index) {
 		console.log(list)
 
-		this.projectImageOrder = image.order;
+		this.projectImageOrder = index;
 		this.projectImage = list
 		this.projectImageOpen = true;
 	}

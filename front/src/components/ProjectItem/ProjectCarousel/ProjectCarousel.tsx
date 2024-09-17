@@ -10,15 +10,9 @@ import modal from "../../../store/modal";
 
 const ProjectCarousel = observer(({items, height}) => {
 
-	const [slideIndex, setSlideIndex] = useState(0)
-	const [swiping, setSwiping] = useState<number | null>(null)
 	const sliderRef = useRef()
 
-	const swipe = (forward: number | null) => {
 
-		setSwiping(forward)
-
-	}
 
 	useEffect(() => {
 
@@ -35,8 +29,6 @@ const ProjectCarousel = observer(({items, height}) => {
 			afterSlide={(number) => {
 				modal.projectImageOrder = number;
 			}}
-			slideIndex={slideIndex}
-			onDragEnd={() => swipe(null)}
 			sx={{
 				height: '100%',
 				"& slider-container": {
@@ -47,13 +39,12 @@ const ProjectCarousel = observer(({items, height}) => {
 			{items?.slice().sort((a, b) => a?.order - b?.order).map((image, index) => (
 
 				<Box
-					onClick={() => modal.openFullscreenImage(items, image)}
+					onClick={() => modal.openFullscreenImage(items, image, index)}
 					key={index}
 				>
 					<ProjectImage
 						key={index}
 						sliderRef={sliderRef}
-						swipe={swipe}
 						image={image}
 						height={height}
 					/>

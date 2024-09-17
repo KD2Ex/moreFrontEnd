@@ -36,6 +36,7 @@ const FullscreenImage: FC<FullscreenImageProps> = observer(({open, setOpen, imag
 
 	useEffect(() => {
 
+		console.log(defaultOrder)
 		setOrder(defaultOrder)
 
 	}, [defaultOrder])

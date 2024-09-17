@@ -42,9 +42,8 @@ class Modal {
 		console.log(list)
 
 		this.projectImageOrder = image.order;
-		this.projectImageOpen = true;
 		this.projectImage = list
-
+		this.projectImageOpen = true;
 	}
 
 	setItemHeight(item, value) {

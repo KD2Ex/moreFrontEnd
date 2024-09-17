@@ -32,6 +32,9 @@ const ProjectCarousel = observer(({items, height}) => {
 			component={Carousel}
 			dragging={false}
 			ref={sliderRef}
+			afterSlide={(number) => {
+				modal.projectImageOrder = number;
+			}}
 			slideIndex={slideIndex}
 			onDragEnd={() => swipe(null)}
 			sx={{
@@ -55,32 +58,6 @@ const ProjectCarousel = observer(({items, height}) => {
 						height={height}
 					/>
 				</Box>
-
-				/*<Box
-					sx={{
-						width: '100%',
-						height: `${height - 20}px`
-					}}
-					key={index}
-					onContextMenu={(event) => {
-						if (!user.isAdmin) {
-							return;
-						}
-
-						event.preventDefault()
-
-					}}
-				>
-					<ImageZoom
-						src={image.name}
-						slide={swipe}
-						sliderRef={sliderRef}
-						fit={'cover'}
-					/>
-
-				</Box>*/
-
-
 			))}
 
 		</Box>

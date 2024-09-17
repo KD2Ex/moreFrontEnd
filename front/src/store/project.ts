@@ -74,7 +74,7 @@ class Project {
 		console.log(toJS(item))
 		if (item.title['ru'] === '' || item.title['en-US'] === '') return false;
 		if (item.desc['ru'] === '' || item.desc['en-US'] === '') return false;
-		if (item.images?.length && item.files?.length) return false;
+		if (!item.images?.length && !item.files?.length) return false;
 
 		return true;
 	}

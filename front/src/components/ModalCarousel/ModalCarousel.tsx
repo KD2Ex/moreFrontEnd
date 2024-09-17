@@ -1,22 +1,18 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Carousel from "nuka-carousel";
 import {Box, Button, Popover} from "@mui/material";
-import paint from "../../store/paint";
 import alert from "../../store/alert";
-import modal from "../../store/modal";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import user from "../../store/user";
-import {useLinkClickHandler} from "react-router-dom";
-import ImageZoom from "../ImageZoom/ImageZoom";
 import {observer} from "mobx-react-lite";
 import appInfo from "../../store/appInfo";
+import FullscreenImage from "../FullscreenImage/FullscreenImage";
 
 
 const ModalCarousel = observer(({items, deleteImage}) => {
 
 	const sliderRef = useRef(null);
 	const [slideIndex, setSlideIndex] = useState(0);
-	//const [isShiftPressed, setIsShiftPressed] = useState(false);
 
 	const [contextOpen, setContextOpen] = useState(false);
 	const [points, setPoints] = useState({
@@ -24,12 +20,13 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 		y: 0
 	})
 	const [id, setId] = useState(0);
-
 	const [swiping, setSwiping] = useState<number | null>(null);
-
+	const [fullscreenOpen, setFullscreenOpen] = useState(false)
 
 	useEffect(() => {
 		console.log(items)
+
+		console.log(sliderRef)
 	}, [items])
 
 	const deleteImg = async (imageIndex) => {
@@ -49,7 +46,6 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 
 	const handleClick = async (event, index) => {
 
-		//if (!event.shiftKey) return;
 		if (items.length === 1) {
 			alert.openAlert("Невозможно удалить единственное изображение", "error")
 			handleContextClose();
@@ -121,12 +117,21 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 				</Popover>
 			</AdminComponent>
 
-
+			<FullscreenImage
+				images={items?.slice().sort((a, b) => a?.order > b?.order)}
+				setOpen={setFullscreenOpen}
+				open={fullscreenOpen}
+				defaultOrder={id}
+			/>
 			<Carousel
 				dragging={false}
 				ref={sliderRef}
 				slideIndex={slideIndex}
-				onDragEnd={() => swipe(null)}
+				onDragEnd={(e) => {
+					console.log(slideIndex)
+					console.log(e)
+					swipe(null)
+				}}
 				style={{height: '100%'}}
 			>
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
@@ -138,6 +143,13 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 							height: 450,
 							width: '100%',
 							objectFit: 'contain'
+						}}
+						onClick={() => {
+							setId(index);
+						}}
+						onDoubleClick={() => {
+							setFullscreenOpen(true)
+
 						}}
 						onContextMenu={(event) => {
 

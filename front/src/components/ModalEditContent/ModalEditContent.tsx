@@ -41,9 +41,19 @@ const ModalEditContent = observer(({item}) => {
 				lg={6}
 				xs={12}
 				sx={{
+
 				}}
 			>
-				<LanguageChange/>
+				<Box
+					sx={{
+						width: '100%',
+						display: 'flex',
+						flexDirection: 'row-reverse'
+					}}
+				>
+					<LanguageChange/>
+
+				</Box>
 				<PaintingTextarea
 					item={item}
 				/>

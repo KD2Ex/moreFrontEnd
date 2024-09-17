@@ -48,12 +48,6 @@ const ProjectImage = ({image, height, swipe, sliderRef}) => {
 				</Box>
 
 			</Box>
-
-			{/*<FullscreenImage
-				src={image.name}
-				open={open}
-				setOpen={setOpen}
-			/>*/}
 		</>
 
 	);

@@ -1,6 +1,4 @@
 import {makeAutoObservable} from "mobx";
-import projectItem from "../components/ProjectItem/ProjectItem";
-
 
 class AppStore {
 

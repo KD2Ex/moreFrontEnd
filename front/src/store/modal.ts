@@ -33,7 +33,7 @@ class Modal {
 	}
 
 	openProjectImage(value, src?) {
-		this.projectImage = src
+		this.projectImage = src ? src : [];
 		this.projectImageOpen = value;
 	}
 

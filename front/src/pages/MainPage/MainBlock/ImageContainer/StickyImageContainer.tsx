@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import main4 from "../../../../assets/main4.jpg";
-import mainPC from "../../../../assets/mainPC.jpg";
+import React from 'react';
+import main4 from "../../../../assets/main.jpg";
 import mainPC2 from "../../../../assets/mainPC2.jpg";
-import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
+import {Box, useMediaQuery, useTheme} from "@mui/material";
 import './styles.css'
 
 const StickyImageContainer = () => {

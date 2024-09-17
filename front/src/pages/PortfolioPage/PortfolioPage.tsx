@@ -98,8 +98,12 @@ const PortfolioPage = observer(() => {
 			/>
 
 			<FullscreenImage
-				src={modal.projectImage}
+				//src={modal.projectImage}
+				//src={modal.projectImage[modal.projectImageOrder].name}
 				open={modal.projectImageOpen}
+				setOpen={modal.openProjectImage.bind(modal)}
+				images={modal.projectImage}
+				defaultOrder={modal.projectImageOrder}
 			/>
 
 			{!appInfo.isMobile && (

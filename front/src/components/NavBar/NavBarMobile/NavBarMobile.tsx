@@ -32,7 +32,7 @@ const NavBarMobile = ({pages}) => {
         <Box
             sx={{
                 position: 'fixed',
-                bottom: 0,
+                bottom: -1,
                 bgcolor: 'black',
                 height: 56,
                 zIndex: 1300,

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Box, Button, Dialog, DialogContent, Modal} from "@mui/material";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
@@ -7,39 +7,54 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import appInfo from "../../store/appInfo";
+import {toJS} from "mobx";
 
-const FullscreenImage = observer(({open}) => {
+interface FullscreenImageProps {
+	open: boolean,
+	setOpen: (value: boolean) => void,
+	//src: string,
+	images: string[],
+	defaultOrder: number
+}
 
+const FullscreenImage: FC<FullscreenImageProps> = observer(({open, setOpen, images, defaultOrder}) => {
 
-	useEffect(() => {
-		console.log("IMAGES")
-
-
-	}, [])
+	const [order, setOrder] = useState(defaultOrder);
 
 	useEffect(() => {
 
 		if (open) {
 			document.body.style.overflow = "hidden"
 		} else {
+			setOrder(defaultOrder)
 			document.body.style.overflow = ""
 		}
 
+		console.log(toJS(images))
+
 	}, [open])
 
+	useEffect(() => {
 
+		setOrder(defaultOrder)
+
+	}, [defaultOrder])
 
 	const handlePrev = () => {
-		modal.setOrder(modal.projectImageOrder - 1)
+
+		if (order == 0) return;
+		setOrder(prev => prev - 1)
+		//modal.setOrder(modal.projectImageOrder - 1)
 	}
 
 	const handleNext = () => {
-
-		modal.setOrder(modal.projectImageOrder + 1)
+		if (order == images.length - 1) return;
+		setOrder(prev => prev + 1)
+		//modal.setOrder(modal.projectImageOrder + 1)
 	}
 
 	const handleClose = () => {
-		modal.openProjectImage(false)
+		setOpen(false)
 	}
 
 	if (!open) return null;
@@ -85,7 +100,7 @@ const FullscreenImage = observer(({open}) => {
 				<Box
 					draggable={false}
 					component={'img'}
-					src={appInfo.url + modal.projectImage[modal.projectImageOrder].name}
+					src={appInfo.url + images[order].name}
 					sx={{
 						maxWidth: '80%',
 						width: 'auto',
@@ -93,9 +108,6 @@ const FullscreenImage = observer(({open}) => {
 						maxHeight: '80%',
 						objectFit: 'contain',
 						zIndex: 2200,
-						//item.objectFit,
-						//filter: isShiftPressed && items.length !== 1 ? "brightness(50%)" : 'none',
-						//color: isShiftPressed ? "red" : 'none',
 					}}
 				>
 				</Box>

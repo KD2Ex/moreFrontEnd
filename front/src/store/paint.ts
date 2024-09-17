@@ -326,7 +326,7 @@ class Paint {
 
 		if (item.title['ru'].length === 0 || item.title['en-US'].length === 0) return false;
 		if (item.price['ru'].length === 0 || item.price['en-US'].length === 0) return false;
-		if (item.width === 0 && item.height === 0) return false;
+		if (item.width === 0 || item.height === 0) return false;
 		if (item.material.name == '' || item.technique.name == '') return false;
 
 		return true;

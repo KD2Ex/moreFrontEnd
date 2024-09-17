@@ -4,6 +4,7 @@ import {Box, Button} from "@mui/material";
 import paint from "../../../store/paint";
 import {useLoaderData} from 'react-router-dom'
 import project from "../../../store/project";
+import LoadingAnim from "../../../components/LoadingAnim/LoadingAnim";
 
 
 export const loader = async () => {
@@ -22,12 +23,11 @@ const AdminPage = ({type}) => {
     const loaderData = useLoaderData();
 
     const [items, setItems] = useState(loaderData)
+    const [isLoading, setIsLoading] = useState(false)
     console.log(items)
 
     return (
         <Box
-            sx={{
-            }}
         >
             <Box
                 sx={{
@@ -60,8 +60,7 @@ const AdminPage = ({type}) => {
                         })
 
                         setItems(newItems)
-
-
+                        setIsLoading(true)
                         switch (type) {
                             case "painting":
                                 await paint.updateOrderFrom(newItems)
@@ -70,11 +69,14 @@ const AdminPage = ({type}) => {
                                 await project.updateOrderFrom(newItems)
                                 break;
                         }
+                        setIsLoading(false)
                     }}
                 >
                     Сохранить изменения
                 </Button>
             </Box>
+
+            {isLoading && <LoadingAnim/>}
         </Box>
 
     );

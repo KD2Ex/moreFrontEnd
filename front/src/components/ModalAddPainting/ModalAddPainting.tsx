@@ -32,9 +32,12 @@ const ModalAddPainting = observer(({open, setOpen}) => {
 			return;
 		}
 
+		paint.loading = true;
 
 		paint.addPainting(paint.newItem).then(res => {
 			handleClose()
+			paint.loading = false;
+
 			alert.openAlert('Картина успешно добавлена', 'success')
 			paint.resetNewItem();
 		})

@@ -23,6 +23,7 @@ const ModalEdit = observer(() => {
 
 	const handleClick = async () => {
 
+
 		const isValid = paint.isPaintDataValid(modal.paintingItem);
 
 
@@ -30,9 +31,10 @@ const ModalEdit = observer(() => {
 			alert.openAlert('Заполните все поля', 'error')
 			return;
 		}
-
+		paint.loading = true;
 		await paint.updatePainting(modal.paintingItem)
 		onClose();
+		paint.loading = false;
 	}
 
 	const onClose = () => {

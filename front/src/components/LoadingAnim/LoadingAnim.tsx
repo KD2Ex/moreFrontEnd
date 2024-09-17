@@ -1,9 +1,8 @@
 import React from 'react';
 import {Grid as GridLoader} from "react-loader-spinner";
 import {Box} from "@mui/material";
+
 const LoadingAnim = () => {
-
-
 
     return (
         <Box

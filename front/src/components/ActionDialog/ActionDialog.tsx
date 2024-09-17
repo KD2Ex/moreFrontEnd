@@ -23,8 +23,11 @@ const ActionDialog = observer(() => {
 
 		//await paint.deletePainting(id);
 
+		paint.loading = true;
 		await modal.actionDialogFunc(...modal.actionDialogArgs);
 		handleClose();
+		paint.loading = false;
+
 	}
 
 	const handleReject = async () => {

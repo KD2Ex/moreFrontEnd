@@ -117,11 +117,6 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 					>
 						Удалить изображение
 					</Button>
-					<Button
-						onClick={() => setSlideIndex(prev => prev + 1)}
-					>
-						Scroll
-					</Button>
 				</Popover>
 			</AdminComponent>
 

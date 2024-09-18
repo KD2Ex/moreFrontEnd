@@ -106,7 +106,7 @@ const ProjectTab = () => {
                             </Box>
 
                             <Box
-                                sx={...centerStyle}
+                                sx={centerStyle}
                             >
                                 <Typography
                                     fontSize={'1.5rem'}
@@ -139,7 +139,7 @@ const ProjectTab = () => {
 
 
                             <Box
-                                sx={...centerStyle}
+                                sx={centerStyle}
                             >
                                 <Typography
                                     variant={'h5'}
@@ -179,7 +179,7 @@ const ProjectTab = () => {
                             ))}
                         </Box>
 
-                        <Box sx={...centerStyle}>
+                        <Box sx={centerStyle}>
                             <Typography
                                 variant={'h5'}
                                 textAlign={'center'}
@@ -245,7 +245,7 @@ const ProjectTab = () => {
 
 
                         <Box
-                            sx={...centerStyle}
+                            sx={centerStyle}
                         >
                             <Typography
                                 variant={'h5'}

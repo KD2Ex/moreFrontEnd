@@ -105,7 +105,9 @@ const CommercialTab = () => {
                             </Typography>
 
 
-                            <Box sx={...centerStyle}>
+                            <Box
+                                sx={centerStyle}
+                            >
                                 <Typography
                                     fontSize={'1.5rem'}
                                     textAlign={'center'}
@@ -137,7 +139,7 @@ const CommercialTab = () => {
                                 ))}
                             </Typography>
 
-                            <Box sx={...centerStyle}>
+                            <Box sx={centerStyle}>
                                 <Typography
                                     variant={'h5'}
                                     textAlign={'center'}
@@ -179,7 +181,7 @@ const CommercialTab = () => {
                         </Typography>
 
 
-                        <Box sx={...centerStyle}>
+                        <Box sx={centerStyle}>
                             <Typography
                                 variant={'h5'}
                                 textAlign={'center'}

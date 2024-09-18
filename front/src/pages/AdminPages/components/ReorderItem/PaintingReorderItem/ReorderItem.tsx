@@ -1,7 +1,7 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import {Box} from "@mui/material";
 import appInfo from "../../../../../store/appInfo";
-
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 
 const ReorderItem = ({item, ...props}) => {
@@ -22,11 +22,23 @@ const ReorderItem = ({item, ...props}) => {
                 alignItems: 'center'
             }}
         >
-            <Box>
-                {item.id} {"   "}
-                {item.title.ru}
-            </Box>
 
+
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1
+                }}
+            >
+                <DragIndicatorIcon/>
+
+                <Box>
+                    {item.id} {"   "}
+                    {item.title.ru}
+                </Box>
+
+            </Box>
             <Box
                 sx={{
                     height: '100%',

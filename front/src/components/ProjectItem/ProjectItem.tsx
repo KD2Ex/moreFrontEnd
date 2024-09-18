@@ -11,6 +11,7 @@ import locale from "../../store/locale";
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import Utils from "../../utils";
 import modal from "../../store/modal";
+import loginPage from "../../pages/LoginPage/LoginPage";
 
 interface ProjectItemProps {
 	item: IProject,
@@ -46,6 +47,7 @@ function getLevelName(value: number) {
 const ProjectItem = observer(({item}: ProjectItemProps) => {
 
 	const [anchor, setAnchor] = useState(null)
+	console.log(item.levels);
 
 	return (
 		<>
@@ -158,11 +160,15 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 								childBefore
 								fontSize={18}
 								localeList={[
-									`${getLevelName(item.levels)}, Общая площадь ${item.area} м²`,
+									`${item.levels ? getLevelName(item.levels) + ',' : ''} 
+									${item.area ? `Общая площадь ${item.area} м²` : ''}`,
 									`${getEnLevelName(item.levels)}, Total area ${item.area} m²`,
 								]}
 							>
-								{item.levels ? `${item.levels} ` : null}
+								{
+									item.levels ? `${item.levels} ` : null
+								}
+
 							</LocaleText>
 
 							{item.cost.ru

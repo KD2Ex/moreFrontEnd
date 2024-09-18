@@ -40,6 +40,10 @@ const FullscreenImage: FC<FullscreenImageProps> = observer(({open, setOpen, imag
 
 	}, [defaultOrder])
 
+	const triggerAnim = () => {
+
+	}
+
 	const handlePrev = () => {
 
 		if (order == 0) return;
@@ -50,6 +54,7 @@ const FullscreenImage: FC<FullscreenImageProps> = observer(({open, setOpen, imag
 	const handleNext = () => {
 		if (order == images.length - 1) return;
 		setOrder(prev => prev + 1)
+		triggerAnim()
 		//modal.setOrder(modal.projectImageOrder + 1)
 	}
 

@@ -1,18 +1,15 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Carousel from "nuka-carousel";
-import ImageZoom from "../../ImageZoom/ImageZoom";
-import {Box} from "@mui/material";
-import user from "../../../store/user";
-import project from "../../../store/project";
+import {Box, Button} from "@mui/material";
 import ProjectImage from "../../ProjectImage/ProjectImage";
 import {observer} from "mobx-react-lite";
 import modal from "../../../store/modal";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const ProjectCarousel = observer(({items, height}) => {
 
 	const sliderRef = useRef()
-
-
 
 	useEffect(() => {
 
@@ -35,6 +32,22 @@ const ProjectCarousel = observer(({items, height}) => {
 					height: '100%'
 				}
 			}}
+			renderCenterLeftControls={({previousSlide}) => (
+				<Button
+					onClick={previousSlide}
+					disabled={modal.projectImageOrder == 0}
+				>
+					<ArrowBackIosIcon/>
+				</Button>
+			)}
+			renderCenterRightControls={({ nextSlide }) => (
+				<Button
+					onClick={nextSlide}
+					disabled={modal.projectImageOrder == items.length - 1}
+				>
+					<ArrowForwardIosIcon/>
+				</Button>
+			)}
 		>
 			{items?.slice().sort((a, b) => a?.order - b?.order).map((image, index) => (
 

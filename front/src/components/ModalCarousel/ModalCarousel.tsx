@@ -7,7 +7,9 @@ import user from "../../store/user";
 import {observer} from "mobx-react-lite";
 import appInfo from "../../store/appInfo";
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import modal from "../../store/modal";
 
 const ModalCarousel = observer(({items, deleteImage}) => {
 
@@ -91,6 +93,22 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 				dragging={false}
 				slideIndex={slideIndex}
 				style={{height: '100%'}}
+				renderCenterLeftControls={({previousSlide}) => (
+					<Button
+						onClick={previousSlide}
+						disabled={id == 0}
+					>
+						<ArrowBackIosIcon/>
+					</Button>
+				)}
+				renderCenterRightControls={({ nextSlide }) => (
+					<Button
+						onClick={nextSlide}
+						disabled={id == items.length - 1}
+					>
+						<ArrowForwardIosIcon/>
+					</Button>
+				)}
 			>
 				{items?.slice().sort((a, b) => a?.order > b?.order).map((image, index) => (
 

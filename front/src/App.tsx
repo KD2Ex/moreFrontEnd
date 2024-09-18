@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo} from 'react'
+import {useCallback, useEffect} from 'react'
 import {
 	createBrowserRouter, RouterProvider,
 } from "react-router-dom";
@@ -6,7 +6,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import {CssBaseline, ThemeProvider, useMediaQuery, useTheme} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import {theme} from "./theme";
 import user from "./store/user";
 import ParentPage, {loader as parentLoader} from "./pages/ParentPage/ParentPage.tsx";

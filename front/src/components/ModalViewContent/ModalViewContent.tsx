@@ -22,7 +22,8 @@ const ModalViewContent = observer(({item}) => {
 			container
 			spacing={{xs: 0, lg: 4}}
 			sx={{
-				width: '100%'
+				width: '100%',
+				alignItems: 'center'
 			}}
 		>
 
@@ -30,6 +31,9 @@ const ModalViewContent = observer(({item}) => {
 				item
 				md={8}
 				xs={12}
+				sx={{
+					height:'fit-content'
+				}}
 			>
 				<ModalCarousel
 					items={item.images}
@@ -43,7 +47,8 @@ const ModalViewContent = observer(({item}) => {
 				md={4}
 				xs={12}
 				sx={{
-					p: 1
+					p: 1,
+					alignSelf: 'flex-start'
 				}}
 			>
 

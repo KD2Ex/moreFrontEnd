@@ -88,10 +88,6 @@ class Post {
         item[property] = value;
     }
 
-    updateItem(property, value) {
-        property = value;
-    }
-
     updateTitle(value) {
         this.newItem.title[locale.currentLocale.name] = value;
     }

@@ -21,14 +21,6 @@ export default class PaintingService {
 		} catch (e) {
 
 		}
-/*
-		if (response.data) {
-			response.data.forEach(i => {
-				i.image.forEach(j => {
-					j.name = 'http://localhost:7000/' + j.name
-				})
-			})
-		}*/
 
 	}
 
@@ -57,6 +49,11 @@ export default class PaintingService {
 			},*/
 		})
 
+	}
+
+	static async addLocaleData(data) {
+
+		return $api.post('/paint/localeData', data)
 	}
 
 	static async editSizes(data) {

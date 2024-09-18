@@ -172,11 +172,11 @@ class Paint {
 
 		const formData = new FormData();
 
-		formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`);
-		formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`);
+		//formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`);
+		//formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`);
 		formData.append("height", `${item.height}`);
 		formData.append("width", `${item.width}`);
-		formData.append("price", `${utils.getAppendStringFromLocale(item.price)}`);
+		//formData.append("price", `${utils.getAppendStringFromLocale(item.price)}`);
 		formData.append("materialId", `${item.material.id}`)
 		formData.append("techniqueId", `${item.technique.id}`)
 
@@ -203,10 +203,43 @@ class Paint {
 		formData.append("objectFit", "cover");
 		//formData.append("order", this.items.find(i => ));
 
+		console.log(toJS(item));
+
+		const titles = [];
+		const descs = [];
+		const prices = [];
+
+
+		for (let i = 0; i < locale.locales.length; i++) {
+			const localeItem = locale.locales[i];
+
+			const title = item.title[localeItem.name];
+			const desc = item.desc[localeItem.name];
+			const price = item.price[localeItem.name];
+
+			titles.push({name: title, localeId: localeItem.id})
+			descs.push({name: desc, localeId: localeItem.id})
+			prices.push({name: price, localeId: localeItem.id})
+		}
+
+		console.log("====ITEM====")
+		console.log(toJS(item))
+
 
 		const response = await PaintingService.addPainting(formData);
 
 		const data: IPaint = {...response.data};
+
+		const localDataResponse = await PaintingService.addLocaleData({
+			paintId: data.id,
+			title: titles,
+			desc: descs,
+			price: prices
+		})
+
+		data.title = item.title;
+		data.desc = item.desc;
+		data.price = item.price;
 
 		// При добавлении картин будет показываться наименование материалов на русском языке
 		// При обновлении страницы название замениться в соответствии с локализацией
@@ -234,6 +267,7 @@ class Paint {
 		* Либо добавлять картину по order'у последней картины на странице
 		* Тогда придется инкрементировать order у всех картин впереди (хуйня)
 		*  */
+
 		this.items.push(data)
 
 		console.log(data)

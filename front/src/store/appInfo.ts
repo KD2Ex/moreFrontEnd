@@ -14,7 +14,6 @@ class AppStore {
     activateTestMode() {
         this.url = this.testURL;
         localStorage.setItem("testMode", '1')
-        localStorage.setItem("admin", '1')
     }
 
     activateProduction() {

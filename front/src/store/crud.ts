@@ -26,7 +26,7 @@ class Crud {
             const res = items.find((i) => {
                 console.log(i)
                 const localeName = locale.locales.find(i => i.id === name.localeId).name
-                return i.name.toLowerCase() === name.text.toLowerCase()
+                return i.name[localeName].toLowerCase() === name.text.toLowerCase()
             })
             existing = !!res;
         });

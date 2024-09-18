@@ -28,8 +28,8 @@ const ImageUpload = ({disabled, files, setFiles}) => {
 			sx={{
 				'.filepond--panel-root': {
 					bgcolor: '#181818',
-					border: '2px',
-					borderColor: (theme) => theme.palette.secondary.main,
+					border: '1px',
+					borderColor: (theme) => theme.palette.primary.borderLight,
 					borderStyle: 'solid',
 				},
 				'.filepond--drop-label': {

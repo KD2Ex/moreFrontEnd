@@ -63,8 +63,9 @@ const AddFilterParam = ({asyncFunc, items}) => {
 						display: 'flex',
 						flexDirection: 'column',
 						gap: 1,
-						border: '2px solid',
-						borderColor: (theme) => theme.palette.primary.text,
+						border: '1px solid',
+						borderRadius: 2,
+						borderColor: (theme) => theme.palette.primary.borderLight,
 					}}
 				>
 					<Box

@@ -1,12 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
-import {useSearchParams} from "react-router-dom";
 import project from "../../store/project";
 import ModalAddProjectContent from "../ModalAddProjectContent/ModalAddProjectContent";
-import {IProject} from "../../models/interfaces/IProject";
 import alert from "../../store/alert";
-import projectItem from "../ProjectItem/ProjectItem";
-import paint from "../../store/paint";
 
 const ModalAddProject = ({open, setOpen}) => {
 
@@ -36,10 +32,10 @@ const ModalAddProject = ({open, setOpen}) => {
 			alert.openAlert("Этажность, площадь, местоположение, сроки и/или стоимость не заполнены. Проверьте заполнение на английском. Если вы хотите оставить эти поля пустыми, нажмите кнопку \"Добавить\" еще раз", "warning")
 			return;
 		}
-		paint.loading = true;
+		project.loading = true;
 
 		const response = await project.create(project.newItem)
-		paint.loading = false;
+		project.loading = false;
 
 		project.newItem = project.defaultItem;
 		handleClose()

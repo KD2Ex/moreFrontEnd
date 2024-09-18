@@ -12,6 +12,7 @@ import {
 import {observer} from "mobx-react-lite";
 import modal from "../../store/modal";
 import paint from "../../store/paint";
+import project from "../../store/project";
 
 
 
@@ -24,8 +25,10 @@ const ActionDialog = observer(() => {
 		//await paint.deletePainting(id);
 
 		paint.loading = true;
+		project.loading = true;
 		await modal.actionDialogFunc(...modal.actionDialogArgs);
 		handleClose();
+		project.loading = false;
 		paint.loading = false;
 
 	}

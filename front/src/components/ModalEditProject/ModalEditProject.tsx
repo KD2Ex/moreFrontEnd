@@ -33,8 +33,9 @@ const ModalEditProject = observer(() => {
 			return;
 		}
 
+		project.loading = true;
 		await project.update(project.editItem)
-
+		project.loading = false;
 		handleClose();
 	}
 

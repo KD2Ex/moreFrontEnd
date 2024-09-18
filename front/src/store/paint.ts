@@ -218,8 +218,8 @@ class Paint {
 		console.log(toJS(item));
 
 		const titles = this.formatLocaleData(item.title);
-		const descs = this.formatLocaleData(item.title);
-		const prices = this.formatLocaleData(item.title);
+		const descs = this.formatLocaleData(item.desc);
+		const prices = this.formatLocaleData(item.price);
 
 
 

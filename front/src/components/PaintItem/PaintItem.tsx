@@ -12,6 +12,7 @@ import LocaleText from "../Locale/LocaleText/LocaleText";
 import locale from "../../store/locale";
 import Utils from "../../utils";
 import appInfo from "../../store/appInfo";
+import {toJS} from "mobx";
 
 interface PaintItemProps {
 	item: IPaint,
@@ -59,6 +60,7 @@ const PaintItem: FC<PaintItemProps> = observer(({
 
 	const [anchor, setAnchor] = useState(null);
 	const [searchParams, setSearchParams] = useSearchParams();
+	console.log(toJS(item))
 
 	const handleClick = (event) => {
 		if (event.button === 0) {
@@ -72,32 +74,6 @@ const PaintItem: FC<PaintItemProps> = observer(({
 	useEffect(() => {
 
 
-		/*const image = new Image();
-		image.src = import.meta.env.VITE_BASE_URL + img?.name;
-		console.log(image)
-		console.log(MAX_WIDTH)
-		console.log(MAX_HEIGHT)
-
-		const [newW, newH] = calculateSize(image, MAX_WIDTH, MAX_HEIGHT);
-
-		console.log(newW)
-		console.log(newH)
-		const canvas = document.createElement('canvas')
-		canvas.width = newW;
-		canvas.height = newH;
-		canvas.style.maxWidth = '100%';
-		canvas.style.maxHeight = '100%';
-
-		const ctx = canvas.getContext('2d');
-		ctx.drawImage(image, 0, 0, newW, newH);
-
-		canvas.toBlob((blob) => {
-
-
-			},"image/jpeg", 0.8)
-
-		document.getElementById(`itemCanvas${item.id}`)?.append(canvas)
-		console.log(canvas)*/
 	}, [])
 
 	return (

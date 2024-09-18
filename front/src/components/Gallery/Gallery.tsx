@@ -93,10 +93,9 @@ const Gallery = observer(({items, type, store}: GalleryProps) => {
 			/>
 			
 			{
-				paint.loading
+				store.loading
 					? (<LoadingAnim/>)
 					: (<>
-
 						<Box
 							ref={lastElement}
 							sx={{

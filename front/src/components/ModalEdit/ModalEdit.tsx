@@ -33,6 +33,7 @@ const ModalEdit = observer(() => {
 		}
 		paint.loading = true;
 		await paint.updatePainting(modal.paintingItem)
+		alert.openAlert("Картина успешно обновлена", "success");
 		onClose();
 		paint.loading = false;
 	}

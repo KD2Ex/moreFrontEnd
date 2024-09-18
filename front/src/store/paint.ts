@@ -172,11 +172,8 @@ class Paint {
 
 		const formData = new FormData();
 
-		//formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`);
-		//formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`);
 		formData.append("height", `${item.height}`);
 		formData.append("width", `${item.width}`);
-		//formData.append("price", `${utils.getAppendStringFromLocale(item.price)}`);
 		formData.append("materialId", `${item.material.id}`)
 		formData.append("techniqueId", `${item.technique.id}`)
 
@@ -193,6 +190,21 @@ class Paint {
 		return formData;
 	}
 
+	formatLocaleData(item) {
+
+		const result = []
+
+		for (let i = 0; i < locale.locales.length; i++) {
+			const localeItem = locale.locales[i];
+
+			const string = item[localeItem.name];
+
+			result.push({name: string, localeId: localeItem.id})
+		}
+
+		return result;
+	}
+
 	async addPainting(item: IPaint) {
 
 		console.log(item)
@@ -205,22 +217,11 @@ class Paint {
 
 		console.log(toJS(item));
 
-		const titles = [];
-		const descs = [];
-		const prices = [];
+		const titles = this.formatLocaleData(item.title);
+		const descs = this.formatLocaleData(item.title);
+		const prices = this.formatLocaleData(item.title);
 
 
-		for (let i = 0; i < locale.locales.length; i++) {
-			const localeItem = locale.locales[i];
-
-			const title = item.title[localeItem.name];
-			const desc = item.desc[localeItem.name];
-			const price = item.price[localeItem.name];
-
-			titles.push({name: title, localeId: localeItem.id})
-			descs.push({name: desc, localeId: localeItem.id})
-			prices.push({name: price, localeId: localeItem.id})
-		}
 
 		console.log("====ITEM====")
 		console.log(toJS(item))
@@ -276,13 +277,26 @@ class Paint {
 		return response;
 	}
 
-	async updatePainting(item) {
+	async updatePainting(item: IPaint) {
 
 		try {
 			const formData = this.appendFile(item);
-			formData.append("id", item.id)
+			formData.append("id", item.id.toString())
+
+			const titles = this.formatLocaleData(item.title);
+			const descs = this.formatLocaleData(item.desc);
+			const prices = this.formatLocaleData(item.price);
+
+			console.log(titles, descs, prices)
 
 			const response = await PaintingService.updatePainting(formData)
+
+			const responseLocaleData = await PaintingService.updateLocaleData({
+				id: item.id,
+				title: titles,
+				desc: descs,
+				price: prices
+			})
 
 			const index = this.items.findIndex(i => i.id == item.id);
 			item.files = []
@@ -294,9 +308,6 @@ class Paint {
 
 			console.log(response.data)
 
-			alert.openAlert("Картина успешно обновлена", "success");
-
-			//
 			return response;
 		} catch (e) {
 			return e.message

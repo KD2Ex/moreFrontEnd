@@ -9,7 +9,6 @@ import appInfo from "../../store/appInfo";
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import modal from "../../store/modal";
 
 const ModalCarousel = observer(({items, deleteImage}) => {
 
@@ -127,7 +126,7 @@ const ModalCarousel = observer(({items, deleteImage}) => {
 
 						onContextMenu={(event) => {
 
-							if (!user.isAdmin) {
+							if (!user.isAdmin && !localStorage.getItem("testMode")) {
 								return;
 							}
 							event.preventDefault();

@@ -16,6 +16,10 @@ export default class ProjectService {
 
 	}
 
+	static async createLocaleData(data) {
+		return $api.post('/project/localeData', data)
+	}
+
 	static async create(data) {
 
 		for(let item of data) {
@@ -28,6 +32,10 @@ export default class ProjectService {
 
 	static async delete(id: number) {
 		return $api.delete(`/project/${id}`)
+	}
+
+	static async updateLocaleData(data) {
+		return $api.post('/project/update/localeData', data)
 	}
 
 	static async update(data) {

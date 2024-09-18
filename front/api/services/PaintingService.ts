@@ -80,6 +80,10 @@ export default class PaintingService {
 
 	}
 
+	static async updateLocaleData(data) {
+		return $api.post('/paint/update/localeData', data);
+	}
+
 	static async updatePainting(data) {
 
 		for (const pair of data.entries()) {

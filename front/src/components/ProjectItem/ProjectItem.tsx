@@ -158,7 +158,8 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 								localeList={[
 									`${item.levels ? getLevelName(item.levels) + ',' : ''} 
 									${item.area ? `Общая площадь ${item.area} м²` : ''}`,
-									`${getEnLevelName(item.levels)}, Total area ${item.area} m²`,
+									`${item.levels ? getEnLevelName(item.levels) + ',' : ''} 
+									${item.area ? `Total area ${item.area} m²` : ''}`,
 								]}
 							>
 								{

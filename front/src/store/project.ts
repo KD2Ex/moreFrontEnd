@@ -3,6 +3,7 @@ import ProjectService from "../../api/services/ProjectService";
 import {IProject} from "../models/interfaces/IProject";
 import alert from "./alert";
 import utils from "../utils";
+import locale from "./locale";
 
 class Project {
 
@@ -92,13 +93,8 @@ class Project {
 
 		const formData = new FormData();
 
-		formData.append("title", `${utils.getAppendStringFromLocale(item.title)}`)
-		formData.append("desc", `${utils.getAppendStringFromLocale(item.desc)}`)
 		formData.append("levels", `${item.levels}`)
 		formData.append("area", `${item.area}`)
-		formData.append("cost", `${utils.getAppendStringFromLocale(item.cost)}`)
-		formData.append("timePeriod", `${utils.getAppendStringFromLocale(item.timePeriod)}`)
-		formData.append("address", `${utils.getAppendStringFromLocale(item.address)}`)
 
 		if (item.files) {
 			const fileImages = item.files.map(i => {
@@ -146,6 +142,22 @@ class Project {
 		const formData = this.appendFile(newItem);
 		formData.append("id", newItem.id)
 
+
+		const title = this.formatLocaleData(newItem.title);
+		const desc = this.formatLocaleData(newItem.desc);
+		const cost = this.formatLocaleData(newItem.cost);
+		const address = this.formatLocaleData(newItem.address);
+		const timePeriod = this.formatLocaleData(newItem.timePeriod);
+
+		const localeData = await ProjectService.updateLocaleData({
+			projectId: newItem.id,
+			title: title,
+			desc: desc,
+			cost: cost,
+			address: address,
+			timePeriod: timePeriod
+		})
+		
 		const response = await ProjectService.update(formData);
 
 		const index = this.items.findIndex(i => i.id === newItem.id);
@@ -163,15 +175,50 @@ class Project {
 		return response;
 	}
 
+	formatLocaleData(item) {
+
+		const result = []
+
+		for (let i = 0; i < locale.locales.length; i++) {
+			const localeItem = locale.locales[i];
+
+			const string = item[localeItem.name];
+
+			result.push({name: string, localeId: localeItem.id})
+		}
+
+		return result;
+	}
+
 	async create(item: IProject) {
 
 		const newItem = {...item}
-
 		const formData = this.appendFile(newItem);
 
 		const response = await ProjectService.create(formData);
-
 		const data: IProject = {...response.data}
+
+		const title = this.formatLocaleData(item.title);
+		const desc = this.formatLocaleData(item.desc);
+		const cost = this.formatLocaleData(item.cost);
+		const address = this.formatLocaleData(item.address);
+		const timePeriod = this.formatLocaleData(item.timePeriod);
+
+		const localeData = await ProjectService.createLocaleData({
+			projectId: data.id,
+			title: title,
+			desc: desc,
+			cost: cost,
+			address: address,
+			timePeriod: timePeriod
+		})
+
+		data.title = item.title
+		data.desc = item.desc
+		data.cost = item.cost
+		data.address = item.address
+		data.timePeriod = item.timePeriod
+
 		this.items.push(data)
 
 		return response;

@@ -1,17 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
-import project from "../../store/project";
 import {observer} from "mobx-react-lite";
 import {IProject} from "../../models/interfaces/IProject";
 import AdminComponent from "../AdminComponent/AdminComponent";
 import ProjectPopover from "../ProjectPopover/ProjectPopover";
-import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ProjectCarousel from "./ProjectCarousel/ProjectCarousel";
 import locale from "../../store/locale";
 import LocaleText from "../Locale/LocaleText/LocaleText";
-import Utils from "../../utils";
-import modal from "../../store/modal";
-import loginPage from "../../pages/LoginPage/LoginPage";
+
 
 interface ProjectItemProps {
 	item: IProject,

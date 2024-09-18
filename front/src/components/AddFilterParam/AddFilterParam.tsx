@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {Box, Button, Popover, TextField, Typography} from "@mui/material";
-import MaterialService from "../../../api/services/MaterialService";
-import material from "../../store/material";
 import crud from "../../store/crud";
 
 const AddFilterParam = ({asyncFunc, items}) => {

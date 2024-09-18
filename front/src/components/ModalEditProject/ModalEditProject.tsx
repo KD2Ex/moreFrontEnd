@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Button, Dialog, DialogActions, DialogContent} from "@mui/material";
 import ModalAddProjectContent from "../ModalAddProjectContent/ModalAddProjectContent";
 import project from "../../store/project";
-import {IProject} from "../../models/interfaces/IProject";
 import alert from "../../store/alert";
 import {observer} from "mobx-react-lite";
 
 const ModalEditProject = observer(() => {
 
-	//const [item, setItem] = useState<IProject | null>(project.editItem);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {

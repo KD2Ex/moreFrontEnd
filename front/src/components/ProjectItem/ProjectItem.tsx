@@ -168,7 +168,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 
 							</LocaleText>
 
-							{item.cost.ru
+{/*							{item.cost.ru
 								? (
 									<LocaleText
 										useDefault
@@ -181,10 +181,10 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 										{item.cost[locale.currentLocale.name]}
 									</LocaleText>
 								)
-								: null}
+								: null}*/}
 
 
-							{item.timePeriod.ru
+{/*							{item.timePeriod.ru
 								? (
 									<LocaleText
 										useDefault
@@ -197,7 +197,7 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 										{item.timePeriod[locale.currentLocale.name]}
 									</LocaleText>
 								)
-								: null}
+								: null}*/}
 
 							<Typography
 								fontSize={18}

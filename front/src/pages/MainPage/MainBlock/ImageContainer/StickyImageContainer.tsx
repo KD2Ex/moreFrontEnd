@@ -1,6 +1,6 @@
 import React from 'react';
 import main4 from "../../../../assets/main.jpg";
-import mainPC2 from "../../../../assets/mainPC2.jpg";
+import mainPC2 from "../../../../assets/mainPC3.jpg";
 import {Box, useMediaQuery, useTheme} from "@mui/material";
 import './styles.css'
 
@@ -28,8 +28,7 @@ const StickyImageContainer = () => {
         className={'image'}
         sx={{
             width: {xs: '100%', md: '100%'},
-            bgcolor: '#1b1e1f',
-            objectFit: {xs: 'cover', md: 'contain'},
+            objectFit: {xs: 'cover', md: 'cover'},
             height: '100%',
         }}
         src={isMobile ? main4 : mainPC2}

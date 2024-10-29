@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Typography} from "@mui/material";
 import ServiceTabSwitchFactory from "../ServiceTabFactory/ServiceTabSwitchFactory";
+import RawLocale from "../../MainBlock/StickyText/RawLocale/RawLocale";
 
 const Services = () => {
 
@@ -14,10 +15,10 @@ const Services = () => {
                 textAlign={'center'}
                 sx={{
                     scrollSnapAlign: "start",
-
+                    my: 2
                 }}
             >
-                Наши услуги
+                <RawLocale list={['Наши услуги', 'We provide']}/>
             </Typography>
 
             <ServiceTabSwitchFactory

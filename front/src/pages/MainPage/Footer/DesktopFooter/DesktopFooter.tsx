@@ -69,8 +69,9 @@ const DesktopFooter = () => {
                         }}
                     >
                         <Typography
+                            fontSize={12}
                             sx={{
-
+                                color: "#444343"
                             }}
                         >
                             Constructed by Daniil Serebrianskii

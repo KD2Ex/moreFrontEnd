@@ -73,10 +73,13 @@ const MobileFooter = () => {
                 }}
             >
                 <Typography
+
+                    fontSize={12}
                     sx={{
                         position: 'absolute',
                         bottom: 64,
-                        alignSelf: 'center'
+                        alignSelf: 'center',
+                        color: "#444343"
                     }}
                 >
                     Constructed by Daniil Serebrianskii

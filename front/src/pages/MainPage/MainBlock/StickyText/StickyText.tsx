@@ -33,8 +33,11 @@ const StickyText = ({text, mockHeight, children}) => {
 
                     <Typography
                         fontSize={{xs: 24, md: 32}}
-                        textAlign={'center'}
-
+                        textAlign={'start'}
+                        sx={{
+                            whiteSpace: "pre-wrap",
+                            width: '100%'
+                        }}
                     >
                         {text}
                         {children}

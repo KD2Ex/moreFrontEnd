@@ -135,7 +135,8 @@ const ProjectItem = observer(({item}: ProjectItemProps) => {
 							<Typography
 								fontSize={15}
 								sx={{
-									textAlign: 'justify'
+									textAlign: 'justify',
+									whiteSpace: 'pre-wrap'
 								}}
 							>
 								{item.desc[locale.currentLocale.name]}

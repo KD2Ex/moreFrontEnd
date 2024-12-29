@@ -2,6 +2,10 @@ import React from 'react';
 import LocaleText from "../../../../../components/Locale/LocaleText/LocaleText";
 import {Box, Grid, Typography} from "@mui/material";
 import CardItem from "../../../CardItem/CardItem";
+import RawLocale from "../../../MainBlock/StickyText/RawLocale/RawLocale.tsx";
+import locale from "../../../../../store/locale.ts";
+import EnComponent from "../../../../../newComponents/LocaleComponent/EnComponent/EnComponent.tsx";
+import LocaleComponent from "../../../../../newComponents/LocaleComponent/LocaleComponent.tsx";
 
 const minimumItems = [
     '•	Обмерочный план',
@@ -36,6 +40,14 @@ const fullProjectItems = [
     '•\tВидеообзор'
 ]
 
+const enMinimumItems = [
+    "• Dimensioning plan",
+    "• Planning solutions",
+    "• Concept (Photorealistic image of the rooms, 1 view per room)",
+    "• Lightning scheme",
+    "• Electrical scheme",
+]
+
 const centerStyle = {
     '*': {
         textAlign: 'center'
@@ -56,7 +68,7 @@ const ProjectTab = () => {
                     fontSize={'2.75rem'}
                     localeList={[
                         'Ваше пространство - ваш стиль.',
-                        'Project'
+                        'Your space - your style'
                     ]}
                 />
 
@@ -65,7 +77,7 @@ const ProjectTab = () => {
                     variant={'h5'}
                     localeList={[
                         'Персонализированные решения для дома и бизнеса, созданные с любовью к деталям.',
-                        'Project'
+                        'Personalized solutions for home and business, created with love for detail.'
                     ]}
                     sx={{
                         my: 2
@@ -98,27 +110,53 @@ const ProjectTab = () => {
                                 'Minimum'
                             ]}
                         >
+
                             <Box
                             >
-                                {minimumItems.map((item, index) => (
-                                    <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
-                                ))}
+                                <LocaleComponent localeName={"ru"}>
+                                    {minimumItems.map((item, index) => (
+                                        <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
+                                    ))}
+                                </LocaleComponent>
+                                <LocaleComponent localeName={"en-US"}>
+                                    {enMinimumItems.map((item, index) => (
+                                        <Typography fontSize={'1rem'} key={index}>{item} <br/></Typography>
+                                    ))}
+                                </LocaleComponent>
                             </Box>
 
                             <Box
                                 sx={centerStyle}
                             >
-                                <Typography
-                                    fontSize={'1.5rem'}
-                                >
-                                    1500 руб./час
+                                <LocaleComponent localeName={"en-US"}>
 
-                                </Typography>
-                                <Typography
-                                    fontSize={'1.2rem'}
-                                >
-                                    Срок выполнения от 10 рабочих дней
-                                </Typography>
+                                    <Typography
+                                        fontSize={'1.5rem'}
+                                        fontWeight={'bold'}
+                                    >
+                                        15€ / m<sup>2</sup>
+                                    </Typography>
+                                    <Typography
+                                        fontSize={'1.2rem'}
+                                    >
+                                        Lead time from 10 working days
+                                    </Typography>
+                                </LocaleComponent>
+                                <LocaleComponent localeName={"ru"}>
+
+                                    <Typography
+                                        fontSize={'1.5rem'}
+                                        fontWeight={'bold'}
+                                    >
+                                        1500₽ / м<sup>2</sup>
+                                    </Typography>
+                                    <Typography
+                                        fontSize={'1.2rem'}
+                                    >
+                                        Срок выполнения от 10 рабочих дней
+                                    </Typography>
+                                </LocaleComponent>
+
                             </Box>
 
                         </CardItem>
@@ -141,17 +179,35 @@ const ProjectTab = () => {
                             <Box
                                 sx={centerStyle}
                             >
-                                <Typography
-                                    variant={'h5'}
-                                >
-                                    4500 руб./ кв.м.
+                                <LocaleComponent localeName={"ru"}>
 
-                                </Typography>
-                                <Typography
-                                    fontSize={'1.2rem'}
-                                >
-                                    Срок выполнения от 30 рабочих дней
-                                </Typography>
+                                    <Typography
+                                        variant={'h5'}
+                                        fontWeight={"bold"}
+                                    >
+                                        4500₽ / кв.м.
+
+                                    </Typography>
+                                    <Typography
+                                        fontSize={'1.2rem'}
+                                    >
+                                        Срок выполнения от 30 рабочих дней
+                                    </Typography>
+                                </LocaleComponent>
+                                <LocaleComponent localeName={"en-US"}>
+
+                                    <Typography
+                                        variant={'h5'}
+                                        fontWeight={"bold"}
+                                    >
+                                        45€ / кв.м.
+                                    </Typography>
+                                    <Typography
+                                        fontSize={'1.2rem'}
+                                    >
+                                        Lead time from 30 working days
+                                    </Typography>
+                                </LocaleComponent>
                             </Box>
 
                         </CardItem>

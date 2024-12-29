@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 
 interface LocaleComponentProps {
     localeName: string,
-    children: ReactElement | ReactElement[]
+    children: string | (string | ReactElement)[] | ReactElement | ReactElement[]
 }
 const LocaleComponent: FC<LocaleComponentProps> = observer(({localeName, children}) => {
 

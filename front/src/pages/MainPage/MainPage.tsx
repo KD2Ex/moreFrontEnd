@@ -25,7 +25,7 @@ const ru = {
 const en = {
 	title1: `Your Home - Your Style: Design and Architecture with a Professional Touch\n`,
 	title12: `Experience and Unique Solutions for Every Project.`,
-	title2: 'We have been engaged in architectural design of residential buildings and public spaces for 17 years\n\nDuring this time we have developed author\'s working methods and decision-making algorithms',
+	title2: 'We, Anastasia Kolesnikova and Katerina Serebryanskaya, have been engaged in architectural design of residential buildings and public spaces for 17 years\n\nOver this time, we have developed our own unique methodologies and decision-making algorithms.',
 	title3: 'Another focus of our business is art\n\n' +
 		'In our gallery you can find hundreds of ready-made pieces of art\n\n' +
 		'We help you with the selection of works and decor for your interiors, and create paintings upon request'

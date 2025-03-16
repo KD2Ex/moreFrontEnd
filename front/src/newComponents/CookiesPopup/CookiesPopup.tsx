@@ -20,8 +20,8 @@ const CookiesPopup = () => {
         <Box
             sx={{
                 position: "fixed",
-                bottom: 16,
-                right: 84,
+                bottom: 64,
+                left: 84,
                 zIndex: 4000,
                 //border: "1px  solid",
                 borderRadius: 2,
@@ -35,57 +35,96 @@ const CookiesPopup = () => {
         >
             <LocaleComponent localeName={"ru"}>
                 <Typography
-                    variant={"h6"}
+                    fontSize={14}
                 >
                     Использование cookies
                 </Typography>
-                <Typography>
+                <Typography fontSize={12}>
                     Выбирая «Принять все», Вы соглашаетесь с использованием файлов cookie и <a href={"/policy"} target="_blank">политикой в отношении обработки
                     персональных данных</a> на нашем сайте.
                     <br/><br/>
                     Обработка данных осуществляется для интеграции внешнего контента, интеграции потокового контента, а
-                    также статистического анализа данных.
+                    также статистического анализа данных.<br/><br/>
+                    Файлы cookie хранятся в Вашем браузере. В настройках браузера Вы можете ограничить или вовсе отключить использование файлов cookie.
                 </Typography>
 
-                <Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignSelf: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        mt: 1,
+                        gap: 2
+                    }}
+                >
                     <Button
+                        size={"small"}
                         onClick={handleReject}
                         variant={"contained"}
+                        sx={{
+                            bgcolor: "white",
+                            color: "black",
+                            fontSize: 14
+                        }}
                     >
-                        Confirm
+                        Принять
                     </Button>
                     <Button
+                        size={"small"}
                         onClick={handleReject}
+                        sx={{
+                            fontSize: 14
+                        }}
                     >
-                        Reject
+                        Отклонить
                     </Button>
 
                 </Box>
             </LocaleComponent>
             <LocaleComponent localeName={"en-US"}>
                 <Typography
-                    variant={"h6"}
+                    fontSize={14}
                 >
                     Cookies
                 </Typography>
-                <Typography>
-                    By
-                    Выбирая «Принять все», Вы соглашаетесь с использованием файлов cookie и <a href={"/policy"} target="_blank">политикой в отношении обработки
-                    персональных данных</a> на нашем сайте.
+                <Typography fontSize={12}>
+                    By clicking "Accept", you consent to our use of cookies and agree with our
+                    <a href={"/policy"} target="_blank">Privacy policy</a>.
                     <br/><br/>
-                    Обработка данных осуществляется для интеграции внешнего контента, интеграции потокового контента, а
-                    также статистического анализа данных.
+                    We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
                 </Typography>
 
-                <Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignSelf: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        mt: 1,
+                        gap: 2
+                    }}
+                >
                     <Button
+                        size="small"
                         onClick={handleReject}
                         variant={"contained"}
+                        sx={{
+                            bgcolor: "white",
+                            color: "black",
+                            fontSize: 14
+                        }}
                     >
-                        Confirm
+                        Accept
                     </Button>
                     <Button
+                        size={"small"}
                         onClick={handleReject}
+                        sx={{
+                            fontSize: 14
+                        }}
                     >
                         Reject
                     </Button>

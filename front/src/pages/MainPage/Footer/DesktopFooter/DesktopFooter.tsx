@@ -34,7 +34,7 @@ const DesktopFooter = () => {
                         sx={{
                         }}
                     >
-{/*                        <Typography
+                        {/* <Typography
                             fontSize={'1.25rem'}
                         >
                             Контакты:
@@ -63,7 +63,21 @@ const DesktopFooter = () => {
                         </Box>
 
                     </Box>
+                    <Box>
+                        <Typography
+                            fontSize={12}
+                            sx={{
+                                color: "#444343"
+                            }}
+                        >
+                            ОГРН 314236808600077 <br/>
+                            ИНН 232509395078<br/>
+                            ИП Колесникова Анастасия Евгеньевна <br/>
+                            +79953189227<br/>
+                            ana-sta-siya@list.ru
+                        </Typography>
 
+                    </Box>
                     <Box
                         sx={{
                         }}
@@ -74,10 +88,14 @@ const DesktopFooter = () => {
                                 color: "#444343"
                             }}
                         >
-                            Constructed by Daniil Serebrianskii
+                            Constructed by Daniil Serebrianskii<br/>
+
+                            <a href={"/policy"} target={"_blank"}>Privacy policy</a>
                         </Typography>
                     </Box>
+
                 </Box>
+
 
             </Box>
             {appInfo.isMobile && (

@@ -11,7 +11,7 @@ class AppStore {
     testURL = 'https://art-space-mo.com:7443/';
     localURL = 'http://localhost:7000/';
     //testURL = 'http://localhost:7000/';
-    url = this.localURL; //localStorage.getItem("testMode") ? this.testURL : this.productionURL;
+    url = this.productionURL; //localStorage.getItem("testMode") ? this.testURL : this.productionURL;
 
     activateTestMode() {
         this.url = this.testURL;

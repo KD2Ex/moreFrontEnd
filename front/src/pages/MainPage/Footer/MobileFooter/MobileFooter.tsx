@@ -82,10 +82,17 @@ const MobileFooter = () => {
                         color: "#444343"
                     }}
                 >
-                    Constructed by Daniil Serebrianskii
-                </Typography>
-            </Box>
+                    Constructed by Daniil Serebrianskii<br/><br/>
+                    ОГРН 314236808600077 <br/>
+                    ИНН 232509395078<br/>
+                    ИП Колесникова Анастасия Евгеньевна <br/>
+                    +79953189227<br/>
+                    ana-sta-siya@list.ru<br/>
 
+                    <a href={"/policy"} target={"_blank"}>Privacy policy</a>
+                </Typography>
+
+            </Box>
         </Box>
     );
 };

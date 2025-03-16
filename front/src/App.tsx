@@ -17,6 +17,8 @@ import PostCreatePage from "./pages/BlogCreatePage/PostCreatePage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AdminPage, {loader as pAdminLoader, projectsLoader} from "./pages/AdminPages/PaintingAdminPage/AdminPage";
 import LoginToPortfolio from "./pages/LoginToPortfolio/LoginToPortfolio";
+import CookiesPopup from "./newComponents/CookiesPopup/CookiesPopup.tsx";
+import FilePage from "./pages/FilePage/FilePage.tsx";
 
 function App() {
 
@@ -72,7 +74,11 @@ function App() {
 		{
 			path: '/portfoliomode',
 			element: <LoginToPortfolio/>
-		}
+		},
+		{
+			path: "/policy",
+			element: <FilePage/>
+		},
 	])
 
 
@@ -102,6 +108,8 @@ function App() {
 			<CssBaseline/>
 			<RouterProvider router={browserRouter}/>
 			<GlobalAlerts/>
+			{!localStorage.getItem("policyShown") &&
+				(<CookiesPopup/>)}
 
 		</ThemeProvider>
 	)

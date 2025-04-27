@@ -13,10 +13,14 @@ export const sizes = {
 
 export const imgHeight = 350
 
-export const wappNumber = '79189547728'
+export const wappNumber = '79953189227'
 
 export const wappLink = `https://wa.me/${wappNumber}?text=`
 
 export const getWappLink = (text: string) => {
 	return `https://wa.me/${wappNumber}?text=${text}`
+}
+
+export const getTgLink = () => {
+	return 'https://t.me/N_ast_art'
 }

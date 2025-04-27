@@ -3,10 +3,10 @@ import {Box, Button, IconButton, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import appInfo from "../../../../store/appInfo";
-import {getWappLink} from "../../../../consts";
+import {getTgLink, getWappLink} from "../../../../consts";
 
 const DesktopFooter = () => {
-    const tgLink = `https://t.me/Katerina_Serebryanskaya`
+    const tgLink = getTgLink()
     const wAppLink = getWappLink(`Здравствуйте!`)
 
     return (

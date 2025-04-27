@@ -2,12 +2,12 @@ import React from 'react';
 import {Box, IconButton, Typography} from "@mui/material";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import {getWappLink} from "../../../../consts";
+import {getTgLink, getWappLink} from "../../../../consts";
 
 
 
 const MobileFooter = () => {
-    const tgLink = `https://t.me/Katerina_Serebryanskaya`
+    const tgLink = getTgLink()
     const wAppLink = getWappLink(`Здравствуйте!`)
     return (
         <Box

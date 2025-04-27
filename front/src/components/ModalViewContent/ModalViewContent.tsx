@@ -1,21 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import ModalCarousel from "../ModalCarousel/ModalCarousel";
 import ModalInfo from "../ModalInfo/ModalInfo";
 import {Box, Button, Divider, Grid, Icon, IconButton, Typography} from "@mui/material";
-import {getWappLink} from "../../consts";
+import {getTgLink, getWappLink} from "../../consts";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocaleText from "../Locale/LocaleText/LocaleText";
 import modal from "../../store/modal";
 import {observer} from "mobx-react-lite";
 import paint from "../../store/paint";
+import locale from "../../store/locale.ts";
 
 const ModalViewContent = observer(({item}) => {
 
-	const profileURI = encodeURI('https://t.me/Katerina_Serebryanskaya')
-	const message = encodeURI('Hello')
-	const tgLink = `https://t.me/Katerina_Serebryanskaya`
-	const wAppLink = getWappLink(`Здравствуйте, меня заинтересовала картина ${item.title}`)
+	const tgLink = getTgLink()
+	console.log(item)
+	const wAppText = locale.currentLocale.name == "ru"
+		? "Здравствуйте, меня заинтересовала картина "
+		: "Hello, i am interested in "
+	const wAppLink = getWappLink(`${wAppText}"${item.title[locale.currentLocale.name]}"`)
 
 	return (
 		<Grid

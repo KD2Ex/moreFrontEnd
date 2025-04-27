@@ -1,6 +1,8 @@
 import React from 'react';
-import main4 from "../../../../assets/main.jpg";
-import mainPC2 from "../../../../assets/mainPC3.jpg";
+//import main4 from "../../../../assets/main.jpg";
+//import mainPC2 from "../../../../assets/mainPC3.jpg";
+import mainPC2 from "../../../../assets/new_mainpage_bg.jpg";
+import main4 from "../../../../assets/new_mainpage_bg.jpg";
 import {Box, useMediaQuery, useTheme} from "@mui/material";
 import './styles.css'
 

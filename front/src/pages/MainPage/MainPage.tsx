@@ -16,19 +16,20 @@ import RawLocale from "./MainBlock/StickyText/RawLocale/RawLocale";
 const ru = {
 	title1: 'Ваш дом - ваш стиль: дизайн и архитектура с профессиональным подходом\n',
 	title12:  'Опыт и уникальные решения для каждого проекта',
-	title2: 'Мы, Анастасия Колесникова и Катерина Серебрянская, занимаемся архитектурным проектирование жилых домов и общественных пространств уже 17 лет\n\nЗа это время мы разработали авторские методики работы и алгоритмы принятия решений',
-	title3: 'Еще одним направлением нашей деятельности является искусство  \n\n' +
-		'В нашей галерее вы можете найти сотни готовых произведений \n\n' +
-		'Мы помогаем с подбором произведений и декора в ваши интерьеры, создаем картины на заказ',
+	title2: 'Я, Анастасия Колесникова и моя команда занимаемся архитектурным проектированием и дизайном интерьеров жилых домов и общественных объектов уже более 13 лет.\n\nПри проектировании я использую авторские методики работы и алгоритмы принятия решений.',
+	title3: 'Еще одним направлением деятельности является искусство  \n\n' +
+		'В моей галереи вы можете найти сотни готовых картин.\n\n' +
+		'При необходимости я помогу с подбором декора, картин и постеров в ваши интерьеры, создам  картину специально для Вас.',
 }
 
 const en = {
-	title1: `Your Home - Your Style: Design and Architecture with a Professional Touch\n`,
-	title12: `Experience and Unique Solutions for Every Project.`,
-	title2: 'We, Anastasia Kolesnikova and Katerina Serebryanskaya, have been engaged in architectural design of residential buildings and public spaces for 17 years\n\nOver this time, we have developed our own unique methodologies and decision-making algorithms.',
-	title3: 'Another focus of our business is art\n\n' +
-		'In our gallery you can find hundreds of ready-made pieces of art\n\n' +
-		'We help you with the selection of works and decor for your interiors, and create paintings upon request'
+	title1: `Your Home, Your Style: Professional Design and Architecture Solutions\n`,
+	title12: `Expertise and Unique Concepts Tailored to Every Project`,
+	title2: 'I’m Anastasia Kolesnikova, and for over 13 years, my team and I have been creating architectural designs and interior spaces for private homes and public buildings.\n\n' +
+		'We combine professional experience with signature methodologies and a refined decision-making process to deliver truly personalized results',
+	title3: 'Art is another essential part of my creative journey.\n\n' +
+		'In my gallery, you’ll find hundreds of ready-to-hang artworks.\n\n' +
+		'I offer personalized services — from helping you select the perfect decor, paintings, and posters for your space to creating a custom piece crafted specifically for you'
 }
 
 
